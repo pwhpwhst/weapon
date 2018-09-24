@@ -1,0 +1,13 @@
+#include <time.h>
+
+   clock_t start,finish;
+   double totaltime;
+   start=clock();
+
+   ……                     //把你的程序代码插入到这里面
+
+   finish=clock();
+
+	totaltime=(double)(finish-start);
+
+	cout<<totaltime<<endl;

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">  
+  
+<sqlMap namespace="clawer_url">  
+    <statement id="query_clawer_url_list" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT url FROM clawer_url where id=#id#
+    </statement>  
+</sqlMap> 
+
+

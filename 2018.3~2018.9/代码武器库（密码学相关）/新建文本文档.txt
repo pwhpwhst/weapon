@@ -1,0 +1,127 @@
+字符串转换为二进制：
+
+const char* str_char = str.data();
+
+
+std::bitset<64> charToBitset(const char s[8])  
+{  
+    bitset<64> bits;  
+    for(int i=0; i<8; ++i)  
+        for(int j=0; j<8; ++j)  
+            bits[i*8+j] = ((s[i]>>j) & 1);  
+    return bits;  
+} 
+
+
+string bitset64ToStr(bitset<64> bits){
+	char chr[9];
+	for(size_t i1=0;i1<9;i1++){
+		chr[i1]=0;
+	}
+	for(size_t i1=0;i1!=64;i1++){
+		chr[i1/8]|=bits[i1]<<(i1%8);
+	}
+	return string(chr);
+ }
+
+
+
+=========================
+
+比特位置换：
+
+
+int IP[] = {58, 50, 42, 34, 26, 18, 10, 2,  
+            60, 52, 44, 36, 28, 20, 12, 4,  
+            62, 54, 46, 38, 30, 22, 14, 6,  
+            64, 56, 48, 40, 32, 24, 16, 8,  
+            57, 49, 41, 33, 25, 17, 9,  1,  
+            59, 51, 43, 35, 27, 19, 11, 3,  
+            61, 53, 45, 37, 29, 21, 13, 5,  
+            63, 55, 47, 39, 31, 23, 15, 7};
+
+    for(int i=0; i<64; ++i)  
+        currentBits[63-i] = plain[64-IP[i]];  
+
+=========================
+密钥生成
+
+#include<time.h>
+
+
+ bitset<64> generateSecretKey(){
+ srand((unsigned)time(NULL));
+	bitset<64> u;
+	for(size_t i1=0;i1!=64;i1++){
+		int a=rand();
+		u[i1]=(a%2==0)?0:1;
+	}
+	return u;
+ }
+
+
+ ===================================
+循环位移(左移)
+
+int bitShift;
+bitset<64> a;
+
+a=(a>>(64-bitShift))|(a<<bitShift);
+
+===================================
+
+long与bitset的互换
+
+unsigned long a=4;
+bitset<64> u(a);
+unsigned long a2=u.to_ulong(); 
+
+
+
+
+===================================
+
+
+//求最大公约数
+int gcd(int x , int y){
+   if(x>y){
+	std::swap(x,y);
+   }
+
+	while(y%x!=0){
+		int y1=x;
+		x=y%x;
+		y=y1;
+	}
+	return x;
+  
+}
+
+
+//求乘法逆元
+
+long get_mod_reverse(long a,long n){
+	
+	long r=1;
+
+	long aa=n-a;
+	long ar=n-1;
+
+if(a>aa){
+	std::swap(a,aa);
+	std::swap(r,ar);
+}
+
+while(a!=1){
+	long r1=ar-(aa/a)*r;
+	r1=(r1%n)<0?(r1%n)+n:(r1%n);
+	long a1=aa%a;
+	aa=a;
+	ar=r;
+	a=a1;
+	r=r1;
+}
+
+return r;
+
+}

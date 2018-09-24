@@ -1,0 +1,34 @@
+简单java（O）
+Maven（O）
+简单spring（O）
+简单servlet（O）
+
+ibatis
+mybatis
+hibernate
+hadroop
+zookeeper
+redies
+node.js
+momgoDB
+
+Tomcat
+jboss
+webLogic
+Ext
+微服务架构
+jvm
+dubbo
+app h5
+android
+ios
+jfinal
+
+
+Java NIO
+Spring
+SpringMVC
+springCloud
+MyBatis
+easyui
+netty

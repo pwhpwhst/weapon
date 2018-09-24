@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+#通常SLN文件不向下兼容，但是通过更改前两行的版本信息，可以使用支持同.NET Framework的低版本Visual Studio打开
+#（如通过更改Visual Studio 2012创建的.NET 4.0项目 SLN文件，可以通过修改SLN来支持Visual Studio 2010 打开）
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Project1", "Project1\Project1.vcxproj", "{6DE6DACC-66C9-45BF-BB08-203E3978527C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DE6DACC-66C9-45BF-BB08-203E3978527C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{6DE6DACC-66C9-45BF-BB08-203E3978527C}.Debug|Win32.Build.0 = Debug|Win32
+		{6DE6DACC-66C9-45BF-BB08-203E3978527C}.Release|Win32.ActiveCfg = Release|Win32
+		{6DE6DACC-66C9-45BF-BB08-203E3978527C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

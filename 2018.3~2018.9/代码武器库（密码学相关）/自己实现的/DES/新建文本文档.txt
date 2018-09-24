@@ -1,0 +1,9 @@
+cd C:\Users\pwh\Desktop\代码武器库（密码学相关）\自己实现的\DES
+
+
+g++ -c common.cpp
+g++ -c DESDemo.cpp
+g++ -o DESDemo DESDemo.o common.o
+
+
+DESDemo.exe>a2.txt

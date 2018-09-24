@@ -1,0 +1,28 @@
+cd C:\Users\pwh\Desktop\newTech\simpleIbatis
+mvn clean install
+
+运行：
+cd C:\Users\pwh\Desktop\newTech\simpleIbatis\target
+java -jar ibatisTest-1.0-SNAPSHOT.jar
+
+
+
+参考资料：
+https://www.cnblogs.com/cs-forget/p/6483895.html
+
+https://blog.csdn.net/fanfanjin/article/details/6676566
+
+
+https://blog.csdn.net/bruce128/article/details/22098795
+
+
+
+ibatis的批量更新
+https://www.cnblogs.com/kangjingwei/p/7234621.html
+
+SqlMapClient smc = this.getSqlMapClient();
+ smc.startBatch();//评论处理开始
+ for(Test test : list){                        
+   this.getSqlMapClientTemplate().update("XXX.XXXX", map);
+            }
+ smc.executeBatch();//批量处理结束

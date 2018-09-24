@@ -1,0 +1,43 @@
+参考：https://redis.io/topics/distlock
+
+http://baijiahao.baidu.com/s?id=1596540166265981065&wfr=spider&for=pc
+
+Mutual exclusion 互斥
+Deadlock free
+Fault tolerance
+
+
+1、故障切换机制是不足以处理分布式锁定的
+
+
+可能有如下情形：
+
+clientA 向master申请锁
+
+clientA 将键提交给maseter前，master挂了
+
+slave升级成master
+
+clientB 申请和clientA同样的资源
+
+
+
+2、单redis情形
+
+
+SET resource_name my_random_value NX PX 30000
+
+//代码。。。
+
+if redis.call("get",KEYS[1]) == ARGV[1] then
+    return redis.call("del",KEYS[1])
+else
+    return 0
+end
+
+
+使用 /dev/urandom 形成 my_random_value
+
+
+
+set myLock hahah NX PX 300000

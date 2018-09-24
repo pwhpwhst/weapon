@@ -1,0 +1,10 @@
+
+±‡“Î&‘À––£∫
+C:\Users\Administrator\Desktop\newTech\junitTest
+mvn clean test
+
+
+
+
+
+

@@ -1,0 +1,86 @@
+mubuild好像不是自带的，是visual studio带过来的
+
+https://msdn.microsoft.com/zh-CN/library/dd293607
+//msbuild用法的介绍
+
+https://msdn.microsoft.com/zh-cn/library/bb383796.aspx
+https://msdn.microsoft.com/zh-cn/library/bb383985.aspx
+msbuild.exe someproj.proj /tv:12.0 /p:Configuration=Debug  
+//msbuild 设置toolversion
+
+
+
+msbuild.exe someproj.proj /property:PlatformToolset=v110
+//msbuild 设置toolset
+
+
+
+cd C:\Users\pwh\Desktop\winutils
+
+MSBuild winutils.sln
+
+update VC++ Projects
+
+Platform Toolset='Windows7.1SDK'
+
+
+
+
+
+msbuild.exe winutils.sln /property:PlatformToolset=v110
+
+//在一般的cmd上
+msbuild.exe winutils.sln /property:PlatformToolset=v100
+//在SDK的cmd上
+msbuild.exe winutils.sln /property:PlatformToolset=Windows7.1SDK
+C:\Program Files\MSBuild\Microsoft.Cpp
+
+
+
+
+
+
+winutils.vcxproj
+	↓
+<Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+	↓
+C:\Program Files\MSBuild\Microsoft.Cpp\v4.0\V110\Microsoft.Cpp.Default.props
+	↓
+<Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
+
+结论：C:\Program Files\MSBuild 不完整，至少 C:\Program Files\MSBuild\Microsoft.Cpp\v4.0 上得含有 Windows7.1SDK
+
+
+
+
+
+C:\Program Files\Common Files\Oracle\Java\javapath;C:\Perl\site\bin;C:\Perl\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;D:\jdk-7u67-windows-i586\bin;D:\jdk-7u67-windows-i586\jre\bin;;C:\Program Files\NVIDIA Corporation\PhysX\Common;%M2_HOME%\bin;%JAVA_HOME%\bin;D:\mysql-5.6.24-win32\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Perl\bin;C:\Program Files\NASM;%CATALINA_HOME%\common\lib\servlet-api.jar;D:\MinGW\lib;D:\MinGW\bin;D:\Program Files\CMake\bin;D:\hadoop-2.8.3\hadoop-2.8.3\bin;D:\cygwin\bin;D:\apache-maven-3.3.9\bin;D:\protoc-2.5.0-win32;C:\Program Files\dotnet\;
+C:\Program Files\Microsoft Windows Performance Toolkit\;
+C:\Windows\Microsoft.NET\Framework\v4.0.30319;（MSBuild）
+D:\Program Files\Microsoft Visual Studio 11.0\VC\bin\x86_amd64;
+D:\Program Files\Microsoft Visual Studio 11.0\Common7\IDE
+
+
+
+
+MSBuild
+	↓
+C:\Windows\Microsoft.NET\Framework\v4.0.30319;
+	↓
+SDK7
+
+
+
+
+C:\Program Files\Common Files\Oracle\Java\javapath;C:\Perl\site\bin;C:\Perl\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;D:\jdk-7u67-windows-i586\bin;D:\jdk-7u67-windows-i586\jre\bin;;
+C:\Program Files\NVIDIA Corporation\PhysX\Common;
+%M2_HOME%\bin;%JAVA_HOME%\bin;D:\mysql-5.6.24-win32\bin;
+C:\Program Files\Microsoft\Web Platform Installer\;
+C:\Program Files\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;
+C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;
+C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;
+C:\Perl\bin;C:\Program Files\NASM;%CATALINA_HOME%\common\lib\servlet-api.jar;D:\MinGW\lib;D:\MinGW\bin;
+D:\Program Files\CMake\bin;D:\hadoop-2.8.3\hadoop-2.8.3\bin;D:\cygwin\bin;D:\apache-maven-3.3.9\bin;
+D:\protoc-2.5.0-win32;C:\Program Files\dotnet\;C:\Program Files\Microsoft Windows Performance Toolkit\;
+C:\Windows\Microsoft.NET\Framework\v4.0.30319;D:\Program Files\Microsoft Visual Studio 11.0\VC\bin\x86_amd64;D:\Program Files\Microsoft Visual Studio 11.0\Common7\IDE

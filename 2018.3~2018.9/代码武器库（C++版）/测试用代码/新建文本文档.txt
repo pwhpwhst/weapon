@@ -1,0 +1,148 @@
+#include"../../include/json/json.h"
+
+Action层：
+
+Json::Value recordArr;
+
+
+函数下侧里面：
+
+
+
+		cout<<"recordArr=[];"<<endl;
+		
+		for(int i1=0;i1<recordArr.size();i1++){
+			cout<<"var obj="<<recordArr[i1].toStyledString() <<";"<<endl;
+			cout<<"recordArr.push(obj);"<<endl;
+		}
+
+
+			
+service层：		
+		
+		//参数记录阶段 begin
+		Json::Value runRecord;
+		Json::Value conditionRecord;
+		Json::Value resultRecord;
+
+		conditionRecord["key1"]="val1";
+		//参数记录阶段 end
+
+		_resultMap = calculateMailRelativeFee(_transferMap);	//待测试的目标函数
+
+		//结果记录阶段 begin
+		resultRecord["resultKey1"]="result1";
+		runRecord["conditionRecord"]=conditionRecord;
+		runRecord["resultRecord"]=resultRecord;
+		runRecord["title"]="init_two_sub_status_score.calculateMailRelativeFee";
+		recordArr.append(runRecord);
+		//结果记录阶段 end
+
+		
+		
+
+
+
+
+
+
+
+========================================================
+
+在 chrome打开浏览器：
+
+
+function downloadCVS(recordArr){
+
+	var headSet0={};
+	var headSet1={};
+	var headSet2={};
+
+	for(var i1=0;i1<recordArr.length;i1++){
+		headSet0["title"]="hhh";
+		for(var k in recordArr[i1]["conditionRecord"]){
+			headSet1[k]="hhh";
+		}
+
+		for(var k in recordArr[i1]["resultRecord"]){
+			headSet2[k]="hhh";
+		}
+
+	}
+
+	var headArr0=[];
+	var headArr1=[];
+	var headArr2=[];
+
+	for(var k in headSet0){
+		headArr0.push(k);
+	}
+
+	for(var k in headSet1){
+		headArr1.push(k);
+	}
+
+	for(var k in headSet2){
+		headArr2.push(k);
+	}
+
+	var str ="";
+	var headArrTotal=[];
+	
+	for(var i1=0;i1<headArr0.length;i1++){
+		headArrTotal.push(headArr0[i1]);
+	}
+	headArrTotal.push("split0");
+	for(var i1=0;i1<headArr1.length;i1++){
+		headArrTotal.push(headArr1[i1]);
+	}
+	headArrTotal.push("split1");
+	for(var i1=0;i1<headArr2.length;i1++){
+		headArrTotal.push(headArr2[i1]);
+	}
+
+	str+=("BEGINBEGINBEGIN"+JSON.stringify(headArrTotal)+"ENDENDEND").replace("BEGINBEGINBEGIN[","").replace("]ENDENDEND","").replace("\"","")+"\n";
+
+	for(var i1=0;i1<recordArr.length;i1++){
+	console.log(i1);
+		var data=[];
+		data.push(recordArr[i1]["title"]);
+		data.push(" ");
+		for(var i2=0;i2<headArr1.length;i2++){
+			if(typeof(recordArr[i1]["conditionRecord"][headArr1[i2]])!='undefined'&&recordArr[i1]["conditionRecord"][headArr1[i2]]!=null){
+				data.push(JSON.stringify(recordArr[i1]["conditionRecord"][headArr1[i2]]).replace(/\,/g,"+"));
+			}else{
+				data.push(" ");
+			}
+			
+		}
+		data.push(" ");
+		for(var i2=0;i2<headArr2.length;i2++){
+			if(typeof(recordArr[i1]["resultRecord"][headArr2[i2]])!='undefined'){
+				data.push(JSON.stringify(recordArr[i1]["resultRecord"][headArr2[i2]]).replace(/\,/g,"+"));
+			}else{
+				data.push(" ");
+			}
+			
+		}
+		data.push(" ");
+		var _str=("BEGINBEGINBEGIN"+JSON.stringify(data)+"ENDENDEND").replace("BEGINBEGINBEGIN[","").replace("]ENDENDEND","").replace(/\\\"\"/g,"").replace(/\\/g,"")+"\n";
+		str+=_str;
+	}
+
+	str =  encodeURIComponent(str); 
+
+	var href = "data:text/csv;charset=utf-8,\uFEFF"+str;  
+
+	var oa = document.createElement('a');
+	
+
+	oa.setAttribute('download','downlaod.csv');
+	oa.setAttribute('id','test');
+	oa.setAttribute('href',href);
+	document.body.appendChild(oa);
+	oa.click();
+}
+
+
+downloadCVS(recordArr);

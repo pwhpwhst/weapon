@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">  
+  
+<sqlMap namespace="MFSubStatus">   
+     <statement id="insert_MFSubStatus" parameterClass="java.util.HashMap">  
+        insert into mf_substatus(status,parent_status,score,move_step) 
+        values(#status#,#parentStatus#,#score#,#moveStep# )
+    </statement> 
+    
+    
+    <insert id="insert_MFSubStatus_batch" parameterClass="java.util.List">
+	insert into mf_substatus(status,parent_status,score,move_step)
+	<iterate conjunction="union" close="" open=""> 
+	select #list[].status#,#list[].parentStatus#,#list[].score#,#list[].moveStep# from dual
+	</iterate>
+	</insert>
+    
+    
+    
+    
+</sqlMap>
+
+

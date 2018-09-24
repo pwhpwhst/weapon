@@ -1,0 +1,6 @@
+1、类的静态成员变量要在类外初始化
+
+2、容器类键值对插入：
+
+Grid a((unsigned char) 1);
+kLocationToId[Grid((unsigned char) 2)]=a;

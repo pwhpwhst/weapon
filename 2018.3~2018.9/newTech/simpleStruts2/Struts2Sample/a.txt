@@ -1,0 +1,28 @@
+文件夹 PATH 列表
+卷序列号为 00000065 9019:A07B
+C:.
+│  a.txt
+│  pom.xml
+│  新建文本文档.txt
+│  
+└─src
+    └─main
+        ├─java
+        │  └─com
+        │      └─structssample
+        │              TestAction.java
+        │              
+        ├─resources
+        │  │  struts.xml
+        │  │  
+        │  └─struts
+        │          struts-test.xml
+        │          
+        └─webapp
+            │  index.jsp
+            │  test_result1.jsp
+            │  
+            ├─views
+            └─WEB-INF
+                    web.xml
+                    

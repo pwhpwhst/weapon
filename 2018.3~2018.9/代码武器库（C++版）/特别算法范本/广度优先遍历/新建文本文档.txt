@@ -1,0 +1,103 @@
+MFSubStatusMap mf_sub_status_map;
+
+deque<std::shared_ptr<MFCodeImpl>> mf_deq;
+
+
+
+	void CreatMFScoreTable::create_mf_score_table(){
+	//初始化 begin
+		MFCodeImpl *mf=new MFCodeImpl();
+
+		std::shared_ptr<MFCodeImpl> mf_ptr(mf);
+		mf_deq.push_front(mf_ptr);
+		unordered_map<string,string>	map=mf_sub_status_map[mf_ptr];
+		map["sub_status"]=to_string(mf_ptr->extract_mf_sub_status(type,false));
+		map["score"]="0";
+		map["parent"]="18";
+		map["littler_brother"]="18";
+		map["first_child"]="0";
+		map["is_visited"]="0";
+		map["depth"]="50";
+		map["parentsubstatus"]="0";
+		mf_sub_status_map[mf_ptr]=map;
+	//初始化 end
+
+		auto r_beg=mf_deq.rbegin();
+		auto r_end=mf_deq.rend();
+
+		int num=0;
+
+		while(r_end!=r_beg){
+			cout<<"处理第"<<num++<<"个"<<endl;
+			std::shared_ptr<MFCodeImpl> present_mf_ptr=mf_deq.back();
+			mf_deq.pop_back();
+
+			unordered_map<string,string> map=mf_sub_status_map[present_mf_ptr];	
+			
+			map["is_visited"]="1";
+
+			int first_child=18;
+			std::shared_ptr<MFCodeImpl> big_brother_mf=nullptr;
+
+			for(int i1=0;i1<18;i1++){
+				MFCodeImpl *new_mf=new MFCodeImpl(*present_mf_ptr);
+				std::shared_ptr<MFCodeImpl> new_mf_ptr(new_mf);
+
+				new_mf_ptr->move(i1);
+
+
+				if(mf_sub_status_map.find(present_mf_ptr)!=mf_sub_status_map.end()){
+					if(first_child==18){
+						first_child=i1;
+					}
+					
+					if(mf_sub_status_map.find(new_mf_ptr)==mf_sub_status_map.end()){
+						unordered_map<string,string> new_map=mf_sub_status_map[new_mf_ptr];
+						new_map["sub_status"]=to_string(new_mf_ptr->extract_mf_sub_status(type,false));
+						new_map["score"]=to_string(atoi(map["score"].c_str())+1);
+						int _u1 = i1 - (i1 % 3);
+						int _u2 = i1 % 3;
+						int parent_move = _u1 + (4 - _u2) % 3;
+						new_map["parent"]=to_string(parent_move);
+						if(!big_brother_mf){
+							unordered_map<string,string> brother_map=mf_sub_status_map[present_mf_ptr];
+							brother_map["littler_brother"]=i1;
+							mf_sub_status_map[present_mf_ptr]=brother_map;
+						}
+						new_map["is_visited"]="0";
+						new_map["parentsubstatus"]=map["sub_status"];
+						mf_sub_status_map[new_mf_ptr]=new_map;
+						big_brother_mf=new_mf_ptr;
+						mf_deq.push_front(new_mf_ptr);
+					}else{
+						unordered_map<string,string> new_map=mf_sub_status_map[new_mf_ptr];
+						int before_score=atoi(new_map["score"].c_str());
+						int after_score=atoi(map["score"].c_str())+1;
+						if(after_score<=before_score){
+							new_map["score"]=to_string(atoi(map["score"].c_str())+1);
+							int _u1 = i1 - (i1 % 3);
+							int _u2 = i1 % 3;
+							int parent_move = _u1 + (4 - _u2) % 3;
+							new_map["parent"]=to_string(parent_move);
+							if(!big_brother_mf){
+								unordered_map<string,string> brother_map=mf_sub_status_map[present_mf_ptr];
+								brother_map["littler_brother"]=i1;
+								mf_sub_status_map[present_mf_ptr]=brother_map;
+							}
+							new_map["is_visited"]="0";
+							new_map["parentsubstatus"]=map["sub_status"];
+							mf_sub_status_map[new_mf_ptr]=new_map;
+							big_brother_mf=new_mf_ptr;
+						}
+					}
+
+				}
+			}
+
+			map["first_child"]=to_string(first_child);
+			mf_sub_status_map[present_mf_ptr]=map;
+
+			r_beg=mf_deq.rbegin();
+			r_end=mf_deq.rend();
+		}
+	}

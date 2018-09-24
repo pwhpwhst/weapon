@@ -1,0 +1,83 @@
+https://blog.csdn.net/liquanhai/article/details/51569692
+
+cd C:\Users\pwh\Desktop\代码武器库（C++版）\编译方法相关\ConsoleApplication5
+
+MSBuild
+
+//重设工作集
+msbuild.exe /tv:10.0 //与Project1.vcxproj的 ToolsVersion="4.0" 对应
+
+执行前：
+
+文件夹 PATH 列表
+卷序列号为 00610063 5EB4:4D50
+D:.
+│  a.txt
+│  ConsoleApplication5.sdf
+│  ConsoleApplication5.sln
+│  
+├─Debug
+├─ipch
+│  └─consoleapplication5-ddd8ef1e
+│          consoleapplication5-3c8e4428.ipch
+│          
+├─Project1
+│  │  Project1.vcxproj
+│  │  Project1.vcxproj.filters
+│  │  pwhTest.cpp
+│  │  
+│  └─Debug
+│          Project1.Build.CppClean.log
+│          Project1.log
+│          
+└─TestResults
+
+
+
+执行后：
+
+文件夹 PATH 列表
+卷序列号为 00610063 5EB4:4D50
+D:.
+│  a.txt
+│  ConsoleApplication5.sdf
+│  ConsoleApplication5.sln
+│  
+├─Debug
+│      Project1.exe
+│      Project1.ilk
+│      Project1.pdb
+│      
+├─ipch
+│  └─consoleapplication5-ddd8ef1e
+│          consoleapplication5-3c8e4428.ipch
+│          
+├─Project1
+│  │  Project1.vcxproj
+│  │  Project1.vcxproj.filters
+│  │  pwhTest.cpp
+│  │  
+│  └─Debug
+│          cl.command.1.tlog
+│          CL.read.1.tlog
+│          CL.write.1.tlog
+│          link-cvtres.read.1.tlog
+│          link-cvtres.write.1.tlog
+│          link-rc.read.1.tlog
+│          link-rc.write.1.tlog
+│          link.command.1.tlog
+│          link.read.1.tlog
+│          link.write.1.tlog
+│          Project1.Build.CppClean.log
+│          Project1.lastbuildstate
+│          Project1.log
+│          pwhTest.obj
+│          vc110.idb
+│          vc110.pdb
+│          
+└─TestResults
+
+
+
+
+

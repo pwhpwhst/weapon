@@ -1,0 +1,41 @@
+文件夹 PATH 列表
+卷序列号为 00610063 9019:A07B
+C:.
+│  a.txt
+│  ConsoleApplication5.sdf
+│  ConsoleApplication5.sln
+│  新建文本文档.txt
+│  
+├─Debug
+│      Project1.exe
+│      Project1.ilk
+│      Project1.pdb
+│      
+├─ipch
+│  └─consoleapplication5-ddd8ef1e
+│          consoleapplication5-3c8e4428.ipch
+│          
+├─Project1
+│  │  Project1.vcxproj
+│  │  Project1.vcxproj.filters
+│  │  pwhTest.cpp
+│  │  
+│  └─Debug
+│          cl.command.1.tlog
+│          CL.read.1.tlog
+│          CL.write.1.tlog
+│          link-cvtres.read.1.tlog
+│          link-cvtres.write.1.tlog
+│          link-rc.read.1.tlog
+│          link-rc.write.1.tlog
+│          link.command.1.tlog
+│          link.read.1.tlog
+│          link.write.1.tlog
+│          Project1.Build.CppClean.log
+│          Project1.lastbuildstate
+│          Project1.log
+│          pwhTest.obj
+│          vc110.idb
+│          vc110.pdb
+│          
+└─TestResults

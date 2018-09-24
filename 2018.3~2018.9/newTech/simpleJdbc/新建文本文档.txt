@@ -1,0 +1,32 @@
+
+
+参考 https://blog.csdn.net/Dextrad_ihacker/article/details/53235126
+
+
+CREATE TABLE students (
+	id INT(11) NOT NULL AUTO_INCREMENT,
+	name VARCHAR(32) NULL DEFAULT NULL,
+	sex VARCHAR(32) NULL DEFAULT NULL,
+	age VARCHAR(32) NULL DEFAULT NULL, PRIMARY KEY (`id`)
+) COLLATE='utf8_general_ci' ENGINE=InnoDB AUTO_INCREMENT=23859
+;
+
+DROP TABLE students;
+
+///////////////////////////////////////////////////////////////////////////
+
+cd C:\Users\Administrator\Desktop\simpleJdbc
+mvn clean install
+
+mvn clean compile
+mvn clean package
+
+运行：
+cd C:\Users\Administrator\Desktop\simpleJdbc\target
+java -jar jdbcTest-1.0-SNAPSHOT.jar
+
+
+//中央仓库：http://repo1.maven.org/maven2/
+
+
+

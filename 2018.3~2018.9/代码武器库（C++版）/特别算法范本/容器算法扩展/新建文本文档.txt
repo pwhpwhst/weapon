@@ -1,0 +1,91 @@
+template <class ForwardIterator, class T> 
+ForwardIterator bbinary_search(ForwardIterator beg,ForwardIterator end,const T val,std::function<bool(const T &,const T &)> comp ){
+		ForwardIterator eend=end;
+
+		if(comp(val,*beg)){
+			return eend;
+		}else if(!comp(*beg,val)){
+			return beg;
+		}else if(comp(*(end-1),val)){
+			return eend;
+		}
+
+		while((beg+1)!=end){
+			auto d=end-beg;
+			auto mid=beg+(d/2);
+			if(comp(val,*mid)){
+				end=mid;
+			}else if(!comp(*mid,val)){
+				return mid;
+			}else{
+				beg=mid;
+			}
+		}
+
+		if(!comp(val,*beg)&&!comp(*beg,val)){
+			return beg;
+		}else{
+			return eend;
+		}
+	}
+
+
+
+
+
+template <class ForwardIterator, class T> 
+void heap_pre_remove(ForwardIterator beg,ForwardIterator end, ForwardIterator ptr,std::function<bool(const T &,const T &)> comp){
+	auto length=end-beg;
+	if((ptr-beg)>=length){
+		return;
+	}
+
+	do{
+		auto l1=((ptr-beg)<<1)+1;
+		auto l2=((ptr-beg)<<1)+2;
+		if(l2<length){
+			if(comp(*(beg+l2),*(beg+l1))){
+				T a1=*ptr;
+				*ptr=*(beg+l1);
+				*(beg+l1)=a1;
+				ptr=beg+l1;
+			}else{
+				T a1=*ptr;
+				*ptr=*(beg+l2);
+				*(beg+l2)=a1;
+				ptr=beg+l2;
+			}
+		}else if(l1<length){
+				T a1=*ptr;
+				*ptr=*(beg+l1);
+				*(beg+l1)=a1;
+				ptr=beg+l1;
+		}else{
+			break;
+		}
+	}while(true);
+
+	if(ptr==(end-1)){
+		return ;
+	}
+
+	ForwardIterator rptr=end-1;
+
+	T a1=*ptr;
+	*ptr=*(rptr);
+	*(rptr)=a1;
+
+
+	while(ptr!=beg){
+		auto l=((ptr-beg)>>1);
+			if(comp(*(beg+l),*ptr)){
+				T a1=*ptr;
+				*ptr=*(beg+l);
+				*(beg+l)=a1;
+				ptr=beg+l;
+			}else{
+				break;
+			}
+	}
+
+}

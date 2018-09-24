@@ -1,0 +1,20 @@
+GroupID是项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。
+ArtifactID就是项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。
+
+
+
+cd C:\Users\pwh\Desktop\新技术使用\Maven
+mvn clean compile
+mvn clean test
+mvn clean package
+mvn clean install
+
+运行：
+cd C:\Users\pwh\Desktop\新技术使用\Maven\target
+java -jar hello-world-1.0-SNAPSHOT.jar
+
+
+//中央仓库：http://repo1.maven.org/maven2/
+
+
+

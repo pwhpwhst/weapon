@@ -1,0 +1,55 @@
+1、下载源代码
+https://github.com/open-source-parsers/jsoncpp
+
+2、解压文件，
+
+cmake -G "MinGW Makefiles" .
+make
+
+3、重要的文件 include 
+
+libjsoncpp.a
+
+
+4、
+
+    string strValue = "{\"res\":\"success\",\"info\":\"{\\\"port\\\":1024,\\\"host\\\":\\\"192.168.5.215\\\"}\"}";
+    cout << strValue << endl;
+
+    Json::Reader reader;
+    Json::Value value;
+
+    if (reader.parse(strValue, value))
+    {
+        cout << value["res"].asString() << endl;
+        cout << value["info"].asString() << endl;
+        Json::Reader readerTemp;
+        Json::Value valueTemp;
+        if (readerTemp.parse(value["info"].asString(), valueTemp))
+        {
+            cout << valueTemp["host"].asString() << endl;
+            cout << valueTemp["port"].asInt() << endl;
+
+        }
+    }
+
+
+
+
+5、
+
+    Json::Value root;
+    Json::Value arrayObj;
+    Json::Value item;
+
+    item["cpp"] = "jsoncpp";
+    item["java"] = "jsoninjava";
+    item["php"] = "support";
+    arrayObj.append(item);
+
+    root["name"] = "json";
+    root["array"] = arrayObj;
+
+    root.toStyledString();
+    std::string out = root.toStyledString();
+    std::cout << out << std::endl;

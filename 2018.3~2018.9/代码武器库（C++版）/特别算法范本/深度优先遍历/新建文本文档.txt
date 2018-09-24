@@ -1,0 +1,124 @@
+void CreateTwoSubStatusScore::handle_two_sub_status_score( std::shared_ptr<unordered_map<string,string>> &map_ptr, MFCodeImpl &mf00, MFCodeImpl &mf01,
+	vector<std::shared_ptr<unordered_map<string,string>>> &pq,
+	bool (*cmpr)(const std::shared_ptr<unordered_map<string,string>> ptr1,const std::shared_ptr<unordered_map<string,string>> ptr2),
+	bool (*cmpr2)(const std::shared_ptr<unordered_map<string,string>> ptr1,const std::shared_ptr<unordered_map<string,string>> ptr2),
+	bool (*cmpr3)(const std::shared_ptr<unordered_map<string,string>> ptr1,const std::shared_ptr<unordered_map<string,string>> ptr2)){
+
+	unordered_map<string,string> *search_map_p=new unordered_map<string,string>();
+	std::shared_ptr<unordered_map<string,string>> search_map_ptr(search_map_p);
+
+		//äÖÈ¾Ä§·½ begin
+		std::shared_ptr<deque<int>> order00_ptr=get_build_order(atoi((*map_ptr)["sub_status00"].data()),"00");
+		std::shared_ptr<deque<int>> order01_ptr=get_build_order(atoi((*map_ptr)["sub_status01"].data()),"01");
+		for(auto _ptr=order00_ptr->begin();_ptr!=order00_ptr->end();_ptr++){
+			mf00.move(*_ptr);
+		}
+
+		for(auto _ptr=order01_ptr->begin();_ptr!=order01_ptr->end();_ptr++){
+			mf01.move(*_ptr);
+		}
+		//äÖÈ¾Ä§·½ end
+
+
+		vector<int> order_deq={0};
+			
+		int score=atoi((*map_ptr)["score"].data());
+		int _depth=0;
+
+		if(score<=3){
+			_depth=depth;
+		}else{
+			_depth=depth-1;
+		}
+		while(order_deq.size()>0){
+			for(auto _ptr=order_deq.begin();_ptr!=order_deq.end();_ptr++){
+				mf00.move(*_ptr);
+				mf01.move(*_ptr);
+			}
+
+			int child_sub_status00=mf00.extract_mf_sub_status("00",false);
+			int child_sub_status01=mf01.extract_mf_sub_status("01",false);
+
+			search_map_ptr->clear();
+			(*search_map_ptr)["sub_status00"]=to_string(child_sub_status00);
+			(*search_map_ptr)["sub_status01"]=to_string(child_sub_status01);
+
+			for(auto _ptr=order_deq.rbegin();_ptr!=order_deq.rend();_ptr++){
+				mf00.remove(*_ptr);
+				mf01.remove(*_ptr);
+			}
+
+			auto ptr=bbinary_search< vector<std::shared_ptr<unordered_map<string,string>>>::iterator,
+				std::shared_ptr<unordered_map<string,string>> >
+				(two_sub_status_score_ptr->begin(),two_sub_status_score_ptr->end(),search_map_ptr,cmpr2);
+
+
+					if(ptr!=two_sub_status_score_ptr->end()){
+						
+						if((atoi((*map_ptr)["score"].data())+order_deq.size())<atoi((**ptr)["score"].data())){
+							(**ptr)["score"]=to_string(atoi((*map_ptr)["score"].data())+order_deq.size());
+
+
+							unordered_map<string,string> *map_p=new unordered_map<string,string>();
+							std::shared_ptr<unordered_map<string,string>> map_ptr(map_p);
+							(*map_ptr)["sub_status00"]=to_string(child_sub_status00);
+							(*map_ptr)["sub_status01"]=to_string(child_sub_status01);
+							(*map_ptr)["score"]=(**ptr)["score"];
+							pq.push_back(map_ptr);
+
+							
+
+							push_heap(pq.begin(),pq.end(),cmpr);
+						}
+
+							while(order_deq[order_deq.size()-1]==17){
+								order_deq.pop_back();
+							}
+							if(order_deq.size()>0){
+								order_deq[order_deq.size()-1]=order_deq[order_deq.size()-1]+1;
+							}
+
+					}else{
+						if(score<=3){
+							if(order_deq.size()<depth-1){
+								order_deq.push_back(0);
+							}else if(order_deq.size()==(depth-1)
+								&&(score+order_deq.size()<=5)){
+								order_deq.push_back(0);
+							}
+							else{
+								while(order_deq[order_deq.size()-1]==17){
+									order_deq.pop_back();
+								}
+								if(order_deq.size()>0){
+									order_deq[order_deq.size()-1]=order_deq[order_deq.size()-1]+1;
+								}
+							}
+						}else{
+							if(order_deq.size()<(depth-1)){
+								order_deq.push_back(0);
+							}else{
+								while(order_deq[order_deq.size()-1]==17){
+									order_deq.pop_back();
+								}
+								if(order_deq.size()>0){
+									order_deq[order_deq.size()-1]=order_deq[order_deq.size()-1]+1;
+								}
+							} 
+						}
+
+
+
+					}
+
+		}
+		for(auto _ptr=order00_ptr->rbegin();_ptr!=order00_ptr->rend();_ptr++){
+			mf00.remove(*_ptr);
+		}
+
+
+		for(auto _ptr=order01_ptr->rbegin();_ptr!=order01_ptr->rend();_ptr++){
+			mf01.remove(*_ptr);
+		}
+
+}

@@ -1,0 +1,5 @@
+#include<sstream>
+
+ostringstream str;
+str<<"pwf";
+return str.str();

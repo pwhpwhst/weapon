@@ -1,0 +1,255 @@
+
+unordered_map
+
+	static size_t Grid::hasher(const Grid& grid){
+		 return *grid.content&0x1f;
+	}
+
+	static bool Grid::eqOp(const Grid& grid1,const Grid& grid2){
+		if(*grid1.content==*grid2.content){
+			return true;
+		}
+		return false;
+	}
+	
+	typedef unordered_map<Grid,Grid,decltype(Grid::hasher)*,decltype(Grid::eqOp)*> GridMap;
+
+	typedef unordered_map<std::shared_ptr<MFCodeImpl>,unordered_map<string,string>,size_t(*)(const std::shared_ptr<MFCodeImpl> ),bool(*)(const std::shared_ptr<MFCodeImpl> ,const std::shared_ptr<MFCodeImpl> )> MFSubStatusMap;
+
+	GridMap kLocationToId=GridMap(6,Grid::hasher,Grid::eqOp);
+
+	GridMap kIdToLocation=GridMap(6,Grid::hasher,Grid::eqOp);
+
+
+插入键值对：
+
+Grid a((unsigned char) 1);
+kLocationToId[Grid((unsigned char) 2)]=a;
+
+
+
+vector:
+
+#include<algorithm>
+
+	shared_ptr<vector<shared_ptr<unordered_map<string,string>>>> vector01=cube_dao->get_mf_substatus01_score_vector(transfer_map);
+
+	sort(vector01->begin(),vector01->end(),[](const shared_ptr<unordered_map<string,string>> ptr1,const shared_ptr<unordered_map<string,string>> ptr2){
+		int score1=atoi((*ptr1)["score"].c_str());
+		int score2=atoi((*ptr2)["score"].c_str());
+		return score1<score2;
+	});
+
+
+
+二分查找：
+#include<functional>
+
+template <class ForwardIterator, class T> 
+ForwardIterator bbinary_search(ForwardIterator beg,ForwardIterator end,const T& val,function<bool(const T &,const T &)> comp ){
+		ForwardIterator eend=end;
+
+		if(comp(val,*beg)){
+			return eend;
+		}else if(!comp(*beg,val)){
+			return beg;
+		}else if(comp(*(end-1),val)){
+			return eend;
+		}
+
+		while((beg+1)!=end){
+			auto d=end-beg;
+			auto mid=beg+(d/2);
+			if(comp(val,*mid)){
+				end=mid;
+			}else if(!comp(*mid,val)){
+				return mid;
+			}else{
+				beg=mid;
+			}
+		}
+
+		if(!comp(val,*beg)&&!comp(*beg,val)){
+			return beg;
+		}else{
+			return eend;
+		}
+	}
+
+
+用法1：
+
+vector<int> vec={1,3,5,7,9};
+
+int val=3;
+auto beg=vec.begin();
+auto end=vec.end();
+
+auto p=bbinary_search<vector<int>::iterator,int>(beg,end,3,[](const int &val1,const int &val2){
+	return val1<val2;
+});
+
+
+
+
+用法2：
+
+
+	shared_ptr<vector<shared_ptr<unordered_map<string,string>>>> mf_substatus00_score_ptr=cube_dao->get_mf_substatus00_score_vector(transfer_map);
+
+	sort(mf_substatus00_score_ptr->begin(),mf_substatus00_score_ptr->end(),[](const shared_ptr<unordered_map<string,string>> ptr1,const shared_ptr<unordered_map<string,string>> ptr2){
+		string sub_status1=(*ptr1)["sub_status"];
+		string sub_status2=(*ptr2)["sub_status"];
+		return sub_status1<sub_status2;
+	});
+
+
+	unordered_map<string,string> *search_map_p=new unordered_map<string,string>();
+	shared_ptr<unordered_map<string,string>> search_map_ptr(search_map_p);
+	(*search_map_ptr)["sub_status"]=to_string(sub_status);
+
+
+	ptr=bbinary_search< vector<shared_ptr<unordered_map<string,string>>>::iterator,
+		shared_ptr<unordered_map<string,string>> >
+		(beg,end,search_map_ptr,
+		[](const shared_ptr<unordered_map<string,string>> &val1,const shared_ptr<unordered_map<string,string>> &val2){
+		return (*val1)["sub_status"]<(*val2)["sub_status"];
+	});
+
+
+
+	if(ptr!=mf_substatus00_score_ptr->end()){
+		int parent_move=atoi((**ptr)["parent"].data());
+		if(parent_move!=18){
+			int _u1 = parent_move - (parent_move % 3);
+			int _u2 = parent_move % 3;
+			parent_move = _u1 + (4 - _u2) % 3;
+			result_ptr->push_front(parent_move);
+		}
+		(*search_map_ptr)["sub_status"]=(**ptr)["parentsubstatus"];
+
+	}
+
+
+优先级队列：
+
+template <class ForwardIterator, class T> 
+void heap_pre_remove(ForwardIterator beg,ForwardIterator end, ForwardIterator ptr,function<bool(const T &,const T &)> comp){
+	auto length=end-beg;
+	if((ptr-beg)>=length){
+		return;
+	}
+
+	do{
+		auto l1=((ptr-beg)<<1)+1;
+		auto l2=((ptr-beg)<<1)+2;
+		if(l2<length){
+			if(comp(*(beg+l2),*(beg+l1))){
+				T a1=*ptr;
+				*ptr=*(beg+l1);
+				*(beg+l1)=a1;
+				ptr=beg+l1;
+			}else{
+				T a1=*ptr;
+				*ptr=*(beg+l2);
+				*(beg+l2)=a1;
+				ptr=beg+l2;
+			}
+		}else if(l1<length){
+				T a1=*ptr;
+				*ptr=*(beg+l1);
+				*(beg+l1)=a1;
+				ptr=beg+l1;
+		}else{
+			break;
+		}
+	}while(true);
+
+	if(ptr==(end-1)){
+		return ;
+	}
+
+	ForwardIterator rptr=end-1;
+
+	T a1=*ptr;
+	*ptr=*(rptr);
+	*(rptr)=a1;
+
+
+	while(ptr!=beg){
+		auto l=((ptr-beg)>>1);
+			if(comp(*(beg+l),*ptr)){
+				T a1=*ptr;
+				*ptr=*(beg+l);
+				*(beg+l)=a1;
+				ptr=beg+l;
+			}else{
+				break;
+			}
+	}
+
+}
+
+
+用法1：
+	
+vector<int> nums = {9, 6, 2, 4, 7, 0, 1, 8, 3, 5};
+make_heap(nums.begin(), nums.end(), less<int>());
+
+for(auto ptr=nums.begin();ptr!=nums.end();ptr++){
+	cout<<*ptr<<",";
+}
+
+cout<<endl;
+
+
+
+heap_pre_remove<vector<int>::iterator,int>(nums.begin(),nums.end(), nums.begin()+1,less<int>());
+
+for(auto ptr=nums.begin();ptr!=nums.end();ptr++){
+	cout<<*ptr<<",";
+}
+cout<<endl;
+
+
+
+============================================================================
+
+查找、填数
+
+	std::shared_ptr<vector<std::shared_ptr<unordered_map<string,string>>>> two_sub_status_score_ptr;
+
+
+	auto cmpr=[](const std::shared_ptr<unordered_map<string,string>> ptr1,const std::shared_ptr<unordered_map<string,string>> ptr2){
+		string sub_status001=(*ptr1)["sub_status00"];
+		string sub_status002=(*ptr2)["sub_status00"];
+		if(sub_status001!=sub_status002){
+			return sub_status001<sub_status002;
+		}else{
+			string sub_status011=(*ptr1)["sub_status01"];
+			string sub_status012=(*ptr2)["sub_status01"];
+			return sub_status011<sub_status012;
+		}
+	};
+
+
+	sort(two_sub_status_score_ptr->begin(),two_sub_status_score_ptr->end(),cmpr);
+
+
+
+
+	unordered_map<string,string> *search_map_p=new unordered_map<string,string>();
+	(*search_map_p)["sub_status00"]=sub_status00;
+	(*search_map_p)["sub_status01"]=sub_status01;
+	std::shared_ptr<unordered_map<string,string>> search_map_ptr(search_map_p);
+
+
+	auto ptr=bbinary_search< vector<std::shared_ptr<unordered_map<string,string>>>::iterator,
+	std::shared_ptr<unordered_map<string,string>> >
+	(beg,end,search_map_ptr,cmpr);
+
+	(**ptr)["score"]="0";
+
+
+
+

@@ -1,0 +1,10 @@
+1、安装vmware
+2、准备iso（D:\iso）
+3、创建虚拟机
+4、ctrl+alt+F7 ctrl+alt+t
+
+sudo passwd root
+
+5、改变分辨率：右键桌面→chang Desktop Background→All Settings→Display→改变分辨率
+
+5 ctrl+alt+F1

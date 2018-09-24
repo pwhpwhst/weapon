@@ -1,0 +1,134 @@
+#include <iostream>
+#include <windows.h>
+#include <mysql.h>
+#include <string>
+#include <memory>
+#include<sstream>
+#include<vector>
+#include<unordered_map>
+using namespace std;
+void initMYSQLConn(MYSQL& conn);
+
+//g++ -c test2.cpp
+//g++ -o test2 test2.o libmysql.dll
+
+//g++ -c test2.cpp
+//g++ -o test2 test2.o libmysql.dll
+
+
+
+
+
+
+CubeDao * CubeDao::get_cube_dao(){
+	if(cube_dao==nullptr){
+		cube_dao=new CubeDao();
+	}
+	return cube_dao;
+}
+
+
+void CubeDao::add_mf_substatus00_score(const unordered_map<string,string>& map){
+	MYSQL myCont;
+	mysql_init(&myCont);
+	mysql_real_connect(&myCont,host.data(),user.data(),pwd.data(),schema.data(),0,NULL,CLIENT_FOUND_ROWS);
+
+	string sub_status=map.find("sub_status")==map.end()?"":map.at("sub_status");
+	string score=map.find("score")==map.end()?"":map.at("score");
+	string parent=map.find("parent")==map.end()?"":map.at("parent");
+	string littler_brother=map.find("littler_brother")==map.end()?"":map.at("littler_brother");
+	string first_child=map.find("first_child")==map.end()?"":map.at("first_child");
+	string is_visited=map.find("is_visited")==map.end()?"":map.at("is_visited");
+	string depth=map.find("depth")==map.end()?"":map.at("depth");
+	string parentsubstatus=map.find("parentsubstatus")==map.end()?"":map.at("parentsubstatus");
+
+	ostringstream sql_os;
+
+	sql_os<<"INSERT INTO mf_substatus00_score_hhh (sub_status, score, parent, littler_brother, first_child, is_visited, depth, parentsubstatus)";
+	sql_os<<"values(";
+	sql_os<<sub_status<<",";
+	sql_os<<score<<",";
+	sql_os<<parent<<",";
+	sql_os<<littler_brother<<",";
+	sql_os<<first_child<<",";
+	sql_os<<is_visited<<",";
+	sql_os<<depth<<",";
+	sql_os<<parentsubstatus<<");";
+
+	string sql=sql_os.str();
+	mysql_query(&myCont, sql.data());
+	mysql_close(&myCont);
+}
+
+
+
+shared_ptr<vector<shared_ptr<unordered_map<string,string>>>> CubeDao::get_mf_substatus00_score_vector(const unordered_map<string,string>& map){
+	MYSQL myCont;
+	MYSQL_RES *mysql_result;
+	MYSQL_ROW mysql_row;
+	int num_row;
+
+	mysql_init(&myCont);
+	mysql_real_connect(&myCont,host.data(),user.data(),pwd.data(),schema.data(),0,NULL,CLIENT_FOUND_ROWS);
+
+//	string sub_status=map.find("sub_status")==map.end()?"":map.at("sub_status");
+
+	string col[]={"sub_status","score","parent","littler_brother",
+		"first_child","is_visited","depth","parentsubstatus"};
+
+	unordered_map<string,int> col_map;
+	for(int i1=0;i1<8;i1++){
+		col_map[col[i1]]=i1;
+	}
+
+	ostringstream sql_os;
+
+
+
+	sql_os<<"select sub_status,score,parent,littler_brother,first_child,is_visited,depth,parentsubstatus";
+	sql_os<<" from mf_substatus00_score";
+
+
+	string sql=sql_os.str();
+	shared_ptr<vector<shared_ptr<unordered_map<string,string>>>> result_vector(new vector<shared_ptr<unordered_map<string,string>>>());
+	if(mysql_query(&myCont, sql.data())==0){
+		 mysql_result=mysql_store_result(&myCont);
+                 num_row=mysql_num_rows(mysql_result);
+		for(size_t i1=0;i1<num_row;i1++){
+			unordered_map<string,string> *map=new unordered_map<string,string>();
+			mysql_row=mysql_fetch_row(mysql_result);
+			(*map)["sub_status"]=string(mysql_row[col_map["sub_status"]]);
+			(*map)["score"]=string(mysql_row[col_map["score"]]);
+			(*map)["parent"]=string(mysql_row[col_map["parent"]]);
+			(*map)["littler_brother"]=string(mysql_row[col_map["littler_brother"]]);
+			(*map)["first_child"]=string(mysql_row[col_map["first_child"]]);
+			(*map)["is_visited"]=string(mysql_row[col_map["is_visited"]]);
+			(*map)["depth"]=string(mysql_row[col_map["depth"]]);
+			(*map)["parentsubstatus"]=string(mysql_row[col_map["parentsubstatus"]]);
+			shared_ptr<unordered_map<string,string>> pmap(map);
+			result_vector->push_back(pmap);
+
+		}
+	}
+	mysql_close(&myCont);
+	return result_vector;
+}
+
+
+
+
+
+shared_ptr<vector<shared_ptr<unordered_map<string,string>>>> vector=cube_dao->get_mf_substatus00_score_vector(map);
+	
+auto beg=vector->begin();
+auto end=vector->end();
+for(auto ptr=beg;ptr!=end;ptr++){
+	cout<<(**ptr)["sub_status"]<<",";
+	cout<<(**ptr)["score"]<<",";
+	cout<<(**ptr)["parent"]<<",";
+	cout<<(**ptr)["littler_brother"]<<",";
+	cout<<(**ptr)["first_child"]<<",";
+	cout<<(**ptr)["is_visited"]<<",";
+	cout<<(**ptr)["depth"]<<",";
+	cout<<(**ptr)["parentsubstatus"]<<","<<endl;
+}

@@ -1,0 +1,96 @@
+D:
+cd D:\apache-tomcat-7.0.39\webapps\
+rd/s/q sample-servlet.war
+
+C:
+cd C:\Users\pwh\Desktop\newTech\simpleServlet\servletSample
+mvn clean install
+cd target
+ren sample-servlet-1.0-SNAPSHOT.war sample-servlet.war
+move C:\Users\pwh\Desktop\newTech\simpleServlet\servletSample\target\sample-servlet.war D:\apache-tomcat-7.0.39\webapps\
+
+D:
+cd D:\apache-tomcat-7.0.39\bin
+startup.bat
+
+
+
+访问url：
+http://127.0.0.1:8080/sample-servlet/servlet/Sample
+
+文件结构参考自：
+	http://blog.csdn.net/roberttony_java/article/details/52776833
+
+
+
+
+
+
+
+源代码文件结构：
+
+└─src
+    └─main
+        ├─java
+        │  └─com
+        │      └─servlet
+        │              Sample.java
+        │              
+        ├─resource
+        └─webapp
+            └─WEB-INF
+                    web.xml
+                    
+
+
+
+
+war 包文件结构
+
+
+
+│  
+├─META-INF
+│  │  MANIFEST.MF
+│  │  
+│  └─maven
+│      └─com.servlet
+│          └─sample-servlet
+│                  pom.properties
+│                  pom.xml
+│                  
+└─WEB-INF
+    │  web.xml
+    │  
+    └─classes
+        └─com
+            └─servlet
+                    Sample.class
+
+
+
+二、用配置文件发布到Tomcat
+
+
+cd C:\Users\pwh\Desktop\newTech\simpleServlet\servletSample
+mvn clean install
+
+
+打开 
+	<Context path="/servletSample" docBase="C:\Users\pwh\Desktop\newTech\simpleServlet\servletSample\target\sample-servlet-1.0-SNAPSHOT" reloadable="true" />
+
+
+
+D:
+cd D:\apache-tomcat-7.0.39\bin
+startup.bat
+
+
+
+		<!-- <Context docBase="D:\Users\pwh\workspace\bosing-3rdshop\bosing-3rdshop" path="/3rdshop"  reloadable="true" ></Context> -->
+		<!--
+		<Context path="/servletSample" docBase="C:\Users\pwh\Desktop\新技术使用\简单servlet\servletSample\target\sample-servlet-1.0-SNAPSHOT" reloadable="true" />-->
+
+
+访问url：
+http://127.0.0.1:8080/servletSample/servlet/Sample

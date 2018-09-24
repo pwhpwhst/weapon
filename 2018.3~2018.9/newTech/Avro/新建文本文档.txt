@@ -1,0 +1,20 @@
+
+
+
+
+cd C:\Users\Administrator\Desktop\Avro
+mvn clean compile
+
+
+然后可以观察到/src/main/java/下生成新的java文件
+
+另外该例子还带有数据序列化和反序列化的范本，见HadoopTest.java
+
+//	java -jar /path/to/avro-tools-1.8.0.jar compile schema <schema file> <destination>
+
+
+参考网站
+https://blog.csdn.net/strongyoung88/article/details/54293263
+
+.avsc文件	存储schema
+.avso文件	存储数据

@@ -1,0 +1,18 @@
+参考	https://blog.csdn.net/xiaoxiong_web/article/details/77932655
+https://blog.csdn.net/u011781521/article/details/55002553
+https://blog.csdn.net/janestone/article/details/1862678
+
+
+cd C:\Users\Administrator\Desktop\newTech\日志打印\log
+mvn clean package
+
+运行：
+cd C:\Users\Administrator\Desktop\newTech\日志打印\log\target
+java -jar log4jTest-1.0-SNAPSHOT.jar
+
+//中央仓库：http://repo1.maven.org/maven2/
+
+
+
+###输出ERROR级别以上的日志 ###
+log4j.appender.Console.Threshold=ERROR

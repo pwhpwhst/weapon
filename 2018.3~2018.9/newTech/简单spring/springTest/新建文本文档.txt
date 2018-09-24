@@ -1,0 +1,14 @@
+
+
+构建：
+
+cd C:\Users\pwh\Desktop\新技术使用\简单spring\springTest
+mvn clean install
+
+测试：
+
+
+
+
+cd C:\Users\pwh\Desktop\新技术使用\简单spring\springTest\target
+java -jar hello-world-1.0-SNAPSHOT.jar

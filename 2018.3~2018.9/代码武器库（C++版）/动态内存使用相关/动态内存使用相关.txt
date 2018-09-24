@@ -1,0 +1,9 @@
+shared_ptr<int> sp(new int[10],[](int* p){delete[] p;});
+
+sp.reset();//释放指向空间
+
+//遍历方法：
+
+for(size_t i1=0;i1!=10;i1++){
+	*(sp.get()+i1)=i1;//使用get获取内置指针
+}

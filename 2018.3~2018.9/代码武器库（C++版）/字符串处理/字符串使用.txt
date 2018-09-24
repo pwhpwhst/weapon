@@ -1,0 +1,52 @@
+1、字符串分割：
+
+#include<string>
+#include<vector>
+using namespace boost;
+
+vector <string> behaves;
+split(behaves,behave,is_any_of(","));
+
+2、正则表达式
+#include<regex>
+
+string pattern("[^c]ei");
+regex r(pattern);
+smatch results;
+string test_str="receipt friend theif receive";
+if(regex_search(test_str,results,r)){
+	cout<<result.str()<<endl;
+}
+
+
+
+3、字符串和整数的互相转换
+
+string s = "12"; 
+int a = atoi(s.c_str()); 
+对于其他类型也都有相应的标准库函数，比如浮点型atof(),long型atol()等等。
+
+整数转字符串
+int i = 12; 
+cout << std::to_string(i) << endl; 
+
+
+4、stringBuffer
+#include<sstream>
+
+ostringstream os;
+
+os<<"fdsgsd";
+
+return os.str();
+
+5、string转char*
+const char* p = str.data();
+
+
+
+char * 转string
+
+string s;
+char *p = "hello";//直接赋值
+s = p;

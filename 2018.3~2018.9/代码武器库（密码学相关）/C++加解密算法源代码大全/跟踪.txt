@@ -1,0 +1,20 @@
+idea.cpp
+idea.h
+ideaval.dat
+
+
+
+
+pch.h	pch.cpp
+
+config.h
+
+cryptlib.h	cryptlib.cpp
+
+misc.h	misc.cpp
+
+
+
+smartptr.h
+
+

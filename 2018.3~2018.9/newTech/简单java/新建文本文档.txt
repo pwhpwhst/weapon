@@ -1,0 +1,28 @@
+1、
+cd C:\Users\Administrator\Desktop\newTech\简单java
+rd /s/q build
+md build
+javac src\com\Test.java -d build
+cd build
+
+
+运行：
+cd C:\Users\Administrator\Desktop\newTech\简单java
+cd build
+java com.Test
+
+
+
+1、如果要打包的话
+
+cd C:\Users\Administrator\Desktop\newTech\简单java
+rd /s/q build
+md build
+javac src\com\Test.java -d build
+cd build
+jar cvfm test.jar ../manifest.mf com/*
+move test.jar ../
+
+运行：
+cd C:\Users\Administrator\Desktop\newTech\简单java
+java -jar test.jar

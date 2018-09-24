@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" output="bin" path="src/main/java"/>//修改文件后的编译文件发布的位置
+	<classpathentry excluding="**" kind="src" output="bin" path="src/main/resources"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/J2SE-1.5"/>
+	//运行所需要的jar包	
+	<classpathentry kind="con" path="org.maven.ide.eclipse.MAVEN2_CLASSPATH_CONTAINER"/>//运行所需要的jar包
+	<classpathentry kind="lib" path="F:/hadoop-2.8.3/hadoop-2.8.3/share/hadoop/yarn/lib/zookeeper-3.4.6.jar"/>
+	<classpathentry kind="output" path="bin"/>//调试的时候去哪里读class文件
+</classpath>

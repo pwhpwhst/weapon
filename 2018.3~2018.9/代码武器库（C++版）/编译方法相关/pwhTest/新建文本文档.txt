@@ -1,0 +1,29 @@
+清理：
+cd C:\Users\pwh\Desktop\代码武器库（C++版）\编译方法相关\pwhTest\bin
+del PwhTest.o
+del PwhTest.obj
+del PwhTest.exe
+
+========================================================================
+
+cd C:\Users\pwh\Desktop\代码武器库（C++版）\编译方法相关\pwhTest\src
+g++ -c PwhTest.cpp
+g++ -o PwhTest PwhTest.o
+move PwhTest.o ../bin/
+move PwhTest.exe ../bin/
+cd ../bin
+PwhTest.exe
+
+========================================================================
+
+cd C:\Users\pwh\Desktop\代码武器库（C++版）\编译方法相关\pwhTest\src
+set PATH=D:\Program Files\Microsoft Visual Studio 11.0\VC\bin;D:\Program Files\Microsoft Visual Studio 11.0\Common7\IDE
+set lib=D:\Program Files\Microsoft Visual Studio 11.0\VC\lib;C:\Program Files\Microsoft SDKs\Windows\v7.1\Lib
+set include=D:\Program Files\Microsoft Visual Studio 11.0\VC\include
+cl.exe /c PwhTest.cpp
+link.exe PwhTest.obj
+link PwhTest.obj
+move PwhTest.obj ../bin/
+move PwhTest.exe ../bin/
+cd ../bin
+PwhTest.exe

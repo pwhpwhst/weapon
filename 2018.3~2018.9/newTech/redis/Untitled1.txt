@@ -1,0 +1,1 @@
+LPUSH key value1 [value2] 
