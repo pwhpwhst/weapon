@@ -1,0 +1,17 @@
+参考地址：
+https://www.cnblogs.com/ityouknow/p/5662753.html
+
+
+
+http://localhost:8080/hello
+
+
+cd C:\Users\pan.weihao\Desktop\新技术研究\2018.3~2018.9\newTech\springboot\demo
+
+mvn clean package
+
+cd target
+
+ren demo-0.0.1-SNAPSHOT.jar demo.jar
+
+java -jar demo.jar
