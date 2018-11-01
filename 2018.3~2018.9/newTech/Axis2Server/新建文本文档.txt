@@ -1,0 +1,63 @@
+注意：
+当前系统装了多个jdk的时候，一定要确认一下Tomcat使用的jdk版本和webservice类的编译级别。
+
+axis2首页的http://localhost:8080/axis2/里面的validate菜单里面可以查看。
+
+
+
+当Tomcat使用的jdk版本低于webservice类的编译级别的时候，页面报错：Faulty Services。
+
+
+
+
+1、部署axis2.war到tomcat容器中
+
+rd /s/q F:\apache-tomcat-9.0.12\webapps\axis2 
+del F:\apache-tomcat-9.0.12\webapps\axis2.war
+C:
+cd C:\Users\Administrator\Desktop\Axis2Server
+
+copy C:\Users\Administrator\Desktop\Axis2Server\axis2.war F:\apache-tomcat-9.0.12\webapps\
+
+
+
+
+2、编译java方法，并部署到axis2：（注意，这个java文件不能在任何package中）
+C:
+cd C:\Users\Administrator\Desktop\Axis2Server\SimpleService\src\main\java
+
+
+javac SimpleService.java
+
+move SimpleService.class F:\apache-tomcat-9.0.12\webapps\axis2\WEB-INF\pojo\
+
+3、启动tomcat
+F:
+cd F:\apache-tomcat-9.0.12\bin
+startup.bat
+
+http://localhost:8080/axis2/ 
+http://localhost:8080/axis2/axis2-web/HappyAxis.jsp
+http://localhost:8080/axis2/services/listServices
+
+
+=======================================================================
+
+
+
+比较复杂的发布方式：
+
+
+1、编译源码，并部署到axis2：
+C:
+cd C:\Users\Administrator\Desktop\Axis2Server\version
+mvn clean package
+
+cd target
+ren axisversion-1.7.8.jar axisversion-1.7.8.aar
+move axisversion-1.7.8.aar F:\apache-tomcat-9.0.12\webapps\axis2\WEB-INF\services\
+
+2、启动tomcat
+F:
+cd F:\apache-tomcat-9.0.12\bin
+startup.bat
