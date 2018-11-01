@@ -1,9 +1,10 @@
 @Autowired 的用法
 https://blog.csdn.net/it_faquir/article/details/72912220
 
-
-cd C:\Users\pan.weihao\Desktop\新技术研究\2018.3~2018.9\newTech\spring 注解配置\springTest
+D:
+cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring 注解配置\springTest
 mvn clean install
 
 cd target
 java -jar hello-world-1.0-SNAPSHOT.jar
+

@@ -6,32 +6,32 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import com.example.demo.WebAppContextListener;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 
-@SpringBootApplication
-@ComponentScan(basePackages= {"com.example.demo.service"})
+@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@ComponentScan(basePackages= {"com.example.demo.controller","com.example.demo.service"})
 public class DemoApplication extends SpringBootServletInitializer{
 
-    private AppStartedListener appStartedListener;
 
-    public void onStartup(ServletContext servletContext) throws ServletException {
-        System.out.println("application start up");
-        appStartedListener = new AppStartedListener(servletContext);
-        super.onStartup(servletContext);
-    }
-
-
+	private WebAppContextListener webAppContextListener;//其中含有webservice的服务端配置
     @Override
     protected SpringApplicationBuilder configure(
-            SpringApplicationBuilder builder) {
-//        return application.sources(DemoApplication.class);
-		return builder.sources(this.getClass()).listeners(this.getAppStartedListener());
+            SpringApplicationBuilder application) {
+       return application.sources(DemoApplication.class).listeners(webAppContextListener);
+ //		  return application.sources(DemoApplication.class);
     }
 
-	public AppStartedListener getAppStartedListener() {
-        return appStartedListener;
+
+	public void onStartup(ServletContext servletContext) throws ServletException {
+        webAppContextListener = new WebAppContextListener(servletContext);
+        super.onStartup(servletContext);
     }
 
 	public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
+		
     }
 }

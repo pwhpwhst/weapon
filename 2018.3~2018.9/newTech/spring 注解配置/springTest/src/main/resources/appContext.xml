@@ -4,13 +4,15 @@
     xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    
+
+
+
 
 	 <context:component-scan base-package="com.juvenxu.mvnbook.helloworld" >
             
         <context:exclude-filter type="assignable"
             expression="com.juvenxu.mvnbook.helloworld.Test" />
     </context:component-scan>
-	<context:annotation-config />
-	
+
+
 </beans>

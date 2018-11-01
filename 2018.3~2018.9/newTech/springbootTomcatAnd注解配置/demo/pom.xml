@@ -48,6 +48,14 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.0.1</version>
         </dependency>
+<!-- webService server begin -->
+		<dependency>
+			<groupId>wsdl4j</groupId>
+			<artifactId>wsdl4j</artifactId>
+		</dependency>
+<!-- webService server end -->
+
+
 	</dependencies>
 
 	<build>

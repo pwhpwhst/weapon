@@ -3,4 +3,37 @@ https://www.cnblogs.com/ityouknow/p/5662753.html
 
 
 
-http://localhost:8080/hello
+
+
+
+http://127.0.0.1:8080/demo/hello
+
+http://127.0.0.1:8080/demo/v1/data/getEasRes2
+
+
+
+cd D:\apache-tomcat-7.0.70\webapps
+
+D:
+
+rd /s/q demo
+
+del demo.war
+
+D:
+cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\springbootTomcat\demo
+mvn clean package
+
+cd target
+
+ren demo-0.0.1-SNAPSHOT.war demo.war
+
+move demo.war D:\apache-tomcat-7.0.70\webapps
+
+
+
+cd D:\apache-tomcat-7.0.70\bin
+
+D:
+
+startup.bat

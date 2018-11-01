@@ -3,18 +3,17 @@ package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.example.demo.service.IIndexService;
+
 import java.rmi.RemoteException;
 import java.util.List;
-
+import com.example.demo.service.IIndexService;
 
 
 @RestController
 @RequestMapping("/v1/data")
 public class IndexController {
-
 	@Autowired
-	private IIndexService indexService;
+	IIndexService indexService;
 
     @RequestMapping(value = "/getEasRes2", method = RequestMethod.GET)
     public String getEasRes()throws RemoteException {
@@ -22,12 +21,10 @@ public class IndexController {
     }
 
 
-	@RequestMapping(value = "/sayHello", method = RequestMethod.GET)
-    public String sayHello()throws RemoteException {
-		return "haha";
-        //return indexService.sayHello();
+    @RequestMapping(value = "/indexService", method = RequestMethod.GET)
+    public String indexService()throws RemoteException {
+        return indexService.sayHello();
     }
-
 
 
 }

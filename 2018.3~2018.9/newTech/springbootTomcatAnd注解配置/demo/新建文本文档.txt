@@ -3,7 +3,16 @@ https://www.cnblogs.com/ityouknow/p/5662753.html
 
 
 
-http://localhost:8080/hello
+
+
+
+
+
+http://127.0.0.1:8080/demo/v1/data/getEasRes2
+
+http://127.0.0.1:8080/demo/v1/data/indexService
+
+http://127.0.0.1:8089/hubo/Webservice?wsdl
 
 
 cd D:\apache-tomcat-7.0.70\webapps
@@ -14,9 +23,8 @@ rd /s/q demo
 
 del demo.war
 
-C:
-cd C:\Users\pan.weihao\Desktop\新技术研究\2018.3~2018.9\newTech\springbootTomcat&注解配置\demo
-
+D:
+cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\springbootTomcatAnd注解配置\demo
 mvn clean package
 
 cd target

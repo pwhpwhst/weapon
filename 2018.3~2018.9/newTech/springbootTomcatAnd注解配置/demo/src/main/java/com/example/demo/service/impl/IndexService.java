@@ -5,7 +5,5 @@ import org.springframework.stereotype.Service;
 
 @Service("indexService")
 public class IndexService implements IIndexService{
-	public String sayHello(){
-		return "hello";
-	}
+	public String sayHello(){return "hello yes";}
 }
