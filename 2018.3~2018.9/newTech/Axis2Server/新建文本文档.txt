@@ -1,3 +1,4 @@
+参考网址：https://www.cnblogs.com/xueershewang/p/7248589.html
 注意：
 当前系统装了多个jdk的时候，一定要确认一下Tomcat使用的jdk版本和webservice类的编译级别。
 
