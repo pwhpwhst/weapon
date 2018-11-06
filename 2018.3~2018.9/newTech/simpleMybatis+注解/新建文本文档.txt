@@ -1,0 +1,14 @@
+
+
+
+cd C:\Users\pan.weihao\Desktop\simpleMybatis+×¢½â
+mvn clean package
+
+
+cd target
+java -jar myBatisTest-1.0-SNAPSHOT.jar
+
+//ÖÐÑë²Ö¿â£ºhttp://repo1.maven.org/maven2/
+
+
+

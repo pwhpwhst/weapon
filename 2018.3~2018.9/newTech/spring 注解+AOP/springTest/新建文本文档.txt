@@ -1,0 +1,9 @@
+²Î¿¼£ºhttps://www.cnblogs.com/liuruowang/p/5711563.html
+
+
+cd C:\Users\pan.weihao\Desktop\spring ×¢½âÅäÖÃ\springTest
+mvn clean package
+
+cd target
+java -jar hello-world-1.0-SNAPSHOT.jar
+

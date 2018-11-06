@@ -1,6 +1,9 @@
 @Autowired 的用法
 https://blog.csdn.net/it_faquir/article/details/72912220
 
+@Configuration	@Bean的用法：
+https://www.cnblogs.com/duanxz/p/7493276.html
+
 D:
 cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring 注解配置\springTest
 mvn clean install
