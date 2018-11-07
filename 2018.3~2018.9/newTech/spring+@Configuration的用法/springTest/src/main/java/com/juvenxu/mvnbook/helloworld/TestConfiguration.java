@@ -22,5 +22,9 @@ public class TestConfiguration{
 //        return new TestBean();
 //   }
 
-
+//	¹¹ÔìÆ÷×¢Èë
+//   @Bean
+//  public DataSourceTransactionManager billDataSourceTransactionManager(@Qualifier("billDataSource") DataSource billDataSource) {
+//        return new DataSourceTransactionManager(billDataSource);
+//    }
 }

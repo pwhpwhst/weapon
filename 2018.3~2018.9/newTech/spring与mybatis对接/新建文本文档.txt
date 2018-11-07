@@ -1,0 +1,11 @@
+对数据库的访问架构主要考虑：
+事务	
+连接池
+
+https://www.cnblogs.com/yixianyixian/p/8372832.html
+http://www.mybatis.org/spring/zh/mappers.html
+cd C:\Users\pan.weihao\Desktop\spring与mybatis对接
+mvn clean package
+
+cd target
+java -jar SpringMybatisTest-1.0-SNAPSHOT.jar
