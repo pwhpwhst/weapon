@@ -1,0 +1,11 @@
+ÅäÖÃTomcat£º
+edit configure
+	¡ý
+Tomcat Server
+	¡ý
+Server
+	¡ý
+Configure...
+	¡ý
+Tomcat Home£ºD:\dev20180522\dev\taobao-tomcat-7.0.59
+Tomcat base directory£ºD:\dev20180522\dev\taobao-tomcat-7.0.59

@@ -1,0 +1,81 @@
+
+1、安装 Ali-Tomcat 和 Pandora
+https://help.aliyun.com/document_detail/44158.html?spm=a2c4g.11186623.6.649.t3lWyL
+
+2、修改tomcat启动参数
+
+在catalina.bat的顶部配置
+
+set JAVA_OPTS=-Dpandora.location=D:\dev20180522\dev\taobao-tomcat-7.0.59\deploy\taobao-hsf.sar
+set JAVA_OPTS=%JAVA_OPTS% -Ddtyunxi.registry.group=dtyunxi-yingzi-dev
+set JAVA_OPTS=%JAVA_OPTS% -Ddtyunxi.service.group=dtyunxi-yingzi-dev
+set JAVA_OPTS=%JAVA_OPTS% -Dfile.encoding=UTF-8
+set JAVA_OPTS=%JAVA_OPTS% -Ddtyunxi.service.version=0.1.0
+set JAVA_OPTS=%JAVA_OPTS% -Dhuieryun.active.profile=dev
+set JAVA_OPTS=%JAVA_OPTS% -Ddtyunxi.env.logger.level=info
+set JAVA_OPTS=%JAVA_OPTS% -server
+set JAVA_OPTS=%JAVA_OPTS% -XX:PermSize=128M
+set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256m
+
+
+C:
+cd C:\Users\pan.weihao\Desktop\provider
+mvn clean package
+cd target
+ren HSFTest-1.0-SNAPSHOT.war ROOT.war
+move ROOT.war D:\dev20180522\dev\taobao-tomcat-7.0.59\deploy
+cd D:\dev20180522\dev\taobao-tomcat-7.0.59\bin
+D:
+startup.bat
+
+
+
+
+
+
+D:\dev20180522\dev\taobao-tomcat-7.0.59\deploy\ROOT
+
+https://blog.csdn.net/qq_26950567/article/details/81022415
+
+
+
+D:\dev20180522\dev\taobao-tomcat-7.0.59
+
+
+cd C:\Users\pan.weihao\Desktop\provider
+mvn clean package
+
+
+
+
+
+
+运行：
+cd C:\Users\pwh\Desktop\新技术使用\Maven\target
+java -jar hello-world-1.0-SNAPSHOT.jar
+
+
+//中央仓库：http://repo1.maven.org/maven2/
+
+
+
+cd target
+
+ren demo-0.0.1-SNAPSHOT.war demo.war
+
+move demo.war D:\apache-tomcat-7.0.70\webapps
+
+
+
+cd D:\apache-tomcat-7.0.70\bin
+
+D:
+
+startup.bat
+
+
+
+http://127.0.0.1:8080/servlet/Sample
+
+
+http://localhost:8080/v1/data/pwhTest2

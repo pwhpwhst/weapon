@@ -94,3 +94,24 @@ startup.bat
 
 ∑√Œ url£∫
 http://127.0.0.1:8080/servletSample/servlet/Sample
+
+
+
+
+
+D:
+cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\simpleServlet\servletSample
+mvn clean install
+cd target
+ren sample-servlet-1.0-SNAPSHOT.war sample-servlet.war
+move D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\simpleServlet\servletSample\target\sample-servlet.war D:\apache-tomcat-7.0.70\webapps\
+
+
+D:
+cd D:\apache-tomcat-7.0.70\bin
+startup.bat
+
+
+
+
+http://localhost:8080/v1/data/pwhTest3
