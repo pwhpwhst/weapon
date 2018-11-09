@@ -1,0 +1,48 @@
+
+1、安装 Ali-Tomcat 和 Pandora
+https://help.aliyun.com/document_detail/44158.html?spm=a2c4g.11186623.6.649.t3lWyL
+在cataline.bat 的头部
+set JAVA_OPTS=-Dpandora.location=D:\dev20180522\dev\taobao-tomcat-7.0.59\deploy\taobao-hsf.sar
+set JAVA_OPTS=%JAVA_OPTS% -Dfile.encoding=UTF-8
+set JAVA_OPTS=%JAVA_OPTS% -server
+set JAVA_OPTS=%JAVA_OPTS% -XX:PermSize=128M
+set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256m
+
+8080改为8081
+
+
+2、安装EDAS
+2.1
+dev\edas-config-center\startup.bat
+SET SERVER_IP="127.0.0.1"
+SET JAVA_HOME=
+
+2.2
+并在c:\Windows\System32\drivers\etc\host 内以管理员权限添加
+127.0.0.1		jmenv.tbsite.net
+
+3、启动EDAS
+
+4、编译&部署生产者项目
+
+D:
+cd D:\taobao-tomcat-7.0.59\taobao-tomcat-7.0.59\deploy
+rd /s /q ROOT
+del ROOT.war
+C:
+cd C:\Users\pan.weihao\Desktop\provider
+mvn clean package
+cd target
+ren HSFTest-1.0-SNAPSHOT.war ROOT.war
+move ROOT.war D:\taobao-tomcat-7.0.59\taobao-tomcat-7.0.59\deploy
+cd D:\taobao-tomcat-7.0.59\taobao-tomcat-7.0.59\bin
+D:
+startup.bat
+
+5、输入
+http://jmenv.tbsite.net:8080/#/dsConfig
+
+观察到生产者服务已经注册
+
+
+
