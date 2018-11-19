@@ -1,0 +1,21 @@
+
+
+
+Map<Long, List<WaterBillEo>> maps = waterBillEoList.stream().collect(Collectors.groupingBy(WaterBillEo::getAccountId));
+
+
+
+   maps.entrySet().forEach(map -> {
+       IntercourseBillDto intercourseBillDto = new IntercourseBillDto();
+       List<WaterBillListDto> waterBillListDtos = Lists.newArrayList();
+       map.getValue().forEach(waterBillEo -> {
+	   hadRecordCustomers.add(waterBillEo.getCustomerId());
+	   intercourseBillDto.setCustomerId(waterBillEo.getCustomerId());
+	   waterBillListDtos.add(buildWaterBillDto(waterBillEo));
+       });
+       intercourseBillDto.setWaterBillListDtos(waterBillListDtos);
+       results.add(intercourseBillDto);
+   });
+
+
+

@@ -1,0 +1,41 @@
+参考：1、http://jm.taobao.org/2017/01/12/rocketmq-quick-start-in-10-minutes/
+
+2、https://www.jianshu.com/p/824066d70da8
+
+
+====================================================================
+参考地址：https://www.jianshu.com/p/4a275e779afa
+
+1、下载地址：
+http://rocketmq.apache.org/release_notes/release-notes-4.2.0/
+
+2、环境变量：
+ROCKETMQ_HOME
+
+3、启动：
+3.1
+cd C:\Users\pan.weihao\Desktop\RocketMQ研究\bin
+start mqnamesrv.cmd
+
+
+cd C:\Users\pan.weihao\Desktop\RocketMQ研究\bin
+start mqbroker.cmd -n 127.0.0.1:9876 autoCreateTopicEnable=true
+
+3.2 启动生产者和消费者
+set NAMESRV_ADDR=localhost:9876
+cd C:\Users\pan.weihao\Desktop\RocketMQ研究\bin
+tools.cmd org.apache.rocketmq.example.quickstart.Producer aaa
+
+
+set NAMESRV_ADDR=localhost:9876
+cd C:\Users\pan.weihao\Desktop\RocketMQ研究\bin
+tools.cmd org.apache.rocketmq.example.quickstart.Consumer
+
+
+
+
+3.3 关闭
+
+mqshutdown broker
+
+mqshutdown namesrv

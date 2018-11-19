@@ -1,0 +1,48 @@
+参考	https://www.cnblogs.com/hei12138/p/7805475.html
+
+
+
+
+下载	http://kafka.apache.org/downloads
+
+1、启动kafka
+
+
+D:
+cd D:\kafka_2.11-2.0.1\kafka_2.11-2.0.1\bin\windows
+zookeeper-server-start.bat ../../config/zookeeper.properties
+
+
+D:
+cd D:\kafka_2.11-2.0.1\kafka_2.11-2.0.1\bin\windows
+kafka-server-start.bat ../../config/server.properties
+
+
+2、
+创建一个名为test的topic
+
+
+cd D:\kafka_2.11-2.0.1\kafka_2.11-2.0.1\bin\windows
+kafka-topics.bat --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic test
+
+
+创建一个名为test的topic
+
+
+　在创建topic后可以通过输入
+
+    kafka-topics.bat --list --zookeeper localhost:2181
+
+来查看已经创建的topic
+
+
+3、监听消息
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic test --from-beginning
+
+4、创建消息
+
+kafka-console-producer.bat --broker-list localhost:9092 --topic test
+
+
+

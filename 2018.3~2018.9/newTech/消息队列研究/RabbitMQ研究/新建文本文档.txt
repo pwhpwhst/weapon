@@ -1,0 +1,81 @@
+参考：
+
+https://www.cnblogs.com/ericli-ericli/p/5902270.html
+
+1、安装elarge
+http://www.erlang.org/download.html
+
+ERLANG_HOME = C:\Program Files\erl10.1
+
+2、下载rabbitMq
+http://www.rabbitmq.com/download.html
+
+
+
+
+3、激活 RabbitMQ's Management Plugin
+使用RabbitMQ 管理插件，可以更好的可视化方式查看Rabbit MQ 服务器实例的状态。
+
+cd D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin
+
+"D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin\rabbitmq-plugins.bat" enable rabbitmq_management
+
+
+4、创建用户，密码，绑定角色
+
+查看已有用户及用户的角色：
+cd D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin
+rabbitmqctl.bat list_users
+
+
+
+新增用户
+rabbitmqctl.bat add_user username password
+
+改密码
+rabbitmqctl change_password userName newPassword
+
+rabbitmq用户角色可分为五类：超级管理员, 监控者, 策略制定者, 普通管理者以及其他。
+
+授角色
+rabbitmqctl.bat set_user_tags username administrator
+
+
+(1) 超级管理员(administrator)
+
+可登陆管理控制台(启用management plugin的情况下)，可查看所有的信息，并且可以对用户，策略(policy)进行操作。
+
+(2) 监控者(monitoring)
+
+可登陆管理控制台(启用management plugin的情况下)，同时可以查看rabbitmq节点的相关信息(进程数，内存使用情况，磁盘使用情况等) 
+
+(3) 策略制定者(policymaker)
+
+可登陆管理控制台(启用management plugin的情况下), 同时可以对policy进行管理。
+
+(4) 普通管理者(management)
+
+仅可登陆管理控制台(启用management plugin的情况下)，无法看到节点信息，也无法对策略进行管理。
+
+(5) 其他的
+
+无法登陆管理控制台，通常就是普通的生产者和消费者。
+
+
+授权
+
+(1) 设置用户权限
+
+rabbitmqctl  set_permissions  -p  VHostPath  User  ConfP  WriteP  ReadP
+
+(2) 查看(指定hostpath)所有用户的权限信息
+
+rabbitmqctl  list_permissions  [-p  VHostPath]
+
+(3) 查看指定用户的权限信息
+
+rabbitmqctl  list_user_permissions  User
+
+(4)  清除用户的权限信息
+
+rabbitmqctl  clear_permissions  [-p VHostPath]  User

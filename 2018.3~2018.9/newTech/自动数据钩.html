@@ -1,0 +1,221 @@
+<html>
+	<body>
+		<input type='button' id='generate' value='生成' onclick="test()"></input>
+		<br>
+		<div> 原表代码</div> 
+		<textarea id="inputArea" style="margin: 0px; width: 636px; height: 120px;"></textarea>
+		<br><br>
+		<div> 辅助观察表</div> 
+		<textarea id="resultArea0" style="margin: 0px; width: 636px; height: 120px;" readonly></textarea>
+		<br><br>
+		<div> 触发器代码</div> 
+		<textarea id="resultArea1" style="margin: 0px; width: 636px; height: 120px;" readonly></textarea>
+		<br><br>
+		<script>
+			function getTableName(){
+				var str=document.getElementById("inputArea").value;
+				var str1=/CREATE\sTABLE\s*.*\s*\(/.exec(str)[0];
+				var str2=/`.*`/.exec(str1)[0];
+				var str3=str2.replace("`","");
+				str3=str3.replace("`","");
+				return str3;
+			}
+
+function genPwhTable(){
+	var str="";
+	str+="CREATE TABLE `pwh_"+getTableName()+"` (\n";
+	str+="`PID` VARCHAR(32) NOT NULL,\n";
+	str+="`P_OPER_TYPE` VARCHAR(32) NOT NULL,\n";
+	str+="`P_OPER_DATE` DATETIME NULL DEFAULT NULL,\n";
+	var strArr = getCols();
+
+	for(var i1=0;i1<strArr.length;i1++){
+		if(i1!=strArr.length-1){
+			str+=strArr[i1]+"\n";
+		}else{
+			str+=strArr[i1].substring(0,strArr[i1].length-1)+"\n";
+		}
+	}
+
+	str+=")\n";
+	str+="COLLATE='utf8_general_ci'\n";
+	str+="ENGINE=InnoDB\n";
+	str+=";";
+	str=str.replace("AUTO_INCREMENT","");
+	
+	document.getElementById("resultArea0").value=str;
+}
+
+
+
+
+function getCols(){
+	var str=document.getElementById("inputArea").value;
+	var strArr=str.split("\n");
+	var strArr1=[];
+
+	for(var i1=2;i1<strArr.length;i1++){
+
+		if(!/`.*/.test(strArr[i1])){
+			continue;
+		}
+
+		if(/PRIMARY\s+KEY/.test(strArr[i1])){
+			continue;
+		}
+
+		if(/INDEX\s+/.test(strArr[i1])){
+			continue;
+		}
+
+		if(/KEY\s+/.test(strArr[i1])){
+			continue;
+		}
+		strArr1.push(strArr[i1]);
+	}
+
+	return strArr1;
+}
+
+function test(){
+
+	document.getElementById("resultArea1").value=genPwhTable();
+
+	var str="";
+	str+=genUpdateTrigger();
+	str+="\n\n\n";
+	str+=genInsertTrigger();
+	str+="\n\n\n";
+	str+=genDeleteTrigger();
+	str+="\n\n\n";
+
+	document.getElementById("resultArea1").value=str;
+}
+
+
+
+
+
+
+
+
+
+
+function genUpdateTrigger(){
+	var str="";
+
+	str+="delimiter $\n";
+	str+="create trigger pwh_"+getTableName()+"_before_update\n";
+	str+="before update on "+getTableName()+"\n";
+	str+="for each row\n";
+	str+="begin\n";
+	str+="insert into pwh_"+getTableName()+"(PID,P_OPER_TYPE,P_OPER_DATE,\n"
+
+	var strArr = getCols();
+	for(var i1=0;i1<strArr.length;i1++){
+		var colName=/`.*`/.exec(strArr[i1])[0].replace(/`/g,"");
+		
+		if(i1!=strArr.length-1){
+			str+=" "+colName+",";
+		}else{
+			str+=" "+colName+")\n";
+		}
+	}
+
+	str+="select replace(uuid(),'-',''),'update',now(),";
+	for(var i1=0;i1<strArr.length;i1++){
+		var colName=/`.*`/.exec(strArr[i1])[0].replace(/`/g,"");
+		
+		if(i1!=strArr.length-1){
+			str+=" old."+colName+",";
+		}else{
+			str+=" old."+colName+";\n";
+		}
+	}
+		str+="end\n";
+		str+="$;\n";
+return str;
+
+}
+
+function genInsertTrigger(){
+	var str="";
+
+	str+="delimiter $\n";
+	str+="create trigger pwh_"+getTableName()+"_before_insert\n";
+	str+="before insert on "+getTableName()+"\n";
+	str+="for each row\n";
+	str+="begin\n";
+	str+="insert into pwh_"+getTableName()+"(PID,P_OPER_TYPE,P_OPER_DATE,\n"
+	
+	var strArr = getCols();
+	for(var i1=0;i1<strArr.length;i1++){
+		var colName=/`.*`/.exec(strArr[i1])[0].replace(/`/g,"");
+		
+		if(i1!=strArr.length-1){
+			str+=" "+colName+",";
+		}else{
+			str+=" "+colName+")\n";
+		}
+	}
+
+	str+="select replace(uuid(),'-',''),'insert',now(),";
+	for(var i1=0;i1<strArr.length;i1++){
+		var colName=/`.*`/.exec(strArr[i1])[0].replace(/`/g,"");
+		
+		if(i1!=strArr.length-1){
+			str+=" new."+colName+",";
+		}else{
+			str+=" new."+colName+";\n";
+		}
+	}
+		str+="end\n";
+		str+="$;\n";
+return str;
+
+}
+
+
+function genDeleteTrigger(){
+	var str="";
+
+	str+="delimiter $\n";
+	str+="create trigger pwh_"+getTableName()+"_before_delete\n";
+	str+="before delete on "+getTableName()+"\n";
+	str+="for each row\n";
+	str+="begin\n";
+	str+="insert into pwh_"+getTableName()+"(PID,P_OPER_TYPE,P_OPER_DATE,\n"
+	
+	var strArr = getCols();
+	for(var i1=0;i1<strArr.length;i1++){
+		var colName=/`.*`/.exec(strArr[i1])[0].replace(/`/g,"");
+		
+		if(i1!=strArr.length-1){
+			str+=" "+colName+",";
+		}else{
+			str+=" "+colName+")\n";
+		}
+	}
+
+	str+="select replace(uuid(),'-',''),'delete',now(),";
+	for(var i1=0;i1<strArr.length;i1++){
+		var colName=/`.*`/.exec(strArr[i1])[0].replace(/`/g,"");
+		
+		if(i1!=strArr.length-1){
+			str+=" old."+colName+",";
+		}else{
+			str+=" old."+colName+";\n";
+		}
+	}
+		str+="end\n";
+		str+="$;\n";
+return str;
+
+}
+
+
+
+
+		</script>
+	</body>
+</html>
