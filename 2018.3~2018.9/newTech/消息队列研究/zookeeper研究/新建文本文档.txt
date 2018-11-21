@@ -1,0 +1,45 @@
+数据发布与订阅（配置中心）
+负载均衡
+命名服务(Naming Service)
+分布式通知/协调
+集群管理与Master选举
+分布式锁
+分布式队列
+
+
+https://www.cnblogs.com/Ming8006/p/8059149.html
+http://www.cnblogs.com/angelhu123/p/6707983.html
+https://segmentfault.com/a/1190000012185902	（重要）
+
+启动zookeeper
+D:
+cd D:\zookeeper-3.4.13\zookeeper-3.4.13\bin
+zkServer.cmd
+
+
+客户端连接
+D:
+cd D:\zookeeper-3.4.13\zookeeper-3.4.13\bin
+zkCli.cmd –server 127.0.0.1:2181
+
+ls /
+
+
+
+创建了一个新的 znode 节点“ zk ”以及与它关联的字符串"myData"
+create /zk "myData"
+
+get /zk
+set /zk "zsl"
+delete /zk
+
+
+
+清理
+cd D:\zookeeper-3.4.13\zookeeper-3.4.13\bin
+zkCleanup.sh
+
+=======================================================================
+
+zookeeperClient
+介绍基本用法
