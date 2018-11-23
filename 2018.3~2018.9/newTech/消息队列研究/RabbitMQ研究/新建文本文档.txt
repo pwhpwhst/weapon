@@ -18,12 +18,21 @@ http://www.rabbitmq.com/download.html
 
 cd D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin
 
+-- 启动 RabbitMQ's Management Plugin begin
 "D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin\rabbitmq-plugins.bat" enable rabbitmq_management
+-- 启动 RabbitMQ's Management Plugin end
 
+
+然后用管理员权限重启：
+
+net stop RabbitMQ && net start RabbitMQ
+
+http://localhost:15672 
 
 4、创建用户，密码，绑定角色
 
 查看已有用户及用户的角色：
+D:
 cd D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin
 rabbitmqctl.bat list_users
 
@@ -79,3 +88,10 @@ rabbitmqctl  list_user_permissions  User
 (4)  清除用户的权限信息
 
 rabbitmqctl  clear_permissions  [-p VHostPath]  User
+
+======================================================================
+参考：
+
+https://www.cnblogs.com/demodashi/p/8486491.html
+
+https://www.cnblogs.com/LipeiNet/p/5977028.html

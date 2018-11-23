@@ -34,7 +34,7 @@ public static void main(String[] args) {
 
 	System.out.println("-----------------·¢ËÍÏûÏ¢Topic Begin------------------");
     props = new Properties();
-    props.put("bootstrap.servers", "192.168.180.128:9092");
+    props.put("bootstrap.servers", "127.0.0.1:9092");
     props.put("acks", "all");
     props.put("retries", 0);
     props.put("batch.size", 16384);

@@ -13,18 +13,45 @@ http://rocketmq.apache.org/release_notes/release-notes-4.2.0/
 ROCKETMQ_HOME
 
 3、启动：
-3.1
-cd C:\Users\pan.weihao\Desktop\RocketMQ研究\bin
+3.1	启动NAMESERVER
+cd C:\Users\pan.weihao\Desktop\rocketmq-all-4.2.0-bin-release\bin
 start mqnamesrv.cmd
 
-
-cd C:\Users\pan.weihao\Desktop\RocketMQ研究\bin
+	启动BROKER
+cd C:\Users\pan.weihao\Desktop\rocketmq-all-4.2.0-bin-release\bin
 start mqbroker.cmd -n 127.0.0.1:9876 autoCreateTopicEnable=true
 
-3.2 启动生产者和消费者
+
+3.2 安装RocketMQ插件部署
+
+git clone https://github.com/apache/rocketmq-externals.git
+
+cd C:\Users\pan.weihao\Desktop\rocketmq-externals
+
+cd rocketmq-console\src\main\resources
+-- 修改application.properties
+-- server.port=8081
+-- rocketmq.config.isVIPChannel= 127.0.0.1:9876
+
+
+
+cd C:\Users\pan.weihao\Desktop\rocketmq-externals
+cd rocketmq-console
+
+
+mvn clean package -Dmaven.test.skip=true
+
+cd target
+
+java -jar rocketmq-console-ng-1.0.0.jar
+
+在浏览器输入	127.0.0.1:8081
+
+
+3.3 启动生产者和消费者
 set NAMESRV_ADDR=localhost:9876
 cd C:\Users\pan.weihao\Desktop\RocketMQ研究\bin
-tools.cmd org.apache.rocketmq.example.quickstart.Producer aaa
+tools.cmd org.apache.rocketmq.example.quickstart.Producer 
 
 
 set NAMESRV_ADDR=localhost:9876
@@ -34,8 +61,12 @@ tools.cmd org.apache.rocketmq.example.quickstart.Consumer
 
 
 
-3.3 关闭
+3.4 关闭
 
 mqshutdown broker
-
 mqshutdown namesrv
+
+
+============================================================================
+java参考例子：
+https://blog.csdn.net/zhglance/article/details/54962870

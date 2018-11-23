@@ -18,6 +18,18 @@ cd D:\kafka_2.11-2.0.1\kafka_2.11-2.0.1\bin\windows
 kafka-server-start.bat ../../config/server.properties
 
 
+1.2	关闭
+D:
+cd D:\kafka_2.11-2.0.1\kafka_2.11-2.0.1\bin\windows
+kafka-server-stop.bat ../../config/server.properties
+
+
+D:
+cd D:\kafka_2.11-2.0.1\kafka_2.11-2.0.1\bin\windows
+zookeeper-server-stop.bat ../../config/zookeeper.properties
+
+
+
 2、
 创建一个名为test的topic
 
@@ -67,6 +79,7 @@ C:
 cd C:\Users\pan.weihao\Desktop\kafka研究\kfakaConsumer
 
 mvn clean package
+
 cd target
 
 java -jar kfaka-1.0-SNAPSHOT.jar
