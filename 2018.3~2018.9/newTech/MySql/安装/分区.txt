@@ -1,0 +1,28 @@
+参考地址：
+https://blog.csdn.net/tjcyjd/article/details/11194489
+https://blog.csdn.net/yongchao940/article/details/55266603
+
+当 MySQL的总记录数超过了100万后，性能会大幅下降，可以采用分区方案
+
+alter table mf_substatus partition by RANGE(status) 
+(PARTITION p1 VALUES less than (1), 
+PARTITION p2 VALUES less than (5), 
+PARTITION p3 VALUES less than MAXVALUE);
+
+
+
+alter table user drop partition p4;
+
+
+分区数不能超过1024
+
+单表数量极限
+https://www.cnblogs.com/lyroge/p/3837886.html
+
+
+
+在老版本的MySQL 3.22中，MySQL的单表限大小为4GB，
+当时的MySQL的存储引擎还是ISAM存储引擎。但是，当出现MyISAM存储引擎之后，
+也就是从MySQL 3.23开始，MySQL单表最大限制就已经扩大到了64PB了（官方文档显示）。
+也就是说，从目前的技术环境来看，MySQL数据库的MyISAM存储 引擎单表大小限制已经不是有MySQL数据库本身来决定，
+而是由所在主机的OS上面的文件系统来决定了。

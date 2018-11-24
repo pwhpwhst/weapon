@@ -1,0 +1,41 @@
+参考地址：
+https://blog.csdn.net/tjcyjd/article/details/11194489
+https://blog.csdn.net/yongchao940/article/details/55266603
+
+hash分区
+https://www.cnblogs.com/chenmh/archive/2016/11/05/5644496.html
+
+
+
+CREATE TABLE `mf_substatus` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`hash_value` INT(11) not NULL,
+	`status` VARCHAR(128) NOT NULL,
+	`parent_status` VARCHAR(128) NULL DEFAULT NULL,
+	`score` INT(4) NOT NULL,
+	`move_step` VARCHAR(128) NULL DEFAULT NULL,
+	`stat` INT(11) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`,`hash_value`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+partition by hash(hash_value) 
+partitions 50;
+;
+
+
+
+
+
+分区数不能超过1024
+
+单表数量极限
+https://www.cnblogs.com/lyroge/p/3837886.html
+
+
+
+在老版本的MySQL 3.22中，MySQL的单表限大小为4GB，
+当时的MySQL的存储引擎还是ISAM存储引擎。但是，当出现MyISAM存储引擎之后，
+也就是从MySQL 3.23开始，MySQL单表最大限制就已经扩大到了64PB了（官方文档显示）。
+也就是说，从目前的技术环境来看，MySQL数据库的MyISAM存储 引擎单表大小限制已经不是有MySQL数据库本身来决定，
+而是由所在主机的OS上面的文件系统来决定了。

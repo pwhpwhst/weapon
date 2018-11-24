@@ -1,0 +1,59 @@
+安装参考
+https://www.cnblogs.com/jiqing9006/p/6252506.html
+https://www.cnblogs.com/xixihuang/p/5663559.html2018/7/11 
+https://blog.csdn.net/write6/article/details/79204755
+
+1、解压 mysql-8.0.11-winx64
+
+2、环境变量 MYSQL_HOME
+path
+
+3、修改一下%MYSQL_HOME%下的my.ini
+mkdir -p %MYSQL_HOME%/data
+
+3、用管理员权限执行
+F:
+cd F:\mysql-5.7.22-winx64\mysql-5.7.22-winx64\bin
+
+mysqld.exe --install MySql --defaults-file="F:/mysql-5.7.22-winx64/mysql-5.7.22-winx64/my.ini"
+
+mysqld --initialize
+
+4、net start mysql
+
+
+==================================================================
+解决密码为空问题
+F:
+cd F:\mysql-5.7.22-winx64\mysql-5.7.22-winx64\bin
+mysqld -nt --skip-grant-tables
+
+此时命令行被挂起
+
+另开一个cmd
+命令行登录mysql：
+
+mysql -u root mysql
+use mysql
+update user set authentication_string=password('059030849') where user='root';
+flush privileges;
+exit
+
+mysql -u root -p
+
+SET PASSWORD = PASSWORD('059030849');
+
+===================================================================
+mysql登录
+
+
+mysql -u root -p
+
+
+
+use mysql
+select '1';
+exit
+===================================================================
+
+安装终端	heidisql
