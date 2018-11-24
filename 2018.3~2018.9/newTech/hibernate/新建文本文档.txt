@@ -1,0 +1,27 @@
+create database test;
+use test;
+
+
+
+create table erp_class(
+	id varchar(32) not null,
+	name varchar(32) null default null,
+	fullname varchar(32) null default null
+);
+
+
+cd C:\Users\Administrator\Desktop\newTech\hibernate\HibernateTest
+
+mvn clean package
+
+
+cd C:\Users\Administrator\Desktop\newTech\hibernate\HibernateTest\target
+
+java -jar HibernateTest-0.0.1-SNAPSHOT.jar
+
+
+
+
+
+
+
