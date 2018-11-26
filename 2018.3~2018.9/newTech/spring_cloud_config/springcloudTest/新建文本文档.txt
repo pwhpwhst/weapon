@@ -1,0 +1,102 @@
+参考地址：https://cloud.spring.io/spring-cloud-config/#quick-start
+
+1、application.properties与application.yml的区别
+https://www.cnblogs.com/baoyi/p/SpringBoot_YML.html
+
+2、pom.xml 注意要有这样的配置：
+
+<plugin>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot-maven-plugin</artifactId>
+</plugin>
+
+3、要先启动rabbitmq
+
+
+4、
+4.1、To run your own server use the spring-cloud-config-server dependency and @EnableConfigServer.
+4.2、If you set spring.config.name=configserver the app will run on port 8888 and serve data from a sample repository.
+4.3、You need a spring.cloud.config.server.git.uri to locate the configuration data for your own needs
+
+5、访问 http://localhost:8888/configserver-0.0.1-SNAPSHOT/env
+	↓
+{"name":"configserver-0.0.1-SNAPSHOT",
+"profiles":["env"],
+"label":"master",
+"version":"a611374438e75aa1b9808908c57833480944e1a8",
+"state":null,
+"propertySources":[{"name":"https://github.com/spring-cloud-samples/config-repo/application.yml",
+"source":{"info.description":"Spring Cloud Samples",
+"info.url":"https://github.com/spring-cloud-samples",
+"eureka.client.serviceUrl.defaultZone":"http://localhost:8761/eureka/",
+"foo":"baz"}}]}
+
+
+====================================================================
+
+
+
+
+
+官方原型：https://github.com/spring-cloud-samples/configserver
+cd C:\Users\pan.weihao\Desktop\configserver
+mvn clean package
+java -jar target/configserver-0.0.1-SNAPSHOT.jar
+java -jar configserver-0.0.1-SNAPSHOT.jar
+
+
+
+自己做的原型：
+cd C:\Users\pan.weihao\Desktop\springcloudTest
+mvn clean package
+java -jar target/springcloudTest-0.0.1-SNAPSHOT.jar
+
+http://localhost:8888/configserver-0.0.1-SNAPSHOT/env	//可看到所有配置信息
+
+
+// 以下的命令是不行的，与appliaction.yml的相对路径有关
+cd target
+java -jar springcloudTest-0.0.1-SNAPSHOT.jar
+
+
+====================================================================
+
+
+改造springboot原型，接收远程参数的方法：
+
+1、application.properties 中添加：
+
+info.description = world3	//注意到info.description存在于http://localhost:8888/configserver-0.0.1-SNAPSHOT/env 中
+
+2、bootstrap.properties
+
+spring.cloud.config.uri=http://localhost:8888
+
+3、DemoApplication.java 添加标签
+
+import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+
+
+@Configuration
+@EnableAutoConfiguration
+
+4、pom.xml 中添加
+
+	<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
+<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-actuator</artifactId>
+    <version>2.1.0.RELEASE</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-client -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-config-client</artifactId>
+    <version>2.0.2.RELEASE</version>
+</dependency>
+
+5、
+
+	@Value("${info.description}")
+	private String name = "World2";
