@@ -9,3 +9,10 @@ mvn clean package
 
 cd target
 java -jar SpringMybatisTest-1.0-SNAPSHOT.jar
+
+
+=========================================================
+
+以xml为主的配置
+
+https://www.cnblogs.com/best/p/5648740.html

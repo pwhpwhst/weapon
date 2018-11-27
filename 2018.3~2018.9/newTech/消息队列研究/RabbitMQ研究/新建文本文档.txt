@@ -17,11 +17,11 @@ http://www.rabbitmq.com/download.html
 使用RabbitMQ 管理插件，可以更好的可视化方式查看Rabbit MQ 服务器实例的状态。
 
 cd D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin
-
+--
 -- 启动 RabbitMQ's Management Plugin begin
 "D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin\rabbitmq-plugins.bat" enable rabbitmq_management
 -- 启动 RabbitMQ's Management Plugin end
-
+-- "F:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin\rabbitmq-plugins.bat" enable rabbitmq_management
 
 然后用管理员权限重启：
 

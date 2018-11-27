@@ -1,0 +1,11 @@
+try{
+
+while(!Thread.currentThread().isInterrupted()&&more work to do){
+	
+}
+
+}catch(InterruptedException e){
+
+}finally{
+
+}

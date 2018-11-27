@@ -1,0 +1,22 @@
+C:
+cd C:\Users\Administrator\Desktop\ObserverPattern
+
+mvn clean package
+
+cd target
+
+java -jar hadoopTest-1.0-SNAPSHOT.jar
+
+
+介绍：
+
+
+User是受应器
+
+User implements Observer
+
+WechatServer是信息流接收器
+
+WechatServer implements Observerable
+
+Test是测试类

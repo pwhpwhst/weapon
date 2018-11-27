@@ -83,3 +83,5 @@ mvn clean package
 cd target
 
 java -jar kfaka-1.0-SNAPSHOT.jar
+
+=============================================================

@@ -11,4 +11,5 @@ java -jar myBatisTest-1.0-SNAPSHOT.jar
 //中央仓库：http://repo1.maven.org/maven2/
 
 
-
+mybatis 的标签
+https://blog.csdn.net/weixin_40950778/article/details/78655288

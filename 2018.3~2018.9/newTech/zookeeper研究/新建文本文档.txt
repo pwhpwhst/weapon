@@ -1,3 +1,44 @@
+安装：(参考	https://www.cnblogs.com/lsdb/p/7297731.html	)
+
+下载地址
+http://mirror.bit.edu.cn/apache/zookeeper/zookeeper-3.4.13/
+
+
+cd C:\Users\Administrator\Desktop\zookeeper\zookeeper-3.4.13\zookeeper-3.4.13\conf
+
+vi zoo.cfg
+
+tickTime=2000
+dataDir=F:\zookeeper-3.4.5\data
+dataLogDir=F:\zookeeper-3.4.5\logs
+clientPort=2181
+
+wq!
+
+
+cd C:\Users\Administrator\Desktop\zookeeper\zookeeper-3.4.13\zookeeper-3.4.13\bin
+
+zkServer.cmd
+
+
+============================================================================
+
+
+关于脑裂
+
+
+https://blog.csdn.net/u010185262/article/details/49910301
+
+
+
+
+redis与分布式锁
+https://redis.io/topics/distlock
+
+===============================================================================
+
+zookeeper用途
+
 数据发布与订阅（配置中心）
 负载均衡
 命名服务(Naming Service)
@@ -40,3 +81,16 @@ cd D:\zookeeper-3.4.13\zookeeper-3.4.13\bin
 zkCleanup.sh
 
 =======================================================================
+
+
+
+F:
+cd F:\zookeeper-3.4.13\zookeeper-3.4.13\bin
+zkServer.cmd
+
+
+F:
+cd F:\zookeeper-3.4.13\zookeeper-3.4.13\bin
+zkCli.cmd -server 127.0.0.1:2181
+
+
