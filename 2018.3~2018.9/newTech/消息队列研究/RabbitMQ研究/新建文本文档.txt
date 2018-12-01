@@ -27,7 +27,7 @@ cd D:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin
 
 net stop RabbitMQ && net start RabbitMQ
 
-http://localhost:15672 
+http://localhost:15672	pwhpwhst/123456
 
 4、创建用户，密码，绑定角色
 
@@ -77,9 +77,13 @@ rabbitmqctl.bat set_user_tags username administrator
 
 rabbitmqctl  set_permissions  -p  VHostPath  User  ConfP  WriteP  ReadP
 
+rabbitmqctl.bat set_permissions -p / pwhpwhst ".*" ".*" ".*"
+
 (2) 查看(指定hostpath)所有用户的权限信息
 
 rabbitmqctl  list_permissions  [-p  VHostPath]
+
+rabbitmqctl.bat list_permissions -p /
 
 (3) 查看指定用户的权限信息
 
@@ -89,9 +93,12 @@ rabbitmqctl  list_user_permissions  User
 
 rabbitmqctl  clear_permissions  [-p VHostPath]  User
 
+
+
+
 ======================================================================
 参考：
 
-https://www.cnblogs.com/demodashi/p/8486491.html
+https://www.cnblogs.com/demodashi/p/8486491.html	//rabbbitMa的编程使用
 
-https://www.cnblogs.com/LipeiNet/p/5977028.html
+https://www.cnblogs.com/LipeiNet/p/5977028.html		//rabbbitMa的编程使用

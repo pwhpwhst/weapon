@@ -1,0 +1,81 @@
+查看已有用户及用户的角色：
+F:
+cd F:\Program Files\RabbitMQ Server\rabbitmq_server-3.7.9\sbin
+rabbitmqctl.bat list_users
+
+
+
+新增用户
+rabbitmqctl.bat add_user pwhpwhst 123456
+
+改密码
+rabbitmqctl change_password pwhpwhst 123456
+
+
+授角色
+rabbitmqctl.bat set_user_tags pwhpwhst administrator
+==================================================================================================
+参考 https://blog.csdn.net/zhengzizhi/article/details/77032148
+1.客户端连接到消息队列服务器，打开一个channel
+2.客户端声明一个exchange，并设置相关属性
+3.客户端声明一个queue，并设置相关属性
+4.客户端使用routing key，在exchange和queue之间建立好绑定关系
+5.客户端投递消息到exchange
+6.客户端从指定的queue中消费信息
+
+
+
+
+
+
+rabbitmqadmin list channels 
+
+rabbitmqadmin list exchanges
+
+rabbitmqadmin list bindings
+
+rabbitmqadmin list queues
+
+
+
+
+再定义三个exchange 分属三种类型
+[root@contoso ~]# rabbitmqadmin declare exchange name=corp.fanout type=fanout
+exchange declared
+[root@contoso ~]# rabbitmqadmin declare exchange name=corp.direct type=direct
+exchange declared
+[root@contoso ~]# rabbitmqadmin declare exchange name=corp.topic type=topic
+exchange declared
+[root@contoso ~]# rabbitmqadmin list exchanges
+
+Fanout ：进行最简单的广播
+Direct ： 最直接的根据整个 routing key 对应
+Topic ： 可以使用点分 routing key 的模糊匹配
+
+
+定义一个 queue
+rabbitmqadmin declare queue name=test durable=true    ## durable=true 代表持久化打开
+
+
+定义 binding binding 定义了 exchange 与 queue 的关系，并且限定了路由的部分规则
+
+ rabbitmqadmin declare binding source=corp.fanout destination=test routing_key=first //source 指exchanger，destination指queue
+
+发布消息
+rabbitmqadmin publish routing_key=test payload="this is a testing" 
+
+rabbitmqadmin publish routing_key=test exchange=corp.fanout payload="this is second testing"	//先确定exchange，再通过routing_key确定queue
+
+消费一条消息
+rabbitmqadmin get queue=test requeue=true	//不会导致队列信息数减少
+rabbitmqadmin get queue=test requeue=false	//会导致队列信息数减少
+
+
+=============================================================
+
+rabbitmqctl declare exchange name=corp.fanout type=fanout
+rabbitmqadmin declare queue name=test durable=true
+rabbitmqadmin declare binding source=corp.fanout destination=test routing_key=first
+
+rabbitmqadmin publish routing_key=test exchange=corp.fanout payload="this is second testing"
+

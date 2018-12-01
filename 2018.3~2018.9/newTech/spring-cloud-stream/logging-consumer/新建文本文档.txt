@@ -1,0 +1,15 @@
+
+参考：
+http://cloud.spring.io/spring-cloud-static/spring-cloud-stream/Fishtown.RC2/
+
+
+安装好rabbitMq。起好应用后，向队列输入{"name":"jack"},查看结果
+
+
+
+
+
+
+
+
+
