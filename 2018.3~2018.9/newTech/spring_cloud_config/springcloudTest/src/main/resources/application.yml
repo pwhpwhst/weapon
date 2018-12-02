@@ -23,7 +23,7 @@ spring:
           uri: https://github.com/spring-cloud-samples/config-repo
           basedir: target/config
 
----
+
 spring:
   profiles: cloud
   config:
