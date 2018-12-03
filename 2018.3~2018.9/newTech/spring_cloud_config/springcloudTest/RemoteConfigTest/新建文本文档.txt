@@ -1,0 +1,30 @@
+GroupID是项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。
+ArtifactID就是项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。
+
+
+
+cd C:\Users\pwh\Desktop\新技术使用\Maven
+mvn clean compile
+mvn clean test
+mvn clean package
+mvn clean install
+
+运行：
+cd C:\Users\pwh\Desktop\新技术使用\Maven\target
+java -jar hello-world-1.0-SNAPSHOT.jar
+
+
+//中央仓库：http://repo1.maven.org/maven2/
+
+
+生命周期：
+
+clean
+validate
+compile - 编译项目的源代码
+test - 使用合适的单元测试框架测试编译的源代码。这些测试不应该要求代码被打包或部署
+package - 采用编译的代码，并以其可分配格式（如JAR）进行打包。
+verify - 对集成测试的结果执行任何检查，以确保满足质量标准
+install - 将软件包安装到本地存储库中，用作本地其他项目的依赖项
+site - 处理你的项目站点文档的创建
+deploy - 在构建环境中完成，将最终的包复制到远程存储库以与其他开发人员和项目共享。

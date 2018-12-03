@@ -6,8 +6,7 @@ https://www.cnblogs.com/ityouknow/p/5662753.html
 http://localhost:8080/hello
 
 
-cd C:\Users\pan.weihao\Desktop\新技术研究\2018.3~2018.9\newTech\springboot\demo
-
+cd  D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\springboot\demo
 mvn clean package
 
 cd target
@@ -15,3 +14,6 @@ cd target
 ren demo-0.0.1-SNAPSHOT.jar demo.jar
 
 java -jar demo.jar
+
+注意，配置文件一定要位于相对最顶层
+
