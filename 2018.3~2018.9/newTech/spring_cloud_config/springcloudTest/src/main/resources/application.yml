@@ -1,8 +1,10 @@
 server:
   port: 8888
 
+  
 management:
   context-path: /admin
+
   
 logging:
   level:
@@ -20,7 +22,7 @@ spring:
     config:
       server:
         git:
-          uri: https://github.com/spring-cloud-samples/config-repo
+          uri: https://gitee.com/pwhpwhst/spring_cloud_config_test
           basedir: target/config
 ---
 

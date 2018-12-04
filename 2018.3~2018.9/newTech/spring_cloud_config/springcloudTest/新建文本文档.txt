@@ -52,9 +52,16 @@ java -jar configserver-0.0.1-SNAPSHOT.jar
 
 
 自己做的原型：
+D:
 cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring_cloud_config\springcloudTest
 mvn clean package
 java -jar target/springcloudTest-0.0.1-SNAPSHOT.jar
+
+  security:
+    enabled: false
+
+#https://github.com/spring-cloud-samples/config-repo
+#是否需要权限拉去，默认是true,如果不false就不允许你去拉取配置中心Server更新的内容
 
 
 
@@ -138,11 +145,11 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 
 ===========================================================
 客户端
-
+D:
 cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring_cloud_config\RemoteConfigTest
 mvn clean package
 cd target
 java -jar RemoteConfig-1.0-SNAPSHOT.jar
 
-http://localhost:8080/hello
+http://localhost:8080/actuator/refresh	(用postman的方式刷新)
 
