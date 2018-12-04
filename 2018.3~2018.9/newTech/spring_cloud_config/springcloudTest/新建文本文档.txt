@@ -15,7 +15,12 @@ https://www.cnblogs.com/baoyi/p/SpringBoot_YML.html
 
 4、
 4.1、To run your own server use the spring-cloud-config-server dependency and @EnableConfigServer.
-4.2、If you set spring.config.name=configserver the app will run on port 8888 and serve data from a sample repository.
+4.2.1、If you set spring.config.name=configserver the app will run on port 8888 and serve data from a sample repository.
+4.2.2、  4.2.1是比较简单的方法，也可以用这种方法：（note：On Windows, you need an extra "/" in the file URL if it is absolute with a drive prefix (for example,file:///${user.home}/config-repo).）
+
+server.port: 8888
+spring.cloud.config.server.git.uri: file://${user.home}/config-repo
+
 4.3、You need a spring.cloud.config.server.git.uri to locate the configuration data for your own needs
 
 5、访问 http://localhost:8888/configserver-0.0.1-SNAPSHOT/env
@@ -54,7 +59,11 @@ java -jar target/springcloudTest-0.0.1-SNAPSHOT.jar
 
 
 
-The HTTP service has resources in the following form:
+1、The HTTP service has resources in the following form:（这些其实具体是git上的文件，label对应git的分支（commit id, branch name, or tag），默认为master）
+
+ If the git branch or tag name contains a slash (/), 
+ then the label in the HTTP URL should instead be specified with the special string (_) (to avoid ambiguity with other URL paths).
+ foo/bar	→	foo(_)bar
 
 /{application}/{profile}[/{label}]
 /{application}-{profile}.yml
@@ -71,9 +80,14 @@ http://localhost:8888/configserver-0.0.1-SNAPSHOT/env	//可看到所有配置信息
 
 http://localhost:8888/foo/development	//可看到配置信息
 
-http://localhost:8888/configserver/cloud/master	//可看到配置信息
+http://localhost:8888/configserver/cloud/master	//可看到特定配置信息（如上述英文说述）
 
-// 以下的命令是不行的，与appliaction.yml的相对路径有关
+
+2、可以设置http连接超时和跳过ssl认证，具体看官方文档
+
+
+
+3、// 以下的命令是不行的，与appliaction.yml的相对路径有关
 cd target
 java -jar springcloudTest-0.0.1-SNAPSHOT.jar
 
