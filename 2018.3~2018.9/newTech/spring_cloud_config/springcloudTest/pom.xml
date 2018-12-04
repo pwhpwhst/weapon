@@ -98,7 +98,7 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 		<pluginRepository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/libs-snapshot-local</url>
+			<url>https://repo.spring.io/libs-snapshot</url>
 			<snapshots>
 				<enabled>true</enabled>
 			</snapshots>
