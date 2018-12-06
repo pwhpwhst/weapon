@@ -4,66 +4,77 @@
 		xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<!-- groupidºÍartifactId±»Í³³ÆÎª¡°×ø±ê¡±ÊÇÎªÁË±£Ö¤ÏîÄ¿Î¨Ò»ÐÔ¶øÌá³öµÄ£¬Èç¹ûÄãÒª°ÑÄãÏîÄ¿Åªµ½maven±¾µØ²Ö¿âÈ¥£¬ÄãÏëÒªÕÒµ½ÄãµÄÏîÄ¿¾Í±ØÐë¸ù¾ÝÕâÁ½¸öidÈ¥²éÕÒ -->
+	<!-- groupidå’ŒartifactIdè¢«ç»Ÿç§°ä¸ºâ€œåæ ‡â€æ˜¯ä¸ºäº†ä¿è¯é¡¹ç›®å”¯ä¸€æ€§è€Œæå‡ºçš„ï¼Œå¦‚æžœä½ è¦æŠŠä½ é¡¹ç›®å¼„åˆ°mavenæœ¬åœ°ä»“åº“åŽ»ï¼Œä½ æƒ³è¦æ‰¾åˆ°ä½ çš„é¡¹ç›®å°±å¿…é¡»æ ¹æ®è¿™ä¸¤ä¸ªidåŽ»æŸ¥æ‰¾ -->
 	<groupId>com.pwhTest</groupId>
-	<artifactId>RemoteConfig</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<artifactId>springcloudTest</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
 	<name>Maven Hello World Project</name>
-	<packaging>jar</packaging>
-
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<start-class>com.pwhTest.springcloudTest.ConfigServerApplication</start-class>
+		<java.version>1.7</java.version>
+		<docker.image.prefix>springcloud</docker.image.prefix>
+	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.0.6.RELEASE</version>
+		<version>1.4.1.BUILD-SNAPSHOT</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
-	</properties>
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-			<version>2.1.0.RELEASE</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-config-client -->
-		<dependency>
-			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-config-client</artifactId>
-			<version>2.0.2.RELEASE</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter</artifactId>
-		</dependency>
-
-
-		 <dependency>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-starter-web</artifactId>
-		 </dependency>
-
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-bus-amqp</artifactId>
 			<version>2.0.0.RELEASE</version>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-server</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-monitor</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
 	</dependencies>
+	
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>Camden.BUILD-SNAPSHOT</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<build>
 		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+					<encoding>utf8</encoding> 
+				</configuration>
+			</plugin>
+			
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
 
-				<plugin>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-maven-plugin</artifactId>
-				</plugin>
-
-
-<!-- µ¼³öjar°üµ½ÌØ¶¨ÎÄ¼þ¼Ð	-->
+<!-- å¯¼å‡ºjaråŒ…åˆ°ç‰¹å®šæ–‡ä»¶å¤¹	-->
 			<plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -83,12 +94,12 @@ http://maven.apache.org/maven-v4_0_0.xsd">
 		</plugins>
 		<resources>
 			<resource>
-			<!-- »á°Ñ¸ÃÄ¿Â¼ÏÂµÄÎÄ¼þ·Åµ½classesÏÂ -->
+			<!-- ä¼šæŠŠè¯¥ç›®å½•ä¸‹çš„æ–‡ä»¶æ”¾åˆ°classesä¸‹ -->
 				<directory>src/main/resources</directory>
 			</resource>
 		</resources>
 	</build>
-	<pluginRepositories>
+		<pluginRepositories>
 		<pluginRepository>
 			<id>spring-snapshots</id>
 			<name>Spring Snapshots</name>

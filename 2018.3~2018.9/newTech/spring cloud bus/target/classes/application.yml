@@ -1,0 +1,56 @@
+server:
+  port: 8888
+
+  
+management:
+  context-path: /admin
+  endpoints:
+    web:
+      exposure:
+        include:/admin/bus-refresh
+
+logging:
+  level:
+    com.netflix.discovery: 'OFF'
+    org.springframework.cloud: 'DEBUG'
+    
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    statusPageUrlPath: /admin/info
+    healthCheckUrlPath: /admin/health
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://gitee.com/pwhpwhst/spring_cloud_config_test
+          basedir: target/config
+    bus:
+      trace:
+        enabled:true
+---
+
+spring:
+  profiles: cloud
+  config:
+    name:configserver
+eureka:
+  password: password
+  instance:
+    hostname: ${vcap.application.uris[0]}
+    nonSecurePort: 80
+  client:
+    serviceUrl:
+      defaultZone: ${vcap.services.${PREFIX:}eureka.credentials.uri:http://user:${eureka.password:}@${PREFIX:}eureka.${application.domain:cfapps.io}}/eureka/
+
+---
+
+spring:
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: pwhpwhst
+    password: 123456
+    virtual-host: /

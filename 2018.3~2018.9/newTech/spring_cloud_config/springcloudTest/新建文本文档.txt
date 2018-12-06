@@ -146,10 +146,12 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 ===========================================================
 客户端
 D:
-cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring_cloud_config\RemoteConfigTest
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\spring_cloud_config\RemoteConfigTest
 mvn clean package
 cd target
 java -jar RemoteConfig-1.0-SNAPSHOT.jar
+
+http://localhost:8080/hello
 
 http://localhost:8080/actuator/refresh	(用postman的方式刷新)
 

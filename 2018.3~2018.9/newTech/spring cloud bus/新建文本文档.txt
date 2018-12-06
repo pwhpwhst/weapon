@@ -1,0 +1,38 @@
+参考：https://cloud.spring.io/spring-cloud-static/spring-cloud-bus/2.1.0.M2/single/spring-cloud-bus.html
+
+https://www.cnblogs.com/huangjuncong/p/9077099.html
+
+1、首先，要确保rabbitMQ已经安装了
+如果rabbitMq是远程安装的，要配置好application.yml. 
+
+spring:
+  rabbitmq:
+    host: localhost
+    port: 15672
+    username: pwhpwhst
+    password: 123456
+
+2、（configServer和子端都要配置这个依赖）
+<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-bus-amqp -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-bus-amqp</artifactId>
+    <version>2.0.0.RELEASE</version>
+</dependency>
+
+另外说一下，可以用spring_cloud_config/RemoteConfigTest作为子端
+
+3、子端要配置spring.application.name=pwhTest
+
+3、
+cd C:\Users\Administrator\Desktop\spring cloud bus
+mvn clean package
+java -jar target/springcloudTest-0.0.1-SNAPSHOT.jar
+
+
+4、总线更新
+http://127.0.0.1:8888/admin/bus/refresh	(用postman的方式刷新)
+
+
+
+
