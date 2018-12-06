@@ -1,0 +1,36 @@
+和一般的springBoot的区别只有这个：
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			<version>2.0.2.RELEASE</version>
+		</dependency>
+
+还有，注意下配置文件的区别
+
+启动后，自动注册到http://localhost:8761/
+
+cd  C:\Users\Administrator\Desktop\springboot\demo
+
+mvn clean package
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+=========================================================
+启动/actuator/info 和 /actuator/health
+
+
+加入配置
+server.port=8080
+server.servlet.context-path=/
+info.author=pwhResearch
+management.endpoints.web.exposure.include= *
+server.ssl.enabled=false
+management.endpoint.health.show-details=always
+
+http://192.168.1.101:8080/actuator/info
+http://192.168.1.101:8080/actuator/health
+
+=========================================================
