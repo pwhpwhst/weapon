@@ -57,8 +57,7 @@ cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spri
 mvn clean package
 java -jar target/springcloudTest-0.0.1-SNAPSHOT.jar
 
-  security:
-    enabled: false
+
 
 #https://github.com/spring-cloud-samples/config-repo
 #是否需要权限拉去，默认是true,如果不false就不允许你去拉取配置中心Server更新的内容
@@ -155,3 +154,4 @@ http://localhost:8080/hello
 
 http://localhost:8080/actuator/refresh	(用postman的方式刷新)
 
+http://localhost:8080/hello
