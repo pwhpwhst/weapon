@@ -1,0 +1,17 @@
+²Î¿¼µØÖ·£º
+https://www.cnblogs.com/ityouknow/p/5662753.html
+
+
+
+http://localhost:8080/hello
+
+
+cd  C:\Users\Administrator\Desktop\springboot\demo
+mvn clean package
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+
