@@ -5,13 +5,22 @@ https://www.cnblogs.com/ityouknow/p/5662753.html
 
 http://localhost:8080/hello
 
-
-cd  C:\Users\Administrator\Desktop\springboot\demo
+D:
+cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\¶ÏÂ·Æ÷Ä£Ê½\springboot\demo
 mvn clean package
 
 cd target
 
 java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+=======================================================================================
+
+
+
+
+
+
 
 
 

@@ -1,0 +1,24 @@
+
+
+断路器模式添加仪表盘
+参考：https://www.cnblogs.com/happyflyingpig/p/8372485.html
+
+
+
+4、http://localhost:2001/hystrix
+
+
+=======================================================================================================
+
+
+
+D:
+cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\断路器模式\hystrix-dashboard\demo
+mvn clean package
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+
