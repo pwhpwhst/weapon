@@ -15,11 +15,6 @@ mvn clean package
 cd target
 java -jar demo-0.0.1-SNAPSHOT.jar
 
-D:
-cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring-cloud-Netflix\springboot2\demo
-mvn clean package
-cd target
-java -jar demo-0.0.1-SNAPSHOT.jar
 
 =========================================================
 Æô¶¯/actuator/info ºÍ /actuator/health

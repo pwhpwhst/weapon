@@ -23,7 +23,7 @@ private EurekaClient discoveryClient;
 	@RequestMapping("/hello")
     public String index() {
 
-    return "hello 8080";
+    return "hello 8081";
 
     }
 }

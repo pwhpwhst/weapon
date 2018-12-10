@@ -1,5 +1,5 @@
-
-cd C:\Users\Administrator\Desktop\eureka
+D:
+cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring-cloud-Netflix\eureka
 
 mvn spring-boot:run
 
@@ -10,3 +10,6 @@ http://localhost:8761/
 http://localhost:8761/actuator/info
 
 http://localhost:8761/actuator/health
+
+
+@EnableDiscoveryClient,一种为@EnableEurekaClient,用法上基本一致
