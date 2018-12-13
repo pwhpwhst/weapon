@@ -5,8 +5,8 @@ https://www.cnblogs.com/ityouknow/p/5662753.html
 
 http://localhost:8080/hello
 
-
-cd  D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\springboot\demo
+D:
+cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\springboot\demo
 mvn clean package
 
 cd target

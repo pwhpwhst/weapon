@@ -1,0 +1,21 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+server:
+  port: 8200
+
+spring:
+  application:
+    name: tcloud-gateway-zuulserver
+
+
+
+zuul:
+  routes:
+    ribbonClient:
+      path:/ribbonClient/**
+      serviceId:RIBBONCLIENT
+
+

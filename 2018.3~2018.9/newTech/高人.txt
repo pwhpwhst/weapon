@@ -18,3 +18,7 @@ https://yq.aliyun.com/articles/341502
 
 马士兵的建议
 https://www.cnblogs.com/TTTTT/p/6387699.html
+
+
+方志朋的分布式
+https://www.fangzhipeng.com/springcloud/2018/08/30/sc-f-all/

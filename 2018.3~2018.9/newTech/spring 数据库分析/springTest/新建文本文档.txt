@@ -1,0 +1,29 @@
+1¡¢
+
+
+CREATE TABLE `user` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`name` VARCHAR(20) NOT NULL,
+	`password` VARCHAR(20) NOT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='latin1_swedish_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=0
+;
+
+cd C:\Users\pan.weihao\Desktop\spring Êý¾Ý¿â·ÖÎö\springTest
+mvn clean package
+cd target
+
+java -jar springJDBC-1.0-SNAPSHOT.jar
+default-lazy-init="false"
+
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                      http://www.springframework.org/schema/tx
+                       http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+                      http://www.springframework.org/schema/beans/spring-beans.xsd" default-lazy-init="false">
+
+
+	xsi:schemaLocation="http://www.Springframework.org/schema/beans http://www.Springframework.org/schema/tx/spring-tx.xsd http://www.Springframework.org/schema/beans/spring-beans.xsd"
