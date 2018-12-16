@@ -1,0 +1,75 @@
+参考地址：
+https://blog.csdn.net/get_set/article/details/79480233
+
+
+
+C:
+cd C:\Users\Administrator\Desktop\springboot1\demo
+mvn clean package
+
+cd target
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+http://localhost:8080/date
+http://localhost:8080/time
+//服务器推送实现
+http://localhost:8080/times
+
+注意，配置文件一定要位于相对最顶层
+
+http://localhost:8080/hello
+
+===========================================================================
+
+函数式编程的介绍：
+
+http://www.ruanyifeng.com/blog/2017/02/fp-tutorial.html
+
+js：使用新方法定义javascript的Class
+https://www.cnblogs.com/diligenceday/p/5500097.html
+
+以下是js例子：
+
+class Functor {
+  constructor(val) { 
+    this.val = val; 
+  }
+
+  map(f) {
+    return new Functor(f(this.val));
+  }
+}
+
+var a=new Functor(1);
+
+var b=a.map(function(val){
+	return new Functor(val+2); 
+});
+
+
+===========================================================================
+
+响应式编程请看 武器库里面的“响应流”
+
+
+===========================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
