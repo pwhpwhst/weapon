@@ -1,0 +1,18 @@
+参考地址：
+https://www.cnblogs.com/ityouknow/p/5662753.html
+
+
+
+http://localhost:8080/hello
+
+C:
+cd  C:\Users\Administrator\Desktop\springboot\demo
+mvn clean package
+
+
+cd target
+
+java -jar reactiveMongoTest-0.0.1-SNAPSHOT.jar
+
+注意，配置文件一定要位于相对最顶层
+
