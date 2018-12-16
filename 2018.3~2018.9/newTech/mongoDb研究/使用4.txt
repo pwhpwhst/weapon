@@ -1,0 +1,107 @@
+
+一、
+
+找出发表文章最多的那个作者
+
+db.articles.aggregate({"$project":{"author":1}},	//将author从每个文档中投射出来
+{"$group":{"_id":"$author","count":{"$sum":1}}},	//
+{"$sort":{"count":-1}},					//
+{"$limit":5})						//
+
+
+1、{$match:{"state":"OR"}}
+
+2、{"$project":{"author":1,"_id":0}}
+
+{"$project":{"userId":"$_id","_id":0}}			//将每个用户文档的"_id"在返回结果中重命名为"userId"
+
+
+2.3、数学表达式
+{"$project":{"totalPay":{"$add":["$salary","$bonus"]}}}	
+
+$add 
+$subtract
+$multiply
+$divide
+$mod
+
+2.3、日期表达式
+
+{"$project":{"hiredIn":{"$month":"$hireDate"}}}
+
+
+2.4、字符串表达式
+
+"$substr":[expr,startOffset,numToReturn]
+
+"$concat":[expr1,[,expr2...,exprN]]
+
+"$toLower"
+
+"$toUpper"
+
+2.5、逻辑表达式
+
+"$cmp":[expr1,expr2]
+
+"$strcasecmp":[string1,string2]	//区分大小写，只对罗马字符组成的字符串有效
+
+"$eq"/"$ne"/"$gt"/"$gte"/"$lt"/"$lte"	:	[expr1,expr2]
+
+
+"$and":[expr1,[,expr2...,exprN]]
+
+
+"$or":[expr1,[,expr2...,exprN]]
+
+
+"$not":expr
+
+
+"$cond":[booleanExpr,trueExpr,falseExpr]
+
+
+"$ifNull":[expr,replacementExpr]
+
+
+
+3、{"$group":{"_id":"$day"}}
+{"$group":{"_id":"$grade"}}
+{"$group":{"_id":{"state":"$state","city":"$city"}}}
+
+3.1 算术操作符
+{"$group":{"_id":"$country","totalRevenue":{"$sum":"$revenue"}}}
+$avg
+
+3.2 极值操作符
+$max
+$min
+$first
+$last
+
+3.3 数组操作符
+
+$addToSet
+$push
+
+
+
+4、$unwind
+
+{ "_id" : 1, "item" : "ABC", "sizes": [ "S", "M", "L"] }
+{ "_id" : 2, "item" : "EFG", "sizes" : [ ] }
+{ "_id" : 3, "item" : "IJK", "sizes": "M" }
+{ "_id" : 4, "item" : "LMN" }
+{ "_id" : 5, "item" : "XYZ", "sizes" : null }
+
+db.inventory.aggregate( [ { $unwind: "$sizes" } ] )
+
+{ "_id" : 1, "item" : "ABC", "sizes" : "S" }
+{ "_id" : 1, "item" : "ABC", "sizes" : "M" }
+{ "_id" : 1, "item" : "ABC", "sizes" : "L" }
+{ "_id" : 3, "item" : "IJK", "sizes" : "M" }
+
+
+5、$sort
+6、$limit
+7、$skip

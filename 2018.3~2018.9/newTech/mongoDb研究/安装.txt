@@ -1,0 +1,71 @@
+一、安装
+参考 https://blog.csdn.net/qq_27093465/article/details/54574948
+
+
+1、运行安装包
+
+
+2、注意创建带*文件和文件夹
+
+文件夹 PATH 列表
+卷序列号为 5EB4-4D50
+F:.
+│  a.txt
+│  GNU-AGPL-3.0
+│  mongo.conf（*）
+│  MPL-2
+│  README
+│  THIRD-PARTY-NOTICES
+│  
+├─bin
+│      bsondump.exe
+│      mongo.exe
+│      mongod.exe
+│      mongod.pdb
+│      mongodump.exe
+│      mongoexport.exe
+│      mongofiles.exe
+│      mongoimport.exe
+│      mongooplog.exe
+│      mongoperf.exe
+│      mongorestore.exe
+│      mongos.exe
+│      mongos.pdb
+│      mongostat.exe
+│      mongotop.exe
+│      
+├─data（*）
+│          
+└─logs（*）
+        mongo.log（*）
+        
+
+
+2. 创建配置文件mongo.conf，文件内容如下：
+
+#数据库路径  
+dbpath=D:\Mongo\data  
+#日志输出文件路径  
+logpath=D:\Mongo\logs\mongo.log  
+#错误日志采用追加模式  
+logappend=true  
+#启用日志文件，默认启用  
+journal=true  
+#这个选项可以过滤掉一些无用的日志信息，若需要调试使用请设置为false  
+quiet=true  
+#端口号 默认为27017  
+port=27017   
+
+
+二、启动
+//配置启动服务
+mongod --config "F:\Program Files\MongoDB\Server\3.4\mongo.conf" --install --serviceName "MongoDB"
+
+//启动
+net start MongoDB
+//停止
+net stop MongoDB
+
+三、127.0.0.1:27017
+
+能访问则证明安装成功

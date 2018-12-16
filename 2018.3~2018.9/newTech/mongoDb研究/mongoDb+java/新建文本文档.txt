@@ -1,0 +1,51 @@
+参考：https://blog.csdn.net/qq_36760753/article/details/81149077
+
+C:
+cd C:\Users\Administrator\Desktop\Maven
+mvn clean package
+
+cd target
+java -jar mongoDbTest-1.0-SNAPSHOT.jar
+
+===================================================================
+
+一、启用mongoDb
+//启动
+net start MongoDB
+//停止
+net stop MongoDB
+
+127.0.0.1:27017
+
+能访问则证明安装成功
+
+二、在shell下运行
+
+mongo
+db	//查看当前数据库
+use foobar	//切换数据库
+
+1、、查询
+
+
+db.blog.find();	// blog为集合
+
+2、创建
+
+post={"title":"My Blog Post","content":"Here's my blog post.","data":new Date()};
+
+db.blog.insert(post);
+
+
+3、更新
+post={"title":"My Blog Post","content":"Here's my blog post.","data":new Date()};
+post.comments=[];
+db.blog.update({"title":"My Blog Post"},post);//把查出来的记录整个替换掉
+
+
+4、删除
+
+db.blog.remove({"title":"My Blog Post"});
+
+
+===================================================================

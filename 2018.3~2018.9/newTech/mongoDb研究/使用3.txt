@@ -1,0 +1,13 @@
+创建固定集合
+
+//大小为100000字节，最大文档数为100
+db.createCollection("my_collection",{"capped":true,"size":100000,"max":100});
+
+db.runCommand({"convertToCapped":"test","size":10000});
+
+//对固定集合做固定排序
+
+db.my_collection.find().sort({"$natural":-1})
+
+
+
