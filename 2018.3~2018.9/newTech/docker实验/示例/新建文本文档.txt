@@ -1,0 +1,92 @@
+启动：
+
+//1、双击	Docker Quickstart Terminal
+
+2、putty登录：
+
+192.168.99.100
+
+docker/tcuser
+
+
+
+
+
+
+
+
+3、
+
+docker images
+
+docker create -it --name ubuntu_tomcat ubuntu:artful	//创建容器
+
+
+docker ps -a
+
+docker start 0d4d3317efe5
+
+
+docker exec -it ubuntu_tomcat bash
+
+docker exec -it ubuntu_jdk bash
+
+
+
+
+4、使容器支持apt-get
+
+修改
+/etc/resolv.conf
+追加
+nameserver 8.8.8.8
+
+sudo /etc/init.d/networking restart
+
+
+================================================
+mkdir -p /usr/tomcat
+
+apt-get install oracle-java8-installer
+
+apt-get install tomcat7
+
+
+
+
+================================================
+exit
+
+docker stop 87f1eddbc26e
+
+docker rm 0d4d3317efe5
+
+docker rmi e4422b8da209
+
+
+//Docker实践 - 安装Docker并在容器里运行tomcat
+https://blog.csdn.net/massivestars/article/details/54352484
+
+
+================================================
+
+1、使用inspect命令查看详细信息
+docker inspect ubuntu:14.04
+
+
+2、使用history命令查看镜像历史
+docker history ubuntu:14.04
+
+
+
+
+
+
+
+3、基于已有镜像的容器创建镜像
+
+docker commit -m "Added a new file" -a "pwhpwhst" a925cb40b3f0 test:0.1
+
+
+
+

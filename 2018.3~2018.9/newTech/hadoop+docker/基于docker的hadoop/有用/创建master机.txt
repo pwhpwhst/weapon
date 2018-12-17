@@ -1,0 +1,89 @@
+1、在windows下 创建文件夹,并挂载到linux上
+
+
+
+VirtualBox→虚拟机“default”→共享文件夹
+
+共享文件夹路径 
+G:\ubuntu_hadoop_master\data
+
+共享文件夹名称
+/home/ubuntu_hadoop_master/data
+
+自动挂载、固定分配
+
+
+
+4、在master机镜像基础上创建
+
+docker run -d -P --name ubuntu_hadoop_master --hostname=master -v /home/ubuntu_hadoop_master/data:/data -it --net mynetwork --ip 172.18.0.2 pwh_hadoop:1.0.1 
+
+docker exec -it  ubuntu_hadoop_master bash
+
+
+
+
+
+5、配置密钥
+
+// 生成密钥对 begin
+ssh-keygen -t rsa *3
+// 生成密钥对 end
+
+
+vi /etc/ssh/sshd_config
+PubkeyAuthentication yes #启用公钥私钥配对认证方式
+AuthorizedKeysFile /root/.ssh/authorized_keys #公钥文件路径（和上面生成的文件同）
+PermitRootLogin yes #root能使用ssh登录
+BatchMode yes
+StrictHostKeyChecking no
+
+6、在G:\ubuntu_hadoop_master\data 下放入修改好的配置文件
+
+    core-site.xml
+    hadoop-env.sh
+    hdfs-site.xml
+    mapred-site.xml
+    slaves
+    yarn-env.sh
+    yarn-site.xml
+
+7、修改配置文件
+
+cd $HADOOP_HOME/etc/hadoop
+
+cp /data/core-site.xml	.
+cp /data/hadoop-env.sh	.
+cp /data/hdfs-site.xml	.
+cp /data/mapred-site.xml	.
+cp /data/slaves	.
+cp /data/yarn-env.sh	.
+cp /data/yarn-site.xml	.
+
+
+vi /etc/hosts
+
+172.18.0.2 master
+172.18.0.3 slave1
+172.18.0.4 slave2
+172.18.0.5 slave3
+
+cp /etc/hosts /etc/hosts.temp
+
+
+8、启动master的ssh服务
+
+cp /etc/hosts.temp /etc/hosts
+/etc/init.d/ssh start
+
+
+
+
+
+
+
+
+
+
+
+

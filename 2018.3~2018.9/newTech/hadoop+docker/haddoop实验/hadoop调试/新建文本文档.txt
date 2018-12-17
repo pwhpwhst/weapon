@@ -1,0 +1,91 @@
+https://blog.csdn.net/skywalker_only/article/details/25539115
+
+https://blog.csdn.net/qq_36743482/article/details/78154783
+
+windows7+eclipse+hadoop2.5.2环境配置 
+https://www.cnblogs.com/huligong1234/p/4137133.html
+
+Eclipse上Hadoop插件中Run On Hadoop原理[转]
+
+https://www.cnblogs.com/jun1019/p/6274160.html
+
+
+一、eclipse 加入 hadoop-eclipse-plugin-2.6.0.jar
+cp hadoop-eclipse-plugin-2.6.0.jar F:\eclipse-jee-juno-SR2-win32\eclipse-jee-juno-SR2-win32\eclipse\dropins\
+
+
+eclipse→Windows→Perspective→Open Perspective→Other Map/Reduce→设置HADOOP_HOME
+
+
+
+
+二、
+
+F:
+cd %HADOOP_HOME%/sbin
+start-dfs.cmd
+
+三、添加环境变量
+
+HADOOP_USER_NAME	hadoop
+
+四、
+重启 eclipse
+
+New Hadoop Location...
+
+Location name 随便写
+
+Map/Reduce(V2) Master
+host:localhost
+port 9001
+
+DFS Master
+Port 900
+
+User name hadoop
+
+
+五、
+1、新建maven项目，原型请参考
+C:\Users\Administrator\Desktop\newTech\hadoop任务运行样本\HadoopTest
+
+pom.xml要修改一下
+
+去掉原来的hadoop依赖，改为
+
+	<dependencies>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-common</artifactId>
+            <version>2.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+            <version>2.7.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-client</artifactId>
+            <version>2.7.1</version>
+        </dependency>
+	</dependencies>
+
+2、按需修改.classpath文件
+
+3、.project文件请添加 
+
+<nature>org.apache.hadoop.eclipse.Nature</nature>
+
+4、删除.setting文件
+
+5、配置 Run Configurations
+
+
+
+hdfs://localhost:9000/pwh/input
+
+hdfs://localhost:9000/out
+
+6、run on hadoop

@@ -1,0 +1,159 @@
+192.168.99.100
+
+docker/tcuser
+
+一、创建带有 jdk和hadoop的docker 镜像
+
+//创建 /dockerShare，并挂载数据盘
+//将 jdk-8u171-linux-x64.gz 通过winscp放到 /home/docker/hadoopEnvBuild 下
+//将 hadoop-2.8.3.tar.gz 通过winscp放到 /home/docker/hadoopEnvBuild 下
+//将 Dockerfile 放到hadoopEnvBuild下
+
+cd /dockerShare$
+
+
+
+
+
+// docker pull ubuntu:artful	(不用操作)
+
+// docker images	(不用操作)
+
+docker build  -t pwh_hadoop:1.0.0 .
+
+
+
+二、创建docker容器*4	https://www.cnblogs.com/rslai/p/8990929.html
+
+
+===========================================================================
+
+docker network create --subnet=172.18.0.0/16 mynetwork
+
+docker network ls
+
+docker create -it --net mynetwork --ip 172.18.0.2 --name ubuntu_hadoop_master pwh_hadoop:1.0.0
+
+docker create -it --net mynetwork --ip 172.18.0.3 --name ubuntu_hadoop_slaver1 pwh_hadoop:1.0.0
+
+docker create -it --net mynetwork --ip 172.18.0.4 --name ubuntu_hadoop_slaver2 pwh_hadoop:1.0.0
+
+docker create -it --net mynetwork --ip 172.18.0.5 --name ubuntu_hadoop_slaver3 pwh_hadoop:1.0.0
+
+
+
+三、配置容器	(只列出master的配置方法)
+
+docker start ubuntu_hadoop_master
+
+docker exec -it  ubuntu_hadoop_master bash
+
+//安装必要的网络工具 begin
+
+apt-get update
+
+apt-get install net-tools # 安装	ifconfig
+
+apt-get install ssh
+
+apt-get install iputils-ping
+
+apt-get install vim
+
+//安装必要的网络工具 end
+
+//设置root密码 begin
+passwd root
+059030849
+//设置root密码 end
+
+// 生成密钥对 begin
+ssh-keygen -t rsa *3
+// 生成密钥对 end
+
+
+
+vi /etc/hosts
+
+172.18.0.2 master
+172.18.0.3 slave1
+172.18.0.4 slave2
+172.18.0.5 slave3
+
+cp /etc/hosts /etc/hosts.temp
+
+
+//注册公钥到宿主机 end
+
+vi /etc/ssh/sshd_config
+RSAAuthentication yes #启用 RSA 认证
+PubkeyAuthentication yes #启用公钥私钥配对认证方式
+AuthorizedKeysFile /root/.ssh/authorized_keys #公钥文件路径（和上面生成的文件同）
+PermitRootLogin yes #root能使用ssh登录
+
+/etc/init.d/ssh start
+
+sync
+exit
+
+============================================
+四、相互之间传递公钥
+
+//注册公钥到宿主机 begin
+ssh-copy-id -i /root/.ssh/id_rsa.pub master
+ssh-copy-id -i /root/.ssh/id_rsa.pub slaver1
+ssh-copy-id -i /root/.ssh/id_rsa.pub slaver2
+ssh-copy-id -i /root/.ssh/id_rsa.pub slaver3
+
+//注册公钥到宿主机 end
+
+
+=========================================================
+
+六、重新启动(只列出master的配置方法)
+
+
+
+docker start ubuntu_hadoop_master
+docker exec -it ubuntu_hadoop_master bash
+cp /etc/hosts.temp /etc/hosts
+/etc/init.d/ssh start
+
+
+
+
+七、时间同步
+http://dockone.io/question/505
+
+========================================================
+八、将windows的文件夹挂载到宿主机上
+
+VirtualBox→虚拟机“default”→共享文件夹
+
+共享文件夹路径 
+E:\dockerShare
+
+共享文件夹名称
+dockerShare
+
+自动挂载、固定分配
+
+
+docker start  --v /dockerShare:/dockerShare ubuntu_hadoop_master
+				宿主		从机
+
+
+docker run -d -P --name ubuntu_hadoop_master -v /docker_etc /etc
+
+
+
+七、配置hadoop 主机
+
+docker exec -it ubuntu_hadoop_slaver1 bash
+
+cd $HADOOP_HOME
+
+
+将“hadoop配置文件”里的文件覆盖到
+$HADOOP_HOME/etc/hadoop
+

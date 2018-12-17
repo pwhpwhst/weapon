@@ -1,0 +1,83 @@
+192.168.99.100
+
+docker/tcuser
+
+
+
+1、将windows的文件夹挂载到宿主机上,并准备好hadoop和jdk安装包，构建镜像 pwh_hadoop:1.0.0
+
+
+VirtualBox→虚拟机“default”→共享文件夹
+
+共享文件夹路径 
+G:\ubuntu_hadoop_master\data
+
+共享文件夹名称
+/home/ubuntu_hadoop_master/data
+
+自动挂载、固定分配
+
+
+//将 jdk-8u171-linux-x64.gz 放到 /home/ubuntu_hadoop_master/data 下
+//将 hadoop-2.8.3.tar.gz 放到 /home/ubuntu_hadoop_master/data 下
+//将 Dockerfile 放到/home/ubuntu_hadoop_master/data下
+
+
+cd /home/ubuntu_hadoop_master/data
+docker build  -t pwh_hadoop:1.0.0 .
+
+
+
+2、创建自定义网络
+docker network create --subnet=172.18.0.0/16 mynetwork
+
+docker network ls
+
+
+3、进一步配置镜像
+
+docker create -it  --name temp_hadoop pwh_hadoop:1.0.0
+
+
+docker start temp_hadoop
+
+docker exec -it  temp_hadoop bash
+
+
+//安装必要的网络工具 begin
+
+apt-get update
+
+apt-get install net-tools # 安装	ifconfig
+
+apt-get install ssh
+
+apt-get install iputils-ping
+
+apt-get install vim
+
+//安装必要的网络工具 end
+
+
+//设置root密码 begin
+passwd root
+059030849
+//设置root密码 end
+
+
+vi /etc/hosts
+
+172.18.0.2 master
+172.18.0.3 slaver1
+172.18.0.4 slaver2
+172.18.0.5 slaver3
+
+cp /etc/hosts /etc/hosts.temp
+
+
+sync
+exit
+
+
+4、提交镜像
+docker commit temp_hadoop pwh_hadoop:1.0.1

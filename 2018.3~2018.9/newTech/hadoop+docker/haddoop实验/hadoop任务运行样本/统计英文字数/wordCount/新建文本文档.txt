@@ -1,0 +1,57 @@
+
+========================================================
+
+
+1、 启动Hadoop HDFS服务器(管理员)
+
+F:
+cd %HADOOP_HOME%/sbin
+start-dfs.cmd
+start-yarn.cmd
+
+
+http://localhost:8042
+或者
+http://localhost:50070
+
+2、编译任务
+
+cd C:\Users\Administrator\Desktop\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
+mvn clean install
+
+
+
+3、先清理一下文件残渣
+C:
+cd C:\Users\Administrator\Desktop\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
+hdfs dfs -ls /
+hdfs dfs -rm /pwh/input.txt
+hdfs dfs -copyFromLocal input.txt /pwh/input.txt
+hdfs dfs -rm /user/Administrator/out/_SUCCESS
+hdfs dfs -rm /user/Administrator/out/part-r-00000
+hdfs dfs -rmdir /user/Administrator/out
+
+
+4、运行任务
+cd C:\Users\Administrator\Desktop\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount\target
+set HADOOP_CLASSPATH=wordCount-1.0-SNAPSHOT.jar
+hadoop com.pwhTest.wordCount.HadoopTest /pwh/input.txt out
+
+
+5、将计算好的结果取回本地
+hdfs dfs -ls /user/Administrator/out
+cd C:\Users\Administrator\Desktop\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
+hdfs dfs -copyToLocal /user/Administrator/out/_SUCCESS _SUCCESS
+hdfs dfs -copyToLocal /user/Administrator/out/part-r-00000 part-r-00000
+
+
+6、停止Hadoop HDFS服务器(管理员)
+F:
+cd %HADOOP_HOME%/sbin
+stop-yarn.cmd
+stop-dfs.cmd
+
+
+============================================================================
+
+

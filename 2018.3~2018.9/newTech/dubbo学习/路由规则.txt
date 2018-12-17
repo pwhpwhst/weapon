@@ -1,0 +1,22 @@
+RegistryFactory registryFactory = ExtensionLoader.getExtensionLoader(RegistryFactory.class).getAdaptiveExtension();
+Registry registry = registryFactory.getRegistry(URL.valueOf("zookeeper://10.20.153.10:2181"));
+registry.register(URL.valueOf("condition://0.0.0.0/com.foo.BarService?category=routers&dynamic=false&rule=" + URL.encode("host = 10.20.153.10 => host = 10.20.153.11") + "));
+
+
+
+condition:// 表示路由规则的类型，支持条件路由规则和脚本路由规则，可扩展，必填。
+0.0.0.0 表示对所有 IP 地址生效，如果只想对某个 IP 的生效，请填入具体 IP，必填。
+com.foo.BarService 表示只对指定服务生效，必填。
+group=foo 对指定服务的指定group生效，不填表示对未配置group的指定服务生效
+version=1.0对指定服务的指定version生效，不填表示对未配置version的指定服务生效
+category=routers 表示该数据为动态配置类型，必填。
+dynamic=false 表示该数据为持久数据，当注册方退出时，数据依然保存在注册中心，必填。
+enabled=true 覆盖规则是否生效，可不填，缺省生效。
+force=false 当路由结果为空时，是否强制执行，如果不强制执行，路由结果为空的路由规则将自动失效，可不填，缺省为 false。
+runtime=false 是否在每次调用时执行路由规则，否则只在提供者地址列表变更时预先执行并缓存结果，调用时直接从缓存中获取路由结果。如果用了参数路由，必须设为 true，需要注意设置会影响调用的性能，可不填，缺省为 false。
+priority=1 路由规则的优先级，用于排序，优先级越大越靠前执行，可不填，缺省为 0。
+rule=URL.encode("host = 10.20.153.10 => host = 10.20.153.11") 表示路由规则的内容，必填。
+
+
+
+

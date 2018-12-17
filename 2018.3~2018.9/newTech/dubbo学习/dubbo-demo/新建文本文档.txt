@@ -1,0 +1,31 @@
+
+
+编译
+
+cd C:\Users\Administrator\Desktop\dubbo学习\dubbo-demo\dubbo-demo-provider
+
+mvn clean package
+
+
+cd C:\Users\Administrator\Desktop\dubbo学习\dubbo-demo\dubbo-demo-consumer
+
+mvn clean package
+
+
+============================================================
+运行
+
+cd C:\Users\Administrator\Desktop\zookeeper\zookeeper-3.4.13\zookeeper-3.4.13\bin
+
+zkServer.cmd
+
+
+cd C:\Users\Administrator\Desktop\dubbo学习\dubbo-demo\dubbo-demo-provider\target
+java -jar dubbo-demo-2.7.0-SNAPSHOT.jar
+
+
+
+cd C:\Users\Administrator\Desktop\dubbo学习\dubbo-demo\dubbo-demo-consumer\target
+java -jar dubbo-demo-2.7.0-SNAPSHOT.jar
+
+

@@ -1,0 +1,36 @@
+参考
+https://www.cnblogs.com/liubin0509/p/6282858.html
+http://blog.51cto.com/quenlang/1731022
+https://www.cnblogs.com/xwdreamer/p/3448773.html
+
+
+
+1、先创建 ubuntu_jdk 容器
+
+docker start ubuntu_jdk
+docker exec -it ubuntu_jdk bash
+
+
+
+2、（slaver机配置）
+apt-get install ntp
+
+
+vi /etc/hosts
+192.168.1.101 master
+cp /etc/hosts /etc/hosts.temp
+
+vi /etc/ntp.conf
+server master
+
+
+3、（	master	（windows机配置）机配置）
+3.1	安装 ntp server（见windows下的ntp服务器）
+
+
+
+
+
+4、 在slave上执行
+service ntp start
+

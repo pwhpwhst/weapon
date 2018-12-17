@@ -1,0 +1,65 @@
+1、 启动Hadoop HDFS服务器(管理员)
+
+F:
+cd %HADOOP_HOME%/sbin
+start-dfs.cmd
+start-yarn.cmd
+
+
+cd G:\ubuntu_hadoop_master\data
+放入input.txt 文件
+
+
+
+3、先清理一下文件残渣
+
+hdfs dfs -ls /
+hdfs dfs -rm /pwh/input.txt
+hdfs dfs -rm /user/root/out/_SUCCESS
+hdfs dfs -rm /user/root/out/part-r-00000
+hdfs dfs -rmdir /user/root/out
+
+cd /data
+hdfs dfs -mkdir /pwh
+hdfs dfs -ls /
+hdfs dfs -copyFromLocal input.txt /pwh/input.txt
+
+
+
+yarn jar wordCount-1.0-SNAPSHOT.jar /pwh/input.txt out
+
+
+5、将计算好的结果取回本地
+hdfs dfs -ls /user/root/out
+cd /data
+hdfs dfs -copyToLocal /user/root/out/_SUCCESS _SUCCESS
+hdfs dfs -copyToLocal /user/root/out/part-r-00000 part-r-00000
+
+
+6、停止Hadoop HDFS服务器(管理员)
+D:
+cd %HADOOP_HOME%/sbin
+stop-yarn.cmd
+stop-dfs.cmd
+
+
+http://master:8088/proxy/application_1529425356086_0001/
+
+http://master:8088/proxy/application_1529425356086_0002/
+
+hdfs dfs -ls /user/root/out
+
+
+
+
+
+8032
+8030
+8088
+8090
+8031
+8033
+
+
+
+hdfs dfs -copyToLocal /pwh/input.txt hh.txt

@@ -1,0 +1,147 @@
+安装
+参考：
+
+
+https://blog.csdn.net/tina_ttl/article/details/51372604
+
+
+https://blog.csdn.net/JoeChao1003/article/details/77367694
+
+
+http://www.jb51.net/article/115505.htm
+
+http://www.runoob.com/docker/docker-command-manual.html
+//命令大全
+
+http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html
+//来龙去脉
+
+
+启动：
+
+//1、双击	Docker Quickstart Terminal
+
+2、putty登录：
+
+192.168.99.100
+
+docker/tcuser
+
+
+
+==========================================================================
+
+
+使用方法：	http://www.runoob.com/docker/docker-image-usage.html
+
+https://blog.csdn.net/gobitan/article/details/51040087
+
+
+一、列出镜像列表
+
+docker images
+
+
+docker run ubuntu:15.10 /bin/echo "Hello world"
+
+
+
+
+
+docker与hadoop
+https://blog.csdn.net/xu470438000/article/details/50512442
+
+
+=====================================================================
+几张图帮你理解 docker 基本原理及快速入门
+https://www.cnblogs.com/SzeCheng/p/6822905.html
+镜像(image)
+仓库(repository)
+容器(container)
+
+
+
+获取镜像
+docker pull centos:centos6
+//	https://hub.docker.com/	查看可以下什么镜像
+docker pull ubuntu:artful
+
+
+	
+查看镜像列表#
+docker images
+
+利用 Dockerfile 来创建镜像	
+
+
+https://www.cnblogs.com/SzeCheng/p/6822905.html
+	↓
+https://hub.docker.com/r/library/ubuntu/tags/
+
+
+docker build -t hainiu/httpd:1.0 .
+
+参考：http://www.runoob.com/docker/docker-install-tomcat.html
+
+https://www.cnblogs.com/boshen-hzb/p/6400272.html
+
+创建容器
+docker create <image-id>
+docker create -it --name centos6_container centos:centos6
+
+
+启动容器
+docker start <container-id>
+
+
+
+进入容器
+docker exec <container-id>
+docker exec -it ubuntu_hadoop bash
+
+
+停止容器#
+docker stop <container-id>
+
+删除容器#
+docker rm <container-id>
+
+运行容器
+docker run <image-id>
+
+
+
+查看容器列表
+docker ps -a
+
+
+删除镜像
+docker rmi <image-id>
+
+
+
+
+提交容器成镜像
+docker commit ubuntu_hadoop_slaver3 hadoop_slave:ubuntu
+
+
+docker commit ubuntu_hadoop_master hadoop_master:ubuntu
+
+
+
+
+Docker 限制容器对内存的使用详解
+http://www.jb51.net/article/120333.htm
+
+
+
+
+
+dockerhub的使用
+http://www.jb51.net/article/101298.htm
+
+
+
+
+
+

@@ -1,0 +1,36 @@
+二、创建docker容器&启动容器&配置ip*3	https://www.cnblogs.com/rslai/p/8990929.html
+
+
+===========================================================================
+
+docker network create --subnet=172.18.0.0/16 mynetwork
+
+docker network ls
+
+docker create -it --net mynetwork --ip 172.18.0.2 --name ubuntu_hadoop_slaver1 pwh_hadoop:1.0.0
+
+docker start ubuntu_hadoop_slaver1
+
+docker exec -it  ubuntu_hadoop_slaver1 bash
+
+apt-get update
+
+apt-get install net-tools # 安装ifconfig
+
+ifconfig
+
+sudo iptables -t nat -A  DOCKER -p tcp --dport 8001 -j DNAT --to-destination 172.17.0.2:8000
+
+//Oracle VM VirtualBox→“目标虚拟机”→“设置”→“网络”→“高级”→端口转发
+//子系统端口是指 192.168.99.100的端口，
+===========================================================================
+
+
+
+失败原因：
+
+用了自定义网络后，就不能做端口转发
+
+
+
+

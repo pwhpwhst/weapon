@@ -1,0 +1,83 @@
+还需要解决的问题
+1、如何合理关闭？
+2、数据是否持久？
+3、必要服务查看（O）
+
+一、合理关闭
+
+docker exec -it  ubuntu_hadoop_master bash
+cd $HADOOP_HOME
+sbin/mr-jobhistory-daemon.sh stop historyserver
+sbin/stop-yarn.sh
+sbin/stop-dfs.sh
+sync
+exit
+docker stop ubuntu_hadoop_master
+
+docker exec -it  ubuntu_hadoop_slave1 bash
+sync
+exit
+docker stop ubuntu_hadoop_slave1
+
+docker exec -it  ubuntu_hadoop_slave2 bash
+sync
+exit
+docker stop ubuntu_hadoop_slave2
+
+docker exec -it  ubuntu_hadoop_slave3 bash
+sync
+exit
+docker stop ubuntu_hadoop_slave3
+
+sync
+
+
+正常关闭系统
+
+==============================================================================================
+
+三、实现查看hadoop内部情况
+
+启用网卡转发功能
+echo 1 > /proc/sys/net/ipv4/ip_forward
+
+
+
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 8088 -j DNAT --to-destination 172.18.0.2:8088
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 8042 -j DNAT --to-destination 172.18.0.2:8042
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 50070 -j DNAT --to-destination 172.18.0.2:50070
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 50075 -j DNAT --to-destination 172.18.0.2:50075
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 50090 -j DNAT --to-destination 172.18.0.2:50090
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 50105 -j DNAT --to-destination 172.18.0.2:50105
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 50030 -j DNAT --to-destination 172.18.0.2:50030
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 50060 -j DNAT --to-destination 172.18.0.2:50060
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 60010 -j DNAT --to-destination 172.18.0.2:60010
+sudo iptables -t nat -A PREROUTING -p tcp -m tcp --dport 60030 -j DNAT --to-destination 172.18.0.2:60030
+
+
+
+
+
+
+windows端口映射配置
+
+//Oracle VM VirtualBox→“目标虚拟机”→“设置”→“网络”→“高级”→端口转发
+//子系统端口是指 192.168.99.100的端口，
+
+127.0.0.1 8088  8088
+127.0.0.1 8042  8042
+127.0.0.1 50070  50070
+127.0.0.1 50075  50075
+127.0.0.1 50090  50090
+127.0.0.1 50105  50105
+127.0.0.1 50030  50030
+127.0.0.1 50060  50060
+127.0.0.1 60010  60010
+127.0.0.1 60030  60030
+
+
+不用重启系统
+
+
+==============================================================================================
+

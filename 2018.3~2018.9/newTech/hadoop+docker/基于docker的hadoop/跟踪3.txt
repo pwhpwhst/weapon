@@ -1,0 +1,148 @@
+一、配置java
+1、安装java8
+
+并且配置环境变量
+
+JAVA_HOME	F:\Java\jdk1.8.0_171
+PATH	%JAVA_HOME%\bin;
+CLASSPATH	%JAVA_HOME%\lib\dt.jar;%JAVA_HOME%\lib\tools.jar	
+
+
+二、配置ssh无密码登录
+
+1、ssh-keygen -t rsa
+连按3次
+
+2、获取机器名
+WIN+R
+sysdm.cpl
+
+SKY-20180519JOU
+
+
+3、设置hosts文件
+
+C:\Windows\System32\drivers\etc\hosts
+
+127.0.0.1     master
+
+ipconfig /flushdns	刷新所有 dns内容
+
+
+
+4、导入公钥到认证文件：
+ssh-copy-id -i /root/.ssh/id_rsa.pub slave
+
+5、验证：
+ssh master
+exit
+
+
+三、配置NTP
+apt-get install ntp
+
+master节点：
+
+/etc/ntp.conf
+
+
+restrict 192.168.71.221 mask 255.255.255.250 nomodify notrap		#这一行的含义是授权192.168.71.221网段上的所有机器可以从这台机器上查询和同步时间。
+
+
+server 127.127.1.0 # 以自身为时间源
+fudge 127.127.1.0 stratum 10 
+
+
+slave节点：
+
+server master
+
+
+四、配置hadoop集群
+
+tar -zxf hadoop-3.0.1.tar.gz -C /usr/local
+
+将“hadoop配置文件”里的文件覆盖到
+$HADOOP_HOME/etc/hadoop
+
+伪分布模式：https://blog.csdn.net/liufunan/article/details/52205653
+
+
+五、将配置好的Hadoop复制到其他节点
+
+
+六、增加环境变量
+2、vi /etc/profile
+
+HADOOP_HOME=/usr/local/hadoop-3.0.1
+export HADOOP_HOME
+
+source /etc/profile
+
+七、格式化NameNode
+$HADOOP_HOME/bin/hdfs namenode -format
+
+八、启动集群
+cd $HADOOP_HOME
+sbin/start-dfs.sh
+sbin/start-yarn.sh
+sbin/mr-jobhistory-daemon.sh start historyserver
+
+
+
+(
+$ vim sbin/start-dfs.sh 
+$ vim sbin/stop-dfs.sh 
+在顶部空白处添加内容： 
+HDFS_DATANODE_USER=root 
+HADOOP_SECURE_DN_USER=hdfs 
+HDFS_NAMENODE_USER=root 
+HDFS_SECONDARYNAMENODE_USER=root
+)
+
+
+
+(
+YARN_RESOURCEMANAGER_USER=root
+HADOOP_SECURE_DN_USER=yarn
+YARN_NODEMANAGER_USER=root
+)
+
+
+九、关闭集群
+
+cd $HADOOP_HOME
+sbin/stop-yarn.sh
+sbin/stop-dfs.sh
+sbin/mr-jobhistory-daemon.sh stop historyserver
+
+
+
+
+十、阿里云的内网访问
+https://blog.csdn.net/justinytsoft/article/details/73740476
+
+======================================================================
+
+windows 下安装hadoop
+https://www.cnblogs.com/wuxun1997/p/6847950.html
+
+
+
+http://www.cnblogs.com/felixzh/p/4992178.html
+
+
+
+=====================================================================
+
+
+http://tashan10.com/yong-dockerda-jian-hadoopwei-fen-bu-shi-ji-qun/
+
+
+
+
+
+
+
+
+

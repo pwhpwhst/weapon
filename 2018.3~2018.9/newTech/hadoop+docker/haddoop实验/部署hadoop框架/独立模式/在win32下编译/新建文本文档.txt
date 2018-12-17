@@ -1,0 +1,150 @@
+参考： https://blog.csdn.net/xrui_java7/article/details/70231221
+
+https://www.cnblogs.com/smartbooks/p/3694760.html	fff
+
+https://www.cnblogs.com/smartbooks/p/3694760.html
+
+https://blog.csdn.net/zhaolimin6666/article/details/52680456
+
+http://mirrors.tuna.tsinghua.edu.cn/apache/hadoop/common
+
+
+https://github.com/steveloughran/winutils/tree/c1f18d7006ca151d9df9b49c1d0c254339c4e501
+
+
+
+
+
+hadoop namenode -format //格式化hdfs
+cd xx/hadoop/sbin //进入到sbin目录下
+start-dfs.cmd   //先启动dfs  
+start-yarn.cmd  //再启动yarn  
+//或者
+//start-all.cmd //相当于以上的两条命令
+
+
+
+
+D:\hadoop-2.8.3\hadoop-2.8.3\bin
+
+
+start-all.cmd
+
+
+
+D:\cygwin\bin;D:\apache-maven-3.3.9\bin;D:\protoc-3.0.0-win32;
+
+
+http://go.microsoft.com/fwlink/?LinkID=187668
+
+
+C:\Program Files\Common Files\Oracle\Java\javapath;C:\Perl\site\bin;C:\Perl\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;D:\jdk-7u67-windows-i586\bin;D:\jdk-7u67-windows-i586\jre\bin;;C:\Program Files\NVIDIA Corporation\PhysX\Common;%M2_HOME%\bin;%JAVA_HOME%\bin;D:\mysql-5.6.24-win32\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Perl\bin;C:\Program Files\NASM;%CATALINA_HOME%\common\lib\servlet-api.jar;D:\MinGW\lib;D:\MinGW\bin;D:\Program Files\CMake\bin;D:\hadoop-2.8.3\hadoop-2.8.3\bin;D:\cygwin\bin;D:\apache-maven-3.3.9\bin;D:\protoc-2.5.0-win32;C:\Program Files\dotnet\;C:\Program Files\Microsoft Windows Performance Toolkit\
+D:\protoc-2.5.0-win32
+
+
+cd D:\hadoop-2.8.3-src\hadoop-2.8.3-src
+mvn package -Pdist,native-win -DskipTests -Dtar
+
+
+
+
+https://svn.apache.org/repos/asf/hadoop/common/trunk/BUILDING.txt
+
+
+
+
+C:\Program Files\Common Files\Oracle\Java\javapath;C:\Perl\site\bin;C:\Perl\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\ATI Technologies\ATI.ACE\Core-Static;D:\jdk-7u67-windows-i586\bin;D:\jdk-7u67-windows-i586\jre\bin;;C:\Program Files\NVIDIA Corporation\PhysX\Common;%M2_HOME%\bin;%JAVA_HOME%\bin;D:\mysql-5.6.24-win32\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Perl\bin;C:\Program Files\NASM;%CATALINA_HOME%\common\lib\servlet-api.jar;D:\MinGW\lib;D:\MinGW\bin;D:\Program Files\CMake\bin;D:\hadoop-2.8.3\hadoop-2.8.3\bin;D:\cygwin\bin;D:\apache-maven-3.3.9\bin;D:\protoc-2.5.0-win32;C:\Program Files\dotnet\;C:\Program Files\Microsoft Windows Performance Toolkit\;C:\Windows\Microsoft.NET\Framework\v2.0.50727
+
+
+The builds tools for Windows7.1SDK (Platform Toolset = 'Windows7.1SDK')cannot be found
+
+=================================================================
+
+1、你的windows7一定得正版
+2、安装.net4、windows SDK7
+3、接下来参考：https://www.cnblogs.com/smartbooks/p/3694760.html
+3.1
+	1.Windows 7 32 Bit OS(你懂的)
+
+	2.Apache Hadoop 2.2.0-bin(hadoop-2.2.0.tar.gz)
+
+	3.Apache Hadoop 2.2.0-src(hadoop-2.2.0-src.tar.gz)
+
+	3.JDK 1.7
+
+	4.Maven 3.2.1(apache-maven-3.2.1-bin.zip)
+
+	5.Protocol Buffers 2.5.0
+
+	6.Unix command-line tool Cygwin(Setup-x86.exe)
+
+	7.Microsoft Windows SDK v7.1
+
+3.2
+	JAVA_HOME=C:\Java\jdk1.7.0_45
+
+	Platform=Win32
+
+	M2_HOME=C:\apache-maven-3.2.1
+
+	Path=;C:\cygwin\bin;C:\apache-maven-3.2.1\bin;C:\protoc-2.5.0-win32;
+
+3.3 下载 hadoop-2.2.0-src.tar.gz
+	修改配置文件后用一下命令编译：
+
+	 打开“开始”--“所有程序”--“Microsoft Windows SDK v7.1”--“Windows SDK 7.1 Command Prompt”，进入VC++的命令行工具（一定要从此处进入方可顺利编译Hadoop源代码，记着是以管理员身份运行）。命令如下：
+
+	切换至源代码根目录，执行编译命令：mvn package -Pdist,native-win -DskipTests -Dtar
+
+3.4 Hadoop编译成功后，程序集输出在： hadoop-common-project\hadoop-common\target\hadoop-common-2.2.0目录下。
+
+3.4.1.解压缩”hadoop-2.2.0.tar.gz“至D盘如下目录：D:\hadoop-common-2.2.0
+
+3.4.2.合并替换发行版本的64动态链接库：主要是是以下几个文件(bin\hadoop.dll、bin\hadoop.exp、bin\hadoop.lib、bin\hadoop.pdb、bin\libwinutils.lib、bin\winutils.exe、bin\winutils.pdb)，从编译成功后的输出目录Copy到Apache发行版形同目录下替换即可。
+
+3.4.3.修改配置文件
+
+
+
+3.5 配置Hadoop Hdfs运行环境变量(重要)
+
+	HADOOP_HOME=D:\hadoop-2.8.3\hadoop-2.8.3
+
+	Path=D:\hadoop-2.8.3\hadoop-2.8.3\bin
+
+3.6 格式化hdfs文件系统(管理员)
+
+cd %HADOOP_HOME%
+
+hadoop namenode -format
+
+果不出意外，hdfs文件系统将格式化成功，你会在F:\hadoop-bin\data看到已经生成了namenode文件夹。
+
+3.7 启动Hadoop HDFS服务器(管理员)
+
+F:
+cd %HADOOP_HOME%/sbin
+
+start-all.cmd
+
+http://localhost:8042
+或者
+http://localhost:50070
+
+3.8.停止Hadoop HDFS服务器(管理员)
+
+D:
+cd %HADOOP_HOME%/sbin
+
+stop-all.cmd
+
+
+
+
+
+
+
+
+
+
+

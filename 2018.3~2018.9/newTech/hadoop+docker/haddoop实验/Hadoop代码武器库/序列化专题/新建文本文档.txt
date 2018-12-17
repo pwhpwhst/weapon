@@ -1,0 +1,41 @@
+常规用法：
+
+IntWritable writable = new IntWritable();
+writable.set(163);
+
+或
+IntWritable writable = new IntWritable(163);
+
+
+比较器：
+
+IntWritable w1 =new IntWritable(163);
+IntWritable w2 =new IntWritable(67);
+RawComparator<IntWritable> comparator = WritableComparator.get(IntWritable.class);
+comparator.compare(w1,w2);
+
+=========================================================================================
+
+不同类型的序列化器
+
+IntWritable
+Text
+BytesWritable	
+
+BytesWritable b = new BytesWritable(new byte[]{3,5});
+
+NullWritable
+
+ArrayWritable writable = new ArrayWritable(Text.class); //一维数组
+
+TwoDArrayWritable writable = new TwoDArrayWritable(Text.class); //二维数组
+
+ArrayPrimitiveWritable
+
+SortedMapWritable
+MapWritable dest =new MapWritable();	
+dest.put(new IntWritable(1),new Text("cat"));
+dest.put(new VIntWritable(2),new LongWritable(163));
+
+
+

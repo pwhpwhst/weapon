@@ -1,0 +1,34 @@
+
+
+		String uri="hdfs://localhost:9000/pwh/input.txt";
+		Configuration conf = new Configuration();
+		FileSystem fs= FileSystem.get(URI.create(uri),conf);
+		InputStream in = null;
+		try {
+			in = fs.open(new Path(uri));	
+			IOUtils.copyBytes(in, System.out, 4096,false);
+		}finally {
+			IOUtils.closeStream(in);
+		}
+
+=================================================================================
+
+
+	static {
+		URL.setURLStreamHandlerFactory(new FsUrlStreamHandlerFactory());
+	}
+	
+	
+	public static void main(String[] args) throws MalformedURLException, IOException{
+		
+		InputStream in = null;
+		try {
+			in = new URL("hdfs://localhost:9000/pwh/input.txt").openStream();
+			System.out.print(in.toString());
+			in.seek(10);//定位到数据流的特定位置
+			IOUtils.copyBytes(in, System.out, 4096,false);
+		}finally {
+			IOUtils.closeStream(in);
+		}
+		
+	}

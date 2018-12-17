@@ -1,0 +1,165 @@
+
+
+一、去阿里云购买机器（轻量应用服务器）
+到期时间：2018-04-27 00:00:00
+
+47.106.77.129	22
+root/059030849
+
+
+临时提高配置的方法
+https://help.aliyun.com/document_detail/61433.html?spm=a2c4g.11186623.2.3.LlBPtW
+
+
+
+一、配置java
+1、将java包移入/usr/local,并解压：
+mv jdk-8u161-linux-x64.gz /usr/local
+cd /usr/local
+tar -xvf jdk-8u161-linux-x64.gz
+
+2、vi /etc/profile
+
+JAVA_HOME=/usr/local/jdk1.7.0_09
+PATH=$JAVA_HOME/bin:$PATH
+CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
+export JAVA_HOME
+export PATH
+export CLASSPATH
+
+
+source /etc/profile
+
+
+3、 java -version
+
+二、配置ssh无密码登录
+
+1、ssh-keygen -t rsa
+连按3次
+
+2、获取机器名
+hostname
+iZwz93oux35an932xcn6zkZ
+
+3、设置hosts文件
+
+172.16.252.111 iZwz93oux35an932xcn6zkZ master
+172.16.252.111 iZwz93oux35an932xcn6zkZ slave
+
+4、导入公钥到认证文件：
+ssh-copy-id -i /root/.ssh/id_rsa.pub slave
+
+5、验证：
+ssh master
+exit
+
+
+三、配置NTP
+apt-get install ntp
+
+master节点：
+
+/etc/ntp.conf
+
+
+restrict 192.168.71.221 mask 255.255.255.250 nomodify notrap		#这一行的含义是授权192.168.71.221网段上的所有机器可以从这台机器上查询和同步时间。
+
+
+server 127.127.1.0 # 以自身为时间源
+fudge 127.127.1.0 stratum 10 
+
+
+slave节点：
+
+server master
+
+
+四、配置hadoop集群
+
+tar -zxf hadoop-3.0.1.tar.gz -C /usr/local
+
+将“hadoop配置文件”里的文件覆盖到
+$HADOOP_HOME/etc/hadoop
+
+伪分布模式：https://blog.csdn.net/liufunan/article/details/52205653
+
+
+五、将配置好的Hadoop复制到其他节点
+
+
+六、增加环境变量
+2、vi /etc/profile
+
+HADOOP_HOME=/usr/local/hadoop-3.0.1
+export HADOOP_HOME
+
+source /etc/profile
+
+七、格式化NameNode
+$HADOOP_HOME/bin/hdfs namenode -format
+
+八、启动集群
+cd $HADOOP_HOME
+sbin/start-dfs.sh
+sbin/start-yarn.sh
+sbin/mr-jobhistory-daemon.sh start historyserver
+
+
+
+(
+$ vim sbin/start-dfs.sh 
+$ vim sbin/stop-dfs.sh 
+在顶部空白处添加内容： 
+HDFS_DATANODE_USER=root 
+HADOOP_SECURE_DN_USER=hdfs 
+HDFS_NAMENODE_USER=root 
+HDFS_SECONDARYNAMENODE_USER=root
+)
+
+
+
+(
+YARN_RESOURCEMANAGER_USER=root
+HADOOP_SECURE_DN_USER=yarn
+YARN_NODEMANAGER_USER=root
+)
+
+
+九、关闭集群
+
+cd $HADOOP_HOME
+sbin/stop-yarn.sh
+sbin/stop-dfs.sh
+sbin/mr-jobhistory-daemon.sh stop historyserver
+
+
+
+
+十、阿里云的内网访问
+https://blog.csdn.net/justinytsoft/article/details/73740476
+
+======================================================================
+
+windows 下安装hadoop
+https://www.cnblogs.com/wuxun1997/p/6847950.html
+
+
+
+http://www.cnblogs.com/felixzh/p/4992178.html
+
+
+
+=====================================================================
+
+
+http://tashan10.com/yong-dockerda-jian-hadoopwei-fen-bu-shi-ji-qun/
+
+https://www.jb51.net/article/109698.htm
+
+
+
+
+
+
+

@@ -1,0 +1,67 @@
+一、将本地文件复制到hadoop文件系统
+
+		String localSrc = "C:\\Users\\Administrator\\Desktop\\pwh.txt";
+		String dst="hdfs://localhost:9000/pwh/out/pwh.txt";
+		
+		InputStream in =new BufferedInputStream(new FileInputStream(localSrc));
+		
+		Configuration conf = new Configuration();
+		FileSystem fs = FileSystem.get(URI.create(dst),conf);
+		OutputStream out = fs.create(new Path(dst), new Progressable(){
+			public void progress() {
+			//每次将64kb数据包写入datanode管线后打印一个时间点来显示整个运行过程
+				System.out.print(".");
+			}
+		});
+		
+		IOUtils.copyBytes(in, out, 4096,true);
+
+二、创建目录
+String dst="hdfs://localhost:9000/pwh/out";
+FileSystem fs = FileSystem.get(URI.create(dst),conf);
+
+fs.mkdirs(new Path(dst));
+
+三、删除文件
+
+fs.delete(new Path(dst),true);
+
+四、获取文件状态信息
+String dst="hdfs://localhost:9000/pwh/out/pwh.txt";
+FileStatus a=fs.getFileStatus(new Path(dst));
+
+FileStatus{path=hdfs://localhost:9000/pwh/out/pwh.txt; isDirectory=false; length=0; replication=3;
+blocksize=134217728; modification_time=1530555579947; access_time=1530555579947;
+owner=hadoop; group=supergroup; permission=rw-r--r--; isSymlink=false}
+
+判断文件是否存在
+fs.exists(new Path(dst))
+
+
+
+String dst="hdfs://localhost:9000/pwh/out";
+
+
+获取一组文件的状态信息
+String dst="hdfs://localhost:9000/pwh/out";
+FileStatus[] a=fs.listStatus(new Path(dst));
+
+[FileStatus{path=hdfs://localhost:9000/pwh/out/pwh.txt; 
+isDirectory=false; length=0; replication=3; blocksize=134217728; modification_time=1530555767872;
+access_time=1530555767872; owner=hadoop; group=supergroup; permission=rw-r--r--; isSymlink=false}]
+
+
+特别：
+public class RegexExcludeFilter implements PathFilter{
+	private final String regex;
+
+	public RegexExcludeFilter(String regex){
+		this.regex=regex;
+	}
+
+	public boolean accept(Path path){
+		return !path.toString.matches(regex);
+	}
+}
+
+FileStatus[] a=fs.globStatus(new Path("/2007/*/*"),new RegexExcludeFilter("^.*/2007/12/31$"));

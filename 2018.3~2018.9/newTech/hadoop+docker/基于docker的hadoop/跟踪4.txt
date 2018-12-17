@@ -1,0 +1,73 @@
+https://blog.csdn.net/clypm/article/details/79351060
+
+一、先执行跟踪2 的步骤，初步实现基于ssh的master和slaver的通信
+
+
+
+2、对 master机和slaver机制作镜像
+
+
+docker commit ubuntu_hadoop_master hadoop_master:ubuntu
+
+
+3、在windows下 创建文件夹,并挂载到linux上
+
+
+
+VirtualBox→虚拟机“default”→共享文件夹
+
+共享文件夹路径 
+G:\ubuntu_hadoop_master\data
+
+共享文件夹名称
+/home/ubuntu_hadoop_master/data
+
+自动挂载、固定分配
+
+
+4、在master机镜像基础上创建
+
+docker run -d -P --name ubuntu_hadoop_master -v /home/ubuntu_hadoop_master/data:/data -it --net mynetwork --ip 172.18.0.2 hadoop_master:ubuntu
+
+docker exec -it  ubuntu_hadoop_master bash
+
+
+5、在G:\ubuntu_hadoop_master\data 下放入修改好的配置文件
+
+core-site.xml
+hdfs-site.xml
+hadoop-env.sh
+
+
+
+6、修改配置文件
+
+cd $HADOOP_HOME/etc/hadoop
+cp /data/core-site.xml	.
+cp /data/hdfs-site.xml	.
+cp /data/hadoop-env.sh	.
+
+
+
+7、启动master的ssh服务
+
+cp /etc/hosts.temp /etc/hosts
+/etc/init.d/ssh start
+
+
+4、 格式化hdfs文件系统
+
+cd $HADOOP_HOME
+
+hadoop namenode -format
+
+
+cd $HADOOP_HOME
+
+sbin/start-dfs.sh
+
+
+sbin/stop-dfs.sh
+
+
+

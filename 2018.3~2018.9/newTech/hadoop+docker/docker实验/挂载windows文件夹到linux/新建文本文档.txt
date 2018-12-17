@@ -1,0 +1,12 @@
+参考：https://blog.csdn.net/u014149394/article/details/79162283
+
+
+VirtualBox→虚拟机“default”→共享文件夹
+
+共享文件夹路径 
+E:\dockerShare
+
+共享文件夹名称
+dockerShare
+
+自动挂载、固定分配
