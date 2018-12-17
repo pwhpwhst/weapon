@@ -1,0 +1,70 @@
+
+cd C:\Users\pwh\Desktop\HadoopTest
+mvn clean install
+
+运行：
+cd C:\Users\pwh\Desktop\HadoopTest\target
+java -jar hadoopTest-1.0-SNAPSHOT.jar  D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\hadoop_docker\haddoop实验\hadoop任务运行样本\HadoopTest\input.txt  D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\hadoop_docker\haddoop实验\hadoop任务运行样本\HadoopTest\output.txt
+
+
+
+========================================================
+
+
+1、 启动Hadoop HDFS服务器(管理员)
+
+F:
+cd %HADOOP_HOME%/sbin
+start-dfs.cmd
+start-yarn.cmd
+
+
+http://localhost:8042
+或者
+http://localhost:50070
+
+2、编译任务
+
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\hadoop_docker\haddoop实验\hadoop任务运行样本\HadoopTest
+mvn clean install
+
+
+
+3、先清理一下文件残渣
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\hadoop_docker\haddoop实验\hadoop任务运行样本\HadoopTest
+hdfs dfs -ls /
+hdfs dfs -rm /pwh/input.txt
+hdfs dfs -copyFromLocal input.txt /pwh/input.txt
+hdfs dfs -rm /user/hadoop/out/_SUCCESS
+hdfs dfs -rm /user/hadoop/out/part-r-00000
+hdfs dfs -rmdir /user/hadoop/out
+
+
+
+4、运行任务
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\hadoop_docker\haddoop实验\hadoop任务运行样本\HadoopTest
+cd target
+set HADOOP_CLASSPATH=hadoopTest-1.0-SNAPSHOT.jar
+hadoop com.pwhTest.hadoopTest.HadoopTest /pwh/input.txt out //在linux上管用
+java -jar hadoopTest-1.0-SNAPSHOT.jar /pwh/input.txt out
+
+5、将计算好的结果取回本地
+hdfs dfs -ls /user/hadoop/out
+cd C:\Users\pwh\Desktop\haddoop实验\hadoop任务运行样本\HadoopTest
+hdfs dfs -copyToLocal /user/pwh/out/_SUCCESS _SUCCESS
+hdfs dfs -copyToLocal /user/pwh/out/part-r-00000 part-r-00000
+
+
+6、停止Hadoop HDFS服务器(管理员)
+D:
+cd %HADOOP_HOME%/sbin
+stop-yarn.cmd
+stop-dfs.cmd
+
+
+============================================================================
+
+

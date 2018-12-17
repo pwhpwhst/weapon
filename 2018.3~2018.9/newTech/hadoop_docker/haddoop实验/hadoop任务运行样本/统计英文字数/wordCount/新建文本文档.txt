@@ -15,25 +15,28 @@ http://localhost:8042
 http://localhost:50070
 
 2、编译任务
-
-cd C:\Users\Administrator\Desktop\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\hadoop_docker\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
 mvn clean install
 
 
 
 3、先清理一下文件残渣
-C:
-cd C:\Users\Administrator\Desktop\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\hadoop_docker\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
 hdfs dfs -ls /
 hdfs dfs -rm /pwh/input.txt
 hdfs dfs -copyFromLocal input.txt /pwh/input.txt
-hdfs dfs -rm /user/Administrator/out/_SUCCESS
-hdfs dfs -rm /user/Administrator/out/part-r-00000
-hdfs dfs -rmdir /user/Administrator/out
+hdfs dfs -rm /user/hadoop/out/_SUCCESS
+hdfs dfs -rm /user/hadoop/out/part-r-00000
+hdfs dfs -rmdir /user/hadoop/out
 
+hdfs dfs -rmdir /user/hadoop/out
 
 4、运行任务
-cd C:\Users\Administrator\Desktop\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount\target
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\hadoop_docker\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
+cd target
 set HADOOP_CLASSPATH=wordCount-1.0-SNAPSHOT.jar
 hadoop com.pwhTest.wordCount.HadoopTest /pwh/input.txt out
 
@@ -41,8 +44,8 @@ hadoop com.pwhTest.wordCount.HadoopTest /pwh/input.txt out
 5、将计算好的结果取回本地
 hdfs dfs -ls /user/Administrator/out
 cd C:\Users\Administrator\Desktop\haddoop实验\hadoop任务运行样本\统计英文字数\wordCount
-hdfs dfs -copyToLocal /user/Administrator/out/_SUCCESS _SUCCESS
-hdfs dfs -copyToLocal /user/Administrator/out/part-r-00000 part-r-00000
+hdfs dfs -copyToLocal /user/hadoop/out/_SUCCESS _SUCCESS
+hdfs dfs -copyToLocal /user/hadoop/out/part-r-00000 part-r-00000
 
 
 6、停止Hadoop HDFS服务器(管理员)
