@@ -1,0 +1,50 @@
+参考：	https://www.cnblogs.com/linjunwei2017/p/9238083.html
+
+
+
+1、启动eureka以及两个URL地址
+
+D:
+cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring-cloud-Netflix\eureka
+mvn spring-boot:run
+
+http://localhost:8761/
+
+D:
+cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring-cloud-Netflix\springboot\demo
+mvn clean package
+cd target
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+http://localhost:8083/hello
+
+
+D:
+cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring-cloud-Netflix\springboot2\demo
+mvn clean package
+cd target
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+http://localhost:8081/hello
+
+=========================================================
+
+C:
+cd C:\Users\pan.weihao\Desktop\spring-gate-way\springboot\demo
+mvn clean package
+cd target
+
+java -jar springCloudGateway-0.0.1-SNAPSHOT.jar
+
+http://localhost:8080
+
+
+http://localhost:8080/a/hello
+
+http://localhost:8083/hello
+
+
+http://localhost:8080/b/hello
+
+http://localhost:8081/hello
+
