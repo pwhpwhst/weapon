@@ -1,0 +1,66 @@
+参考：https://www.cnblogs.com/EasonJim/p/7613734.html
+
+
+启动zookeeper
+D:
+cd D:\zookeeper-3.4.13\zookeeper-3.4.13\bin
+zkServer.cmd
+
+
+客户端连接
+D:
+cd D:\zookeeper-3.4.13\zookeeper-3.4.13\bin
+zkCli.cmd –server 127.0.0.1:2181
+
+ls /
+
+=============================================================================
+
+启动provider端
+C:
+cd C:\Users\pan.weihao\Desktop\spring-cloud-zookeeper\zookeeperservice
+mvn clean package
+
+cd target
+java -jar zookeeperservice-0.0.1-SNAPSHOT.jar
+
+
+启动后,执行
+
+zkCli.cmd –server 127.0.0.1:2181
+ls /
+
+会发现新节点
+
+=============================================================================
+
+启动consumer端
+
+C:
+cd C:\Users\pan.weihao\Desktop\spring-cloud-zookeeper\zookeeperclient
+mvn clean package
+
+
+cd target
+java -jar zookeeperclient-0.0.1-SNAPSHOT.jar
+
+
+
+我觉得你其实挺厉害的，摊上最近这些事还能波澜不惊。。。
+
+
+大数据方面的知识你知道多少，说实话我在这方面没什么经验。。。有没有什么书推荐一下
+
+提前做下准备也好。。。
+
+
+
+
+
+
+
+
+
+
+
+
