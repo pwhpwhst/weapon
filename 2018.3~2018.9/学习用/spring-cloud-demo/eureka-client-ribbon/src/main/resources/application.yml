@@ -1,0 +1,13 @@
+server:
+  port: 8820
+
+spring:
+  application:
+    name: consumer-ribbon
+
+eureka:
+  eureka:
+    instance:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8800/eureka/

@@ -1,0 +1,17 @@
+server:
+  port: 8810
+
+spring:
+  application:
+    name: client-zookeeper
+  cloud:
+    zookeeper:
+      discovery:
+        register: false
+        root: /spring-cloud-service
+      connect-string: localhost:2181
+      dependencies:
+        - service-zookeeper:
+          required: true
+          path: /service-zookeeper
+          loadBalancerType: ROUND_ROBIN
