@@ -1,0 +1,18 @@
+²Î¿¼µØÖ·£º
+https://blog.csdn.net/itguangit/article/details/78825505
+
+
+C:
+cd  C:\Users\pan.weihao\Desktop\spring RestTemplate\client
+mvn clean package
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+
+http://localhost:8811/getUserFromRestTemplate
+
+
+
