@@ -45,20 +45,16 @@ cd target
 java -jar zookeeperclient-0.0.1-SNAPSHOT.jar
 
 
+http://localhost:8810/hello?name=pwh
 
-我觉得你其实挺厉害的，摊上最近这些事还能波澜不惊。。。
+http://service-zookeeper/hello?name=pwh
 
 
-大数据方面的知识你知道多少，说实话我在这方面没什么经验。。。有没有什么书推荐一下
-
-提前做下准备也好。。。
-
+http://localhost:8800/hello?name=pwh
 
 
 
-
-
-
+http://spring-cloud-service
 
 
 

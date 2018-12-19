@@ -10,7 +10,11 @@ cd target
 java -jar ribbonDemo-0.0.1-SNAPSHOT.jar
 
 4、访问以下地址，查看效果
-http://localhost:8082/hello2
+http://localhost:8082/hello2	（ribbon）
+
+http://localhost:8081/hello2
+
+http://localhost:8083/hello2
 
 =========================================================
 
