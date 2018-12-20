@@ -24,6 +24,9 @@ mvn clean package
 cd target
 java -jar zookeeperservice-0.0.1-SNAPSHOT.jar
 
+http://localhost:8800/hello?name=pwh
+
+http://spring-cloud-service
 
 Æô¶¯ºó,Ö´ÐÐ
 
@@ -40,17 +43,17 @@ C:
 cd C:\Users\pan.weihao\Desktop\spring-cloud-zookeeper\zookeeperclient
 mvn clean package
 
-
 cd target
 java -jar zookeeperclient-0.0.1-SNAPSHOT.jar
 
+http://localhost:8810/hello3
 
 http://localhost:8810/hello?name=pwh
 
 http://service-zookeeper/hello?name=pwh
 
 
-http://localhost:8800/hello?name=pwh
+
 
 
 
@@ -59,4 +62,8 @@ http://spring-cloud-service
 
 
 
-
+		 <dependency>
+<groupId>org.springframework.cloud</groupId>
+<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+<version>2.0.2.RELEASE</version>
+</dependency>

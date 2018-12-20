@@ -8,9 +8,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pwhTest.zookeeperservice.service.HelloService;
 import com.pwhTest.zookeeperservice.service.ServiceFeign;
 
+import java.util.List;
+import org.springframework.cloud.client.ServiceInstance;
+import org.springframework.cloud.client.discovery.DiscoveryClient;
 
 @RestController
 public class HelloController {
+
+@Autowired
+private DiscoveryClient discoveryClient;
 
     @Autowired
     private HelloService helloService;
@@ -29,6 +35,17 @@ public class HelloController {
 		System.out.println("hello2");
         return serviceFeign.sayHello(name);
     }
+
+    @RequestMapping(value = "hello3")
+    public String hello3(@RequestParam String name) {
+		System.out.println("hello3");
+		List<ServiceInstance> list = discoveryClient.getInstances("service-zookeeper");
+		if (list != null && list.size() > 0 ) {
+			return list.get(0).getUri().toString();
+		}
+		return null;
+    }
+
 }
 
 

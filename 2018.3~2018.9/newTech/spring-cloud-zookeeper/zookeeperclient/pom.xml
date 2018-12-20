@@ -54,7 +54,14 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
-        </dependency>    
+        </dependency>
+		<!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-starter-zookeeper-discovery -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-zookeeper-discovery</artifactId>
+    <version>2.0.0.RELEASE</version>
+</dependency>
+
     </dependencies>
 
     <dependencyManagement>
