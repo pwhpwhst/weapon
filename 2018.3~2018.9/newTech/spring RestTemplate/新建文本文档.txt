@@ -1,1 +1,30 @@
-²Î¿¼£ºhttps://blog.csdn.net/itguangit/article/details/78825505
+²Î¿¼µØÖ·£º
+https://blog.csdn.net/itguangit/article/details/78825505
+
+D:
+cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring RestTemplate\server
+mvn clean package
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+
+http://localhost:8810/getAll
+
+=============================================================================
+
+
+D:
+cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring RestTemplate\client
+mvn clean package
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+
+http://localhost:8811/getUserFromRestTemplate
+

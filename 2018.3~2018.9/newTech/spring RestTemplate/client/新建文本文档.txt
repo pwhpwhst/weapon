@@ -2,8 +2,10 @@
 https://blog.csdn.net/itguangit/article/details/78825505
 
 
-C:
-cd  C:\Users\pan.weihao\Desktop\spring RestTemplate\client
+
+
+D:
+cd  D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\spring RestTemplate\client
 mvn clean package
 
 cd target
