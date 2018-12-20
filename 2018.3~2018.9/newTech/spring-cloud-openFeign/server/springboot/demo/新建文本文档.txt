@@ -1,0 +1,17 @@
+²Î¿¼µØÖ·£º
+https://blog.csdn.net/c5113620/article/details/78893557
+
+
+
+http://localhost:8080/hello?name=pwh
+
+C:
+cd  C:\Users\pan.weihao\Desktop\spring-cloud-Feign\server\springboot\demo
+mvn clean package
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+
+
