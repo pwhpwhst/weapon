@@ -13,10 +13,9 @@ public class HelloService{
 
     @HystrixCommand(fallbackMethod = "sayHelloFallback")
     public String sayHello(String name) {
-        return restTemplate.getForEntity("http://192.168.201.88:8800/hello?name=" + name, String.class).getBody();
-//        return restTemplate.getForEntity("http://localhost:8810/hello?name=" + name, String.class).getBody();
+		 return restTemplate.getForEntity("http://service-zookeeper/hello?name=" + name, String.class).getBody();
 	}
-//http://localhost:8810/hello
+
     private String sayHelloFallback(String name) {
         return "service error";
     }
