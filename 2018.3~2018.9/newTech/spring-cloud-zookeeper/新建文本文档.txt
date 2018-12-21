@@ -46,24 +46,21 @@ mvn clean package
 cd target
 java -jar zookeeperclient-0.0.1-SNAPSHOT.jar
 
-http://localhost:8810/hello3
+
 
 http://localhost:8810/hello?name=pwh
 
-http://service-zookeeper/hello?name=pwh
+
+
+==============================================================================
+
+还有一个是依赖观察的，看文档：
+Spring Cloud Zookeeper Dependency Watcher
 
 
 
 
 
 
-http://spring-cloud-service
 
 
-
-
-		 <dependency>
-<groupId>org.springframework.cloud</groupId>
-<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
-<version>2.0.2.RELEASE</version>
-</dependency>
