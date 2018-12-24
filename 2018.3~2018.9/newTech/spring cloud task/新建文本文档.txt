@@ -1,0 +1,9 @@
+²Î¿¼£ºhttps://www.jianshu.com/p/fb2e973fb325
+
+cd C:\Users\pan.weihao\Desktop\spring cloud task
+mvn clean package
+
+
+cd target
+java -jar spring-cloud-task-demo-0.0.1-SNAPSHOT.jar
+
