@@ -1,0 +1,11 @@
+如何用消息系统避免分布式事务？
+http://www.cnblogs.com/LBSer/p/4715395.html
+
+
+
+
+
+
+
+
+

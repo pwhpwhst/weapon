@@ -27,7 +27,7 @@ docker ps -a
 docker start 0d4d3317efe5
 
 
-docker exec -it ubuntu_tomcat bash
+docker exec -it ubuntu_tomcat bash	//进入容器内部操作
 
 docker exec -it ubuntu_jdk bash
 
@@ -46,8 +46,7 @@ sudo /etc/init.d/networking restart
 
 ================================================
 mkdir -p /usr/tomcat
-
-apt-get install oracle-java8-installer
+//apt-get update
 
 apt-get install tomcat7
 
