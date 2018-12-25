@@ -1,0 +1,27 @@
+²Î¿¼µØÖ·£º
+https://blog.csdn.net/u011282930/article/details/80131534
+https://blog.csdn.net/hsrlzg/article/details/79342004
+https://blog.csdn.net/typ1805/article/details/82886144
+
+http://www.ruanyifeng.com/blog/2014/05/oauth_2_0.html
+
+
+http://localhost:8080/hello
+
+C:
+cd  C:\Users\pan.weihao\Desktop\springboot\demo
+mvn clean package
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+=========================================================================
+
+
+
+
+
+
+
+

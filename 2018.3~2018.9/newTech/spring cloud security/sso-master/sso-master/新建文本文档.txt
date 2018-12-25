@@ -1,0 +1,33 @@
+cd C:\Users\pan.weihao\Desktop\sso-master\sso-master
+
+mvn clean package
+
+cd target
+
+java -jar sso-0.0.1-SNAPSHOT.jar
+
+
+http://localhost:9999/info
+
+http://localhost:9999/uaa
+
+
+
+http://localhost:9999/dashboard/login
+
+
+https://blog.csdn.net/typ1805/article/details/82886144
+
+
+
+
+
+
+
+
+
+
+
+
+
+

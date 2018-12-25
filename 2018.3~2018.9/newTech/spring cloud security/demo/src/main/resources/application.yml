@@ -1,0 +1,4 @@
+# 安全认证的配置
+security:
+  basic:
+    enabled: true

@@ -1,0 +1,44 @@
+参考：https://www.jianshu.com/p/956f88e771b5
+
+
+1、下载：
+
+https://archive.apache.org/dist/groovy/2.5.5/distribution/
+
+
+
+
+
+
+
+set GROOVY_HOME=D:\groovy-2.5.5
+set JAVA_HOME=%ProgramFiles(x86)%\Java\jdk1.8.0_45
+set PATH=%GROOVY_HOME%\bin;D:\groovy-2.5.5\bin
+
+
+
+2、Hello World
+
+2.1 命令执行
+groovy -e "println 'Hello World'"
+groovy -e "println 'Hello '+args[0]" World
+
+2.2 文件执行
+echo println 'Hello World' > HelloWorld.groovy
+groovy HelloWorld.groovy
+
+2.3 文件编译成.class(字节码)
+echo println 'Hello World' > HelloWorld.groovy
+groovyc HelloWorld.groovy
+
+
+
+
+java -cp .;%GROOVY_HOME%\embeddable\groovy-all-2.3.6.jar HelloWorld
+
+
+
+
+
+
+
