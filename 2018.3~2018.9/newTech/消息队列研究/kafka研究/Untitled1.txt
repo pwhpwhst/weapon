@@ -1,0 +1,11 @@
+D:
+cd D:\Users\pan.weihao\workspace\project2018.3_2018.9\2018.3~2018.9\newTech\消息队列研究\kafka研究\kafkaProductor
+mvn clean package
+cd target
+java -jar kfaka-1.0-SNAPSHOT.jar
+
+
+
+
+
+
