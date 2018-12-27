@@ -1,6 +1,6 @@
-package com.pwhTest.entity;
+package com.pwhTest.MFTest.entity;
 
-public class ConditionWaitingEntity {
+public class ConditionEntity {
     private int id;
     private String name;
  

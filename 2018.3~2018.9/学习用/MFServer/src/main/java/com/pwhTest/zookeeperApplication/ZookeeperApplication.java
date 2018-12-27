@@ -1,4 +1,4 @@
-package com.pwhTest;
+package com.pwhTest.zookeeperApplication;
 
 import java.sql.SQLException;
 
@@ -10,27 +10,31 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.cloud.task.configuration.EnableTask;
-import org.springframework.context.annotation.Bean;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import com.pwhTest.mapper.ConditionMapper;
-import com.pwhTest.task.HelloWorldCommandLineRunner;
+import com.pwhTest.zookeeperApplication.entity.ConditionWaitingEntity;
+import com.pwhTest.zookeeperApplication.mapper.ConditionMapper;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+
+
+@SpringBootApplication
+@EnableDiscoveryClient
 @Configuration
 @EnableTransactionManagement
 @MapperScan(basePackages = {
         "com.pwhTest.mapper"
 }, sqlSessionFactoryRef = "testSqlSessionFactoryBean")
-@EnableTask
-public class SpringConfiguration {
+@ComponentScan(basePackages = "com.pwhTest.zookeeperservice.controller,com.pwhTest.zookeeperservice.service")
+public class ZookeeperApplication {
 
-	//持久层配置相关 begin
-	
     @Bean(name = "dataSource",destroyMethod = "close")
     public DataSource dataSource() throws SQLException {
 
@@ -89,6 +93,7 @@ public class SpringConfiguration {
         return new DataSourceTransactionManager(dataSource);
     }
     
+    
 	@Bean(name = "conditionDao")
 	public MapperFactoryBean getConditionDao(@Qualifier("testSqlSessionFactoryBean") SqlSessionFactory sqlSessionFactory){
 		MapperFactoryBean conditionDao = new MapperFactoryBean();
@@ -96,22 +101,18 @@ public class SpringConfiguration {
 		conditionDao.setMapperInterface(ConditionMapper.class);
 		return conditionDao;
 	}
-	
-	
+
 	@Bean(name = "conditionWaitingDao")
 	public MapperFactoryBean getConditionWaitingDao(@Qualifier("testSqlSessionFactoryBean") SqlSessionFactory sqlSessionFactory){
 		MapperFactoryBean conditionWaitingDao = new MapperFactoryBean();
 		conditionWaitingDao.setSqlSessionFactory(sqlSessionFactory);
-		conditionWaitingDao.setMapperInterface(ConditionMapper.class);
+		conditionWaitingDao.setMapperInterface(ConditionWaitingEntity.class);
 		return conditionWaitingDao;
 	}
+	
+	public static void main(String[] args) {
 
-	//持久层配置相关 end
-	
-    @Bean
-    public CommandLineRunner commandLineRunner() {
-        return new HelloWorldCommandLineRunner();
-    }
-	
-	
+		SpringApplication.run(ZookeeperApplication.class, args);
+		
+	}
 }

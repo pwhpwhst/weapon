@@ -1,4 +1,4 @@
-package com.pwhTest.entity;
+package com.pwhTest.zookeeperApplication.entity;
 
 public class ConditionEntity {
     private int id;
