@@ -27,11 +27,9 @@ public class Customer {
 //		    String message = "Hello RabbitMQ";
 //		    channel.basicPublish("corp.fanout", "first", null, message.getBytes("UTF-8"));
 		    
-		    
-		    
 		    System.out.println("a="+message);
 	    }
 	    
-}
+    }
     
 }

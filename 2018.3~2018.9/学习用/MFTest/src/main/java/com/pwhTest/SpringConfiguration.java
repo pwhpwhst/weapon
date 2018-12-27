@@ -10,20 +10,27 @@ import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
 import org.mybatis.spring.mapper.MapperFactoryBean;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.cloud.task.configuration.EnableTask;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.pwhTest.mapper.ConditionMapper;
+import com.pwhTest.task.HelloWorldCommandLineRunner;
 
 @Configuration
 @EnableTransactionManagement
 @MapperScan(basePackages = {
-        "com.pwhTest.SpringMybatisTest"
+        "com.pwhTest.mapper"
 }, sqlSessionFactoryRef = "testSqlSessionFactoryBean")
+@EnableTask
 public class SpringConfiguration {
 
+	//持久层配置相关 begin
+	
     @Bean(name = "dataSource",destroyMethod = "close")
     public DataSource dataSource() throws SQLException {
 
@@ -82,13 +89,29 @@ public class SpringConfiguration {
         return new DataSourceTransactionManager(dataSource);
     }
     
-	@Bean(name = "userDao")
-	public MapperFactoryBean getUserDao(@Qualifier("testSqlSessionFactoryBean") SqlSessionFactory sqlSessionFactory){
-		MapperFactoryBean userDao = new MapperFactoryBean();
-		userDao.setSqlSessionFactory(sqlSessionFactory);
-		userDao.setMapperInterface(UserMapper.class);
-		return userDao;
+	@Bean(name = "conditionDao")
+	public MapperFactoryBean getConditionDao(@Qualifier("testSqlSessionFactoryBean") SqlSessionFactory sqlSessionFactory){
+		MapperFactoryBean conditionDao = new MapperFactoryBean();
+		conditionDao.setSqlSessionFactory(sqlSessionFactory);
+		conditionDao.setMapperInterface(ConditionMapper.class);
+		return conditionDao;
+	}
+	
+	
+	@Bean(name = "conditionWaitingDao")
+	public MapperFactoryBean getConditionWaitingDao(@Qualifier("testSqlSessionFactoryBean") SqlSessionFactory sqlSessionFactory){
+		MapperFactoryBean conditionWaitingDao = new MapperFactoryBean();
+		conditionWaitingDao.setSqlSessionFactory(sqlSessionFactory);
+		conditionWaitingDao.setMapperInterface(ConditionMapper.class);
+		return conditionWaitingDao;
 	}
 
+	//持久层配置相关 end
+	
+    @Bean
+    public CommandLineRunner commandLineRunner() {
+        return new HelloWorldCommandLineRunner();
+    }
+	
 	
 }

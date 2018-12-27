@@ -7,9 +7,9 @@ import org.apache.ibatis.annotations.Update;
 
 import com.pwhTest.entity.ConditionEntity;
 
-public interface CustomerMapper{
+public interface ConditionMapper{
 
-    @Select("select * from customer where id=#{id}")
+    @Select("select * from condition where id=#{id}")
     public ConditionEntity getCondition(int id);
 
 }

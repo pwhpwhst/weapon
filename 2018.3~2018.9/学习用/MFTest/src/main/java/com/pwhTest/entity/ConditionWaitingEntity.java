@@ -1,6 +1,6 @@
 package com.pwhTest.entity;
 
-public class ConditionEntity {
+public class ConditionWaitingEntity {
     private int id;
     private String name;
  
