@@ -1,0 +1,2988 @@
+卷 软件 的文件夹 PATH 列表
+卷序列号为 0002-E025
+D:.
+│  a.txt
+│  java8新特性相关.txt
+│  ~$要打通的技术栈.xlsx
+│  自动数据钩.html
+│  范本研究清单.txt
+│  要打通的技术栈.xlsx
+│  高人.txt
+│  
+├─Ali-Tomcat与HSF的整合
+│      新建文本文档.txt
+│      
+├─Avro
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          ├─avro
+│          │      user.avsc
+│          │      
+│          ├─java
+│          │  ├─cn
+│          │  │  └─md31
+│          │  │      └─avro
+│          │  │          └─test
+│          │  │              └─bean
+│          │  │                      User.java
+│          │  │                      
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─hadoopTest
+│          │                  HadoopTest.java
+│          │                  
+│          └─resource
+│                  dsada.txt
+│                  
+├─Axis2Client
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  ├─src
+│  │  └─main
+│  │      └─java
+│  │          └─com
+│  │              └─pwhTest
+│  │                  └─Axis2Client
+│  │                          Axis2Client.java
+│  │                          DemoStub.java
+│  │                          
+│  └─target
+│      ├─classes
+│      │  └─com
+│      │      └─pwhTest
+│      │          └─Axis2Client
+│      ├─generated-sources
+│      │  └─annotations
+│      ├─lib
+│      ├─maven-archiver
+│      └─maven-status
+│          └─maven-compiler-plugin
+│              └─compile
+│                  └─default-compile
+├─Axis2Server
+│  │  axis2.war
+│  │  新建文本文档.txt
+│  │  
+│  ├─SimpleService
+│  │  └─src
+│  │      └─main
+│  │          └─java
+│  │                  SimpleService.java
+│  │                  
+│  └─version
+│      │  pom.xml
+│      │  
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─sample
+│      │      │      └─axisversion
+│      │      │              Version.java
+│      │      │              
+│      │      └─resources
+│      │          └─META-INF
+│      │                  services.xml
+│      │                  
+│      └─target
+│          ├─classes
+│          │  ├─META-INF
+│          │  │      services.xml
+│          │  │      
+│          │  └─sample
+│          │      └─axisversion
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─maven-archiver
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+├─docker实验
+│  │  360篡改注册表.txt
+│  │  docker文档地址.txt
+│  │  
+│  ├─安装
+│  │      新建文本文档.txt
+│  │      
+│  ├─挂载windows文件夹到linux
+│  │      新建文本文档.txt
+│  │      
+│  └─示例
+│      │  新建文本文档.txt
+│      │  
+│      └─创建镜像
+│          └─hadoopEnvBuild
+│              │  Dockerfile
+│              │  新建文本文档.txt
+│              │  
+│              └─hadoop-2.8.3
+│                  └─hadoop-2.8.3
+│                      │  LICENSE.txt
+│                      │  NOTICE.txt
+│                      │  README.txt
+│                      │  
+│                      ├─bin
+│                      │      container-executor
+│                      │      hadoop
+│                      │      hadoop.cmd
+│                      │      hdfs
+│                      │      hdfs.cmd
+│                      │      mapred
+│                      │      mapred.cmd
+│                      │      rcc
+│                      │      test-container-executor
+│                      │      yarn
+│                      │      yarn.cmd
+│                      │      
+│                      └─etc
+│                          └─hadoop
+│                                  capacity-scheduler.xml
+│                                  configuration.xsl
+│                                  container-executor.cfg
+│                                  core-site.xml
+│                                  hadoop-env.cmd
+│                                  hadoop-env.sh
+│                                  hadoop-metrics.properties
+│                                  hadoop-metrics2.properties
+│                                  hadoop-policy.xml
+│                                  hdfs-site.xml
+│                                  httpfs-env.sh
+│                                  
+├─dubbo学习
+│  │  新建文本文档.txt
+│  │  要点开的技能点.xlsx
+│  │  路由规则.txt
+│  │  
+│  └─dubbo-demo
+│      │  新建文本文档.txt
+│      │  
+│      ├─dubbo-demo-consumer
+│      │  │  pom.xml
+│      │  │  
+│      │  ├─src
+│      │  │  └─main
+│      │  │      ├─java
+│      │  │      │  └─org
+│      │  │      │      └─apache
+│      │  │      │          └─dubbo
+│      │  │      │              └─demo
+│      │  │      │                  │  DemoService.java
+│      │  │      │                  │  
+│      │  │      │                  └─consumer
+│      │  │      │                          Consumer.java
+│      │  │      │                          
+│      │  │      └─resources
+│      │  │          │  dubbo.properties
+│      │  │          │  log4j.properties
+│      │  │          │  
+│      │  │          └─META-INF
+│      │  │              └─spring
+│      │  │                      dubbo-demo-consumer.xml
+│      │  │                      
+│      │  └─target
+│      │      │  dependency-reduced-pom.xml
+│      │      │  
+│      │      └─classes
+│      │          │  dubbo.properties
+│      │          │  log4j.properties
+│      │          │  
+│      │          └─META-INF
+│      │              └─spring
+│      │                      dubbo-demo-consumer.xml
+│      │                      
+│      └─dubbo-demo-provider
+│          │  pom.xml
+│          │  
+│          ├─src
+│          │  └─main
+│          │      ├─java
+│          │      │  └─org
+│          │      │      └─apache
+│          │      │          └─dubbo
+│          │      │              └─demo
+│          │      │                  │  DemoService.java
+│          │      │                  │  
+│          │      │                  └─provider
+│          │      │                          DemoServiceImpl.java
+│          │      │                          Provider.java
+│          │      │                          
+│          │      └─resources
+│          │          │  dubbo.properties
+│          │          │  log4j.properties
+│          │          │  
+│          │          └─META-INF
+│          │              └─spring
+│          │                      dubbo-demo-provider.xml
+│          │                      
+│          └─target
+│              │  dependency-reduced-pom.xml
+│              │  
+│              └─classes
+│                  │  dubbo.properties
+│                  │  log4j.properties
+│                  │  
+│                  └─META-INF
+│                      └─spring
+│                              dubbo-demo-provider.xml
+│                              
+├─echarts实验
+│  │  新建文本文档.txt
+│  │  
+│  └─范本例子
+│          a.html
+│          echarts.common.min.js
+│          
+├─Groovy demo
+│      新建文本文档.txt
+│      
+├─hadoop_docker
+│  ├─docker实验
+│  │  │  360篡改注册表.txt
+│  │  │  docker文档地址.txt
+│  │  │  
+│  │  ├─安装
+│  │  │      新建文本文档.txt
+│  │  │      
+│  │  ├─挂载windows文件夹到linux
+│  │  │      新建文本文档.txt
+│  │  │      
+│  │  └─示例
+│  │      │  新建文本文档.txt
+│  │      │  
+│  │      └─创建镜像
+│  │          ├─hadoopEnvBuild
+│  │          │      Dockerfile
+│  │          │      新建文本文档.txt
+│  │          │      
+│  │          ├─jdk8EnvBuild
+│  │          │      Dockerfile
+│  │          │      新建文本文档.txt
+│  │          │      
+│  │          └─NTPBuild
+│  │                  新建文本文档.txt
+│  │                  
+│  ├─haddoop实验
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  ├─Hadoop代码武器库
+│  │  │  ├─创建文件
+│  │  │  │      新建文本文档.txt
+│  │  │  │      
+│  │  │  ├─序列化专题
+│  │  │  │      新建文本文档.txt
+│  │  │  │      
+│  │  │  └─读取文件
+│  │  │          新建文本文档.txt
+│  │  │          
+│  │  ├─hadoop任务运行样本
+│  │  │  ├─HadoopTest
+│  │  │  │  │  input.txt
+│  │  │  │  │  part-r-00000
+│  │  │  │  │  pom.xml
+│  │  │  │  │  _SUCCESS
+│  │  │  │  │  新建文本文档.txt
+│  │  │  │  │  
+│  │  │  │  └─src
+│  │  │  │      └─main
+│  │  │  │          └─java
+│  │  │  │              └─com
+│  │  │  │                  └─hadoopTest
+│  │  │  │                          HadoopTest.java
+│  │  │  │                          HadoopTestMapper.java
+│  │  │  │                          HadoopTestReducer.java
+│  │  │  │                          
+│  │  │  └─统计英文字数
+│  │  │      └─wordCount
+│  │  │          │  input.txt
+│  │  │          │  pom.xml
+│  │  │          │  新建文本文档.txt
+│  │  │          │  
+│  │  │          └─src
+│  │  │              └─main
+│  │  │                  └─java
+│  │  │                      └─com
+│  │  │                          └─pwhTest
+│  │  │                              └─wordCount
+│  │  │                                      HadoopTest.java
+│  │  │                                      WordCountMapper.java
+│  │  │                                      WordCountReducer.java
+│  │  │                                      
+│  │  ├─hadoop调试
+│  │  │      新建文本文档.txt
+│  │  │      
+│  │  ├─protoc-2.5.0-win32
+│  │  │      protoc.exe
+│  │  │      readme.txt
+│  │  │      
+│  │  ├─部署hadoop任务
+│  │  │      新建文本文档.txt
+│  │  │      
+│  │  └─部署hadoop框架
+│  │      │  跟踪.txt
+│  │      │  
+│  │      ├─hadoop配置文件
+│  │      │      core-site.xml
+│  │      │      hadoop-env.sh
+│  │      │      hdfs-site.xml
+│  │      │      mapred-site.xml
+│  │      │      slaves
+│  │      │      yarn-env.sh
+│  │      │      yarn-site.xml
+│  │      │      
+│  │      ├─hadoop配置文件 - 伪分布模式
+│  │      │  └─linux
+│  │      │          core-site.xml
+│  │      │          hadoop-env.sh
+│  │      │          hdfs-site.xml
+│  │      │          mapred-site.xml
+│  │      │          slaves
+│  │      │          yarn-env.sh
+│  │      │          yarn-site.xml
+│  │      │          
+│  │      └─独立模式
+│  │          │  core-site.xml
+│  │          │  hdfs-site.xml
+│  │          │  
+│  │          ├─linux
+│  │          │      core-site.xml
+│  │          │      hdfs-site.xml
+│  │          │      slaves
+│  │          │      
+│  │          ├─在win32下编译
+│  │          │      新建文本文档.txt
+│  │          │      
+│  │          └─在win64位下编译
+│  │                  新建文本文档.txt
+│  │                  
+│  └─基于docker的hadoop
+│      │  失败.txt
+│      │  新建文本文档 (2).txt
+│      │  跟踪.txt
+│      │  跟踪2.txt
+│      │  跟踪3.txt
+│      │  跟踪4.txt
+│      │  
+│      ├─windows访问docker特定端口的方法
+│      │      新建文本文档.txt
+│      │      
+│      ├─有用
+│      │      extra.txt
+│      │      ubuntu_hadoop镜像制作.txt
+│      │      创建master机.txt
+│      │      创建slave机.txt
+│      │      新建文本文档.txt
+│      │      
+│      └─运行任务
+│              Untitled1.txt
+│              
+├─hadoop任务运行样本
+│  └─HadoopTest
+│      │  input.txt
+│      │  part-r-00000
+│      │  pom.xml
+│      │  _SUCCESS
+│      │  新建文本文档.txt
+│      │  
+│      ├─src
+│      │  └─main
+│      │      └─java
+│      │          └─com
+│      │              └─hadoopTest
+│      │                      HadoopTest.java
+│      │                      HadoopTestMapper.java
+│      │                      HadoopTestReducer.java
+│      │                      
+│      └─target
+│          │  dependency-reduced-pom.xml
+│          │  hadoopTest-1.0-SNAPSHOT.jar
+│          │  original-hadoopTest-1.0-SNAPSHOT.jar
+│          │  
+│          ├─classes
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─hadoopTest
+│          │                  HadoopTest.class
+│          │                  HadoopTestMapper.class
+│          │                  HadoopTestReducer.class
+│          │                  
+│          ├─maven-archiver
+│          │      pom.properties
+│          │      
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+│                              createdFiles.lst
+│                              inputFiles.lst
+│                              
+├─hibernate
+│  │  新建文本文档.txt
+│  │  跟踪.txt
+│  │  
+│  └─HibernateTest
+│      │  .classpath
+│      │  .project
+│      │  pom.xml
+│      │  
+│      ├─.settings
+│      │      org.eclipse.jdt.core.prefs
+│      │      org.eclipse.m2e.core.prefs
+│      │      
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─com
+│      │      │      └─pwhTest
+│      │      │          │  Test.java
+│      │      │          │  
+│      │      │          ├─Dao
+│      │      │          │  └─impl
+│      │      │          │          ErpClassDao.java
+│      │      │          │          ErpClassDaoImpl.java
+│      │      │          │          
+│      │      │          └─model
+│      │      │                  ErpClass.java
+│      │      │                  
+│      │      └─resources
+│      │              hibernate.cfg.xml
+│      │              
+│      └─target
+│          │  dependency-reduced-pom.xml
+│          │  
+│          └─classes
+│                  hibernate.cfg.xml
+│                  
+├─HSF的生产者和消费者
+│  ├─consumer
+│  │  │  pom.xml
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  └─src
+│  │      └─main
+│  │          ├─java
+│  │          │  └─com
+│  │          │      └─pwhTest
+│  │          │          └─HSFTest
+│  │          │              └─api
+│  │          │                      HelloService.java
+│  │          │                      StartListener.java
+│  │          │                      
+│  │          ├─resources
+│  │          │      consumer.xml
+│  │          │      
+│  │          └─webapp
+│  │              └─WEB-INF
+│  │                      web.xml
+│  │                      
+│  └─provider
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─.idea
+│      │  │  compiler.xml
+│      │  │  
+│      │  ├─artifacts
+│      │  ├─inspectionProfiles
+│      │  └─libraries
+│      └─src
+│          └─main
+│              ├─java
+│              │  └─com
+│              │      └─pwhTest
+│              │          └─HSFTest
+│              │              └─api
+│              │                  │  HelloService.java
+│              │                  │  
+│              │                  └─impl
+│              │                          HelloServiceImpl.java
+│              │                          
+│              ├─resources
+│              │      provider.xml
+│              │      
+│              └─webapp
+│                  └─WEB-INF
+│                          web.xml
+│                          
+├─java注解
+│  └─javaAnotation
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              └─java
+│                  └─com
+│                      └─pwhTest
+│                              PasswordUtils.java
+│                              PwhTest.java
+│                              UseCase.java
+│                              
+├─java编译相关
+│  └─eclipse的编译
+│          新建文本文档.txt
+│          
+├─junitTest
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─test
+│          └─java
+│              └─com
+│                  └─pwhTest
+│                      └─hadoopTest
+│                              HadoopTest.java
+│                              
+├─Maven
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          └─java
+│              └─com
+│                  └─pwhTest
+│                      └─hadoopTest
+│                              HadoopTest.java
+│                              
+├─Maven配置学习
+│  └─在eclipse中的配置
+│          新建文本文档.txt
+│          
+├─mongoDb研究
+│  │  使用.txt
+│  │  使用2.txt
+│  │  使用3.txt
+│  │  使用4.txt
+│  │  安装.txt
+│  │  
+│  └─mongoDb+java
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─src
+│      │  └─main
+│      │      └─java
+│      │          └─com
+│      │              └─pwhTest
+│      │                  ├─mongoDbTest
+│      │                  │      MongoDbTest.java
+│      │                  │      
+│      │                  └─util
+│      │                          MongoDBUtil.java
+│      │                          
+│      └─target
+│              dependency-reduced-pom.xml
+│              
+├─MySql
+│  │  分区.txt
+│  │  
+│  └─安装
+│          my.ini
+│          分区.txt
+│          安装参考.txt
+│          
+├─readProperties
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          └─java
+│              │  jdbc.properties
+│              │  
+│              └─com
+│                  └─pwhTest
+│                      └─util
+│                              PropertyUtil.java
+│                              
+├─redis
+│  │  Untitled1.txt
+│  │  分布式锁.txt
+│  │  安装.txt
+│  │  
+│  └─RedisTest
+│      │  .classpath
+│      │  .project
+│      │  pom.xml
+│      │  readme.txt
+│      │  新建文本文档.txt
+│      │  
+│      ├─.settings
+│      │      org.eclipse.jdt.core.prefs
+│      │      org.eclipse.m2e.core.prefs
+│      │      
+│      ├─src
+│      │  └─main
+│      │      └─java
+│      │          └─com
+│      │              └─pwhTest
+│      │                  └─RedisTest
+│      │                          RedisPool.java
+│      │                          RedisTest.java
+│      │                          SimpleRedisLock.java
+│      │                          
+│      └─target
+│          │  .gitignore
+│          │  dependency-reduced-pom.xml
+│          │  original-RedisTest-0.0.1-SNAPSHOT.jar
+│          │  RedisTest-0.0.1-SNAPSHOT.jar
+│          │  
+│          ├─classes
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─RedisTest
+│          │                  .gitignore
+│          │                  RedisPool.class
+│          │                  RedisTest.class
+│          │                  SimpleRedisLock.class
+│          │                  
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─lib
+│          │      commons-pool2-2.4.2.jar
+│          │      jedis-2.9.0.jar
+│          │      
+│          ├─maven-archiver
+│          │      pom.properties
+│          │      
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+│                              .gitignore
+│                              createdFiles.lst
+│                              inputFiles.lst
+│                              
+├─simple Java Swing
+│      HelloWorldSwing.java
+│      新建文本文档.txt
+│      
+├─simpleDBCP
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─dbcpTest
+│          │                  DbcpTest.java
+│          │                  KCYDBCPUtil.java
+│          │                  Student.java
+│          │                  
+│          └─resources
+│                  dbcp.properties
+│                  
+├─simpleIbatis
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          └─java
+│              │  init.sql
+│              │  SqlMapConfig.properties
+│              │  SqlMapConfig.xml
+│              │  sqlMap_clawer_url.xml
+│              │  
+│              └─com
+│                  └─pwhTest
+│                      └─ibatisTest
+│                          └─dao
+│                              │  IClawerUrlDao.java
+│                              │  IPwhTest.java
+│                              │  
+│                              └─impl
+│                                      ClawerUrlDao.java
+│                                      PwhTest.java
+│                                      
+├─simpleJdbc
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          └─java
+│              └─com
+│                  └─pwhTest
+│                      └─jdbcTest
+│                              JdbcTest.java
+│                              Student.java
+│                              
+├─simpleMybatis
+│  │  init.sql
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─myBatisTest
+│          │                  MyBatisTest.java
+│          │                  SessionBean.java
+│          │                  User.java
+│          │                  UserDao.java
+│          │                  UserDaoTest.java
+│          │                  
+│          └─resources
+│                  config.xml
+│                  User.xml
+│                  
+├─simpleMybatis+注解
+│  │  init.sql
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─myBatisTest
+│          │                  MyBatisTest.java
+│          │                  SessionBean.java
+│          │                  User.java
+│          │                  UserDaoTest.java
+│          │                  UserMapper.java
+│          │                  
+│          └─resources
+│                  config.xml
+│                  
+├─simpleServlet
+│  └─servletSample
+│      │  a.txt
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─com
+│      │      │      └─servlet
+│      │      │              Sample.java
+│      │      │              
+│      │      └─webapp
+│      │          └─WEB-INF
+│      │                  web.xml
+│      │                  
+│      └─target
+│          ├─classes
+│          │  └─com
+│          │      └─servlet
+│          │              Sample.class
+│          │              
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─maven-status
+│          │  └─maven-compiler-plugin
+│          │      └─compile
+│          │          └─default-compile
+│          │                  createdFiles.lst
+│          │                  inputFiles.lst
+│          │                  
+│          └─sample-servlet-1.0-SNAPSHOT
+│              ├─META-INF
+│              └─WEB-INF
+│                  └─classes
+│                      └─com
+│                          └─servlet
+│                                  Sample.class
+│                                  
+├─simpleStruts2
+│  └─Struts2Sample
+│      │  a.txt
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              ├─java
+│              │  └─com
+│              │      └─structssample
+│              │              TestAction.java
+│              │              
+│              ├─resources
+│              │  │  struts.xml
+│              │  │  
+│              │  └─struts
+│              │          struts-test.xml
+│              │          
+│              └─webapp
+│                  │  index.jsp
+│                  │  test_result1.jsp
+│                  │  
+│                  └─WEB-INF
+│                          web.xml
+│                          
+├─spring cloud bus
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─springcloudTest
+│          │                  ConfigServerApplication.java
+│          │                  
+│          └─resources
+│                  application.yml
+│                  
+├─spring cloud security
+│  ├─demo
+│  │  │  pom.xml
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  └─src
+│  │      └─main
+│  │          ├─java
+│  │          │  └─com
+│  │          │      └─example
+│  │          │          └─demo
+│  │          │              │  DemoApplication.java
+│  │          │              │  
+│  │          │              └─controller
+│  │          │                      HelloWorldController.java
+│  │          │                      IndexController.java
+│  │          │                      
+│  │          └─resources
+│  │                  application.yml
+│  │                  
+│  └─sso-master
+│      └─sso-master
+│          │  .gitignore
+│          │  mvnw
+│          │  mvnw.cmd
+│          │  pom.xml
+│          │  README.md
+│          │  新建文本文档.txt
+│          │  
+│          ├─.mvn
+│          │  │  jvm.config
+│          │  │  
+│          │  └─wrapper
+│          │          maven-wrapper.jar
+│          │          maven-wrapper.properties
+│          │          
+│          └─src
+│              ├─main
+│              │  ├─java
+│              │  │  └─demo
+│              │  │          SsoApplication.java
+│              │  │          
+│              │  └─resources
+│              │      │  application.yml
+│              │      │  
+│              │      └─static
+│              │          │  dashboard.html
+│              │          │  home.html
+│              │          │  index.html
+│              │          │  
+│              │          └─js
+│              │                  app.js
+│              │                  
+│              └─test
+│                  └─java
+│                      └─demo
+│                              ApplicationTests.java
+│                              
+├─spring cloud task
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          ├─java
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─springcloudTest
+│          │                  ConfigServerApplication.java
+│          │                  
+│          └─resources
+│                  application.yml
+│                  
+├─spring RestTemplate
+│  │  新建文本文档.txt
+│  │  
+│  ├─client
+│  │  │  pom.xml
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  ├─src
+│  │  │  └─main
+│  │  │      ├─java
+│  │  │      │  └─com
+│  │  │      │      └─example
+│  │  │      │          └─demo
+│  │  │      │              │  DemoApplication.java
+│  │  │      │              │  
+│  │  │      │              ├─controller
+│  │  │      │              │      HelloWorldController.java
+│  │  │      │              │      IndexController.java
+│  │  │      │              │      
+│  │  │      │              └─entity
+│  │  │      │                      UserEntity.java
+│  │  │      │                      
+│  │  │      └─resources
+│  │  │              application.properties
+│  │  │              
+│  │  └─target
+│  │      │  demo-0.0.1-SNAPSHOT.jar
+│  │      │  demo-0.0.1-SNAPSHOT.jar.original
+│  │      │  
+│  │      ├─classes
+│  │      │  │  application.properties
+│  │      │  │  
+│  │      │  └─com
+│  │      │      └─example
+│  │      │          └─demo
+│  │      │              │  DemoApplication.class
+│  │      │              │  
+│  │      │              ├─controller
+│  │      │              │      HelloWorldController.class
+│  │      │              │      IndexController.class
+│  │      │              │      
+│  │      │              └─entity
+│  │      │                      UserEntity.class
+│  │      │                      
+│  │      ├─generated-sources
+│  │      │  └─annotations
+│  │      ├─maven-archiver
+│  │      │      pom.properties
+│  │      │      
+│  │      └─maven-status
+│  │          └─maven-compiler-plugin
+│  │              └─compile
+│  │                  └─default-compile
+│  │                          createdFiles.lst
+│  │                          inputFiles.lst
+│  │                          
+│  └─server
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─com
+│      │      │      └─example
+│      │      │          └─demo
+│      │      │              │  DemoApplication.java
+│      │      │              │  
+│      │      │              ├─controller
+│      │      │              │      HelloWorldController.java
+│      │      │              │      IndexController.java
+│      │      │              │      
+│      │      │              ├─entity
+│      │      │              │      UserEntity.java
+│      │      │              │      
+│      │      │              └─service
+│      │      └─resources
+│      │              application.properties
+│      │              
+│      └─target
+│          │  demo-0.0.1-SNAPSHOT.jar
+│          │  demo-0.0.1-SNAPSHOT.jar.original
+│          │  
+│          ├─classes
+│          │  │  application.properties
+│          │  │  
+│          │  └─com
+│          │      └─example
+│          │          └─demo
+│          │              │  DemoApplication.class
+│          │              │  
+│          │              ├─controller
+│          │              │      HelloWorldController.class
+│          │              │      IndexController.class
+│          │              │      
+│          │              └─entity
+│          │                      UserEntity.class
+│          │                      
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─maven-archiver
+│          │      pom.properties
+│          │      
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+│                              createdFiles.lst
+│                              inputFiles.lst
+│                              
+├─spring Webflux
+│  │  Spring-Flex.doc
+│  │  新建文本文档.txt
+│  │  
+│  ├─MongoDb
+│  │  └─demo
+│  │      │  pom.xml
+│  │      │  新建文本文档.txt
+│  │      │  
+│  │      └─src
+│  │          └─main
+│  │              ├─java
+│  │              │  └─com
+│  │              │      └─example
+│  │              │          └─demo
+│  │              │              │  DemoApplication.java
+│  │              │              │  
+│  │              │              ├─controller
+│  │              │              │      UserController.java
+│  │              │              │      
+│  │              │              ├─entity
+│  │              │              │      UserEntity.java
+│  │              │              │      
+│  │              │              ├─repository
+│  │              │              │      UserRepository.java
+│  │              │              │      
+│  │              │              └─service
+│  │              │                      UserService.java
+│  │              │                      
+│  │              └─resources
+│  │                      application.properties
+│  │                      
+│  ├─springboot
+│  │  └─demo
+│  │      │  pom.xml
+│  │      │  新建文本文档.txt
+│  │      │  
+│  │      └─src
+│  │          └─main
+│  │              ├─java
+│  │              │  └─com
+│  │              │      └─example
+│  │              │          └─demo
+│  │              │              │  DemoApplication.java
+│  │              │              │  
+│  │              │              └─controller
+│  │              │                      HelloWorldController.java
+│  │              │                      IndexController.java
+│  │              │                      
+│  │              └─resources
+│  │                      application.properties
+│  │                      
+│  └─springboot1
+│      └─demo
+│          │  pom.xml
+│          │  新建文本文档.txt
+│          │  
+│          └─src
+│              └─main
+│                  ├─java
+│                  │  └─com
+│                  │      └─example
+│                  │          └─demo
+│                  │              │  DemoApplication.java
+│                  │              │  
+│                  │              ├─controller
+│                  │              │      HelloWorldController.java
+│                  │              │      IndexController.java
+│                  │              │      
+│                  │              └─service
+│                  │                      TimeHandler.java
+│                  │                      
+│                  └─resources
+│                          application.properties
+│                          
+├─spring 数据库分析
+│  └─springTest
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              └─java
+│                  │  appContext.xml
+│                  │  
+│                  └─com
+│                      └─springTest
+│                          │  Test.java
+│                          │  
+│                          ├─dao
+│                          │  │  IUserDao.java
+│                          │  │  
+│                          │  └─impl
+│                          │          UserDao.java
+│                          │          
+│                          ├─entity
+│                          │      UserEntity.java
+│                          │      
+│                          └─Mapper
+│                                  UserRowMapper.java
+│                                  
+├─spring 注解+AOP
+│  └─springTest
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              ├─java
+│              │  └─com
+│              │      └─juvenxu
+│              │          └─mvnbook
+│              │              ├─aop
+│              │              │      OperatorAop.java
+│              │              │      
+│              │              └─helloworld
+│              │                      IOutputService.java
+│              │                      OutputAction.java
+│              │                      OutputService.java
+│              │                      Test.java
+│              │                      
+│              └─resources
+│                      appContext.xml
+│                      
+├─spring 注解配置
+│  └─springTest
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              ├─java
+│              │  └─com
+│              │      └─juvenxu
+│              │          └─mvnbook
+│              │              └─helloworld
+│              │                      IOutputService.java
+│              │                      OutputAction.java
+│              │                      OutputService.java
+│              │                      Test.java
+│              │                      
+│              └─resources
+│                      appContext.xml
+│                      
+├─spring+@Configuration的用法
+│  └─springTest
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              └─java
+│                  └─com
+│                      └─juvenxu
+│                          └─mvnbook
+│                              └─helloworld
+│                                      OutputService.java
+│                                      Test.java
+│                                      TestConfiguration.java
+│                                      
+├─spring-cloud-Netflix
+│  ├─eureka
+│  │  │  .gitignore
+│  │  │  .travis.yml
+│  │  │  build.gradle
+│  │  │  gradlew
+│  │  │  gradlew.bat
+│  │  │  mvnw
+│  │  │  mvnw.cmd
+│  │  │  pom.xml
+│  │  │  README.md
+│  │  │  settings.gradle
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  ├─.mvn
+│  │  │  │  jvm.config
+│  │  │  │  
+│  │  │  └─wrapper
+│  │  │          maven-wrapper.properties
+│  │  │          
+│  │  ├─gradle
+│  │  │  └─wrapper
+│  │  │          gradle-wrapper.jar
+│  │  │          gradle-wrapper.properties
+│  │  │          
+│  │  ├─src
+│  │  │  └─main
+│  │  │      ├─java
+│  │  │      │  └─eurekademo
+│  │  │      │          EurekaApplication.java
+│  │  │      │          
+│  │  │      └─resources
+│  │  │              application.yml
+│  │  │              bootstrap.yml
+│  │  │              
+│  │  └─target
+│  │      ├─classes
+│  │      │  │  application.yml
+│  │      │  │  bootstrap.yml
+│  │      │  │  git.properties
+│  │      │  │  
+│  │      │  └─eurekademo
+│  │      │          EurekaApplication.class
+│  │      │          
+│  │      ├─generated-sources
+│  │      │  └─annotations
+│  │      └─maven-status
+│  │          └─maven-compiler-plugin
+│  │              └─compile
+│  │                  └─default-compile
+│  │                          createdFiles.lst
+│  │                          inputFiles.lst
+│  │                          
+│  ├─ribbonClient
+│  │  │  pom.xml
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  ├─src
+│  │  │  └─main
+│  │  │      ├─java
+│  │  │      │  └─com
+│  │  │      │      └─example
+│  │  │      │          └─demo
+│  │  │      │              │  DemoApplication.java
+│  │  │      │              │  
+│  │  │      │              └─controller
+│  │  │      │                      HelloWorldController.java
+│  │  │      │                      IndexController.java
+│  │  │      │                      
+│  │  │      └─resources
+│  │  │              application.properties
+│  │  │              
+│  │  └─target
+│  │      │  ribbonDemo-0.0.1-SNAPSHOT.jar
+│  │      │  ribbonDemo-0.0.1-SNAPSHOT.jar.original
+│  │      │  
+│  │      ├─classes
+│  │      │  │  application.properties
+│  │      │  │  
+│  │      │  └─com
+│  │      │      └─example
+│  │      │          └─demo
+│  │      │              │  DemoApplication.class
+│  │      │              │  
+│  │      │              └─controller
+│  │      │                      HelloWorldController.class
+│  │      │                      IndexController.class
+│  │      │                      
+│  │      ├─generated-sources
+│  │      │  └─annotations
+│  │      ├─maven-archiver
+│  │      │      pom.properties
+│  │      │      
+│  │      └─maven-status
+│  │          └─maven-compiler-plugin
+│  │              └─compile
+│  │                  └─default-compile
+│  │                          createdFiles.lst
+│  │                          inputFiles.lst
+│  │                          
+│  ├─spring cloud zuul
+│  │  └─demo
+│  │      │  pom.xml
+│  │      │  新建文本文档.txt
+│  │      │  
+│  │      └─src
+│  │          └─main
+│  │              ├─java
+│  │              │  └─com
+│  │              │      └─example
+│  │              │          └─demo
+│  │              │              │  DemoApplication.java
+│  │              │              │  
+│  │              │              └─controller
+│  │              │                      HelloWorldController.java
+│  │              │                      IndexController.java
+│  │              │                      
+│  │              └─resources
+│  │                      application.properties
+│  │                      
+│  ├─springboot
+│  │  └─demo
+│  │      │  pom.xml
+│  │      │  新建文本文档.txt
+│  │      │  
+│  │      ├─src
+│  │      │  └─main
+│  │      │      ├─java
+│  │      │      │  └─com
+│  │      │      │      └─example
+│  │      │      │          └─demo
+│  │      │      │              │  DemoApplication.java
+│  │      │      │              │  
+│  │      │      │              └─controller
+│  │      │      │                      HelloWorldController.java
+│  │      │      │                      IndexController.java
+│  │      │      │                      
+│  │      │      └─resources
+│  │      │              application.properties
+│  │      │              
+│  │      └─target
+│  │          │  demo-0.0.1-SNAPSHOT.jar
+│  │          │  demo-0.0.1-SNAPSHOT.jar.original
+│  │          │  
+│  │          ├─classes
+│  │          │  │  application.properties
+│  │          │  │  
+│  │          │  └─com
+│  │          │      └─example
+│  │          │          └─demo
+│  │          │              │  DemoApplication.class
+│  │          │              │  
+│  │          │              └─controller
+│  │          │                      HelloWorldController.class
+│  │          │                      IndexController.class
+│  │          │                      
+│  │          ├─generated-sources
+│  │          │  └─annotations
+│  │          ├─maven-archiver
+│  │          │      pom.properties
+│  │          │      
+│  │          └─maven-status
+│  │              └─maven-compiler-plugin
+│  │                  └─compile
+│  │                      └─default-compile
+│  │                              createdFiles.lst
+│  │                              inputFiles.lst
+│  │                              
+│  ├─springboot2
+│  │  └─demo
+│  │      │  pom.xml
+│  │      │  新建文本文档.txt
+│  │      │  
+│  │      ├─src
+│  │      │  └─main
+│  │      │      ├─java
+│  │      │      │  └─com
+│  │      │      │      └─example
+│  │      │      │          └─demo
+│  │      │      │              │  DemoApplication.java
+│  │      │      │              │  
+│  │      │      │              └─controller
+│  │      │      │                      HelloWorldController.java
+│  │      │      │                      IndexController.java
+│  │      │      │                      
+│  │      │      └─resources
+│  │      │              application.properties
+│  │      │              
+│  │      └─target
+│  │          │  demo-0.0.1-SNAPSHOT.jar
+│  │          │  demo-0.0.1-SNAPSHOT.jar.original
+│  │          │  
+│  │          ├─classes
+│  │          │  │  application.properties
+│  │          │  │  
+│  │          │  └─com
+│  │          │      └─example
+│  │          │          └─demo
+│  │          │              │  DemoApplication.class
+│  │          │              │  
+│  │          │              └─controller
+│  │          │                      HelloWorldController.class
+│  │          │                      IndexController.class
+│  │          │                      
+│  │          ├─generated-sources
+│  │          │  └─annotations
+│  │          ├─maven-archiver
+│  │          │      pom.properties
+│  │          │      
+│  │          └─maven-status
+│  │              └─maven-compiler-plugin
+│  │                  └─compile
+│  │                      └─default-compile
+│  │                              createdFiles.lst
+│  │                              inputFiles.lst
+│  │                              
+│  └─断路器模式
+│      ├─hystrix-dashboard
+│      │  └─demo
+│      │      │  pom.xml
+│      │      │  新建文本文档.txt
+│      │      │  
+│      │      ├─src
+│      │      │  └─main
+│      │      │      ├─java
+│      │      │      │  └─com
+│      │      │      │      └─example
+│      │      │      │          └─demo
+│      │      │      │              │  DemoApplication.java
+│      │      │      │              │  
+│      │      │      │              ├─controller
+│      │      │      │              │      HelloWorldController.java
+│      │      │      │              │      IndexController.java
+│      │      │      │              │      
+│      │      │      │              └─service
+│      │      │      │                      StoreService.java
+│      │      │      │                      
+│      │      │      └─resources
+│      │      │              application.properties
+│      │      │              
+│      │      └─target
+│      │          │  demo-0.0.1-SNAPSHOT.jar
+│      │          │  demo-0.0.1-SNAPSHOT.jar.original
+│      │          │  
+│      │          ├─classes
+│      │          │  │  application.properties
+│      │          │  │  
+│      │          │  └─com
+│      │          │      └─example
+│      │          │          └─demo
+│      │          │              │  DemoApplication.class
+│      │          │              │  
+│      │          │              ├─controller
+│      │          │              │      HelloWorldController.class
+│      │          │              │      IndexController.class
+│      │          │              │      
+│      │          │              └─service
+│      │          │                      StoreService.class
+│      │          │                      
+│      │          ├─generated-sources
+│      │          │  └─annotations
+│      │          ├─maven-archiver
+│      │          │      pom.properties
+│      │          │      
+│      │          └─maven-status
+│      │              └─maven-compiler-plugin
+│      │                  └─compile
+│      │                      └─default-compile
+│      │                              createdFiles.lst
+│      │                              inputFiles.lst
+│      │                              
+│      └─springboot
+│          └─demo
+│              │  pom.xml
+│              │  新建文本文档.txt
+│              │  
+│              └─src
+│                  ├─main
+│                  │  ├─java
+│                  │  │  └─com
+│                  │  │      └─example
+│                  │  │          └─demo
+│                  │  │              │  DemoApplication.java
+│                  │  │              │  
+│                  │  │              ├─controller
+│                  │  │              │      HelloWorldController.java
+│                  │  │              │      IndexController.java
+│                  │  │              │      
+│                  │  │              └─service
+│                  │  │                      StoreService.java
+│                  │  │                      
+│                  │  └─resources
+│                  │          application.properties
+│                  │          
+│                  └─test
+│                      └─java
+│                          └─com
+│                              └─example
+│                                  └─demo
+│                                          DemoApplicationTests.java
+│                                          
+├─spring-cloud-openFeign
+│  │  跟踪.txt
+│  │  
+│  ├─client
+│  │  └─springboot
+│  │      └─demo
+│  │          │  pom.xml
+│  │          │  新建文本文档.txt
+│  │          │  
+│  │          └─src
+│  │              └─main
+│  │                  ├─java
+│  │                  │  └─com
+│  │                  │      └─example
+│  │                  │          └─demo
+│  │                  │              │  DemoApplication.java
+│  │                  │              │  
+│  │                  │              ├─controller
+│  │                  │              │      HelloWorldController.java
+│  │                  │              │      IndexController.java
+│  │                  │              │      
+│  │                  │              └─service
+│  │                  │                      Service.java
+│  │                  │                      
+│  │                  └─resources
+│  │                          application.properties
+│  │                          
+│  └─server
+│      └─springboot
+│          └─demo
+│              │  pom.xml
+│              │  新建文本文档.txt
+│              │  
+│              └─src
+│                  └─main
+│                      ├─java
+│                      │  └─com
+│                      │      └─example
+│                      │          └─demo
+│                      │              │  DemoApplication.java
+│                      │              │  
+│                      │              └─controller
+│                      │                      HelloWorldController.java
+│                      │                      IndexController.java
+│                      │                      
+│                      └─resources
+│                              application.properties
+│                              
+├─spring-cloud-stream
+│  │  新建文本文档.txt
+│  │  
+│  └─logging-consumer
+│      │  .classpath
+│      │  .gitignore
+│      │  .project
+│      │  mvnw
+│      │  mvnw.cmd
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─.mvn
+│      │  └─wrapper
+│      │          maven-wrapper.jar
+│      │          maven-wrapper.properties
+│      │          
+│      ├─.settings
+│      │      org.eclipse.core.resources.prefs
+│      │      org.eclipse.jdt.core.prefs
+│      │      
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─com
+│      │      │      └─example
+│      │      │          └─loggingconsumer
+│      │      │                  LoggingConsumerApplication.java
+│      │      │                  
+│      │      └─resources
+│      │              application.properties
+│      │              
+│      └─target
+│          │  logging-consumer-0.0.1-SNAPSHOT.jar
+│          │  logging-consumer-0.0.1-SNAPSHOT.jar.original
+│          │  
+│          ├─classes
+│          │  │  application.properties
+│          │  │  
+│          │  ├─com
+│          │  │  └─example
+│          │  │      └─loggingconsumer
+│          │  │              LoggingConsumerApplication$Person.class
+│          │  │              LoggingConsumerApplication.class
+│          │  │              
+│          │  └─META-INF
+│          │      │  MANIFEST.MF
+│          │      │  
+│          │      └─maven
+│          │          └─com.example
+│          │              └─logging-consumer
+│          │                      pom.properties
+│          │                      pom.xml
+│          │                      
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─lib
+│          │      accessors-smart-1.2.jar
+│          │      amqp-client-5.4.3.jar
+│          │      android-json-0.0.20131108.vaadin1.jar
+│          │      asm-5.0.4.jar
+│          │      assertj-core-3.11.1.jar
+│          │      byte-buddy-1.9.3.jar
+│          │      byte-buddy-agent-1.9.3.jar
+│          │      classmate-1.4.0.jar
+│          │      commons-codec-1.11.jar
+│          │      hamcrest-core-1.3.jar
+│          │      hamcrest-library-1.3.jar
+│          │      hibernate-validator-6.0.13.Final.jar
+│          │      http-client-2.1.0.RELEASE.jar
+│          │      httpclient-4.5.6.jar
+│          │      httpcore-4.4.10.jar
+│          │      jackson-annotations-2.9.0.jar
+│          │      jackson-core-2.9.7.jar
+│          │      jackson-databind-2.9.7.jar
+│          │      javax.annotation-api-1.3.2.jar
+│          │      jboss-logging-3.3.2.Final.jar
+│          │      json-path-2.4.0.jar
+│          │      json-smart-2.3.jar
+│          │      jsonassert-1.5.0.jar
+│          │      jul-to-slf4j-1.7.25.jar
+│          │      junit-4.12.jar
+│          │      kryo-shaded-3.0.3.jar
+│          │      log4j-api-2.11.1.jar
+│          │      log4j-to-slf4j-2.11.1.jar
+│          │      logback-classic-1.2.3.jar
+│          │      logback-core-1.2.3.jar
+│          │      minlog-1.3.0.jar
+│          │      mockito-core-2.23.0.jar
+│          │      objenesis-2.6.jar
+│          │      reactive-streams-1.0.2.jar
+│          │      reactor-core-3.2.2.RELEASE.jar
+│          │      slf4j-api-1.7.25.jar
+│          │      snakeyaml-1.23.jar
+│          │      spring-amqp-2.1.0.RELEASE.jar
+│          │      spring-aop-5.1.2.RELEASE.jar
+│          │      spring-aop-5.1.3.RELEASE.jar
+│          │      spring-beans-5.1.2.RELEASE.jar
+│          │      spring-boot-2.1.0.RELEASE.jar
+│          │      spring-boot-autoconfigure-2.1.0.RELEASE.jar
+│          │      spring-boot-starter-2.1.0.RELEASE.jar
+│          │      spring-boot-starter-amqp-2.1.0.RELEASE.jar
+│          │      spring-boot-starter-logging-2.1.0.RELEASE.jar
+│          │      spring-boot-starter-test-2.1.0.RELEASE.jar
+│          │      spring-boot-starter-validation-2.1.0.RELEASE.jar
+│          │      spring-boot-test-2.1.0.RELEASE.jar
+│          │      spring-boot-test-autoconfigure-2.1.0.RELEASE.jar
+│          │      spring-cloud-function-context-2.0.0.RC2.jar
+│          │      spring-cloud-function-core-2.0.0.RC2.jar
+│          │      spring-cloud-stream-2.1.0.RC2.jar
+│          │      spring-cloud-stream-binder-rabbit-2.1.0.RC2.jar
+│          │      spring-cloud-stream-binder-rabbit-core-2.1.0.RC2.jar
+│          │      spring-cloud-stream-test-support-2.1.0.RC2.jar
+│          │      spring-context-5.1.2.RELEASE.jar
+│          │      spring-core-5.1.2.RELEASE.jar
+│          │      spring-data-commons-core-1.4.1.RELEASE.jar
+│          │      spring-expression-5.1.2.RELEASE.jar
+│          │      spring-integration-amqp-5.1.0.RELEASE.jar
+│          │      spring-integration-core-5.1.0.RELEASE.jar
+│          │      spring-integration-jmx-5.1.0.RELEASE.jar
+│          │      spring-integration-tuple-1.0.0.RELEASE.jar
+│          │      spring-jcl-5.1.2.RELEASE.jar
+│          │      spring-messaging-5.1.2.RELEASE.jar
+│          │      spring-rabbit-2.1.0.RELEASE.jar
+│          │      spring-retry-1.2.2.RELEASE.jar
+│          │      spring-test-5.1.2.RELEASE.jar
+│          │      spring-tuple-1.0.0.RELEASE.jar
+│          │      spring-tx-5.1.2.RELEASE.jar
+│          │      spring-web-5.1.2.RELEASE.jar
+│          │      tomcat-embed-el-9.0.12.jar
+│          │      validation-api-2.0.1.Final.jar
+│          │      xmlunit-core-2.6.2.jar
+│          │      
+│          ├─maven-archiver
+│          │      pom.properties
+│          │      
+│          ├─maven-status
+│          │  └─maven-compiler-plugin
+│          │      ├─compile
+│          │      │  └─default-compile
+│          │      │          createdFiles.lst
+│          │      │          inputFiles.lst
+│          │      │          
+│          │      └─testCompile
+│          │          └─default-testCompile
+│          │                  inputFiles.lst
+│          │                  
+│          └─test-classes
+├─spring-cloud-zookeeper
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  ├─zookeeperclient
+│  │  │  pom.xml
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  ├─src
+│  │  │  └─main
+│  │  │      ├─java
+│  │  │      │  └─com
+│  │  │      │      └─pwhTest
+│  │  │      │          └─zookeeperservice
+│  │  │      │              │  ZookeeperApplication.java
+│  │  │      │              │  
+│  │  │      │              ├─controller
+│  │  │      │              │      HelloController.java
+│  │  │      │              │      
+│  │  │      │              └─service
+│  │  │      │                  │  HelloService.java
+│  │  │      │                  │  ServiceFeign.java
+│  │  │      │                  │  
+│  │  │      │                  └─fallback
+│  │  │      │                          FeignFallback.java
+│  │  │      │                          
+│  │  │      └─resources
+│  │  │              application.properties
+│  │  │              
+│  │  └─target
+│  │      │  zookeeperclient-0.0.1-SNAPSHOT.jar
+│  │      │  zookeeperclient-0.0.1-SNAPSHOT.jar.original
+│  │      │  
+│  │      ├─classes
+│  │      │  │  application.properties
+│  │      │  │  
+│  │      │  └─com
+│  │      │      └─pwhTest
+│  │      │          ├─zookeeperApplication
+│  │      │          │      ZookeeperApplication.class
+│  │      │          │      
+│  │      │          └─zookeeperservice
+│  │      │              ├─controller
+│  │      │              │      HelloController.class
+│  │      │              │      
+│  │      │              └─service
+│  │      │                  │  HelloService.class
+│  │      │                  │  ServiceFeign.class
+│  │      │                  │  
+│  │      │                  └─fallback
+│  │      │                          FeignFallback.class
+│  │      │                          
+│  │      ├─generated-sources
+│  │      │  └─annotations
+│  │      ├─maven-archiver
+│  │      │      pom.properties
+│  │      │      
+│  │      └─maven-status
+│  │          └─maven-compiler-plugin
+│  │              └─compile
+│  │                  └─default-compile
+│  │                          createdFiles.lst
+│  │                          inputFiles.lst
+│  │                          
+│  └─zookeeperservice
+│      │  pom.xml
+│      │  
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─com
+│      │      │      └─pwhTest
+│      │      │          └─zookeeperservice
+│      │      │              │  ZookeeperApplication.java
+│      │      │              │  
+│      │      │              └─controller
+│      │      │                      HelloController.java
+│      │      │                      
+│      │      └─resources
+│      │              application.properties
+│      │              
+│      └─target
+│          │  zookeeperservice-0.0.1-SNAPSHOT.jar
+│          │  zookeeperservice-0.0.1-SNAPSHOT.jar.original
+│          │  
+│          ├─classes
+│          │  │  application.properties
+│          │  │  
+│          │  └─com
+│          │      └─pwhTest
+│          │          ├─zookeeperApplication
+│          │          │      ZookeeperApplication.class
+│          │          │      
+│          │          └─zookeeperservice
+│          │              └─controller
+│          │                      HelloController.class
+│          │                      
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─maven-archiver
+│          │      pom.properties
+│          │      
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+│                              createdFiles.lst
+│                              inputFiles.lst
+│                              
+├─spring-gate-way
+│  │  跟踪.txt
+│  │  
+│  └─springboot
+│      └─demo
+│          │  pom.xml
+│          │  
+│          └─src
+│              └─main
+│                  ├─java
+│                  │  └─com
+│                  │      └─example
+│                  │          └─demo
+│                  │              │  DemoApplication.java
+│                  │              │  
+│                  │              └─controller
+│                  │                      HelloWorldController.java
+│                  │                      IndexController.java
+│                  │                      
+│                  └─resources
+│                          application.yml
+│                          
+├─springboot
+│  └─demo
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─com
+│      │      │      └─example
+│      │      │          └─demo
+│      │      │              │  DemoApplication.java
+│      │      │              │  
+│      │      │              └─controller
+│      │      │                      HelloWorldController.java
+│      │      │                      IndexController.java
+│      │      │                      
+│      │      └─resources
+│      │              application.properties
+│      │              
+│      └─target
+│          │  demo-0.0.1-SNAPSHOT.jar
+│          │  demo-0.0.1-SNAPSHOT.jar.original
+│          │  
+│          ├─classes
+│          │  │  application.properties
+│          │  │  
+│          │  └─com
+│          │      └─example
+│          │          └─demo
+│          │              │  DemoApplication.class
+│          │              │  
+│          │              └─controller
+│          │                      HelloWorldController.class
+│          │                      IndexController.class
+│          │                      
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─maven-archiver
+│          │      pom.properties
+│          │      
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+│                              createdFiles.lst
+│                              inputFiles.lst
+│                              
+├─springbootTomcat
+│  │  新建文本文档.txt
+│  │  
+│  └─demo
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─com
+│      │      │      └─example
+│      │      │          └─demo
+│      │      │              │  DemoApplication.java
+│      │      │              │  
+│      │      │              └─controller
+│      │      │                      HelloWorldController.java
+│      │      │                      IndexController.java
+│      │      │                      
+│      │      └─resources
+│      │              application.properties
+│      │              
+│      └─target
+│          │  .gitignore
+│          │  demo-0.0.1-SNAPSHOT.jar
+│          │  demo-0.0.1-SNAPSHOT.war.original
+│          │  
+│          ├─classes
+│          │  │  application.properties
+│          │  │  
+│          │  └─com
+│          │      └─example
+│          │          └─demo
+│          │              │  .gitignore
+│          │              │  DemoApplication.class
+│          │              │  
+│          │              └─controller
+│          │                      HelloWorldController.class
+│          │                      IndexController.class
+│          │                      
+│          ├─demo-0.0.1-SNAPSHOT
+│          │  ├─META-INF
+│          │  └─WEB-INF
+│          │      ├─classes
+│          │      │  │  application.properties
+│          │      │  │  
+│          │      │  └─com
+│          │      │      └─example
+│          │      │          └─demo
+│          │      │              │  .gitignore
+│          │      │              │  DemoApplication.class
+│          │      │              │  
+│          │      │              └─controller
+│          │      │                      .gitignore
+│          │      │                      HelloWorldController.class
+│          │      │                      IndexController.class
+│          │      │                      
+│          │      └─lib
+│          │              .gitignore
+│          │              classmate-1.3.3.jar
+│          │              hibernate-validator-5.3.5.Final.jar
+│          │              jackson-annotations-2.8.0.jar
+│          │              jackson-core-2.8.8.jar
+│          │              jackson-databind-2.8.8.jar
+│          │              javax.servlet-api-3.0.1.jar
+│          │              jboss-logging-3.3.1.Final.jar
+│          │              jcl-over-slf4j-1.7.25.jar
+│          │              jul-to-slf4j-1.7.25.jar
+│          │              log4j-over-slf4j-1.7.25.jar
+│          │              logback-classic-1.1.11.jar
+│          │              logback-core-1.1.11.jar
+│          │              slf4j-api-1.7.25.jar
+│          │              snakeyaml-1.17.jar
+│          │              spring-aop-4.3.9.RELEASE.jar
+│          │              spring-beans-4.3.9.RELEASE.jar
+│          │              spring-boot-1.5.4.RELEASE.jar
+│          │              spring-boot-actuator-1.5.4.RELEASE.jar
+│          │              spring-boot-autoconfigure-1.5.4.RELEASE.jar
+│          │              spring-boot-starter-1.5.4.RELEASE.jar
+│          │              spring-boot-starter-actuator-1.5.4.RELEASE.jar
+│          │              spring-boot-starter-logging-1.5.4.RELEASE.jar
+│          │              spring-boot-starter-web-1.5.4.RELEASE.jar
+│          │              spring-context-4.3.9.RELEASE.jar
+│          │              spring-core-4.3.9.RELEASE.jar
+│          │              spring-expression-4.3.9.RELEASE.jar
+│          │              spring-web-4.3.9.RELEASE.jar
+│          │              spring-webmvc-4.3.9.RELEASE.jar
+│          │              validation-api-1.1.0.Final.jar
+│          │              
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─maven-archiver
+│          │      .gitignore
+│          │      pom.properties
+│          │      
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+│                              .gitignore
+│                              createdFiles.lst
+│                              inputFiles.lst
+│                              
+├─springbootTomcatAnd注解配置
+│  └─demo
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              ├─java
+│              │  └─com
+│              │      └─example
+│              │          └─demo
+│              │              │  DemoApplication.java
+│              │              │  WebAppContextListener.java
+│              │              │  
+│              │              ├─controller
+│              │              │      HelloWorldController.java
+│              │              │      IndexController.java
+│              │              │      
+│              │              ├─service
+│              │              │  │  IIndexService.java
+│              │              │  │  ServerStartedReport.java
+│              │              │  │  
+│              │              │  └─impl
+│              │              │          IndexService.java
+│              │              │          
+│              │              └─webServiceServer
+│              │                  │  IAppService.java
+│              │                  │  
+│              │                  └─impl
+│              │                          AppService.java
+│              │                          
+│              └─resources
+│                      application.properties
+│                      
+├─springMVC
+│      新建文本文档.txt
+│      
+├─spring_cloud_config
+│  ├─RemoteConfigTest
+│  │  │  pom.xml
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  ├─src
+│  │  │  └─main
+│  │  │      ├─java
+│  │  │      │  └─com
+│  │  │      │      └─pwhTest
+│  │  │      │          │  RemoteConfigTest.java
+│  │  │      │          │  
+│  │  │      │          └─controller
+│  │  │      │                  HelloWorldController.java
+│  │  │      │                  
+│  │  │      └─resources
+│  │  │              application.properties
+│  │  │              bootstrap.properties
+│  │  │              
+│  │  └─target
+│  │      │  RemoteConfig-1.0-SNAPSHOT.jar.original
+│  │      │  
+│  │      └─classes
+│  │              bootstrap.properties
+│  │              
+│  └─springcloudTest
+│      │  .classpath
+│      │  .project
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─.settings
+│      │      org.eclipse.jdt.core.prefs
+│      │      org.eclipse.m2e.core.prefs
+│      │      
+│      └─src
+│          ├─main
+│          │  ├─java
+│          │  │  └─com
+│          │  │      └─pwhTest
+│          │  │          └─springcloudTest
+│          │  │                  ConfigServerApplication.java
+│          │  │                  
+│          │  └─resources
+│          │          application.yml
+│          │          
+│          └─test
+│              ├─java
+│              └─resources
+├─spring与mybatis对接
+│  │  init.sql
+│  │  pom.xml
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─main
+│          └─java
+│              └─com
+│                  └─pwhTest
+│                      └─SpringMybatisTest
+│                              SpringMybatisTest.java
+│                              User.java
+│                              UserMapper.java
+│                              
+├─webServiceServer
+│  └─demo
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              └─java
+│                  └─com
+│                      └─example
+│                          └─demo
+│                              │  DemoApplication.java
+│                              │  
+│                              └─webServiceServer
+│                                  └─impl
+│                                          AppService.java
+│                                          
+├─zookeeper研究
+│      新建文本文档.txt
+│      
+├─关于分布式特点的一些讨论
+│      新建文本文档.txt
+│      
+├─响应流
+│  └─Maven
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      └─src
+│          └─main
+│              └─java
+│                  └─com
+│                      └─pwhTest
+│                          └─reactorTest
+│                                  ReactorTest.java
+│                                  
+├─实用设计模式
+│  ├─多线程
+│  │      新建文本文档.txt
+│  │      
+│  └─观察者模式
+│      └─ObserverPattern
+│          │  pom.xml
+│          │  新建文本文档.txt
+│          │  
+│          └─src
+│              └─main
+│                  └─java
+│                      └─com
+│                          └─jstao
+│                              └─observer
+│                                      Observer.java
+│                                      Observerable.java
+│                                      Test.java
+│                                      User.java
+│                                      WechatServer.java
+│                                      
+├─常用linux命令
+│  └─文件解压
+│          新建文本文档.txt
+│          
+├─日志打印
+│  └─log
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─src
+│      │  └─main
+│      │      ├─java
+│      │      │  └─com
+│      │      │      └─pwhTest
+│      │      │          └─log4jTest
+│      │      │                  Log4jTest.java
+│      │      │                  
+│      │      └─resources
+│      │              log4j.properties
+│      │              
+│      └─target
+│          │  dependency-reduced-pom.xml
+│          │  log4jTest-1.0-SNAPSHOT.jar
+│          │  original-log4jTest-1.0-SNAPSHOT.jar
+│          │  
+│          ├─classes
+│          │  │  log4j.properties
+│          │  │  
+│          │  └─com
+│          │      └─pwhTest
+│          │          └─log4jTest
+│          │                  Log4jTest.class
+│          │                  
+│          ├─lib
+│          │      log4j-1.2.17.jar
+│          │      
+│          ├─maven-archiver
+│          │      pom.properties
+│          │      
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+│                              createdFiles.lst
+│                              inputFiles.lst
+│                              
+├─消息队列研究
+│  ├─kafka研究
+│  │  │  Untitled1.txt
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  ├─kafkaProductor
+│  │  │  │  pom.xml
+│  │  │  │  新建文本文档.txt
+│  │  │  │  
+│  │  │  └─src
+│  │  │      └─main
+│  │  │          └─java
+│  │  │              └─com
+│  │  │                  └─pwhTest
+│  │  │                      └─kfaka
+│  │  │                              KfakaTest.java
+│  │  │                              
+│  │  └─kfakaConsumer
+│  │      │  pom.xml
+│  │      │  新建文本文档.txt
+│  │      │  
+│  │      └─src
+│  │          └─main
+│  │              └─java
+│  │                  └─com
+│  │                      └─pwhTest
+│  │                          └─kfaka
+│  │                                  KfakaTest.java
+│  │                                  
+│  ├─RabbitMQ研究
+│  │  │  新建文本文档.txt
+│  │  │  跟踪-本地.txt
+│  │  │  
+│  │  └─rabbitMq
+│  │      │  .classpath
+│  │      │  .project
+│  │      │  pom.xml
+│  │      │  
+│  │      ├─.settings
+│  │      │      org.eclipse.jdt.core.prefs
+│  │      │      org.eclipse.m2e.core.prefs
+│  │      │      
+│  │      ├─src
+│  │      │  ├─main
+│  │      │  │  ├─java
+│  │      │  │  │  └─com
+│  │      │  │  │      └─pwhTest
+│  │      │  │  │          └─rabbitMq
+│  │      │  │  │                  Customer.java
+│  │      │  │  │                  Producer.java
+│  │      │  │  │                  
+│  │      │  │  └─resources
+│  │      │  └─test
+│  │      │      ├─java
+│  │      │      └─resources
+│  │      └─target
+│  │          │  dependency-reduced-pom.xml
+│  │          │  
+│  │          ├─classes
+│  │          │  ├─com
+│  │          │  │  └─pwhTest
+│  │          │  │      └─rabbitMq
+│  │          │  │              Customer$1.class
+│  │          │  │              Customer.class
+│  │          │  │              Producer.class
+│  │          │  │              
+│  │          │  └─META-INF
+│  │          │      │  MANIFEST.MF
+│  │          │      │  
+│  │          │      └─maven
+│  │          │          └─com.pwhTest
+│  │          │              └─rabbitMq
+│  │          │                      pom.properties
+│  │          │                      pom.xml
+│  │          │                      
+│  │          └─test-classes
+│  ├─RocketMQ研究
+│  │  │  新建文本文档.txt
+│  │  │  
+│  │  └─rocketMqTest
+│  │      │  .classpath
+│  │      │  .project
+│  │      │  pom.xml
+│  │      │  
+│  │      ├─.settings
+│  │      │      org.eclipse.jdt.core.prefs
+│  │      │      org.eclipse.m2e.core.prefs
+│  │      │      
+│  │      ├─src
+│  │      │  ├─main
+│  │      │  │  ├─java
+│  │      │  │  │  └─com
+│  │      │  │  │      └─pwhTest
+│  │      │  │  │          └─rocketMqTest
+│  │      │  │  │                  RocketMQConsumer.java
+│  │      │  │  │                  RocketMQConsumerTest.java
+│  │      │  │  │                  RocketMQListener.java
+│  │      │  │  │                  RocketMQProducer.java
+│  │      │  │  │                  RocketMQProducerTest.java
+│  │      │  │  │                  
+│  │      │  │  └─resources
+│  │      │  └─test
+│  │      │      ├─java
+│  │      │      └─resources
+│  │      └─target
+│  │          │  dependency-reduced-pom.xml
+│  │          │  original-rocketMqTest-0.0.1-SNAPSHOT.jar
+│  │          │  rocketMqTest-0.0.1-SNAPSHOT.jar
+│  │          │  
+│  │          ├─classes
+│  │          │  ├─com
+│  │          │  │  └─pwhTest
+│  │          │  │      └─rocketMqTest
+│  │          │  │              RocketMQConsumer.class
+│  │          │  │              RocketMQConsumerTest.class
+│  │          │  │              RocketMQListener.class
+│  │          │  │              RocketMQProducer.class
+│  │          │  │              RocketMQProducerTest.class
+│  │          │  │              
+│  │          │  └─META-INF
+│  │          │      │  MANIFEST.MF
+│  │          │      │  
+│  │          │      └─maven
+│  │          │          └─com.pwhTest
+│  │          │              └─rocketMqTest
+│  │          │                      pom.properties
+│  │          │                      pom.xml
+│  │          │                      
+│  │          ├─generated-test-sources
+│  │          │  └─test-annotations
+│  │          ├─maven-archiver
+│  │          │      pom.properties
+│  │          │      
+│  │          ├─maven-status
+│  │          │  └─maven-compiler-plugin
+│  │          │      ├─compile
+│  │          │      │  └─default-compile
+│  │          │      │          inputFiles.lst
+│  │          │      │          
+│  │          │      └─testCompile
+│  │          │          └─default-testCompile
+│  │          │                  createdFiles.lst
+│  │          │                  inputFiles.lst
+│  │          │                  
+│  │          ├─surefire-reports
+│  │          │      com.pwhTest.rocketMqTest.RocketMqTest.txt
+│  │          │      TEST-com.pwhTest.rocketMqTest.RocketMqTest.xml
+│  │          │      
+│  │          └─test-classes
+│  │              └─com
+│  │                  └─pwhTest
+│  │                      └─rocketMqTest
+│  └─zookeeper研究
+│      │  新建文本文档.txt
+│      │  
+│      └─zookeeperClient
+│          │  .classpath
+│          │  .project
+│          │  pom.xml
+│          │  
+│          ├─.settings
+│          │      org.eclipse.jdt.core.prefs
+│          │      org.eclipse.m2e.core.prefs
+│          │      
+│          ├─src
+│          │  ├─main
+│          │  │  ├─java
+│          │  │  │  └─com
+│          │  │  │      └─pwhTest
+│          │  │  │          ├─dataSubscribe
+│          │  │  │          │      ManageServer.java
+│          │  │  │          │      ServerConfig.java
+│          │  │  │          │      ServerData.java
+│          │  │  │          │      SubscribeZkClient.java
+│          │  │  │          │      WorkServer.java
+│          │  │  │          │      
+│          │  │  │          ├─LoadBalance
+│          │  │  │          │  ├─client
+│          │  │  │          │  │      AbstractBalanceProvider.java
+│          │  │  │          │  │      BalanceProvider.java
+│          │  │  │          │  │      Client.java
+│          │  │  │          │  │      ClientHandler.java
+│          │  │  │          │  │      ClientImpl.java
+│          │  │  │          │  │      ClientRunner.java
+│          │  │  │          │  │      DefaultBalanceProvider.java
+│          │  │  │          │  │      
+│          │  │  │          │  └─server
+│          │  │  │          │          BalanceUpdateProvider.java
+│          │  │  │          │          DefaultBalanceUpdateProvider.java
+│          │  │  │          │          DefaultRegistProvider.java
+│          │  │  │          │          RegistProvider.java
+│          │  │  │          │          Server.java
+│          │  │  │          │          ServerData.java
+│          │  │  │          │          ServerHandler.java
+│          │  │  │          │          ServerImpl.java
+│          │  │  │          │          ServerRunner.java
+│          │  │  │          │          ZooKeeperRegistContext.java
+│          │  │  │          │          
+│          │  │  │          ├─masterSelect
+│          │  │  │          │      LeaderSelectorZkClient.java
+│          │  │  │          │      RunningData.java
+│          │  │  │          │      WorkServer.java
+│          │  │  │          │      
+│          │  │  │          └─zookeeperCli
+│          │  │  │                  IdMaker.java
+│          │  │  │                  User.java
+│          │  │  │                  ZookeeperCli.java
+│          │  │  │                  
+│          │  │  └─resources
+│          │  └─test
+│          │      ├─java
+│          │      └─resources
+│          └─target
+│              │  dependency-reduced-pom.xml
+│              │  original-zookeeperClient-0.0.1-SNAPSHOT.jar
+│              │  zookeeperClient-0.0.1-SNAPSHOT-shaded.jar
+│              │  zookeeperClient-0.0.1-SNAPSHOT.jar
+│              │  
+│              ├─classes
+│              │  ├─com
+│              │  │  └─pwhTest
+│              │  │      ├─dataSubscribe
+│              │  │      │      ManageServer$1.class
+│              │  │      │      ManageServer$2.class
+│              │  │      │      ManageServer.class
+│              │  │      │      ServerConfig.class
+│              │  │      │      ServerData.class
+│              │  │      │      SubscribeZkClient.class
+│              │  │      │      WorkServer$1.class
+│              │  │      │      WorkServer.class
+│              │  │      │      
+│              │  │      ├─LoadBalance
+│              │  │      │  ├─client
+│              │  │      │  │      AbstractBalanceProvider.class
+│              │  │      │  │      BalanceProvider.class
+│              │  │      │  │      Client.class
+│              │  │      │  │      ClientHandler.class
+│              │  │      │  │      ClientImpl$1.class
+│              │  │      │  │      ClientImpl.class
+│              │  │      │  │      ClientRunner$1.class
+│              │  │      │  │      ClientRunner.class
+│              │  │      │  │      DefaultBalanceProvider.class
+│              │  │      │  │      
+│              │  │      │  └─server
+│              │  │      │          BalanceUpdateProvider.class
+│              │  │      │          DefaultBalanceUpdateProvider.class
+│              │  │      │          DefaultRegistProvider.class
+│              │  │      │          RegistProvider.class
+│              │  │      │          Server.class
+│              │  │      │          ServerData.class
+│              │  │      │          ServerHandler.class
+│              │  │      │          ServerImpl$1.class
+│              │  │      │          ServerImpl.class
+│              │  │      │          ServerRunner$1.class
+│              │  │      │          ServerRunner.class
+│              │  │      │          ZooKeeperRegistContext.class
+│              │  │      │          
+│              │  │      ├─masterSelect
+│              │  │      │      LeaderSelectorZkClient.class
+│              │  │      │      RunningData.class
+│              │  │      │      WorkServer$1$1.class
+│              │  │      │      WorkServer$1.class
+│              │  │      │      WorkServer$2.class
+│              │  │      │      WorkServer.class
+│              │  │      │      
+│              │  │      └─zookeeperCli
+│              │  │              IdMaker$1.class
+│              │  │              IdMaker$RemoveMethod.class
+│              │  │              IdMaker.class
+│              │  │              User.class
+│              │  │              ZookeeperCli.class
+│              │  │              
+│              │  └─META-INF
+│              │      │  MANIFEST.MF
+│              │      │  
+│              │      └─maven
+│              │          └─com.pwhTest
+│              │              └─zookeeperClient
+│              │                      pom.properties
+│              │                      pom.xml
+│              │                      
+│              ├─generated-sources
+│              │  └─annotations
+│              ├─lib
+│              │      audience-annotations-0.5.0.jar
+│              │      fastjson-1.2.52.jar
+│              │      jline-0.9.94.jar
+│              │      log4j-1.2.17.jar
+│              │      netty-3.10.6.Final.jar
+│              │      slf4j-api-1.7.25.jar
+│              │      slf4j-log4j12-1.7.25.jar
+│              │      zkclient-0.11.jar
+│              │      zookeeper-3.4.13.jar
+│              │      
+│              ├─maven-archiver
+│              │      pom.properties
+│              │      
+│              ├─maven-status
+│              │  └─maven-compiler-plugin
+│              │      ├─compile
+│              │      │  └─default-compile
+│              │      │          createdFiles.lst
+│              │      │          inputFiles.lst
+│              │      │          
+│              │      └─testCompile
+│              │          └─default-testCompile
+│              │                  inputFiles.lst
+│              │                  
+│              └─test-classes
+├─简单java
+│  │  manifest.mf
+│  │  新建文本文档.txt
+│  │  
+│  └─src
+│      └─com
+│              Test.class
+│              Test.java
+│              
+├─简单spring
+│  └─springTest
+│      │  pom.xml
+│      │  新建文本文档.txt
+│      │  
+│      ├─src
+│      │  └─main
+│      │      └─java
+│      │          │  appContext.xml
+│      │          │  
+│      │          └─com
+│      │              └─juvenxu
+│      │                  └─mvnbook
+│      │                      └─helloworld
+│      │                              OutputService.java
+│      │                              Test.java
+│      │                              
+│      └─target
+│          │  dependency-reduced-pom.xml
+│          │  hello-world-1.0-SNAPSHOT.jar
+│          │  original-hello-world-1.0-SNAPSHOT.jar
+│          │  
+│          ├─classes
+│          │  │  appContext.xml
+│          │  │  
+│          │  └─com
+│          │      └─juvenxu
+│          │          └─mvnbook
+│          │              └─helloworld
+│          │                      OutputService.class
+│          │                      Test.class
+│          │                      
+│          ├─generated-sources
+│          │  └─annotations
+│          ├─maven-archiver
+│          │      pom.properties
+│          │      
+│          └─maven-status
+│              └─maven-compiler-plugin
+│                  └─compile
+│                      └─default-compile
+│                              createdFiles.lst
+│                              inputFiles.lst
+│                              
+├─配置eclipse与maven共用的项目
+│      (范例).classpath
+│      新建文本文档.txt
+│      
+└─魔方专题
+    │  说明.txt
+    │  
+    ├─MFTest
+    │  │  .classpath
+    │  │  .project
+    │  │  pom.xml
+    │  │  
+    │  ├─.settings
+    │  │      org.eclipse.core.resources.prefs
+    │  │      org.eclipse.jdt.core.prefs
+    │  │      org.eclipse.m2e.core.prefs
+    │  │      
+    │  ├─src
+    │  │  └─main
+    │  │      ├─java
+    │  │      │  └─com
+    │  │      │      └─pwhTest
+    │  │      │          ├─BaseDao
+    │  │      │          │      BaseDao.java
+    │  │      │          │      
+    │  │      │          └─MFTest
+    │  │      │              ├─MFCode
+    │  │      │              │      Grid.java
+    │  │      │              │      IMFCode.java
+    │  │      │              │      IMFCodeStatic.java
+    │  │      │              │      MFCodeImpl.java
+    │  │      │              │      MFCodeStaticImpl.java
+    │  │      │              │      
+    │  │      │              └─MFSubstatusTable
+    │  │      │                  │  CreateMFSubStatusTable.java
+    │  │      │                  │  IMFSubStatusTableDao.java
+    │  │      │                  │  
+    │  │      │                  └─dao
+    │  │      │                          MFSubStatusTableDao.java
+    │  │      │                          
+    │  │      └─resources
+    │  │              init.sql
+    │  │              SqlMapConfig.properties
+    │  │              SqlMapConfig.xml
+    │  │              sqlMap_MFSubStatus.xml
+    │  │              
+    │  └─target
+    │      │  dependency-reduced-pom.xml
+    │      │  MFTest-0.0.1-SNAPSHOT.jar
+    │      │  original-MFTest-0.0.1-SNAPSHOT.jar
+    │      │  
+    │      ├─classes
+    │      │  │  init.sql
+    │      │  │  SqlMapConfig.properties
+    │      │  │  SqlMapConfig.xml
+    │      │  │  sqlMap_MFSubStatus.xml
+    │      │  │  
+    │      │  ├─com
+    │      │  │  └─pwhTest
+    │      │  │      ├─BaseDao
+    │      │  │      │      BaseDao.class
+    │      │  │      │      
+    │      │  │      └─MFTest
+    │      │  │          ├─MFCode
+    │      │  │          │      Grid.class
+    │      │  │          │      IMFCode.class
+    │      │  │          │      IMFCodeStatic.class
+    │      │  │          │      MFCodeImpl.class
+    │      │  │          │      MFCodeStaticImpl.class
+    │      │  │          │      
+    │      │  │          └─MFSubstatusTable
+    │      │  │              │  CreateMFSubStatusTable$1.class
+    │      │  │              │  CreateMFSubStatusTable.class
+    │      │  │              │  IMFSubStatusTableDao.class
+    │      │  │              │  
+    │      │  │              └─dao
+    │      │  │                      MFSubStatusTableDao.class
+    │      │  │                      
+    │      │  └─META-INF
+    │      │      │  MANIFEST.MF
+    │      │      │  
+    │      │      └─maven
+    │      │          └─com.pwhTest
+    │      │              └─MFTest
+    │      │                      pom.properties
+    │      │                      pom.xml
+    │      │                      
+    │      ├─maven-archiver
+    │      │      pom.properties
+    │      │      
+    │      └─maven-status
+    │          └─maven-compiler-plugin
+    │              ├─compile
+    │              │  └─default-compile
+    │              │          createdFiles.lst
+    │              │          inputFiles.lst
+    │              │          
+    │              └─testCompile
+    │                  └─default-testCompile
+    │                          inputFiles.lst
+    │                          
+    ├─MFTest2
+    │  │  .classpath
+    │  │  .project
+    │  │  pom.xml
+    │  │  
+    │  ├─.settings
+    │  │      org.eclipse.jdt.core.prefs
+    │  │      org.eclipse.m2e.core.prefs
+    │  │      
+    │  ├─src
+    │  │  └─main
+    │  │      ├─java
+    │  │      │  └─com
+    │  │      │      └─pwhTest
+    │  │      │          ├─BaseDao
+    │  │      │          │      BaseDao.java
+    │  │      │          │      
+    │  │      │          ├─MFTest
+    │  │      │          │  ├─MFCode
+    │  │      │          │  │      Grid.java
+    │  │      │          │  │      IMFCode.java
+    │  │      │          │  │      IMFCodeStatic.java
+    │  │      │          │  │      MFCodeImpl.java
+    │  │      │          │  │      MFCodeStaticImpl.java
+    │  │      │          │  │      
+    │  │      │          │  └─MFSubstatusTable
+    │  │      │          │      │  CreateMFSubStatusTable.java
+    │  │      │          │      │  IMFSubStatusTableDao.java
+    │  │      │          │      │  
+    │  │      │          │      └─dao
+    │  │      │          │              MFSubStatusTableDao.java
+    │  │      │          │              
+    │  │      │          └─RedisTest
+    │  │      │                  RedisPool.java
+    │  │      │                  
+    │  │      └─resources
+    │  │              init.sql
+    │  │              SqlMapConfig.properties
+    │  │              SqlMapConfig.xml
+    │  │              sqlMap_MFSubStatus.xml
+    │  │              
+    │  └─target
+    │      │  dependency-reduced-pom.xml
+    │      │  MFTest2-0.0.1-SNAPSHOT-shaded.jar
+    │      │  MFTest2-0.0.1-SNAPSHOT.jar
+    │      │  original-MFTest2-0.0.1-SNAPSHOT.jar
+    │      │  
+    │      ├─classes
+    │      │  │  init.sql
+    │      │  │  SqlMapConfig.properties
+    │      │  │  SqlMapConfig.xml
+    │      │  │  sqlMap_MFSubStatus.xml
+    │      │  │  
+    │      │  ├─com
+    │      │  │  └─pwhTest
+    │      │  │      ├─BaseDao
+    │      │  │      │      BaseDao.class
+    │      │  │      │      
+    │      │  │      ├─MFTest
+    │      │  │      │  ├─MFCode
+    │      │  │      │  │      Grid.class
+    │      │  │      │  │      IMFCode.class
+    │      │  │      │  │      IMFCodeStatic.class
+    │      │  │      │  │      MFCodeImpl.class
+    │      │  │      │  │      MFCodeStaticImpl.class
+    │      │  │      │  │      
+    │      │  │      │  └─MFSubstatusTable
+    │      │  │      │      │  CreateMFSubStatusTable$1.class
+    │      │  │      │      │  CreateMFSubStatusTable.class
+    │      │  │      │      │  IMFSubStatusTableDao.class
+    │      │  │      │      │  
+    │      │  │      │      └─dao
+    │      │  │      │              MFSubStatusTableDao.class
+    │      │  │      │              
+    │      │  │      └─RedisTest
+    │      │  │              RedisPool.class
+    │      │  │              
+    │      │  └─META-INF
+    │      │      │  MANIFEST.MF
+    │      │      │  
+    │      │      └─maven
+    │      │          └─com.pwhTest
+    │      │              └─MFTest2
+    │      │                      pom.properties
+    │      │                      pom.xml
+    │      │                      
+    │      ├─maven-archiver
+    │      │      pom.properties
+    │      │      
+    │      └─maven-status
+    │          └─maven-compiler-plugin
+    │              ├─compile
+    │              │  └─default-compile
+    │              │          createdFiles.lst
+    │              │          inputFiles.lst
+    │              │          
+    │              └─testCompile
+    │                  └─default-testCompile
+    │                          inputFiles.lst
+    │                          
+    └─MFTest3
+        ├─MFTest3Consumer
+        │  │  .classpath
+        │  │  .project
+        │  │  pom.xml
+        │  │  
+        │  ├─.settings
+        │  │      org.eclipse.jdt.core.prefs
+        │  │      org.eclipse.m2e.core.prefs
+        │  │      
+        │  ├─src
+        │  │  └─main
+        │  │      ├─java
+        │  │      │  └─com
+        │  │      │      └─pwhTest
+        │  │      │          ├─MFTest
+        │  │      │          │  ├─MFCode
+        │  │      │          │  │      Grid.java
+        │  │      │          │  │      IMFCode.java
+        │  │      │          │  │      IMFCodeStatic.java
+        │  │      │          │  │      MFCodeImpl.java
+        │  │      │          │  │      MFCodeStaticImpl.java
+        │  │      │          │  │      
+        │  │      │          │  └─MFSubstatusTable
+        │  │      │          │          CreateMFSubStatusTable.java
+        │  │      │          │          
+        │  │      │          ├─MFTest3Consumer
+        │  │      │          │  └─consumer
+        │  │      │          │          Consumer.java
+        │  │      │          │          
+        │  │      │          └─MFTest3Provider
+        │  │      │                  DemoService.java
+        │  │      │                  
+        │  │      └─resources
+        │  │          │  dubbo.properties
+        │  │          │  log4j.properties
+        │  │          │  
+        │  │          └─META-INF
+        │  │              └─spring
+        │  │                      dubbo-demo-consumer.xml
+        │  │                      
+        │  └─target
+        │      │  dependency-reduced-pom.xml
+        │      │  MFTest3Consumer-0.0.1-SNAPSHOT.jar
+        │      │  original-MFTest3Consumer-0.0.1-SNAPSHOT.jar
+        │      │  
+        │      ├─classes
+        │      │  │  dubbo.properties
+        │      │  │  log4j.properties
+        │      │  │  
+        │      │  ├─com
+        │      │  │  └─pwhTest
+        │      │  │      ├─MFTest
+        │      │  │      │  ├─MFCode
+        │      │  │      │  │      Grid.class
+        │      │  │      │  │      IMFCode.class
+        │      │  │      │  │      IMFCodeStatic.class
+        │      │  │      │  │      MFCodeImpl.class
+        │      │  │      │  │      MFCodeStaticImpl.class
+        │      │  │      │  │      
+        │      │  │      │  └─MFSubstatusTable
+        │      │  │      │          CreateMFSubStatusTable.class
+        │      │  │      │          
+        │      │  │      ├─MFTest3Consumer
+        │      │  │      │  └─consumer
+        │      │  │      │          Consumer.class
+        │      │  │      │          
+        │      │  │      └─MFTest3Provider
+        │      │  │              DemoService.class
+        │      │  │              
+        │      │  └─META-INF
+        │      │      │  MANIFEST.MF
+        │      │      │  
+        │      │      ├─maven
+        │      │      │  └─com.pwhTest
+        │      │      │      └─MFTest3Consumer
+        │      │      │              pom.properties
+        │      │      │              pom.xml
+        │      │      │              
+        │      │      └─spring
+        │      │              dubbo-demo-consumer.xml
+        │      │              
+        │      ├─lib
+        │      │      commons-logging-1.2.jar
+        │      │      curator-client-2.9.1.jar
+        │      │      curator-framework-2.9.1.jar
+        │      │      dubbo-2.6.2.jar
+        │      │      guava-16.0.1.jar
+        │      │      javassist-3.20.0-GA.jar
+        │      │      jline-0.9.94.jar
+        │      │      log4j-1.2.16.jar
+        │      │      netty-3.2.5.Final.jar
+        │      │      netty-3.7.0.Final.jar
+        │      │      slf4j-api-1.7.6.jar
+        │      │      spring-aop-4.3.16.RELEASE.jar
+        │      │      spring-beans-4.3.16.RELEASE.jar
+        │      │      spring-context-4.3.16.RELEASE.jar
+        │      │      spring-core-4.3.16.RELEASE.jar
+        │      │      spring-expression-4.3.16.RELEASE.jar
+        │      │      zookeeper-3.4.6.jar
+        │      │      
+        │      ├─maven-archiver
+        │      │      pom.properties
+        │      │      
+        │      └─maven-status
+        │          └─maven-compiler-plugin
+        │              ├─compile
+        │              │  └─default-compile
+        │              │          createdFiles.lst
+        │              │          inputFiles.lst
+        │              │          
+        │              └─testCompile
+        │                  └─default-testCompile
+        │                          inputFiles.lst
+        │                          
+        └─MFTest3Provider
+            │  .classpath
+            │  .project
+            │  pom.xml
+            │  
+            ├─.settings
+            │      org.eclipse.jdt.core.prefs
+            │      org.eclipse.m2e.core.prefs
+            │      
+            ├─src
+            │  └─main
+            │      ├─java
+            │      │  └─com
+            │      │      └─pwhTest
+            │      │          ├─BaseDao
+            │      │          │      BaseDao.java
+            │      │          │      
+            │      │          ├─MFTest
+            │      │          │  ├─MFCode
+            │      │          │  │      Grid.java
+            │      │          │  │      IMFCode.java
+            │      │          │  │      IMFCodeStatic.java
+            │      │          │  │      MFCodeImpl.java
+            │      │          │  │      MFCodeStaticImpl.java
+            │      │          │  │      
+            │      │          │  └─MFSubstatusTable
+            │      │          │      │  CreateMFSubStatusTable.java
+            │      │          │      │  IMFSubStatusTableDao.java
+            │      │          │      │  
+            │      │          │      ├─dao
+            │      │          │      │      MFSubStatusTableDao.java
+            │      │          │      │      
+            │      │          │      └─impl
+            │      │          │              CreateMFSubStatusTableImpl.java
+            │      │          │              
+            │      │          └─MFTest3Provider
+            │      │              │  DemoService.java
+            │      │              │  
+            │      │              └─provider
+            │      │                      DemoServiceImpl.java
+            │      │                      Provider.java
+            │      │                      
+            │      └─resources
+            │          │  dubbo.properties
+            │          │  log4j.properties
+            │          │  SqlMapConfig.properties
+            │          │  SqlMapConfig.xml
+            │          │  sqlMap_MFSubStatus.xml
+            │          │  
+            │          └─META-INF
+            │              └─spring
+            │                      dubbo-demo-provider.xml
+            │                      
+            └─target
+                │  dependency-reduced-pom.xml
+                │  MFTest3Provider-0.0.1-SNAPSHOT-shaded.jar
+                │  MFTest3Provider-0.0.1-SNAPSHOT.jar
+                │  original-MFTest3Provider-0.0.1-SNAPSHOT.jar
+                │  
+                ├─classes
+                │  │  dubbo.properties
+                │  │  log4j.properties
+                │  │  SqlMapConfig.properties
+                │  │  SqlMapConfig.xml
+                │  │  sqlMap_MFSubStatus.xml
+                │  │  
+                │  ├─com
+                │  │  └─pwhTest
+                │  │      ├─BaseDao
+                │  │      │      BaseDao.class
+                │  │      │      
+                │  │      ├─MFTest
+                │  │      │  ├─MFCode
+                │  │      │  │      Grid.class
+                │  │      │  │      IMFCode.class
+                │  │      │  │      IMFCodeStatic.class
+                │  │      │  │      MFCodeImpl.class
+                │  │      │  │      MFCodeStaticImpl.class
+                │  │      │  │      
+                │  │      │  └─MFSubstatusTable
+                │  │      │      │  CreateMFSubStatusTable.class
+                │  │      │      │  IMFSubStatusTableDao.class
+                │  │      │      │  
+                │  │      │      ├─dao
+                │  │      │      │      MFSubStatusTableDao.class
+                │  │      │      │      
+                │  │      │      └─impl
+                │  │      │              CreateMFSubStatusTableImpl$1.class
+                │  │      │              CreateMFSubStatusTableImpl.class
+                │  │      │              
+                │  │      └─MFTest3Provider
+                │  │          │  DemoService.class
+                │  │          │  
+                │  │          └─provider
+                │  │                  DemoServiceImpl.class
+                │  │                  Provider.class
+                │  │                  
+                │  └─META-INF
+                │      │  MANIFEST.MF
+                │      │  
+                │      ├─maven
+                │      │  └─com.pwhTest
+                │      │      └─MFTest3Provider
+                │      │              pom.properties
+                │      │              pom.xml
+                │      │              
+                │      └─spring
+                │              dubbo-demo-provider.xml
+                │              
+                ├─lib
+                │      commons-logging-1.2.jar
+                │      curator-client-2.9.1.jar
+                │      curator-framework-2.9.1.jar
+                │      dubbo-2.6.2.jar
+                │      guava-16.0.1.jar
+                │      ibatis-core-3.0.jar
+                │      ibatis-sqlmap-2.3.0.jar
+                │      javassist-3.20.0-GA.jar
+                │      jline-0.9.94.jar
+                │      log4j-1.2.16.jar
+                │      mysql-connector-java-5.1.20.jar
+                │      netty-3.2.5.Final.jar
+                │      netty-3.7.0.Final.jar
+                │      slf4j-api-1.7.6.jar
+                │      spring-aop-4.3.16.RELEASE.jar
+                │      spring-beans-4.3.16.RELEASE.jar
+                │      spring-context-4.3.16.RELEASE.jar
+                │      spring-core-4.3.16.RELEASE.jar
+                │      spring-expression-4.3.16.RELEASE.jar
+                │      zookeeper-3.4.6.jar
+                │      
+                ├─maven-archiver
+                │      pom.properties
+                │      
+                └─maven-status
+                    └─maven-compiler-plugin
+                        ├─compile
+                        │  └─default-compile
+                        │          createdFiles.lst
+                        │          inputFiles.lst
+                        │          
+                        └─testCompile
+                            └─default-testCompile
+                                    inputFiles.lst
+                                    
