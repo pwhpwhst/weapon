@@ -1,6 +1,6 @@
 ²Î¿¼£ºhttps://www.jianshu.com/p/fb2e973fb325
 
-cd C:\Users\pan.weihao\Desktop\spring cloud task
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\spring cloud task
 mvn clean package
 
 
