@@ -1,0 +1,62 @@
+参考：
+https://help.aliyun.com/product/59604.html	（注意章节：搭建 ACM 本地测试环境）
+
+
+
+一、开发测试的做法
+
+
+1、下载Acm测试服务器，并解压
+D:
+cd D:\acm-server\acm-server\bin
+catalina.bat run
+
+
+2、登录 ACM控制台，创建配置：
+
+http://localhost:8080/diamond-server
+
+DataID：com.acm.myapp.app.cfg
+Group：myapp
+
+threadPoolSize=5
+logLevel=WARN
+
+
+
+3、修改 c:\Windows\System32\drivers\etc\host 文件
+
+127.0.0.1		acm.aliyun.com
+
+
+4、观察效果
+C:
+cd C:\Users\pan.weihao\Desktop\myapp\myapp
+mvn clean package
+cd target
+java -cp myapp.jar com.acm.sample.App
+
+
+
+
+二、生产环境的做法
+
+1、用自己的阿里云账号登录阿里云，开通ACM配置工具：
+
+ ACM 产品主页（https://www.aliyun.com/product/acm）。
+
+ 2、登录 ACM控制台，创建配置：
+
+DataID：com.acm.myapp.app.cfg
+Group：myapp
+
+threadPoolSize=5
+logLevel=WARN
+
+
+3、观察效果
+C:
+cd C:\Users\pan.weihao\Desktop\myapp\myapp
+mvn clean package
+cd target
+java -cp myapp.jar com.acm.sample.App

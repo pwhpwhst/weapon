@@ -1,0 +1,31 @@
+1、安装淘宝tomcat和EDAS
+2、编辑淘宝tomcat的cataline.bat 添加：
+
+set JAVA_OPTS=-Dpandora.location=D:\dev20180522\dev\taobao-tomcat-7.0.59\deploy\taobao-hsf.sar
+set JAVA_OPTS=%JAVA_OPTS% -Dfile.encoding=UTF-8
+set JAVA_OPTS=%JAVA_OPTS% -server
+set JAVA_OPTS=%JAVA_OPTS% -XX:PermSize=128M
+set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256m
+
+3、修改EDAS的startup.bat 添加
+
+SET SERVER_IP="127.0.0.1"
+SET JAVA_HOME=
+
+4、修改 c:\Windows\System32\drivers\etc\host 文件
+
+127.0.0.1		jmenv.tbsite.net
+
+5、启动EDAS
+
+cd D:\dev20180522\dev\servers\edas-config-center
+startup.bat
+
+访问 http://jmenv.tbsite.net:8080/#/dsConfig 观察到没有任何服务
+
+6、启动dataSevice 和 dataSubSevice ，
+
+访问 http://jmenv.tbsite.net:8080/#/dsConfig 观察到有两个服务
+
+
+7、启动 dataClient，观察效果

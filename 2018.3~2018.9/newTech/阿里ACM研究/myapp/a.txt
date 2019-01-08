@@ -1,0 +1,61 @@
+卷 系统 的文件夹 PATH 列表
+卷序列号为 000E-5EDD
+C:.
+│  a.txt
+│  
+├─myapp
+│  │  pom.xml
+│  │  
+│  └─src
+│      ├─main
+│      │  └─java
+│      │      └─com
+│      │          └─acm
+│      │              └─sample
+│      │                      App.java
+│      │                      
+│      └─test
+│          └─java
+│              └─com
+│                  └─acm
+│                      └─sample
+│                              AppTest.java
+│                              
+└─__MACOSX
+    │  ._myapp
+    │  
+    └─myapp
+        │  ._pom.xml
+        │  ._src
+        │  
+        └─src
+            │  ._main
+            │  ._test
+            │  
+            ├─main
+            │  │  ._java
+            │  │  
+            │  └─java
+            │      │  ._com
+            │      │  
+            │      └─com
+            │          │  ._acm
+            │          │  
+            │          └─acm
+            │                  ._sample
+            │                  
+            └─test
+                │  ._java
+                │  
+                └─java
+                    │  ._com
+                    │  
+                    └─com
+                        │  ._acm
+                        │  
+                        └─acm
+                            │  ._sample
+                            │  
+                            └─sample
+                                    ._AppTest.java
+                                    

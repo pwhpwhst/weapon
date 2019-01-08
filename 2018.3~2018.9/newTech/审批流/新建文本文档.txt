@@ -1,0 +1,13 @@
+²Î¿¼£ºhttps://blog.csdn.net/u010871004/article/details/61636288
+
+
+https://blog.csdn.net/cs_hnu_scw/article/details/79059965
+
+
+https://blog.csdn.net/ka_ka314/article/details/79431197
+
+Help ---> Install new SoftWare ---> Add
+
+Name£ºActiviti BPMN 2.0 designer
+
+Location£ºhttp://activiti.org/designer/update/

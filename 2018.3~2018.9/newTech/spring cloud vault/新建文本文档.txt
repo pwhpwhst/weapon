@@ -1,0 +1,15 @@
+参考：https://learn.hashicorp.com/vault/
+
+1、下载&安装 https://www.vaultproject.io/downloads.html
+
+添加环境变量path
+
+2、启动 Vault服务
+vault server -dev
+
+3、开启另一个cmd
+
+set VAULT_ADDR = http://127.0.0.1:8200
+
+
+set VAULT_DEV_ROOT_TOKEN_ID

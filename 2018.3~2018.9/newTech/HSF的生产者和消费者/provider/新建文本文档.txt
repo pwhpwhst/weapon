@@ -11,6 +11,13 @@ set JAVA_OPTS=%JAVA_OPTS% -XX:MaxPermSize=256m
 8080改为8081
 
 
+-Dpandora.location=D:\dev20180522\dev\taobao-tomcat-7.0.59\deploy\taobao-hsf.sar
+-Dfile.encoding=UTF-8
+-server
+-XX:PermSize=128M
+-XX:MaxPermSize=256m
+
+
 2、安装EDAS
 2.1
 dev\edas-config-center\startup.bat
