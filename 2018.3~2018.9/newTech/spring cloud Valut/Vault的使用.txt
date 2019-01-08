@@ -1,0 +1,76 @@
+vault可以看做一种加密集合体
+参考：https://www.vaultproject.io/
+
+1、下载 https://www.vaultproject.io/
+
+设置好环境变量path
+
+F:\vault_1.0.1_windows_amd64
+
+2、启动valut服务器：
+
+vault server -dev
+
+注意启动后会有如下内容
+
+Unseal Key: KgdNU6hoYF/eJgGdDrV+k+3gTtfsMAGUfAttmvlstJg=
+Root Token: s.1qiOmEnulGR41zTHdP9cf9es
+
+
+3、启动valut客户端
+
+set VAULT_ADDR=http://127.0.0.1:8200
+
+set VAULT_DEV_ROOT_TOKEN_ID=s.5xqVhuMqaCufoGu3tQTNPNm4
+
+
+set VAULT_DEV_ROOT_TOKEN_ID=a
+
+保存好Unseal Key到一个随便但你又知道的位置
+
+然后 valut status ,就可以查看valut服务器的情况
+
+
+4、写入键值secret
+
+vault kv put secret/hello foo=world //kv 是一种Secrets Engines
+vault kv put secret/hello foo=world excited=yes // secret/hello 是指路径， 写入的所有secret的路径必须带有前缀secret/
+
+5、 获取键值secret
+
+vault kv get secret/hello
+
+vault kv get -format=json secret/hello | jq -r .data.excited
+
+vault kv get -field=excited secret/hello
+
+
+6、删除键值secret
+vault kv delete secret/hello
+
+=============================================================================
+
+其他常用操作：
+
+
+
+启用一个secret引擎
+
+vault secrets enable -path=kv kv
+
+
+查看引擎列表
+vault secrets list
+
+
+修改各引擎下路径的属性：
+
+vault write kv/my-secret value="s3c(eT"
+vault write kv/hello target=world
+vault write kv/airplane type=boeing class=787
+vault list kv
+
+
+
+禁用secret引擎 （禁用的同时，内部的数据会消失）
+vault secrets disable kv/	（注意那个kv/是路径）

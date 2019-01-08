@@ -1,0 +1,148 @@
+参考：https://www.cnblogs.com/maruidong/p/8011368.html （docker的常用命令）
+
+启动：
+
+//1、双击	Docker Quickstart Terminal
+
+2、putty登录：
+
+192.168.99.100
+
+docker/tcuser
+
+
+
+3、 新建一个镜像：
+
+
+3.1 配置网络资源
+
+配置
+//Oracle VM VirtualBox→“目标虚拟机”→“设置”→“网络”→“高级”→端口转发
+127.0.0.1 18200 8200
+
+//在docker机里面：
+//ssh -L 0.0.0.0:8200:172.18.0.6:8200 docker@default
+
+
+
+3.2、配置内存资源&创建镜像
+
+
+cd /home/docker
+
+mkdir vaultEnv
+
+cd vaultEnv
+
+//将 jdk-8u171-linux-x64.gz 通过winscp放到 /home/docker/jdk8EnvBuild 下
+//将 Dockerfile 放到vaultEnv下
+
+
+
+// docker pull ubuntu:artful	(不用操作)
+
+// docker images	(不用操作)
+
+docker build  -t pwh_vault:1.0.0 .	//创建镜像的命令,注意最后的点不要忽略
+
+
+
+配置
+//Oracle VM VirtualBox→“目标虚拟机”→“设置”→“网络”→“高级”→端口转发
+//127.0.0.1 50102 50102
+
+//Oracle VM VirtualBox→“目标虚拟机”→“设置”→“共享文件夹”
+//共享文件夹路径 E:\dockerShare
+//共享文件夹名称 dockerShare
+//自动挂载
+//固定分配
+
+
+3.2.1 创建网络映射
+
+//创建自定义网络 begin
+//docker network create --subnet=172.18.0.0/16 mynetwork
+
+docker network ls
+//创建自定义网络 end
+
+
+
+//路由表查看
+sudo iptables -t nat -nvL POSTROUTING 
+//路由表查看
+docker inspect [container_name] | grep IPAddress
+//容器状态&端口映射
+docker ps -l 
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+b20584bc086e        sunzy/mysql         "/usr/bin/mysqld_safe"   21 minutes ago      Up 21 minutes       0.0.0.0:3306->3306/tcp   mysql
+
+
+3.3 创建容器
+docker create -p 8200:8200 -it --net mynetwork --ip 172.18.0.6  --name ubuntu_vault pwh_vault:1.0.0	//创建容器
+
+
+3.4 启动容器并安装 vault
+//docker images
+
+
+docker ps -a
+
+docker start 48de632ca460 
+docker port 48de632ca460	//查看端口映射情况
+docker exec -it ubuntu_vault bash	//进入容器
+
+
+
+//apt-get update
+apt-get install vim
+apt-get install wget
+apt-get install net-tools
+apt-get install iputils-ping
+apt-get install unzip
+apt-get install curl
+apt-get install telnet
+
+cd home
+wget https://releases.hashicorp.com/vault/0.7.0/vault_0.7.0_linux_amd64.zip
+unzip vault_0.7.0_linux_amd64.zip
+
+export PATH=$PATH:/home
+
+vault server -dev
+
+
+exit
+// docker stop e8b0098bc634
+// docker rm e8b0098bc634
+// docker rmi c5bf5ec2c58e
+
+
+
+
+3.5、宿主机配置
+
+sudo vi /etc/hosts
+172.18.0.6 ubuntu_vault
+
+sudo /etc/init.d/networking restart
+
+mkdir -p /dockerShare/ubuntu_vault/etc
+touch /dockerShare/ubuntu_vault/etc/hosts.temp
+sudo cp /etc/hosts /dockerShare/ubuntu_vault/etc/hosts.temp
+
+sync
+
+
+四、端口映射配置
+
+在docker机里面：
+
+ssh -L 0.0.0.0:8201:172.18.0.6:8200 docker@default
+
+iptables -t nat -A DOCKER -p tcp -dport 8200 -j DNAT --to-destination 172.18.0.6:8200
+
+
+
+

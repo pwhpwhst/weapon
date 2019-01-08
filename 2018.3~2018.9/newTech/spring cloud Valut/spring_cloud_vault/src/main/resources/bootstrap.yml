@@ -1,0 +1,10 @@
+spring.application.name: my-spring-boot-app
+spring.cloud.vault:
+    host: localhost
+    port: 8200
+    scheme: http
+    connection-timeout: 5000
+    read-timeout: 15000
+    config:
+        order: -10
+    token: s.7dXitZ851DMaAYWZjmxOByoD

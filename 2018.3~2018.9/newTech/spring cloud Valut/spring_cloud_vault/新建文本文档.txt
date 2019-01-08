@@ -1,0 +1,84 @@
+cd C:\Users\Administrator\Desktop\spring_cloud_vault
+mvn clean package
+cd target
+java -jar springCloudVaultTest-1.0-SNAPSHOT.jar
+
+
+
+
+====================================================================
+
+
+参考：https://blog.csdn.net/t0mato_/article/details/52786375
+https://blog.csdn.net/peterwanghao/article/details/83410861
+
+
+一、启动vault
+
+参考：https://learn.hashicorp.com/vault/getting-started/deploy
+
+F:
+cd F:\vault_1.0.1_windows_amd64
+vi config.hcl
+
+storage "inmem" {
+  address = "127.0.0.1:8500"
+  path    = "vault/"
+}
+
+listener "tcp" {
+ address     = "127.0.0.1:8200"
+ tls_disable = 1
+}
+
+
+vault server -config=config.hcl
+
+
+
+二、创建jks(暂时不做)
+
+jks文件的本质：
+https://www.cnblogs.com/benwu/articles/4891758.html
+
+创建jks文件的方法：
+参考：https://jingyan.baidu.com/article/b0b63dbfe18eff4a483070f4.html
+
+
+
+创建jks文件
+keytool -genkey -alias test -keyalg RSA -keysize 1024 -keystore test.jks -validity 365
+
+
+利用"keytool -list -v -keystore test.jks"查看JKS中生成的证书的详细信息
+
+
+三、客户端解封vault
+
+set VAULT_ADDR=http://127.0.0.1:8200
+
+set VAULT_SKIP_VERIFY=true //生产环境下不要执行这个命令
+
+vault operator init
+
+vault operator unseal (Key 1)
+vault operator unseal (Key 2)
+vault operator unseal (Key 3)
+
+set VAULT_TOKEN=s.7dXitZ851DMaAYWZjmxOByoD
+
+
+
+vault kv put secret/my-spring-boot-app foo=world //试验vault能不能使用
+
+
+
+
+
+
+
+
+
+
+
+
