@@ -1,0 +1,23 @@
+≤Œøº£∫https://www.cnblogs.com/smile361/p/4710595.html
+
+1°¢œ¬‘ÿµÿ÷∑£∫
+http://repo.spring.io/snapshot/org/springframework/boot/spring-boot-cli/1.3.0.BUILD-SNAPSHOT/spring-boot-cli-1.3.0.BUILD-SNAPSHOT-bin.zip
+
+2°¢
+vi app.groovy
+
+
+@RestController
+class ThisWillActuallyRun {
+
+    @RequestMapping("/")
+    String home() {
+        "Hello World!"
+    }
+
+}
+
+
+3°¢spring run app.groovy
+
+4°¢localhost:8080

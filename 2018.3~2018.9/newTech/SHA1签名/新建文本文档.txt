@@ -1,0 +1,10 @@
+参考：https://blog.csdn.net/weixin_38756990/article/details/72177367
+
+阿里云api网关文档→开发指南→API参考→签名机制
+
+cd C:\Users\pan.weihao\Desktop\SHA1签名
+mvn clean package
+
+cd target
+java -jar sha1Test-1.0-SNAPSHOT.jar
+

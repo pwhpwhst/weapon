@@ -1,0 +1,19 @@
+参考：
+http://www.cnblogs.com/codingexperience/p/5319850.html
+
+
+https：
+https://www.cnblogs.com/luchangyou/p/6375166.html
+
+cd C:\Users\pan.weihao\Desktop\Maven
+mvn clean package
+
+cd target
+
+java -jar HttpTest-1.0-SNAPSHOT.jar
+
+创建分组、创建前后端映射、发布、授权
+
+
+
+https://account.aliyun.com/login/login.htm

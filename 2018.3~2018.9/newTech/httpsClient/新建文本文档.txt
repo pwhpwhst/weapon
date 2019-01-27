@@ -1,0 +1,5 @@
+cd C:\Users\pan.weihao\Desktop\httpsClient
+mvn clean package
+cd target
+
+java -jar httpsTest-1.0-SNAPSHOT.jar

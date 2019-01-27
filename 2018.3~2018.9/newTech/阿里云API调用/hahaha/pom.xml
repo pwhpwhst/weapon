@@ -1,0 +1,46 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.pwhTest</groupId>
+  <artifactId>hahaha</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  	<dependencies>
+  	<!-- api网关相关 begin -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>LATEST</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.aliyun</groupId>
+		    <artifactId>aliyun-java-sdk-core</artifactId>
+		    <version>3.7.0</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.aliyun</groupId>
+		    <artifactId>aliyun-java-sdk-ecs</artifactId>
+		    <version>4.11.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-cloudapi -->
+		<dependency>
+		    <groupId>com.aliyun</groupId>
+		    <artifactId>aliyun-java-sdk-cloudapi</artifactId>
+		    <version>4.7.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+			<version>4.5.2</version>
+		</dependency>
+	<!-- api网关相关 end -->
+
+<!-- 权限接入相关 begin -->
+        <dependency>
+            <groupId>com.alibaba.dt</groupId>
+            <artifactId>onedata-rpc</artifactId>
+            <version>v1.9.0-SNAPSHOT</version>
+        </dependency>
+
+<!-- 权限接入相关 begin -->
+	</dependencies>
+</project>

@@ -1,0 +1,13 @@
+cd C:\Users\pan.weihao\Desktop\maven\hadoop
+
+mvn clean package
+
+
+cd C:\Users\pan.weihao\Desktop\maven
+
+mvn clean package
+
+
+cd C:\Users\pan.weihao\Desktop\maven\target
+
+java -jar maven-0.0.1.jar

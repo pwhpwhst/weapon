@@ -1,0 +1,6 @@
+cd C:\Users\pan.weihao\Desktop\Maven
+mvn clean package
+
+cd target
+java -jar rsaTest-1.0-SNAPSHOT.jar
+

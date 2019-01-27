@@ -1,0 +1,68 @@
+参考地址：
+https://help.aliyun.com/document_detail/29490.html?spm=a2c4g.11186623.6.557.58e82937zZ98MU
+
+ali api网关调用方法：
+
+1、开通 阿里网关
+
+2、创建分组 获取阿里自动生成的url ：104f511366d14bfd8911027b24067b1b-cn-shenzhen.alicloudapi.com
+
+3、创建自己的应用，并用NAT映射到外网 http://40a8b87.nat123.cc/pwh
+
+4、配置API
+
+5、发布、授权
+
+6、调试API
+
+
+
+==================================
+
+下载api调用文档
+
+https://apigateway.console.aliyun.com/?spm=a2c4g.11186623.2.12.23bb4ae0T9fhLy#/sdk/consumer
+
+用户指南→概述及样例→SDK示例下载
+
+
+demo代码的获取：
+api管理控制台→自定义示例代码
+
+
+==================================================
+
+
+
+
+
+获取阿里云分配的ak
+
+
+AccessKey ID	LTAIZ0xetUOnTYEN
+	
+Access Key Secret	BnxJASZtx9ncTyK9uvmjTT8R7D1Etc
+
+
+
+api试调用
+
+
+https://apigateway.cn-hangzhou.aliyuncs.com/?Format=xml
+&Version=2016-07-14
+&Signature=Pc5WB8gokVn0xfeu%2FZV%2BiNM1dgI%3D
+&SignatureMethod=HMACSHA1
+&SignatureNonce=15215528852396
+&SignatureVersion=1.0
+&AccessKeyId=key-test
+&TimeStamp=2016-08-08T08:00:00Z
+
+
+
+
+		<!-- https://mvnrepository.com/artifact/com.aliyun/aliyun-java-sdk-cloudapi -->
+		<dependency>
+		    <groupId>com.aliyun</groupId>
+		    <artifactId>aliyun-java-sdk-cloudapi</artifactId>
+		    <version>4.7.0</version>
+		</dependency>
