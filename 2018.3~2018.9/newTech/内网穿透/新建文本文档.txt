@@ -1,0 +1,16 @@
+1、登录
+
+
+https://natapp.cn/login
+	↓
+我的隧道
+
+
+2、启动natapp
+
+D:
+cd D:\natapp_windows_amd64_2_3_9
+natapp.exe
+
+
+ http://8mbtxu.natappfree.cc/swagger-ui.html#/
