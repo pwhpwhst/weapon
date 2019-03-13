@@ -1,0 +1,109 @@
+参考： https://blog.51cto.com/zero01/2174242
+
+https://www.jianshu.com/p/9edd95413345	（主要）
+
+1、下载&解压Gradle
+https://gradle.org/next-steps/?version=4.10&format=bin
+
+
+2、配置环境变量
+GRADLE_HOME	D:\gradle-4.10-bin\gradle-4.10
+
+%GRADLE_HOME%\bin
+
+3、确定安装成功：
+gradle -v
+
+======================================================
+
+
+Gradle构建中的两个基本概念是项目（project）和任务（task），每个构建至少包含一个项目，项目中包含一个或多个任务。
+在多项目构建中，一个项目可以依赖于其他项目；类似的，任务可以形成一个依赖关系图来确保他们的执行顺序
+（参考图片）
+
+
+
+试用：
+
+一、初始化工程BasicDemo
+E:\Java>md BasicDemo
+E:\Java>cd BasicDemo
+gradle init
+
+二、例子：复制文件，将src文件夹里的文件复制到dest文件夹中
+
+创建一个src文件夹
+cd BasicDemo
+mkdir src
+cd src
+touch myfile.txt
+
+cd ..
+vi build.gradle
+
+task copy(type: Copy, group: "Custom", description: "Copies sources to the dest directory"){
+    from "src"
+    into "dest"
+}
+
+wq!
+
+gradlew tasks -- 可看到新做的任务 copy
+
+gradlew copy
+
+
+
+三、应用一个Gradle插件，做一些文件压缩操作
+
+
+cd BasicDemo
+
+vi build.gradle
+
+plugins {
+    id "base"
+}
+
+task zip(type: Zip, group: "Archive", description: "Archives sources in a zip file") {
+    from "src"
+    setArchiveName "basic-demo-1.0.zip"
+}
+
+wq!
+
+gradlew zip
+
+可以看到build/distributions目录下有basic-demo-1.0.zip这个压缩文件
+
+
+四、构建一个简单的Java应用程序
+
+cd C:\Users\pan.weihao\Desktop\BasicJava
+gradle init
+
+
+vi build.gradle
+
+apply plugin: 'java'
+apply plugin: 'application'
+
+repositories {
+    jcenter()
+}
+
+//main函数所在路径
+mainClassName = 'com.newtrekwang.basicjava.App'
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    testCompile 'junit:junit:4.12'
+}
+
+wq!
+
+然后新建 src文件夹和App.java 文件
+
+gradle run -- 运行Java程序
+
+gradlew jar -- 可以在build/libs目录下看到生成的jar文件了
