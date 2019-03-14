@@ -1,0 +1,22 @@
+参考：
+http://www.runoob.com/android/android-studio-install.html
+
+https://blog.csdn.net/sacredness/article/details/82929768
+
+
+1、Android studio 下载地址：
+https://developer.android.google.cn/studio/
+
+
+
+2、
+File→new→new Project...
+
+Empty Activity
+
+
+3、安装 app模拟器
+
+点击右上角像手机屏的按钮，可以安装 virtual device
+
+4、点击绿色三角形调试按钮，执行调试
