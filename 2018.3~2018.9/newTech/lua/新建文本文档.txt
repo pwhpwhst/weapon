@@ -1,0 +1,51 @@
+1、安装lua
+
+https://bbs.csdn.net/topics/392357696
+
+
+
+
+2、打开 SciTE （一种IDE）（禁用）
+
+print("Hello World!")
+
+wq!
+
+
+
+
+
+3、lua中除了table是引用传递外，其余基本都是值传递
+
+
+运行脚本的方法：
+lua b.lua
+
+=============================================================
+
+redis的lua脚本
+
+https://www.cnblogs.com/huangxincheng/p/6230129.html
+
+
+
+
+服务端启动
+F:
+cd F:\Redis-x64-3.2.100
+redis-server.exe redis.windows.conf
+
+客户端
+F:
+cd F:\Redis-x64-3.2.100
+redis-cli.exe -h 127.0.0.1 -p 6379 -a 059030849
+
+set myKey abc NX PX 30000
+get myKey 
+
+lua脚本执行：
+
+redis-cli.exe -h 127.0.0.1 -p 6379 -a 059030849 --eval C:\Users\Administrator\Desktop\ab.lua myKey
+
+
+

@@ -1,0 +1,11 @@
+²Î¿¼
+https://www.cnblogs.com/qlqwjy/p/8562703.html
+https://www.cnblogs.com/cl2Blogs/p/6124617.html?utm_source=itdadao&utm_medium=referral
+
+C:
+cd C:\Users\Administrator\Desktop\spring redis\springTest
+mvn clean install
+
+cd target
+java -jar hello-world-1.0-SNAPSHOT.jar
+

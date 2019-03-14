@@ -1,0 +1,13 @@
+F:
+cd F:\Redis-x64-3.2.100
+redis-cli.exe -h 127.0.0.1 -p 6379 -a 059030849 --eval C:\Users\Administrator\Desktop\ab.lua abc
+
+=======
+F:
+cd F:\Redis-x64-3.2.100
+redis-cli.exe -h 127.0.0.1 -p 6379 -a 059030849
+
+set myKey abc NX PX 30000
+get myKey 
+
+redis-cli.exe -h 127.0.0.1 -p 6379 -a 059030849 --eval C:\Users\Administrator\Desktop\ab.lua myKey
