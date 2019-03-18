@@ -1,0 +1,19 @@
+²Î¿¼µØÖ·£º
+https://www.cnblogs.com/qlong8807/p/7121522.html 
+
+
+cd  C:\Users\pan.weihao\Desktop\springboot\demo
+-- mvn clean package -Dmaven.test.skip=true 
+
+mvn clean test
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+http://localhost:8080/swagger-ui.html#/
+
+
+
+
+
