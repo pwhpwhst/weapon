@@ -1,0 +1,3 @@
+cd C:\Users\pan.weihao\Desktop\Spring Cloud Contract Verifier
+
+mvn clean 

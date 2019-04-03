@@ -28,3 +28,39 @@ verify - 对集成测试的结果执行任何检查，以确保满足质量标准
 install - 将软件包安装到本地存储库中，用作本地其他项目的依赖项
 site - 处理你的项目站点文档的创建
 deploy - 在构建环境中完成，将最终的包复制到远程存储库以与其他开发人员和项目共享。
+
+==========================================================================================
+mvnw的使用：
+参考：
+https://www.cnblogs.com/bchen/p/7492929.html
+
+
+1、在pom文件里添加：
+
+<plugin>
+    <groupId>com.rimerosolutions.maven.plugins</groupId>
+    <artifactId>wrapper-maven-plugin</artifactId>
+    <version>0.0.4</version>
+</plugin>
+
+2、mvn wrapper:wrapper
+
+这样当我们执行mvn wrapper:wrapper 时，会帮我们生成mvnw.bat, mvnw, maven/maven-wrapper.jar, maven/maven-wrapper.properties这些文件。
+然后我们就可以使用mvnw代替mvn命令执行所有的maven命令，比如mvnw clean package
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

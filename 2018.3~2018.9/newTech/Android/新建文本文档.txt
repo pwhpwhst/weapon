@@ -20,3 +20,22 @@ Empty Activity
 点击右上角像手机屏的按钮，可以安装 virtual device
 
 4、点击绿色三角形调试按钮，执行调试
+
+=============================================================
+android 教程
+http://www.runoob.com/w3cnote/android-tutorial-intro.html
+
+
+
+https://www.cnblogs.com/czhwust/p/4471488.html	（主要）
+
+
+
+https://gitee.com/RobertGoudan/Recite	（背词软件）
+
+
+
+
+
+
+

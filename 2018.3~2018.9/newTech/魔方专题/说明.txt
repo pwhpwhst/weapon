@@ -3,3 +3,16 @@ MFTest：纯java程序
 MFTest2：java+redis
 
 MFTest2：java+dubbo
+
+https://blog.csdn.net/wuqianjing/article/details/80166432
+https://blog.csdn.net/shuixiou1/article/details/79485311
+mysql 快速插入 5000万数据
+
+
+MySQL两种存储引擎: MyISAM和InnoDB 简单总结
+https://www.cnblogs.com/kevingrace/p/5685355.html
+
+
+
+
+

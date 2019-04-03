@@ -107,3 +107,22 @@ wq!
 gradle run -- 运行Java程序
 
 gradlew jar -- 可以在build/libs目录下看到生成的jar文件了
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
