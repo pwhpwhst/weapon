@@ -1,0 +1,6 @@
+1¡¢×¢ÒâÌí¼Ó	HelloWorldControllerTest.java
+
+
+cd C:\Users\admin\Desktop\springbootConsumer\demo
+
+mvn clean package

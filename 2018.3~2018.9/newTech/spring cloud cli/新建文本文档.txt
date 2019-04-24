@@ -1,6 +1,7 @@
 参考：http://cloud.spring.io/spring-cloud-cli/
 
-
+Spring Cloud CLI is a set of extensions for the Spring Boot CLI making it possible to run
+Spring Cloud server apps and write Spring Cloud apps in Groovy scripts and run them from a shell. 
 
 1、下载&安装 spring boot cli：
 http://repo.spring.io/snapshot/org/springframework/boot/spring-boot-cli/1.3.0.BUILD-SNAPSHOT/spring-boot-cli-1.3.0.BUILD-SNAPSHOT-bin.zip

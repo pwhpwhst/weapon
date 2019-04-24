@@ -1,0 +1,21 @@
+{
+  "id" : "879ec6c4-57ed-493a-9b22-435b878134d1",
+  "request" : {
+    "urlPath" : "/hello",
+    "method" : "GET",
+    "queryParameters" : {
+      "name" : {
+        "equalTo" : "zhangsan"
+      }
+    }
+  },
+  "response" : {
+    "status" : 200,
+    "body" : "123456",
+    "headers" : {
+      "Content-Type" : "text/plain;charset=ISO-8859-1"
+    },
+    "transformers" : [ "response-template" ]
+  },
+  "uuid" : "879ec6c4-57ed-493a-9b22-435b878134d1"
+}

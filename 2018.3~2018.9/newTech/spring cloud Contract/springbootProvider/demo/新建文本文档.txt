@@ -1,0 +1,99 @@
+
+
+
+=======================================================================
+
+
+
+参考：
+https://segmentfault.com/a/1190000015555626
+
+1、C:.
+│  a.txt
+│  
+├─java
+│  └─com
+│      └─example
+│          └─demo
+│              └─controller
+│                      MvcMockTest.java
+│                      
+└─resources
+    └─contracts
+            test.groovy
+            
+注意添加： MvcMockTest.java 和 test.groovy
+
+2、
+pom文件：
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-contract-verifier</artifactId>
+			<version>2.1.1.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+
+
+
+		<plugin>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-contract-maven-plugin</artifactId>
+			<version>2.0.2.RELEASE</version>
+			<extensions>true</extensions>
+			<configuration>
+				<baseClassForTests>com.example.demo.controller.MvcMockTest</baseClassForTests>
+			</configuration>
+		</plugin>
+
+3、target/stubs下生成相关文件
+C:
+cd  C:\Users\admin\Desktop\springboot\demo
+mvn spring-cloud-contract:convert
+
+4、stubs 形成jar包
+
+
+mvn spring-cloud-contract:generateStubs
+
+5.安装stub到maven库中
+
+cd target
+mvn install:install-file -DgroupId=com.example -DartifactId=demo -Dversion=0.0.1-SNAPSHOT -Dpackaging=jar -Dclassifier=stubs -Dfile=demo-0.0.1-SNAPSHOT-stubs.jar
+
+
+6、（可忽略）
+mvn spring-cloud-contract:generateTests
+会在target/generated-test-sources/contracts目录下根据契约生成测试案例，用于服务提供方最后检验是否符合契约。
+
+
+7、项目总的打包&测试
+
+C:
+cd  C:\Users\admin\Desktop\springboot\demo
+mvn clean package
+
+或
+mvn clean package -Dmaven.test.skip=true
+mvn test
+=====================================
+
+cd C:\Users\admin\Desktop\springbootConsumer\demo
+
+mvn clean package
+
+
+
+
+
+
+
+
+
+

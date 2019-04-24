@@ -50,9 +50,33 @@ https://www.cnblogs.com/bchen/p/7492929.html
 
 
 
+==================================================================================================
 
 
+=================================================================
 
+关于单元测试
+
+参考：
+https://blog.csdn.net/yonggang7/article/details/79780487
+https://www.cnblogs.com/qiyexue/p/6822791.html
+
+maven-surefire-plugin 使用 test 参数指定测试用例, 为测试用例的类名 
+mvn test -Dtest=RandomTest 
+只执行 RandomTest 这个测试类. 
+mvn test -Dtest=RandomTest#myTest 
+上面命令，只运行 RandomTest 类的 myTest 方法
+
+可以指定多个类，逗号分隔 
+mvn test -Dtest=RandomTest,Random2Test 
+也可以用 * 匹配多个 
+mvn test -Dtest=Random*Test 
+*和 逗号可以结合使用。
+
+如果不指定或者找不到测试类则构建失败 
+mvn test -Dtest 
+failIfNoTests 参数控制没有测试用例不报错 
+mvn test -Dtest -DfailIfNoTests=false
 
 
 

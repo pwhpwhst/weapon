@@ -33,11 +33,3 @@ api_hbase_0422
 "returnCount":"100",
 "pageNum":1,"pageSize":1,
 "appApiId":"100242","appKey":26005517,"appSecret":"da656e4e385586d00f202ecfc2fca6f5"}
-
-
-[1111297]
-http://oneservice.yunxi.com:8091/api/v1/user/deleteBatch
-
-
-
-apiId=100687&userId=132079
