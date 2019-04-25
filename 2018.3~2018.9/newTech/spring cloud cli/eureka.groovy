@@ -1,3 +1,4 @@
 @EnableEurekaServer
-@RestController
 class Eureka {}
+
+//@RestController
