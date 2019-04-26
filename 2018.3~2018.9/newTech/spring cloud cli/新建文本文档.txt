@@ -29,7 +29,7 @@ class Eureka {}
 
 wq!
 
-6、cd C:\Users\admin\Desktop\spring cloud cli
+6、cd C:\Users\admin\Desktop\spring cloud cli	（记住先打开spring cloud config中心）
 spring run eureka.groovy
 
-localhost:8888
+http://localhost:8080/
