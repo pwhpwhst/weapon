@@ -6,3 +6,48 @@ cd C:\Users\admin\Desktop\spring cloud security
 spring run app.groovy
 
 http://localhost:8080
+
+======================================================
+
+
+1、部署本地应用
+C:
+cd  C:\Users\admin\Desktop\springboot+单元测试\demo
+mvn clean package -Dmaven.test.skip=true
+
+cd target
+
+java -jar demo-0.0.1-SNAPSHOT.jar
+
+http://localhost:8081/hello
+http://40a8b87.nat123.cc/hello
+
+
+
+2、码云的第三方认证：
+2.1、访问
+https://gitee.com/oauth/applications
+
+2.2、创建应用
+
+应用主页：http://40a8b87.nat123.cc/hello
+应用回调地址：http://40a8b87.nat123.cc/hello
+
+Client ID
+194635a2349299d3165c297312d730c8f52408ae6c37493c5e2b4254cc34d11f
+
+Client Secret
+f8c1ef08bf7db18641b4f79f8d626d561f8cd1d4bb2688a87656b8356cd53b5a
+
+
+3、打开授权页面
+https://gitee.com/oauth/authorize?client_id=194635a2349299d3165c297312d730c8f52408ae6c37493c5e2b4254cc34d11f
+&redirect_uri=http%3A%2F%2F40a8b87%2Enat123%2Ecc%2Fhello&response_type=code
+
+
+获得access_token：
+
+4、https://gitee.com/api/v5/swagger#/getV5UsersUsername
+测试access_token
+
+
