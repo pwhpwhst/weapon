@@ -69,3 +69,5 @@ Format=json
 2、规范化url，获得StringToSign
 3、sha1(StringToSign,Access Key Secret)
 4、url填入Signature参数
+
+=================================================
