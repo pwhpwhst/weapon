@@ -1,8 +1,0 @@
-李白：rpc、bpms、sql检查
-
-令行：spring secuity、OAuth、datapin SSO接入、ACM
-
-自己：RBAC系统
-
-
-oss接口，创建api文档
