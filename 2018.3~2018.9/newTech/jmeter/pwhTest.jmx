@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.1.1 r1855137">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="baiduTest" enabled="true">
+      <stringProp name="TestPlan.comments"></stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.tearDown_on_shutdown">true</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables" enabled="true">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath">D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\commons-codec-1.10.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\commons-collections4-4.1.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\commons-io-2.4.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\commons-lang3-3.5.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\commons-logging-1.1.1.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\fastjson-1.2.25.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\guava-20.0.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\httpclient-4.5.2.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\httpcore-4.4.4.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\json-20170516.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\okhttp-3.8.1.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\okio-1.13.0.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\sdk-core-java-1.1.0.jar,D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext\slf4j-api-1.7.25.jar</stringProp>
+    </TestPlan>
+    <hashTree>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration"></stringProp>
+        <stringProp name="ThreadGroup.delay"></stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="HTTP Request" enabled="true">
+          <boolProp name="HTTPSampler.postBodyRaw">true</boolProp>
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">false</boolProp>
+                <stringProp name="Argument.value">{&quot;pageSize&quot;:10,&#xd;
+&quot;pageStart&quot;:0,&#xd;
+&quot;conditions&quot;:{&quot;id&quot;:&quot;1&quot;},&#xd;
+&quot;orderBys&quot;:[],&#xd;
+&quot;returnFields&quot;:[&quot;id&quot;,&#xd;
+&quot;name&quot;,&#xd;
+&quot;create_time&quot;,&#xd;
+&quot;update_time&quot;,&#xd;
+&quot;address&quot;,&#xd;
+&quot;birthday&quot;,&#xd;
+&quot;phone&quot;,&#xd;
+&quot;status&quot;,&#xd;
+&quot;remark&quot;,&#xd;
+&quot;name_1&quot;,&#xd;
+&quot;create_time_1&quot;,&#xd;
+&quot;update_time_1&quot;,&#xd;
+&quot;address_1&quot;,&#xd;
+&quot;birthday_1&quot;,&#xd;
+&quot;phone_1&quot;,&#xd;
+&quot;status_1&quot;,&#xd;
+&quot;remark_1&quot;,&#xd;
+&quot;name_2&quot;,&#xd;
+&quot;create_time_2&quot;,&#xd;
+&quot;update_time_2&quot;,&#xd;
+&quot;address_2&quot;,&#xd;
+&quot;birthday_2&quot;,&#xd;
+&quot;phone_2&quot;,&#xd;
+&quot;status_2&quot;,&#xd;
+&quot;remark_2&quot;,&#xd;
+&quot;name_3&quot;,&#xd;
+&quot;create_time_3&quot;,&#xd;
+&quot;update_time_3&quot;,&#xd;
+&quot;address_3&quot;,&#xd;
+&quot;birthday_3&quot;],&#xd;
+&quot;useModelCache&quot;:false,&#xd;
+&quot;useResultCache&quot;:false}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">85b983de3bb04e46abe958a33cea9d1c-cn-shanghai-vpc.alicloudapi.com</stringProp>
+          <stringProp name="HTTPSampler.port"></stringProp>
+          <stringProp name="HTTPSampler.protocol">http</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding">UTF-8</stringProp>
+          <stringProp name="HTTPSampler.path">/pre/list/10223?tenantId=120003&amp;appKey=203712259&amp;env=PRE</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">false</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.BROWSER_COMPATIBLE_MULTIPART">true</boolProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.implementation">HttpClient4</stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <BeanShellPreProcessor guiclass="TestBeanGUI" testclass="BeanShellPreProcessor" testname="BeanShell PreProcessor" enabled="true">
+            <stringProp name="filename"></stringProp>
+            <stringProp name="parameters"></stringProp>
+            <boolProp name="resetInterpreter">false</boolProp>
+            <stringProp name="script">
+import com.alibaba.cloudapi.sdk.util.SignUtil;
+import java.util.Date;
+import com.alibaba.cloudapi.sdk.model.ApiRequest;
+import com.alibaba.cloudapi.sdk.model.ApiResponse;
+import com.alibaba.cloudapi.sdk.enums.ParamPosition;
+import com.alibaba.cloudapi.sdk.enums.HttpMethod;
+import java.util.*;
+import java.lang.*;
+import com.alibaba.cloudapi.sdk.util.HttpCommonUtil;
+import com.alibaba.cloudapi.sdk.enums.Scheme;
+
+
+
+
+import java.text.SimpleDateFormat;
+
+
+public void defined(){
+	
+
+		Date today=new Date();
+		String x_ca_nonce=UUID.randomUUID().toString();
+
+String path=&quot;/pre/list/10223&quot;;
+String appKey=&quot;203712259&quot;;
+String appSecret=&quot;w8k5eplhe4gksyfln8jzzi4re1e05y71&quot;;
+String url=&quot;85b983de3bb04e46abe958a33cea9d1c-cn-shanghai-vpc.alicloudapi.com&quot;;
+String tenantId=&quot;120003&quot;;
+String env=&quot;PRE&quot;;
+		String queryParamDTOStr=&quot;{\&quot;pageSize\&quot;:10,\&quot;pageStart\&quot;:0,\&quot;conditions\&quot;:{\&quot;id\&quot;:\&quot;1\&quot;},\&quot;orderBys\&quot;:[],\&quot;returnFields\&quot;:[\&quot;id\&quot;,\&quot;name\&quot;,\&quot;create_time\&quot;,\&quot;update_time\&quot;,\&quot;address\&quot;,\&quot;birthday\&quot;,\&quot;phone\&quot;,\&quot;status\&quot;,\&quot;remark\&quot;,\&quot;name_1\&quot;,\&quot;create_time_1\&quot;,\&quot;update_time_1\&quot;,\&quot;address_1\&quot;,\&quot;birthday_1\&quot;,\&quot;phone_1\&quot;,\&quot;status_1\&quot;,\&quot;remark_1\&quot;,\&quot;name_2\&quot;,\&quot;create_time_2\&quot;,\&quot;update_time_2\&quot;,\&quot;address_2\&quot;,\&quot;birthday_2\&quot;,\&quot;phone_2\&quot;,\&quot;status_2\&quot;,\&quot;remark_2\&quot;,\&quot;name_3\&quot;,\&quot;create_time_3\&quot;,\&quot;update_time_3\&quot;,\&quot;address_3\&quot;,\&quot;birthday_3\&quot;],\&quot;useModelCache\&quot;:false,\&quot;useResultCache\&quot;:false}&quot;;
+
+
+		String signature = requestSign( url,path, tenantId, appKey, 
+appSecret, env, queryParamDTOStr, &quot;RELEASE&quot;, today,x_ca_nonce);
+
+		vars.put(&quot;x-ca-timestamp&quot;,String.valueOf(today.getTime()));
+		vars.put(&quot;x-ca-nonce&quot;,x_ca_nonce);
+		vars.put(&quot;date&quot;,getHttpDateHeaderValue(today));
+		vars.put(&quot;content-md5&quot;,SignUtil.base64AndMD5(queryParamDTOStr.getBytes()));
+		vars.put(&quot;x-ca-signature&quot;,signature);
+		
+	}
+
+	private static String getHttpDateHeaderValue(Date date) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat(&quot;EEE, dd MMM yyyy HH:mm:ss z&quot;, Locale.US);
+		dateFormat.setTimeZone(TimeZone.getTimeZone(&quot;GMT&quot;));
+		return dateFormat.format(date);
+	}
+
+
+	private static String combinePathParam(String path, Map pathParams) {
+		if (pathParams == null) {
+			return path;
+		}
+
+		for (String key : pathParams.keySet()) {
+			path = path.replace(new StringBuilder().append(&quot;[&quot;).append(key).append(&quot;]&quot;).toString(),
+					(CharSequence) pathParams.get(key));
+		}
+		return path;
+	}
+
+
+	private String requestSign(String host,String path,String tenantId,String appKey,String appSecret,
+		String env,String queryParamDTOStr,String X_Ca_Stage,Date today,String x_ca_nonce){
+		ApiRequest request2 = new ApiRequest(HttpMethod.POST_BODY, path);
+		request2.setHost(host);
+		request2.setScheme(Scheme.HTTP);
+
+        request2.addParam(&quot;tenantId&quot;, tenantId, ParamPosition.QUERY, true);
+        request2.addParam(&quot;appKey&quot;, appKey, ParamPosition.QUERY, true);
+        request2.addParam(&quot;env&quot;, env, ParamPosition.QUERY, true);
+
+		request2.setBody(queryParamDTOStr.getBytes());
+		request2.addHeader(&quot;X-Ca-Stage&quot;, &quot;RELEASE&quot;);
+		request2.setCurrentDate(today);
+
+		request2.setPath(combinePathParam(request2.getPath(), request2.getPathParams()));
+
+		StringBuilder urlBuffer = new StringBuilder().append(request2.getScheme().getValue()).append(request2.getHost())
+				.append(request2.getPath());
+
+		if ((null != request2.getQuerys()) &amp;&amp; (request2.getQuerys().size() &gt; 0)) {
+			urlBuffer.append(&quot;?&quot;).append(HttpCommonUtil.buildParamString(request2.getQuerys()));
+		}
+
+		request2.setUrl(urlBuffer.toString());
+
+
+
+		if (null == request2.getFirstHeaderValue(&quot;date&quot;)) {
+			request2.addHeader(&quot;date&quot;, getHttpDateHeaderValue(today));
+		}
+
+		request2.addHeader(&quot;x-ca-timestamp&quot;, String.valueOf(today.getTime()));
+
+		request2.addHeader(&quot;x-ca-nonce&quot;, x_ca_nonce);
+
+		request2.addHeader(&quot;user-agent&quot;, &quot;ALIYUN-ANDROID-DEMO&quot;);
+
+		request2.addHeader(&quot;host&quot;, request2.getHost());
+
+		request2.addHeader(&quot;x-ca-key&quot;, appKey);
+
+		request2.addHeader(&quot;CA_VERSION&quot;, &quot;1&quot;);
+
+		if (null == request2.getFirstHeaderValue(&quot;content-type&quot;)) {
+			request2.addHeader(&quot;content-type&quot;, request2.getMethod().getRequestContentType());
+		}
+
+		if (null == request2.getFirstHeaderValue(&quot;accept&quot;)) {
+			request2.addHeader(&quot;accept&quot;, request2.getMethod().getAcceptContentType());
+		}
+
+		if (!(HttpCommonUtil.isEmpty(request2.getSignatureMethod()))) {
+			request2.addHeader(&quot;X-Ca-Signature-Method&quot;, request2.getSignatureMethod());
+		}
+
+		if ((null != request2.getBody()) &amp;&amp; (request2.getBody().length &gt; 0)) {
+			request2.addHeader(&quot;content-md5&quot;, SignUtil.base64AndMD5(request2.getBody()));
+		}
+		
+		return SignUtil.sign(request2, appSecret);
+	}
+
+	defined();</stringProp>
+          </BeanShellPreProcessor>
+          <hashTree/>
+        </hashTree>
+        <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager" enabled="true">
+          <collectionProp name="HeaderManager.headers">
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">Content-Type</stringProp>
+              <stringProp name="Header.value">application/json</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">accept</stringProp>
+              <stringProp name="Header.value">application/json; charset=utf-8</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">x-ca-signature-headers</stringProp>
+              <stringProp name="Header.value">x-ca-nonce,x-ca-timestamp,x-ca-key,x-ca-signature-method,x-ca-stage</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">content-type</stringProp>
+              <stringProp name="Header.value">application/octet-stream; charset=utf-8</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">host</stringProp>
+              <stringProp name="Header.value">85b983de3bb04e46abe958a33cea9d1c-cn-shanghai-vpc.alicloudapi.com</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">x-ca-key</stringProp>
+              <stringProp name="Header.value">203712259</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">ca_version</stringProp>
+              <stringProp name="Header.value">1</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">x-ca-signature-method</stringProp>
+              <stringProp name="Header.value">HmacSHA256</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">x-ca-stage</stringProp>
+              <stringProp name="Header.value">RELEASE</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">user-agent</stringProp>
+              <stringProp name="Header.value">ALIYUN-ANDROID-DEMO</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">x-ca-signature</stringProp>
+              <stringProp name="Header.value">${x-ca-signature}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">x-ca-nonce</stringProp>
+              <stringProp name="Header.value">${x-ca-nonce}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">content-md5</stringProp>
+              <stringProp name="Header.value">${content-md5}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">x-ca-timestamp</stringProp>
+              <stringProp name="Header.value">${x-ca-timestamp}</stringProp>
+            </elementProp>
+            <elementProp name="" elementType="Header">
+              <stringProp name="Header.name">date</stringProp>
+              <stringProp name="Header.value">${date}</stringProp>
+            </elementProp>
+          </collectionProp>
+        </HeaderManager>
+        <hashTree/>
+        <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
+          <boolProp name="ResultCollector.error_logging">false</boolProp>
+          <objProp>
+            <name>saveConfig</name>
+            <value class="SampleSaveConfiguration">
+              <time>true</time>
+              <latency>true</latency>
+              <timestamp>true</timestamp>
+              <success>true</success>
+              <label>true</label>
+              <code>true</code>
+              <message>true</message>
+              <threadName>true</threadName>
+              <dataType>true</dataType>
+              <encoding>false</encoding>
+              <assertions>true</assertions>
+              <subresults>true</subresults>
+              <responseData>false</responseData>
+              <samplerData>false</samplerData>
+              <xml>false</xml>
+              <fieldNames>true</fieldNames>
+              <responseHeaders>false</responseHeaders>
+              <requestHeaders>false</requestHeaders>
+              <responseDataOnError>false</responseDataOnError>
+              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
+              <assertionsResultsToSave>0</assertionsResultsToSave>
+              <bytes>true</bytes>
+              <sentBytes>true</sentBytes>
+              <url>true</url>
+              <threadCounts>true</threadCounts>
+              <idleTime>true</idleTime>
+              <connectTime>true</connectTime>
+            </value>
+          </objProp>
+          <stringProp name="filename"></stringProp>
+        </ResultCollector>
+        <hashTree/>
+        <DebugSampler guiclass="TestBeanGUI" testclass="DebugSampler" testname="Debug Sampler" enabled="true">
+          <boolProp name="displayJMeterProperties">false</boolProp>
+          <boolProp name="displayJMeterVariables">true</boolProp>
+          <boolProp name="displaySystemProperties">false</boolProp>
+        </DebugSampler>
+        <hashTree/>
+      </hashTree>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

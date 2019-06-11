@@ -1,0 +1,61 @@
+参考 https://blog.csdn.net/u012111923/article/details/80705141
+
+
+1、下载&解压jmeter
+http://jmeter.apache.org/download_jmeter.cgi
+
+2、启动
+D:
+cd D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\bin
+jmeter.bat
+
+
+3、新建测试：
+
+“测试计划” -> “添加” -> “Threads(Users)” -> “线程组” 
+
+
+4、
+右键点击“线程组” -> “添加” -> “Sampler” -> “HTTP请求” 
+
+（header填入）
+HTTP请求上右键→config elemen→http header manager
+
+
+5、(动态变量生成)
+
+使用java脚本前，先把需要用的jar包放入cd D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\lib\ext
+
+“线程组” →Pre processors →Bean Shell PreProcessor
+
+
+<dependency>
+	<groupId>com.aliyun</groupId>
+	<artifactId>aliyun-java-sdk-core</artifactId>
+	<version>3.7.0</version>
+</dependency>
+
+<dependency>
+    <groupId>com.aliyun</groupId>
+    <artifactId>aliyun-java-sdk-cloudapi</artifactId>
+		<version>4.8.5</version>
+</dependency>
+
+<dependency>
+    <groupId>com.aliyun.api.gateway</groupId>
+    <artifactId>sdk-core-java</artifactId>
+    <version>1.1.0</version>
+</dependency>
+
+
+6、（调试用查看）
+
+ “线程组” →add→Listener→View results tree
+
+ “线程组” →add→Samper→Debug Samper
+
+
+
+
+
+

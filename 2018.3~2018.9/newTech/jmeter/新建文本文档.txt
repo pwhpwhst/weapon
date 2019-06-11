@@ -1,0 +1,109 @@
+参考 https://blog.csdn.net/u012111923/article/details/80705141
+
+1、下载&解压jmeter
+http://jmeter.apache.org/download_jmeter.cgi
+
+2、启动
+D:
+cd D:\apache-jmeter-5.1.1\apache-jmeter-5.1.1\bin
+jmeter.bat
+
+3、测试 “ http://www.baidu.com/s?ie=utf-8&wd=jmeter ”
+
+1、
+“测试计划” -> “添加” -> “Threads(Users)” -> “线程组” 
+
+2、
+右键点击“线程组” -> “添加” -> “Sampler” -> “HTTP请求” 
+
+
+
+
+/pre/list/10223?tenantId=120003&appKey=203712259&env=PRE
+
+
+
+用jmeter或postman直接测api网关的接口是行不通的，因为调用接口要求要在header上填入“加密签名”。
+这个加密签名需要用api网关的jar包才能构建出来。
+
+
+我做了一个简单的spingboot程序，访问这个接口能通过api网关的jar包够造出请求，访问api网关。
+
+
+压测这个接口可以吧
+
+
+
+
+header
+
+
+ISignerFactory signerFactory = SignerFactoryManager.findSignerFactory("HmacSHA256");
+
+x-ca-signature:bLIXpLr1EzY+JQVfSIT+frPIEDoaH7saDlCNpq/SzZ8=		SignUtil.sign(request, appSecret)
+x-ca-nonce:9c918c57-b8db-4862-818b-165230323ffb			UUID.randomUUID().toString()
+content-md5:QCBmZYgoaakSRDz3wp57GA==		SignUtil.base64AndMD5(queryParamDTOStr.getBytes())
+x-ca-timestamp:1559194859098	Date current = (request.getCurrentDate() == null) ? new Date() : request.getCurrentDate();	String.valueOf(current.getTime())
+date:Thu, 30 May 2019 05:40:59 GMT
+
+
+accept:application/json; charset=utf-8
+x-ca-signature-headers:x-ca-nonce,x-ca-timestamp,x-ca-key,x-ca-signature-method,x-ca-stage
+content-type:application/octet-stream; charset=utf-8
+host:85b983de3bb04e46abe958a33cea9d1c-cn-shanghai-vpc.alicloudapi.com
+x-ca-key:203712259
+ca_version:1
+x-ca-signature-method:HmacSHA256
+x-ca-stage:RELEASE
+user-agent:ALIYUN-ANDROID-DEMO
+
+param
+tenantId=120003&appKey=203712259&env=PRE
+
+
+====================================================
+
+1、添加host
+http	85b983de3bb04e46abe958a33cea9d1c-cn-shanghai-vpc.alicloudapi.com
+
+2、添加路径
+POST	/pre/list/10223?tenantId=120003&appKey=203712259&env=PRE	UTF-8
+
+3、body
+
+4、
+HTTP Header Manager
+
+
+accept:application/json; charset=utf-8
+x-ca-signature-headers:x-ca-nonce,x-ca-timestamp,x-ca-key,x-ca-signature-method,x-ca-stage
+content-type:application/octet-stream; charset=utf-8
+host:85b983de3bb04e46abe958a33cea9d1c-cn-shanghai-vpc.alicloudapi.com
+x-ca-key:203712259
+ca_version:1
+x-ca-signature-method:HmacSHA256
+x-ca-stage:RELEASE
+date:Thu, 30 May 2019 05:40:59 GMT
+user-agent:ALIYUN-ANDROID-DEMO
+
+5、
+
+
+
+
+
+Content-Type: application/json
+accept: application/json; charset=utf-8
+x-ca-signature-headers: x-ca-nonce,x-ca-timestamp,x-ca-key,x-ca-signature-method,x-ca-stage
+content-type: application/octet-stream; charset=utf-8
+Host: 85b983de3bb04e46abe958a33cea9d1c-cn-shanghai-vpc.alicloudapi.com
+x-ca-key: 203712259
+ca_version: 1
+x-ca-signature-method: HmacSHA256
+x-ca-stage: RELEASE
+user-agent: ALIYUN-ANDROID-DEMO
+x-ca-signature: lMHC1WRvYEh0pj5J3SOFj7Y+C2un7gwfbF3sLLAgROE=
+x-ca-nonce: dd50dbb6-8bae-4ffa-97c8-234f9192e281
+content-md5: QCBmZYgoaakSRDz3wp57GA==
+x-ca-timestamp: 1559265794138
+date: Fri, 31 May 2019 01:23:14 GMT
