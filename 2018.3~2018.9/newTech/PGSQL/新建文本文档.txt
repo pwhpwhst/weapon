@@ -1,0 +1,12 @@
+参考：https://www.jianshu.com/p/e7fe45a10cee
+
+
+
+1、安装PGSQL
+2、Object→Create→Server
+
+查询：
+3、Tools→Query Tool
+
+
+

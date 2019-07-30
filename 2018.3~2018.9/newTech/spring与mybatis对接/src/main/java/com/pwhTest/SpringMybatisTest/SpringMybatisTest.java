@@ -26,9 +26,7 @@ import java.util.Properties;
 
 @Configuration
 @EnableTransactionManagement
-@MapperScan(basePackages = {
-        "com.pwhTest.SpringMybatisTest"
-}, sqlSessionFactoryRef = "testSqlSessionFactoryBean")
+@MapperScan sqlSessionFactoryRef = "testSqlSessionFactoryBean")
 public class SpringMybatisTest{
 
     @Bean(name = "dataSource",destroyMethod = "close")
