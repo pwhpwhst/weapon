@@ -22,8 +22,8 @@ import java.sql.SQLException;
 import java.util.Properties;
 
 
-
-
+//@MapperScan(basePackages = "com.dtyunxi.dataphin.service.mapper",sqlSessionFactoryRef = "sqlSessionFactory")
+//@Transactional(rollbackFor = Exception.class, transactionManager = "transactionManager")
 @Configuration
 @EnableTransactionManagement
 @MapperScan sqlSessionFactoryRef = "testSqlSessionFactoryBean")
