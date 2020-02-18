@@ -137,18 +137,7 @@ D:.
                         ExampleUnitTest.kt
                         
 
-================================================================
-SqlLite的使用
 
-1、下载 
-去这个网址https://www.sqlite.org/download.html
 
-下载 sqlite-tools-win32-x86-3280000.zip
 
-export PATH =F:\sqlite-tools-win32-x86-3280000
 
-2、在命令行输入 sqlite3 ，确认安装成功
-
-3、安装编辑器：
-
-http://www.sqlitebrowser.org/

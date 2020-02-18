@@ -1,0 +1,67 @@
+文件夹 PATH 列表
+卷序列号为 0000-CB53
+D:.
+│  a.txt
+│  
+├─androidTest
+│  └─java
+│      └─com
+│          └─example
+│              └─pwhtest
+│                      ExampleInstrumentedTest.kt
+│                      
+├─main
+│  │  AndroidManifest.xml
+│  │  
+│  ├─java
+│  │  └─com
+│  │      └─example
+│  │          └─pwhtest
+│  │                  MainActivity.kt
+│  │                  
+│  └─res
+│      ├─drawable
+│      │      ic_launcher_background.xml
+│      │      
+│      ├─drawable-v24
+│      │      ic_launcher_foreground.xml
+│      │      
+│      ├─layout
+│      │      activity_main.xml
+│      │      
+│      ├─mipmap-anydpi-v26
+│      │      ic_launcher.xml
+│      │      ic_launcher_round.xml
+│      │      
+│      ├─mipmap-hdpi
+│      │      ic_launcher.png
+│      │      ic_launcher_round.png
+│      │      
+│      ├─mipmap-mdpi
+│      │      ic_launcher.png
+│      │      ic_launcher_round.png
+│      │      
+│      ├─mipmap-xhdpi
+│      │      ic_launcher.png
+│      │      ic_launcher_round.png
+│      │      
+│      ├─mipmap-xxhdpi
+│      │      ic_launcher.png
+│      │      ic_launcher_round.png
+│      │      
+│      ├─mipmap-xxxhdpi
+│      │      ic_launcher.png
+│      │      ic_launcher_round.png
+│      │      
+│      └─values
+│              colors.xml
+│              strings.xml
+│              styles.xml
+│              
+└─test
+    └─java
+        └─com
+            └─example
+                └─pwhtest
+                        ExampleUnitTest.kt
+                        

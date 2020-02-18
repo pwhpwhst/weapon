@@ -1,0 +1,110 @@
+1、用java构建界面：
+
+		super.onCreate(savedInstanceState);
+		// 创建一个线性布局管理器
+		LinearLayout layout = new LinearLayout(this);
+		// 设置该Activity显示layout
+		super.setContentView(layout);
+
+		layout.setOrientation(LinearLayout.VERTICAL);
+		// 创建一个TextView
+		final TextView show = new TextView(this);
+		// 创建一个按钮
+		Button bn = new Button(this);
+		bn.setText("ok");
+		bn.setLayoutParams(new ViewGroup.LayoutParams(
+				ViewGroup.LayoutParams.WRAP_CONTENT,
+				ViewGroup.LayoutParams.WRAP_CONTENT));
+		// 向Layout容器中添加TextView
+		layout.addView(show);
+		// 向Layout容器中添加按钮
+		layout.addView(bn);
+		// 为按钮绑定一个事件监听器
+		bn.setOnClickListener(new OnClickListener()
+		{
+			@Override
+			public void onClick(View v)
+			{
+				show.setText("Hello , Android , " + new java.util.Date());
+			}
+		});
+
+
+
+2、用xml构建界面
+
+2.1 cd res/layout
+
+vi main.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+    <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="afssd"
+    />
+</LinearLayout>
+
+wq!
+
+cd src/main/java/org/ui
+
+vi CodeView.java
+
+public class CodeView extends Activity
+{
+	// 当第一次创建该Activity时回调该方法
+	@Override
+	public void onCreate(Bundle savedInstanceState)
+	{
+		super.onCreate(savedInstanceState);
+
+		// 设置该Activity显示layout
+		super.setContentView(R.layout.main);
+
+	}
+}
+
+wq!
+
+
+=======================================================================
+文本框和按钮
+
+
+    <TextView
+            android:id="@+id/show_TextView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/hello"
+    />
+
+    <Button
+            android:id="@+id/Click_Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="点击"
+    />
+
+
+
+		Button button = (Button) findViewById(R.id.Click_Button);
+
+		TextView view = (TextView) findViewById(R.id.show_TextView);
+
+		button.setOnClickListener(new Button.OnClickListener(){
+			@Override
+			public void onClick(View v) {
+				view.setText("被点击了一下");
+			}
+		});
+
+=======================================================================
+
+
+
