@@ -1,0 +1,60 @@
+参考：
+http://www.mamicode.com/info-detail-410801.html
+
+https://www.cnblogs.com/elnino/p/4432416.html
+
+http://www.cnblogs.com/wanghetao/archive/2011/11/07/2240193.html	（重点）
+https://www.cnblogs.com/zhuyingchun/p/9129366.html 	（重点）
+
+词法分析器flex的功能说起来就是一句话，将正则表达式转化为c代码。
+
+
+1、下载 flex
+http://gnuwin32.sourceforge.net/packages/flex.htm
+
+2、配置环境变量
+F:\Program Files (x86)\GnuWin32\bin
+
+3、
+vi count.l
+
+%{
+   #include "stdio.h"
+   #include "stdlib.h"
+   int num_num=0,num_id=0;
+%}
+INTEGER [-+]?[1-9][0-9]*
+%%
+{INTEGER} { num_num++;
+  printf("(num=%d)/n",atoi(yytext));/*打印数字值*/
+    /*数字数加一*/
+}
+%%
+
+int main()
+{
+   fopen_s(&yyin, "C:\\Users\\Administrator\\Desktop\\flex\\test.txt", "r");
+   yylex();
+   fclose(yyin);
+   printf("num=%d,id=%d/n",num_num,num_id);
+   return 0;
+}
+
+int yywrap()//此函数必须由用户提供
+
+{
+    return 1;
+}
+
+
+
+
+
+4、
+cd C:\Users\Administrator\Desktop\flex
+flex.exe  count.l
+
+gcc -c lex.yy.c
+gcc -o pwh lex.yy.o
+
+pwh.exe test.txt
