@@ -1,0 +1,45 @@
+参考：	https://blog.csdn.net/u011181989/article/details/92242435
+https://www.cnblogs.com/ylz8401/p/9605498.html
+https://www.21ic.com/tougao/article/12949.html
+
+
+
+
+1、编译Java语言
+
+cd C:\Users\Administrator\Desktop\java调用C\Hello java\com
+javac HelloJava.java
+
+2、生成 c的头文件 
+
+cd C:\Users\Administrator\Desktop\java调用C\Hello java
+javah com.HelloJava
+mv com_HelloJava.h "..\Hello C\com_HelloJava.h"
+
+
+
+3、编译C语言
+C:
+cd C:\Users\Administrator\Desktop\java调用C\Hello C	
+gcc -c HelloC.c
+gcc -shared -o HelloC.dll HelloC.o
+mv HelloC.dll "..\Hello java\com\HelloC.dll"
+
+
+
+3、运行
+
+cd C:\Users\Administrator\Desktop\java调用C\Hello java
+java com.HelloJava
+
+
+
+
+
+
+
+
+
+
+
+
