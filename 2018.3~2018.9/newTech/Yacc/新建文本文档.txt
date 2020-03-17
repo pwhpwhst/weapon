@@ -1,0 +1,36 @@
+1、下载：
+http://gnuwin32.sourceforge.net/packages/bison.htm
+
+
+2、从DLL之家找到以下dll，并放到 C:\Windows\SysWOW64
+libintl3.dll
+libiconv2.dll
+regex2.dll
+
+=====================================================
+
+cd C:\Users\Administrator\Desktop\Yacc
+bison Name.y
+
+
+
+gcc -c Name.tab.c
+gcc -o pwh Name.tab.o
+
+pwh.exe
+
+
+输入 （1+2）*4
+
+
+
+
+
+
+
+
+
+
+
+
+
