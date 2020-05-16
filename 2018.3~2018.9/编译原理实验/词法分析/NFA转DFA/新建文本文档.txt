@@ -1,0 +1,7 @@
+cd C:\Users\Administrator\Desktop\编译原理实验
+
+
+
+g++ -std=c++11 -c pwh.cpp
+g++ -o pwh pwh.o
+pwh.exe

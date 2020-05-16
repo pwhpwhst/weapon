@@ -1,0 +1,5 @@
+ele_begin : ele
+ele : ele '+' ele
+ele : ele '*' ele
+ele : '(' ele ')'
+ele : 'id'

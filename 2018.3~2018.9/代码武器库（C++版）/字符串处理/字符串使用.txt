@@ -1,13 +1,18 @@
-1���ַ����ָ
+0、类型：
+string::size_type
+
+
+1、字符串分割：
 
 #include<string>
 #include<vector>
+#include<boost/algorithm/string.hpp>
 using namespace boost;
 
 vector <string> behaves;
 split(behaves,behave,is_any_of(","));
 
-2���������ʽ
+2、正则表达式
 #include<regex>
 
 string pattern("[^c]ei");
@@ -20,18 +25,18 @@ if(regex_search(test_str,results,r)){
 
 
 
-3���ַ����������Ļ���ת��
+3、字符串和整数的互相转换
 
 string s = "12"; 
 int a = atoi(s.c_str()); 
-������������Ҳ������Ӧ�ı�׼�⺯�������縡����atof(),long��atol()�ȵȡ�
+对于其他类型也都有相应的标准库函数，比如浮点型atof(),long型atol()等等。
 
-����ת�ַ���
+整数转字符串
 int i = 12; 
 cout << std::to_string(i) << endl; 
 
 
-4��stringBuffer
+4、stringBuffer
 #include<sstream>
 
 ostringstream os;
@@ -40,13 +45,71 @@ os<<"fdsgsd";
 
 return os.str();
 
-5��stringתchar*
+5、string转char*
 const char* p = str.data();
 
 
 
-char * תstring
+char * 转string
 
 string s;
-char *p = "hello";//ֱ�Ӹ�ֵ
+char *p = "hello";//直接赋值
 s = p;
+
+
+6、trim
+	string name = "   zhangdong";
+	string myName = trim_left_copy(name);
+
+7、处理每个字符
+
+string str("fasfasf");
+for(auto c:str){
+	cout<<c<<endl;
+}
+
+for (auto &c:s){
+	c=toupper(c);
+}
+
+8、cctype	头文件中的函数	参考 https://blog.csdn.net/gyysmall/article/details/12650937
+
+
+
+isalnum()  如果参数是字母数字，即字母或者数字，函数返回true
+isalpha()  如果参数是字母，函数返回true
+iscntrl()  如果参数是控制字符，函数返回true
+isdigit()  如果参数是数字（0－9），函数返回true
+isgraph()  如果参数是除空格之外的打印字符，函数返回true
+islower()  如果参数是小写字母，函数返回true
+isprint()  如果参数是打印字符（包括空格），函数返回true
+ispunct()  如果参数是标点符号，函数返回true
+isspace()  如果参数是标准空白字符，如空格、换行符、水平或垂直制表符，函数返回true
+isupper()  如果参数是大写字母，函数返回true
+isxdigit() 如果参数是十六进制数字，即0－9、a－f、A－F，函数返回true
+
+tolower()  如果参数是大写字符，返回其小写，否则返回该参数
+toupper()  如果参数是小写字符，返回其大写，否则返回该参数
+
+
+
+
+int startsWith(string s, string sub){
+        return s.find(sub)==0?1:0;
+}
+
+int endsWith(string s,string sub){
+        return s.rfind(sub)==(s.length()-sub.length())?1:0;
+}
+
+
+
+
+
+
+
+     position = s.find("jk");
+     if (position != s.npos)  //如果没找到，返回一个特别的标志c++中用npos表示，我这里npos取值是4294967295，
+     {
+         printf("position is : %d\n" ,position);
+     }

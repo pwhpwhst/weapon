@@ -1,0 +1,10 @@
+F:
+cd F:\odbg201
+
+ IDA
+cd F:\idapro6.5plus
+
+ open C:\Users\Administrator\Desktop\编译原理实验\实验程序
+
+
+

@@ -1,0 +1,13 @@
+cd C:\Users\Administrator\Desktop\编译原理实验\实验程序
+g++ -m32 -c pwh.cpp
+g++ -m32 -o pwh pwh.o
+
+
+pwh.exe
+
+
+
+F:
+cd F:\odbg201
+
+

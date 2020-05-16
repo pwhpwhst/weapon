@@ -1,0 +1,17 @@
+cd C:\Users\Administrator\Desktop\ÎÄ·¨·ÖÎö
+
+
+g++ -std=c++11 -c pwh.cpp
+g++ -std=c++11 -c Rule.cpp
+g++ -std=c++11 -c Extra.cpp
+g++ -std=c++11 -c Node.cpp
+g++ -o pwh Rule.o pwh.o Extra.o Node.o
+pwh.exe
+
+
+id+id*id
+
+
+
+
+

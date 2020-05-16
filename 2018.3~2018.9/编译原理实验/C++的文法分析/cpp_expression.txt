@@ -1,0 +1,223 @@
+﻿primary-expression : literal
+primary-expression : 'this'
+primary-expression : '(' expression ')'
+primary-expression : id-expression
+id-expression : unqualified-id
+id-expression : qualified-id
+unqualified-id : identifier
+unqualified-id : operator-function-id
+unqualified-id : conversion-function-id
+unqualified-id : '~' class-name
+unqualified-id : template-id
+qualified-id : nested-name-specifier unqualified-id
+qualified-id : '::' nested-name-specifier unqualified-id
+qualified-id : nested-name-specifier 'template' unqualified-id
+qualified-id : '::' nested-name-specifier 'template' unqualified-id
+qualified-id : '::' identifier
+qualified-id : '::' operator-function-id
+qualified-id : '::' template-id
+nested-name-specifier : class-or-namespace-name '::'
+nested-name-specifier : class-or-namespace-name '::' nested-name-specifier
+nested-name-specifier : class-or-namespace-name '::' 'template' nested-name-specifier
+class-or-namespace-name : class-name
+class-or-namespace-name : namespace-name
+postfix-expression : primary-expression
+postfix-expression : postfix-expression '[' expression ']'
+postfix-expression : postfix-expression '(' ')'
+postfix-expression : postfix-expression '(' expression-list ')'
+postfix-expression : simple-type-specifier '(' ')'
+postfix-expression : simple-type-specifier '(' expression-list ')'
+postfix-expression : 'typename' nested-name-specifier identifier '(' ')'
+postfix-expression : 'typename' nested-name-specifier identifier '(' expression-list ')'
+postfix-expression : 'typename' nested-name-specifier template-id '(' ')'
+postfix-expression : 'typename' nested-name-specifier template-id '(' expression-list ')'
+postfix-expression : 'typename' nested-name-specifier 'template' template-id '(' ')'
+postfix-expression : 'typename' nested-name-specifier 'template' template-id '(' expression-list ')'
+postfix-expression : 'typename' '::' nested-name-specifier identifier '(' ')'
+postfix-expression : 'typename' '::' nested-name-specifier identifier '(' expression-list ')'
+postfix-expression : 'typename' '::' nested-name-specifier template-id '(' ')'
+postfix-expression : 'typename' '::' nested-name-specifier template-id '(' expression-list ')'
+postfix-expression : 'typename' '::' nested-name-specifier 'template' template-id '(' ')'
+postfix-expression : 'typename' '::' nested-name-specifier 'template' template-id '(' expression-list ')'
+postfix-expression : postfix-expression '.' id-expression
+postfix-expression : postfix-expression '->' id-expression
+postfix-expression : postfix-expression '.' 'template' id-expression
+postfix-expression : postfix-expression '->' 'template' id-expression
+postfix-expression : postfix-expression '.' pseudo-destructor-name
+postfix-expression : postfix-expression '->' pseudo-destructor-name
+postfix-expression : postfix-expression '++'
+postfix-expression : postfix-expression '--'
+postfix-expression : 'dynamic_cast' '<' type-id '>' '(' expression ')'
+postfix-expression : 'static_cast' '<' type-id '>' '(' expression ')'
+postfix-expression : 'reinterpret_cast' '<' type-id '>' '(' expression ')'
+postfix-expression : 'const_cast' '<' type-id '>' '(' expression ')'
+postfix-expression : 'typeid' '(' expression ')'
+postfix-expression : 'typeid' '(' type-id ')'
+expression-list : assignment-expression
+expression-list : expression-list ',' assignment-expression
+pseudo-destructor-name : type-name '::' '~' type-name
+pseudo-destructor-name : nested-name-specifier type-name '::' '~' type-name
+pseudo-destructor-name : nested-name-specifier 'template' template-id '::' '~' type-name
+pseudo-destructor-name : '~' type-name
+pseudo-destructor-name : nested-name-specifier '~' type-name
+pseudo-destructor-name : '::' type-name '::' '~' type-name
+pseudo-destructor-name : '::' nested-name-specifier type-name '::' '~' type-name
+pseudo-destructor-name : '::' nested-name-specifier 'template' template-id '::' '~' type-name
+pseudo-destructor-name : '::' '~' type-name
+pseudo-destructor-name : '::' nested-name-specifier '~' type-name
+unary-expression : postfix-expression
+unary-expression : '++' cast-expression
+unary-expression : '--' cast-expression
+unary-expression : unary-operator cast-expression
+unary-expression : 'sizeof' unary-expression
+unary-expression : 'sizeof' '(' type-id ')'
+unary-expression : new-expression
+unary-expression : delete-expression
+unary-operator : '*'
+unary-operator : '&'
+unary-operator : '+'
+unary-operator : '-'
+unary-operator : '!'
+unary-operator : '~'
+new-expression : 'new' new-type-id
+new-expression : 'new' '(' type-id ')'
+new-expression : '::' 'new' new-type-id
+new-expression : '::' 'new' '(' type-id ')'
+new-expression : 'new' new-placement new-type-id
+new-expression : 'new' new-placement '(' type-id ')'
+new-expression : '::' 'new' new-placement new-type-id
+new-expression : '::' 'new' new-placement '(' type-id ')'
+new-expression : 'new' new-type-id new-initializer
+new-expression : 'new' '(' type-id ')' new-initializer
+new-expression : '::' 'new' new-type-id new-initializer
+new-expression : '::' 'new' '(' type-id ')' new-initializer
+new-expression : 'new' new-placement new-type-id new-initializer
+new-expression : 'new' new-placement '(' type-id ')' new-initializer
+new-expression : '::' 'new' new-placement new-type-id new-initializer
+new-expression : '::' 'new' new-placement '(' type-id ')' new-initializer
+new-placement : '(' expression-list ')'
+new-type-id : type-specifier-seq
+new-type-id : type-specifier-seq new-declarator
+new-declarator : ptr-operator
+new-declarator : ptr-operator new-declarator
+new-declarator : direct-new-declarator
+direct-new-declarator : '[' expression ']'
+direct-new-declarator : direct-new-declarator '[' constant-expression ']'
+new-initializer : '(' ')'
+new-initializer : '(' expression-list ')'
+delete-expression : 'delete' cast-expression
+delete-expression : 'delete' '[' ']' cast-expression
+delete-expression : '::' 'delete' cast-expression
+delete-expression : '::' 'delete' '[' ']' cast-expression
+cast-expression : unary-expression
+cast-expression : '(' type-id ')' cast-expression
+pm-expression : cast-expression
+pm-expression : pm-expression '.*' cast-expression
+pm-expression : pm-expression '->*' cast-expression
+multiplicative-expression : pm-expression
+multiplicative-expression : multiplicative-expression '*' pm-expression
+multiplicative-expression : multiplicative-expression '/' pm-expression
+multiplicative-expression : multiplicative-expression '%' pm-expression
+additive-expression : multiplicative-expression
+additive-expression : additive-expression '+' multiplicative-expression
+additive-expression : additive-expression '-' multiplicative-expression
+shift-expression : additive-expression
+shift-expression : shift-expression '<<' additive-expression
+shift-expression : shift-expression '>>' additive-expression
+relational-expression : shift-expression
+relational-expression : relational-expression '<' shift-expression
+relational-expression : relational-expression '>' shift-expression
+relational-expression : relational-expression '<=' shift-expression
+relational-expression : relational-expression '>=' shift-expression
+equality-expression : relational-expression
+equality-expression : equality-expression '==' relational-expression
+equality-expression : equality-expression '!=' relational-expression
+and-expression : equality-expression
+and-expression : and-expression '&' equality-expression
+exclusive-or-expression : and-expression
+exclusive-or-expression : exclusive-or-expression '^' and-expression
+inclusive-or-expression : exclusive-or-expression
+inclusive-or-expression : inclusive-or-expression '|' exclusive-or-expression
+logical-and-expression : inclusive-or-expression
+logical-and-expression : logical-and-expression '&&' inclusive-or-expression
+logical-or-expression : logical-and-expression
+logical-or-expression : logical-or-expression '||' logical-and-expression
+conditional-expression : logical-or-expression
+conditional-expression : logical-or-expression '?' expression ':' assignment-expression
+assignment-expression : conditional-expression
+assignment-expression : logical-or-expression assignment-operator assignment-expression
+assignment-expression : throw-expression
+assignment-operator : '='
+assignment-operator : '*='
+assignment-operator : '/='
+assignment-operator : '%='
+assignment-operator : '+='
+assignment-operator : '-='
+assignment-operator : '>>='
+assignment-operator : '<<='
+assignment-operator : '&='
+assignment-operator : '^='
+assignment-operator : '|='
+expression : assignment-expression
+expression : expression ',' assignment-expression
+constant-expression : conditional-expression
+
+
+
+
+
+
+
+
+literal:1,0
+template-id:1,0
+simple-type-specifier:1,0
+type-specifier-seq:1,0
+type-name:1,0
+operator-function-id:1,0
+conversion-function-id:1,0
+throw-expression:1,0
+namespace-name:1,0
+class-name:1,0
+ptr-operator:1,0
+type-id:1,0
+identifier:1,0
+
+
+
+assignment-operator:1,1 // = *= /= %= += -= >>= <<= &= ˆ= |=
+unary-operator:1,1 // * & + - ! ˜
+shift-expression:1,1 //	<< 表达式
+expression:1,1
+delete-expression:1,1	// delete cast-expression
+
+unqualified-id:2,1
+relational-expression:2,1
+class-or-namespace-name:2,1
+equality-expression:3,1
+nested-name-specifier:3,1
+and-expression:4,1
+pseudo-destructor-name:4,1
+qualified-id:4,1
+exclusive-or-expression:5,1
+id-expression:5,1
+inclusive-or-expression:6,1
+primary-expression:6,1
+logical-and-expression:7,1
+logical-or-expression:8,1
+conditional-expression:9,1
+assignment-expression:10,1
+constant-expression:10,1
+direct-new-declarator:11,1
+expression-list:11,1
+new-placement:12,1
+new-initializer:12,1
+postfix-expression:12,1
+new-declarator:12,1
+new-type-id:13,1
+new-expression:14,1
+unary-expression:15,1
+cast-expression:16,1
+pm-expression:17,1
+multiplicative-expression:18,1
+additive-expression:19,1

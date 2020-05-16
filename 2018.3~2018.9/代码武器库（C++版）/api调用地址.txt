@@ -1,1 +1,12 @@
 http://www.cplusplus.com/reference/
+
+项目结构参考：
+
+https://gitee.com/scarsty/kys-cpp?_from=gitee_search
+
+F:\Users\pwh\workspace\kys-cpp
+
+
+
+        UIStatus.cpp
+        UIStatus.h

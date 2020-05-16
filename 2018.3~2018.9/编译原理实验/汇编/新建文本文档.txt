@@ -1,0 +1,80 @@
+
+参考： https://blog.csdn.net/Dear_Jia/article/details/80359684
+
+https://blog.csdn.net/hurtjiang/article/details/82974340
+
+1、用于汇编语言的dosbox以及masm.exe，debug.exe，edit文件以及link.exe（免费共享）
+https://blog.csdn.net/lk990908/article/details/88581384
+
+
+2、把msam中的所有文件移入这个文件夹：
+F:\DOSBox-0.74\DOSBox-0.74
+
+
+3、
+F:
+cd F:\DOSBox-0.74\DOSBox-0.74
+DOSBox.exe
+
+
+mount F: F:\DOSBox-0.74\DOSBox-0.74
+
+
+4、
+vi test1.asm
+
+DATA SEGMENT
+BUFFER DB "1 STYLE ONE ", 0DH, 0AH
+       DB "2 STYLE TWO ", 0DH, 0AH
+       DB "3 EXIT ", 0DH, 0AH, '$'
+DATA ENDS
+CODE   SEGMENT
+      ASSUME CS:CODE, DS:DATA
+START:      MOV AX, DATA
+      MOV DS, AX
+ 
+    MOV DX, OFFSET BUFFER   ;打印菜单
+    MOV AH, 09H
+    INT 21H
+    
+   
+    	MOV AH,4CH           ;退出程序
+      INT 21H
+CODE   ENDS
+END START
+
+
+5、
+masm test1.asm
+link test1.obj
+test1.exe
+
+=========================================================
+
+
+https://www.cnblogs.com/liangxiaofeng/p/3473879.html	(x64 主要参考)
+
+1、去这里下载 goasm  golink http://www.godevtool.com/
+
+2 vi test1.asm
+
+DATA SECTION
+text     db 'Hello x64!', 0
+caption  db 'My First x64 Application', 0
+
+CODE SECTION
+START:
+sub rsp,28h
+xor r9d,r9d
+lea r8, caption
+lea rdx, text
+xor rcx,rcx
+call MessageBoxA
+add rsp,28h
+ret
+
+
+3、
+goasm /x64 test1.asm
+golink test1.obj user32.dll
+test1.exe

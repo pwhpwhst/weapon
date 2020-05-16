@@ -1,0 +1,10 @@
+参考： https://blog.csdn.net/ygsyyl/article/details/8153886
+
+cd C:\Users\Administrator\Desktop\CPP调用C,C调用CPP
+
+//cpp调用c
+gcc -c cfile.c
+g++ -std=c++11 -c cpfile.cpp
+g++ -o pwh cfile.o cpfile.o
+
+pwh.exe

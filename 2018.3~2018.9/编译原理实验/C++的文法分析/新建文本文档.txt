@@ -1,0 +1,7 @@
+cd C:\Users\admini\Desktop\编译原理实验\编译原理实验\c++文法研究
+
+g++ -std=c++11 -c Rule.cpp
+
+g++ -std=c++11 -c pwh.cpp
+g++ -o pwh pwh.o Rule.o
+pwh.exe

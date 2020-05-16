@@ -1,0 +1,13 @@
+≤Œøº£∫
+https://blog.csdn.net/dumuweiyang/article/details/80826250
+
+œ¬‘ÿµÿ÷∑£∫
+https://www.boost.org/users/history/version_1_72_0.html
+
+
+
+
+include	D:\MinGW64\include;F:\boost_1_66_0\boost_1_66_0;
+
+
+lib	D:\MinGW64\lib;F:\boost_1_66_0\boost_1_66_0\stage\lib;

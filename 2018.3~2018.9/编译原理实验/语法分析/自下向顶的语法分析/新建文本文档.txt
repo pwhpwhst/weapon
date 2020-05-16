@@ -1,0 +1,12 @@
+cd C:\Users\Administrator\Desktop\编译原理实验\语法分析\自下向顶的语法分析
+
+g++ -std=c++11 -c pwh.cpp
+g++ -std=c++11 -c Rule.cpp
+g++ -std=c++11 -c Item.cpp
+g++ -std=c++11 -c Node.cpp
+g++ -o pwh pwh.o Rule.o Item.o Node.o 
+pwh.exe
+
+
+
+

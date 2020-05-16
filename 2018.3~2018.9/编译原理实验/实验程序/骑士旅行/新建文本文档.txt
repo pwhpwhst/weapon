@@ -1,0 +1,210 @@
+cd C:\Users\Administrator\Desktop\编译原理实验\实验程序\骑士旅行
+g++ -std=c++11 -m32 -c knight.cpp
+g++ -std=c++11 -m32 -o knight knight.o
+
+
+knight.exe
+
+
+F:
+cd F:\odbg201
+
+
+
+CPU Disasm
+Address   Hex dump          Command                                  Comments
+00477671  \.  C3            RETN
+00401000   .  F3:C3         REP RETN
+
+76671
+
+
+
+
+dword   双字 就是四个字节
+ptr     pointer缩写 即指针 理解为 *(解引用)
+1、CS：代码段寄存器；
+
+2、DS：数据段寄存器；
+
+3、SS：堆栈段寄存器。
+
+32位通用寄存器：
+EAX EBX ECX EDX ESI EDI EBP ESP
+
+//	mov eax, dword ptr [12345678]  把内存地址12345678中的双字型（32位）数据赋给eax
+
+// int a2=2;
+// MOV DWORD PTR SS:[LOCAL.5],2
+
+//OFFSET 00481003 地址 00481003
+
+
+//下面两条指令就是等价的，他们都取TABLE的偏移地址，然后送到BX中，即
+//LEA BX,TABLE
+//MOV BX,OFFSET TABLE
+
+
+
+//CALL是调用子函数
+
+
+
+//i=i+0x100;
+//ADD EAX,100
+
+//其中sub ax,bx就是ax中的值减bx中的值，等于1，然后把结果，也就是1，放入ax中。
+
+
+//    举例假如此时eax = 0h
+//     那么cmp eax, eax     (eax - eax = 0)
+//    此时我们的指令执行后, ZF标志位 = 1, PF = 0, SF =0 , CF =0 , OF = 0 。
+
+
+jne是汇编指令中的一个条件转移指令。当ZF=0，转至标号处执行。
+
+在汇编里面[local.1]是ebp-4，[local.2]是ebp-8，以每4个字节递增
+
+
+
+
+LOCK是一个指令前缀，因此它只适用于下面的指令
+XADD 表示交换加，即先将两个数交换，再将二者之和送给第一个数
+
+
+JLE SF!=OF 或 ZF=1 转移
+
+TEMP ←SRC1 AND SRC2;
+　　SF ←MSB(TEMP);
+IF TEMP = 0
+　　THEN ZF ←1;
+　　ELSE ZF ←0;
+　　FI:
+　　
+　　PF ←BitwiseXNOR(TEMP[0:7]);
+　　CF ←0;
+　　OF ←0;
+　　(* AF is undefined *)
+
+"2552"	"0046A040"	"0046A06E"	"10"	stack.pop_back()
+"2550"	"00469F9C"	"0046A012"	"2"	stack.back()
+"909"	"00424B60"	"00424B6F"	"1" 解地址操作*
+"1753"	"0044E3CC"	"0044E3E0"	"6" ele的构析函数
+"988"	"00425ED4"	"00425EF2"	"1" stack.size()
+"1548"	"0044A2D0"	"0044A2D4"	"1"
+"2913"	"004737D0"	"00473823"	"6"
+"1538"	"0044A010"	"0044A01D"	"1"
+
+"1289"	"00440750"	"00440750"	"1"
+"1645"	"0044C130"	"0044C16E"	"9"
+
+"1290"	"00440780"	"00440780"	"1"
+"1670"	"0044C7A0"	"0044C7C2"	"2" [LOCAL.25] [LOCAL.41]
+"1753"	"0044E3CC"	"0044E3E0"	"6" 
+"2555"	"0046A0E8"	"0046A14C"	"2"	[LOCAL.28]
+
+
+
+/*
+所有的调用
+141 0040B590 函数开头会调用的方法？
+113 0040A7D0 函数开头会调用的方法？
+1289 00440750 REP RETN
+1645 0044C130 字符串构造函数
+1290 00440780 REP RETN
+2554 0046A0D0 vector<shared_ptr<Element>>
+3014 00475E10 new Element()
+1752 0044E3AC shared_ptr<Element>(new Element());
+909 00424B60 解地址操作*
+1753 0044E3CC ele的构析函数
+2553 0046A070 stack.push_back
+2552 0046A040 stack.pop_back()
+2550 00469F9C stack.back()
+988  00425ED4 stack.size()
+1751 0044E38C shared_ptr<Element> ele=stack.back(); 中的=
+1289 00440750	REP RETN
+1290 00440780	REP RETN
+1670 0044C7A0	string 的构析函数
+1548 0044A2D0 cout<<knight_board[i1][i2]
+2913 004737D0 cout<<","
+1538 0044A010 cout<<endl;
+2555 0046A0E8 stack 的构析
+*/
+
+
+
+
+//局部变量
+
+[ARG.1]
+
+[EAX*4+EBP-1B0]
+[EAX*8]
+[EAX]
+[EAX+0C]
+[EAX+1]
+[EAX+10]
+[EAX+4]
+[EAX+8]
+
+[EBX]
+[EBX+4]
+
+[ECX-4]
+
+[EDI*8]
+[EDI]
+[EDI+4]
+
+[ESI]
+[ESI+0C]
+[ESI+4]
+[ESP]
+[ESP+4]
+
+[LOCAL.7]
+[LOCAL.8]
+[LOCAL.9]
+[LOCAL.10]
+[LOCAL.11]
+[LOCAL.12]
+[LOCAL.13]
+[LOCAL.14]
+[LOCAL.15]
+[LOCAL.16]
+[LOCAL.17]
+[LOCAL.18]
+[LOCAL.19]
+[LOCAL.20]
+[LOCAL.21]
+[LOCAL.22+3]
+[LOCAL.23]
+[LOCAL.24+1]
+[LOCAL.24+2]
+[LOCAL.24+3]
+[LOCAL.25]
+[LOCAL.28]
+[LOCAL.30]
+[LOCAL.31]
+[LOCAL.32]
+[LOCAL.33]
+[LOCAL.34]
+[LOCAL.35]
+[LOCAL.36]
+[LOCAL.37]
+[LOCAL.38]
+[LOCAL.39]
+[LOCAL.40]
+[LOCAL.41]
+[LOCAL.43]
+[LOCAL.45]
+[LOCAL.109]
+[LOCAL.116]
+[LOCAL.117]
+[LOCAL.118]
+[LOCAL.123]
+[LOCAL.124]
+[LOCAL.125]
+[LOCAL.126]
+[LOCAL.130]
+[LOCAL.131]

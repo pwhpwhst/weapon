@@ -1,0 +1,74 @@
+cd C:\Users\Administrator\Desktop\编译原理实验\微型编译器
+
+vi test.txt
+vi rule.txt
+
+flex.exe  wordParser.l
+gcc -c lex.yy.c
+g++ -std=c++11 -c Lex_Word.cpp
+g++ -std=c++11 -c Rule.cpp
+g++ -std=c++11 -c Item.cpp
+g++ -std=c++11 -c Node.cpp
+g++ -std=c++11 -c pwh.cpp
+g++ -o pwh pwh.o Rule.o Item.o Node.o lex.yy.o Lex_Word.o
+
+pwh.exe
+
+
+
+======================================================
+int id1=132; 
+int id2=2321;
+int id3=543;
+
+int u=id1*(id2+id3);
+
+CPU Disasm
+Address   Hex dump          Command                                  Comments
+004015C7  |.  C745 E4 84000 MOV DWORD PTR SS:[LOCAL.8],84
+004015CE  |.  C745 E0 11090 MOV DWORD PTR SS:[LOCAL.9],911
+004015D5  |.  C745 DC 1F020 MOV DWORD PTR SS:[LOCAL.10],21F
+004015DC  |.  8B45 DC       MOV EAX,DWORD PTR SS:[LOCAL.10]
+004015DF  |.  8B55 E0       MOV EDX,DWORD PTR SS:[LOCAL.9]
+004015E2  |.  01D0          ADD EAX,EDX
+004015E4  |.  0FAF45 E4     IMUL EAX,DWORD PTR SS:[LOCAL.8]
+004015E8  |.  8945 D8       MOV DWORD PTR SS:[LOCAL.11],EAX
+
+
+=======================================================
+8,'+':r2
+8,'*':r2
+9,'+':r1
+9,'*':s5
+
+
+存在二义性:8,'+':s6,r2
+存在二义性:8,'*':s5,r2
+存在二义性:9,'+':s6,r1
+存在二义性:9,'*':s5,r1
+打印转移状态图的点
+5:
+ele : ele '*' ele 2
+ele : ele '+' ele 0
+ele : ele '*' ele 0
+ele : '(' ele ')' 0
+ele : 'id' 0
+6:
+ele : ele '+' ele 2
+ele : ele '+' ele 0
+ele : ele '*' ele 0
+ele : '(' ele ')' 0
+ele : 'id' 0
+8:
+ele : ele '*' ele 3
+ele : ele '+' ele 1
+ele : ele '*' ele 1
+9:
+ele : ele '+' ele 3
+ele : ele '+' ele 1
+ele : ele '*' ele 1
+打印文法:
+1:
+ele : ele '+' ele
+2:
+ele : ele '*' ele

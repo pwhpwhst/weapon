@@ -1,0 +1,5 @@
+cd C:\Users\Administrator\Desktop\语法知识备忘
+
+g++ -std=c++11 -c pwh.cpp
+g++ -o pwh pwh.o
+pwh.exe

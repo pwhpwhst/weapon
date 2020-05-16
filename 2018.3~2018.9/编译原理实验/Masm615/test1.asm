@@ -1,0 +1,19 @@
+DATA SEGMENT
+BUFFER DB "1 STYLE ONE ", 0DH, 0AH
+       DB "2 STYLE TWO ", 0DH, 0AH
+       DB "3 EXIT ", 0DH, 0AH, '$'
+DATA ENDS
+CODE   SEGMENT
+      ASSUME CS:CODE, DS:DATA
+START:      MOV AX, DATA
+      MOV DS, AX
+ 
+    MOV DX, OFFSET BUFFER   ;打印菜单
+    MOV AH, 09H
+    INT 21H
+    
+   
+    	MOV AH,4CH           ;退出程序
+      INT 21H
+CODE   ENDS
+END START

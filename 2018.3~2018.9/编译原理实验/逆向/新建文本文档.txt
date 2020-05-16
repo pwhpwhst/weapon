@@ -1,0 +1,30 @@
+×¼±¸
+VC++	
+
+C:\Program Files (x86)\Common Files\Oracle\Java\javapath;%SystemRoot%\system32;%SystemRoot%;%SystemRoot%\System32\Wbem;%SYSTEMROOT%\System32\WindowsPowerShell\v1.0\;%MAVEN_HOME%\bin;%JAVA_HOME%\bin;F:\hadoop-2.8.3\hadoop-2.8.3\bin;F:\Program Files\MongoDB\Server\3.4\bin;C:\Program Files\Git\cmd;F:\Program Files\SmartGit\git\usr\bin;F:\mysql-5.7.22-winx64\mysql-5.7.22-winx64\bin;F:\apache-hive-2.3.4-bin\apache-hive-2.3.4-bin\bin;F:\vault_1.0.1_windows_amd64;F:\lua-5.3.4 win32\lua;%GRADLE_HOME%\bin;
+F:\sqlite-tools-win32-x86-3280000;F:\Program Files (x86)\GnuWin32\bin;D:\MinGW64\bin;F:\bison-2.4.1-bin\bin
+
+
+
+D:\MinGW64\bin
+
+D:\MinGW64\bin
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
