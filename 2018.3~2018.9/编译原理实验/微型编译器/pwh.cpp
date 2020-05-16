@@ -50,8 +50,8 @@ bool detect_ambigulous( vector<unordered_map<string,string>> &forecast_list,
 int main(){
 //初始化
 string start_symbol="ele_begin";
-string rule_file="C:\\Users\\Administrator\\Desktop\\编译原理实验\\微型编译器\\rule.txt";
-string compile_file="C:\\Users\\Administrator\\Desktop\\编译原理实验\\微型编译器\\test.txt";
+string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
 
 
 //生成ruleListing
@@ -460,21 +460,8 @@ cout<<endl;
 
 void get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered_map<int,unordered_map<string,int>> &convert_map,
 	const set<string> &non_terminator,const vector<P_Rule> &ruleList,const string start_symbol){
-
-	vector<P_Item> items0;
-	items_list.push_back(items0);
-
-	for(auto e:ruleList){
-		items_list[0].push_back(P_Item(new Item(e,0)));
-	}
-
-	set<int> status_set;
-	deque<int> status_que;
-	status_que.push_front(0);
-
-	deque<string> rule_name_deq;
-	set<string> rule_name_set;
-	set<string> move_symbol_set;
+	
+	
 	class P_Item_Cmp
 	{
 			public : bool operator ()(const P_Item &c1,const P_Item &c2) const{
@@ -493,6 +480,56 @@ void get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered
 		}
 	};
 
+	vector<P_Item> items0;
+	items_list.push_back(items0);
+
+	//构造item0
+	deque<string> rule_name_deq;
+	set<string> rule_name_set;
+	set<P_Item,P_Item_Cmp> _items_set;
+	P_Item _p_item(new Item(ruleList[0],0));
+	items_list[0].push_back(_p_item);
+	_items_set.insert(_p_item);
+	rule_name_set.insert(items_list[0][0]->rule->symbols[items_list[0][0]->status]);
+
+	for(auto e:rule_name_set){
+		rule_name_deq.push_front(e);
+	}
+
+	while(rule_name_deq.size()>0){
+		string rule_name=rule_name_deq.back();
+		for(auto e:ruleList){
+			if(e->rule_name==rule_name){
+					if(non_terminator.count(e->symbols[0])>0&&rule_name_set.count(e->symbols[0])==0){
+						rule_name_set.insert(e->symbols[0]);
+						rule_name_deq.push_front(e->symbols[0]);
+					}
+			}
+		}
+		rule_name_deq.pop_back();
+	}
+
+	
+	for(auto e:ruleList){
+		if(rule_name_set.count(e->rule_name)>0){
+			P_Item _p_item(new Item(e,0));
+
+			if(_items_set.count(_p_item)==0){
+				items_list[0].push_back(_p_item);
+				_items_set.insert(_p_item);
+			}
+		}
+	}
+	rule_name_set.clear();
+
+
+	set<int> status_set;
+	deque<int> status_que;
+	status_que.push_front(0);
+
+
+	set<string> move_symbol_set;
+
 //构造状态转移图
 while(status_que.size()>0){
 	int status_number=status_que.back();
@@ -505,7 +542,7 @@ while(status_que.size()>0){
 
 	for(string symble:move_symbol_set){
 		vector<P_Item> _items;
-		set<P_Item,P_Item_Cmp> _items_set;
+		_items_set.clear();
 		bool is_final_item=false;
 		for(P_Item e:items_list[status_number]){
 			if(e->rule->symbols.size()>e->status){
@@ -522,7 +559,7 @@ while(status_que.size()>0){
 
 		for(auto e:_items){
 			if(e->rule->symbols.size()>e->status){
-			rule_name_set.insert(e->rule->symbols[e->status]);
+				rule_name_set.insert(e->rule->symbols[e->status]);
 			}
 		}
 		for(auto e:rule_name_set){
