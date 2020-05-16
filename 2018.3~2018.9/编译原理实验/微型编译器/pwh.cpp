@@ -461,7 +461,6 @@ cout<<endl;
 void get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered_map<int,unordered_map<string,int>> &convert_map,
 	const set<string> &non_terminator,const vector<P_Rule> &ruleList,const string start_symbol){
 	
-	
 	class P_Item_Cmp
 	{
 			public : bool operator ()(const P_Item &c1,const P_Item &c2) const{
@@ -487,9 +486,13 @@ void get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered
 	deque<string> rule_name_deq;
 	set<string> rule_name_set;
 	set<P_Item,P_Item_Cmp> _items_set;
+	set<P_Item,P_Item_Cmp> _visited_items_set;
+
+
 	P_Item _p_item(new Item(ruleList[0],0));
 	items_list[0].push_back(_p_item);
 	_items_set.insert(_p_item);
+	_visited_items_set.insert(_p_item);
 	rule_name_set.insert(items_list[0][0]->rule->symbols[items_list[0][0]->status]);
 
 	for(auto e:rule_name_set){
@@ -517,6 +520,7 @@ void get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered
 			if(_items_set.count(_p_item)==0){
 				items_list[0].push_back(_p_item);
 				_items_set.insert(_p_item);
+				_visited_items_set.insert(_p_item);
 			}
 		}
 	}
@@ -553,6 +557,7 @@ while(status_que.size()>0){
 					}
 					_items.push_back(_p_item);
 					_items_set.insert(_p_item);
+					_visited_items_set.insert(_p_item);
 				}
 			}
 		}
@@ -586,6 +591,7 @@ while(status_que.size()>0){
 				if(_items_set.count(_p_item)==0){
 					_items.push_back(_p_item);
 					_items_set.insert(_p_item);
+					_visited_items_set.insert(_p_item);
 				}
 			}
 		}
@@ -634,6 +640,35 @@ while(status_que.size()>0){
 	move_symbol_set.clear();
 	status_que.pop_back();
 }
+
+_items_set.clear();
+P_Item p_search_item(new Item());
+for(const auto &e:ruleList){
+	p_search_item->rule=e;
+	for(int i1=0;i1<=e->symbols.size();i1++){
+		p_search_item->status=i1;
+		if(_visited_items_set.count(p_search_item)==0){
+			_items_set.insert(P_Item(new Item(*(p_search_item.get()))));
+		}
+	}
+}
+
+if(_items_set.size()>0){
+	cout<<"´æÔÚ×ÔÓÉrule:"<<endl;
+	int i1=0;
+	for(const auto &e:_items_set){
+		cout<<i1<<":"<<endl;
+		cout<<e->rule->rule_name;
+		cout<<" :";
+		for(auto e2:e->rule->symbols){
+			cout<<" "<<e2;
+		}
+		cout<<" "<<e->status<<endl;
+		i1++;
+	}
+	throw;
+}
+
 
 #ifdef __PRINT_GRAPH
 printGraph(items_list,convert_map);
