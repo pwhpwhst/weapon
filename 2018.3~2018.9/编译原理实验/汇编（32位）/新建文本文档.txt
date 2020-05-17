@@ -1,0 +1,13 @@
+参考 GoAsm手册
+
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\汇编（32位）
+
+
+goasm  pwh.asm
+goLink /console pwh.obj kernel32.dll
+pwh.exe
+
+
+
+

@@ -1,0 +1,14 @@
+ele_begin : expression
+expression : assignment-expression
+assignment-expression : logical-or-expression assignment-operator assignment-expression
+assignment-operator : '='
+assignment-operator : '*='
+assignment-operator : '/='
+assignment-operator : '%='
+assignment-operator : '+='
+assignment-operator : '-='
+assignment-operator : '>>='
+assignment-operator : '<<='
+assignment-operator : '&='
+assignment-operator : '^='
+assignment-operator : '|='
