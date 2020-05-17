@@ -1,5 +1,5 @@
 //#define __PRINT_SYMBOL
-//#define __PRINT_F_FIRST
+#define __PRINT_F_FIRST
 //#define __PRINT_F_FOLLOW
 //#define __PRINT_FORECAST
 //#define __PRINT_GRAPH
@@ -26,7 +26,7 @@ void parse_all_symbol(set<string> &terminator,set<string> &non_terminator,const 
 void get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered_map<int,unordered_map<string,int>> &convert_map,
 	const set<string> &non_terminator,const vector<P_Rule> &ruleList,const string start_symbol);
 
-void calculate_f_first(unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,const set<string> &terminator);
+void calculate_f_first(unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,const set<string> &terminator,const set<string> &non_terminator);
 
 void calculate_f_follow(unordered_map<string,set<string>> &f_follow, unordered_map<string,set<string>> &f_first,
 	const vector<P_Rule> &ruleList,const set<string> &non_terminator,const set<string> &terminator,string start_symbol);
@@ -98,7 +98,7 @@ parse_all_symbol(terminator,non_terminator,ruleList);
 
 //计算first函数
 unordered_map<string,set<string>> f_first;
-calculate_f_first(f_first,ruleList,terminator);
+calculate_f_first(f_first,ruleList,terminator,non_terminator);
 
 //计算follow函数
 unordered_map<string,set<string>> f_follow;
@@ -114,11 +114,13 @@ get_items_list_and_convert_map(items_list,convert_map,non_terminator,ruleList,st
 //构建预测表
 vector<unordered_map<string,string>> forecast_list;
 calculate_forecast_list(forecast_list,items_list,terminator,rule_map,convert_map,f_follow);
+
 for(const auto &e:temp_forecast_map){
 	string_list.clear();
 	split(string_list,e.first,is_any_of(","));
 	forecast_list[atoi(string_list[0].c_str())][string_list[1]]=e.second;
 }
+
 
 if(detect_ambigulous(forecast_list,ruleList,items_list)){
 	return -1;
@@ -126,14 +128,17 @@ if(detect_ambigulous(forecast_list,ruleList,items_list)){
 
 
 //构造语法树
-Node* node_tree=syntax_analyze(ruleList,forecast_list,convert_map,lex_word_list);
+/**
+Node *node_tree=syntax_analyze(ruleList,forecast_list,convert_map,lex_word_list);
 #ifdef __PRINT_NODE_TREE
 printStack(node_tree);
 #endif
+*/
 }
 
 
-void calculate_f_first(unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,const set<string> &terminator){
+void calculate_f_first(unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,
+	const set<string> &terminator,const set<string> &non_terminator){
 // 计算first函数
 
 set<P_Rule> has_calculate_first_set;
@@ -202,6 +207,7 @@ for(auto rule:ruleList){
 	}
 }
 
+
 #ifdef __PRINT_F_FIRST
 cout<<"f_first"<<endl;
 for(const auto result:f_first){
@@ -210,6 +216,11 @@ for(const auto result:f_first){
 		cout<<*it<<",";
 	}
 	cout<<endl;
+}
+for(const auto &e:non_terminator){
+	if(f_first.find(e)==f_first.end()){
+		cout<<"不存在:"<<e<<endl;
+	}
 }
 #endif
 }
