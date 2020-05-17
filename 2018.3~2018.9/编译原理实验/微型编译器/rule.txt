@@ -1,10 +1,5 @@
-ele_begin : ele
-ele : ele '+' ele
-ele : ele '*' ele
-ele : '(' ele ')'
-ele : 'id'
-====================================
-8,'+':r2
-8,'*':r2
-9,'+':r1
-9,'*':s5
+ele_begin : expression
+expression : assignment-expression
+assignment-expression : logical-or-expression assignment-operator assignment-expression
+assignment-operator : '='
+logical-or-expression : 'id'

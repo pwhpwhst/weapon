@@ -1,4 +1,5 @@
-cd C:\Users\Administrator\Desktop\编译原理实验\微型编译器
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器
 
 vi test.txt
 vi rule.txt
@@ -36,39 +37,32 @@ Address   Hex dump          Command                                  Comments
 
 
 =======================================================
-8,'+':r2
-8,'*':r2
-9,'+':r1
-9,'*':s5
+
+int i1;
+i1=0;
 
 
-存在二义性:8,'+':s6,r2
-存在二义性:8,'*':s5,r2
-存在二义性:9,'+':s6,r1
-存在二义性:9,'*':s5,r1
-打印转移状态图的点
-5:
-ele : ele '*' ele 2
-ele : ele '+' ele 0
-ele : ele '*' ele 0
-ele : '(' ele ')' 0
-ele : 'id' 0
-6:
-ele : ele '+' ele 2
-ele : ele '+' ele 0
-ele : ele '*' ele 0
-ele : '(' ele ')' 0
-ele : 'id' 0
-8:
-ele : ele '*' ele 3
-ele : ele '+' ele 1
-ele : ele '*' ele 1
-9:
-ele : ele '+' ele 3
-ele : ele '+' ele 1
-ele : ele '*' ele 1
-打印文法:
-1:
-ele : ele '+' ele
-2:
-ele : ele '*' ele
+
+CPU Disasm
+Address   Hex dump                              Command                                                                     Comments
+00401520  /$  55                                PUSH EBP                                                                    ; pwh.00401520(guessed void)
+00401521  |.  89E5                              MOV EBP,ESP
+00401523  |.  83E4 F0                           AND ESP,FFFFFFF0                                                            ; DQWORD (16.-byte) stack alignment
+00401526  |.  83EC 20                           SUB ESP,20
+00401529  |.  E8 32850000                       CALL 00409A60
+0040152E  |.  C74424 1C 01000000                MOV DWORD PTR SS:[ARG.2],1
+00401536  |.  C74424 18 02000000                MOV DWORD PTR SS:[ARG.1],2
+0040153E  |.  C74424 14 03000000                MOV DWORD PTR SS:[ARG.4],3
+00401546  |?  C74424 10 04000000                MOV DWORD PTR SS:[ESP+10],4
+0040154E  \.  C74424 0C 05000000                MOV DWORD PTR SS:[ARG.3],5
+
+
+
+[ESP+4h],1
+
+PUSH EBP
+MOV EBP,ESP
+AND ESP,0xFFFFFFF0
+SUB ESP,0x20
+MOV D [ESP],1
+MOV D [ESP+4],2

@@ -78,3 +78,5 @@ ret
 goasm /x64 test1.asm
 golink test1.obj user32.dll
 test1.exe
+
+
