@@ -1,0 +1,7 @@
+ele_begin : ele
+ele : ele '+' term
+ele : term
+term : term '*' factor
+term : factor
+factor : '(' ele ')'
+factor : 'id'

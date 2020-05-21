@@ -1,0 +1,5 @@
+ele_begin : T
+T : B C
+B : 'simple-type-specifier'
+C : 0
+C : '[' 'number' ']' C
