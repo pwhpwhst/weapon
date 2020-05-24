@@ -2,7 +2,7 @@
    #include "stdio.h"
    #include "stdlib.h"
    #include<string.h>
-   #include "lex.yy.h"
+   #include "SLR\lex.yy.h"
    
     struct C_Lex_Word lex_word[500];
     struct C_Lex_Word *p_lex_word=lex_word;
@@ -15,16 +15,30 @@ void write_word(struct C_Lex_Word *p_lex_word,char *yytext,char *symbol_name){
 }
 
 %}
-INTEGER [-]?[1-9][0-9]*
+letter [_A-Za-z]
+digit [0-9]
+identifier {letter}({letter}|{digit})*
+number [-]?[1-9][0-9]*
 LEFT_BRACKET \(
 RIGHT_BRACKET \)
 MULTI \*
 %%
-{INTEGER} { 
-
-write_word(p_lex_word,yytext,"'id'");
+{number} { 
+write_word(p_lex_word,yytext,"'number'");
   p_lex_word++;
 }
+
+{identifier} {
+if(strcmp(yytext,"int")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else{
+	write_word(p_lex_word,yytext,"'identifier'");
+}
+
+  p_lex_word++;
+}
+
+
 
 {LEFT_BRACKET} {
 
@@ -47,6 +61,32 @@ write_word(p_lex_word,yytext,"'id'");
 {MULTI} {
 
   write_word(p_lex_word,yytext,"'*'");
+  p_lex_word++;
+}
+
+" " {
+//  write_word(p_lex_word,yytext,"' '");
+//  p_lex_word++;
+}
+
+
+";" {
+  write_word(p_lex_word,yytext,"';'");
+  p_lex_word++;
+}
+
+"=" {
+  write_word(p_lex_word,yytext,"'='");
+  p_lex_word++;
+}
+
+"[" {
+  write_word(p_lex_word,yytext,"'['");
+  p_lex_word++;
+}
+
+"]" {
+  write_word(p_lex_word,yytext,"']'");
   p_lex_word++;
 }
 
@@ -81,7 +121,3 @@ int yywrap()//此函数必须由用户提供
 {
     return 1;
 }
-
-
-//char* type;
-//char* content;

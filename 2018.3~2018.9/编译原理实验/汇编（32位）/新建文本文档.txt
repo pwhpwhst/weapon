@@ -9,5 +9,9 @@ goLink /console pwh.obj kernel32.dll
 pwh.exe
 
 
-
+MOV D [ESP+0],1
+MOV D [ESP+4],2
+MOV D [ESP+8],3
+MOV D [ESP+12],4
+MOV D [ESP+16],5
 

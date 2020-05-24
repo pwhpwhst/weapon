@@ -1,14 +1,18 @@
-ele_begin : expression
-expression : assignment-expression
-assignment-expression : logical-or-expression assignment-operator assignment-expression
-assignment-operator : '='
-assignment-operator : '*='
-assignment-operator : '/='
-assignment-operator : '%='
-assignment-operator : '+='
-assignment-operator : '-='
-assignment-operator : '>>='
-assignment-operator : '<<='
-assignment-operator : '&='
-assignment-operator : '^='
-assignment-operator : '|='
+ele_begin : simple-declaration
+simple-declaration : decl-specifier-seq ';'
+simple-declaration : decl-specifier-seq init-declarator-list ';'
+decl-specifier-seq : decl-specifier-seq decl-specifier
+decl-specifier-seq : decl-specifier
+decl-specifier : simple-type-specifier
+simple-type-specifier : 'simple-type-specifier'
+init-declarator-list : init-declarator
+init-declarator-list : init-declarator-list ',' init-declarator
+init-declarator : declarator
+init-declarator : declarator initializer
+declarator : direct-declarator
+direct-declarator : declarator-id
+declarator-id : id-expression
+id-expression : unqualified-id
+unqualified-id : 'identifier'
+initializer : '=' initializer-clause
+initializer-clause : 'number'
