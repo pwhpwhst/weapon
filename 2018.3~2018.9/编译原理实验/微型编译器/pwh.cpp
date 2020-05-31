@@ -21,6 +21,7 @@
 #include"SLR\Node.h"
 #include"SLR\Lex_Word.h"
 #include"symbols\Env.h"
+#include"symbols\Array.h"
 #include"SDT\SDT_generator.h"
 using namespace std;
 using namespace boost;
@@ -159,16 +160,18 @@ for(const auto &e:total_lex_word_list){
 		lex_word_list.pop_back();
 		Node *node_tree=syntax_analyze(ruleList,zero_terminator,forecast_list,convert_map,lex_word_list);
 		#ifdef __PRINT_NODE_TREE
-		/**
+		
 		if(node_tree!=nullptr){
 			printStack(node_tree);
 		}
-		*/
-
+		
+		
+		
 		if(node_tree!=nullptr){
 			gen_middle_code(env,node_tree);
 		}
 		
+				
 		#endif
 		lex_word_list.clear();
 	}
@@ -502,22 +505,25 @@ void printStack(Node* &node_tree){
 	set<Node*> node_set;
 	while(item_node_stack2.size()>0){
 		Node *present_node=item_node_stack2.back();
-		if(present_node->l_node!=nullptr&&node_set.count(present_node->l_node)==0){
-			item_node_stack2.push_back(present_node->l_node);
+
+		if(present_node->child_node_list.size()>0&&node_set.count(present_node->child_node_list[0])==0){
+			item_node_stack2.push_back(present_node->child_node_list[0]);
 		}else{
 			node_set.insert(present_node);
 			cout<<present_node<<":"<<endl;
 			cout<<"symbol="<<present_node->symbol<<endl;
 			cout<<"content="<<present_node->content<<endl;
-			cout<<"is_first_child="<<present_node->is_first_child<<endl;
+			cout<<"offset="<<present_node->offset<<endl;
 			cout<<"parent="<<present_node->parent<<endl;
-			cout<<"l_node="<<present_node->l_node<<endl;
-			cout<<"r_node="<<present_node->r_node<<endl;
+			cout<<"child_node_list="<<&(present_node->child_node_list)<<endl;
 			cout<<endl;
 			item_node_stack2.pop_back();
-			if(present_node->r_node!=nullptr){
-				item_node_stack2.push_back(present_node->r_node);
+			if(present_node->parent!=nullptr){
+				if((present_node->offset+1)<present_node->parent->child_node_list.size()){
+					item_node_stack2.push_back(present_node->parent->child_node_list[present_node->offset+1]);
+				}
 			}
+
 		}
 	}
 }
@@ -877,6 +883,7 @@ vector<P_ItemNode> item_node_stack1;
  item_node_stack1.push_back(P_ItemNode(new ItemNode()));
  item_node_stack1[0]->node=nullptr;
  item_node_stack1[0]->item_status=0;
+
 Node* resultTree=nullptr;
 bool finished_flag=false;
 auto p_input=input.begin();
@@ -899,19 +906,16 @@ while(!finished_flag){
 		Node *node=new Node();
 		node->symbol=(*p_input)->type;
 		node->content=(*p_input)->content;
-		node->is_first_child=false;
 		node->parent=nullptr;
-		node->l_node=nullptr;
-		node->r_node=nullptr;
+		node->offset=0;
 		item_node_stack1.back()->node=node;
-
 		item_node_stack1.back()->item_status=atoi(action.substr(1).c_str());
 		++p_input;
 	}else if(action[0]=='r'){
 		P_Rule best_rule=ruleList[atoi(action.substr(1).c_str())];
 		Node *parent_node=new Node();
 		parent_node->symbol=best_rule->rule_name;
-		parent_node->is_first_child=false;
+		parent_node->offset=0;
 		parent_node->parent=nullptr;
 
 		int zero_count=0;
@@ -926,39 +930,30 @@ while(!finished_flag){
 			pre_child_node=new Node();
 			pre_child_node->symbol="0";
 			pre_child_node->content="";
-			pre_child_node->is_first_child=false;
-			pre_child_node->l_node=nullptr;
-			pre_child_node->r_node=nullptr;
+			pre_child_node->offset=0;
 		}else{
 			pre_child_node=item_node_stack1[item_node_stack1.size()-best_rule->symbols.size()+zero_count]->node;
 		}
 		pre_child_node->parent=parent_node;
-		Node *_pre_child_node=pre_child_node;
+		parent_node->child_node_list.push_back(pre_child_node);
 
 		if(best_rule->symbols.size()>1){
-			
 			for(int i1=1,i2=item_node_stack1.size()-best_rule->symbols.size()+zero_count+1;i1<best_rule->symbols.size();i1++){
 				Node *present_child_node=nullptr;
 				if(best_rule->symbols[i1]=="0"){
 					present_child_node=new Node();
 					present_child_node->symbol="0";
 					present_child_node->content="";
-					present_child_node->is_first_child=false;
-					present_child_node->l_node=nullptr;
-					present_child_node->r_node=nullptr;
 				}else{
 					present_child_node=item_node_stack1[i2]->node;
 					i2++;
 				}
-				pre_child_node->parent=parent_node;
-				pre_child_node->r_node=present_child_node;
-				pre_child_node=present_child_node;
+				present_child_node->parent=parent_node;
+				present_child_node->offset=i1;
+				parent_node->child_node_list.push_back(present_child_node);
 			}
 		}
 
-		parent_node->l_node=_pre_child_node;
-		_pre_child_node->is_first_child=true;
-		parent_node->r_node=nullptr;
 		for(int i1=best_rule->symbols.size()-1;i1>=0;i1--){
 			if(best_rule->symbols[i1]=="0"||zero_terminator.count(best_rule->symbols[i1])>0){
 				
@@ -982,33 +977,33 @@ while(!finished_flag){
 }
 
 void gen_middle_code(Env &env,Node* &node_tree){
+
 	cout<<"生成中间代码:"<<endl;
-	vector<Node*> item_node_stack2;
-	item_node_stack2.push_back(node_tree);
-	set<Node*> node_set;
-	while(item_node_stack2.size()>0){
-		Node *present_node=item_node_stack2.back();
-		if(present_node->l_node!=nullptr&&node_set.count(present_node->l_node)==0){
-			item_node_stack2.push_back(present_node->l_node);
-		}else{
-			node_set.insert(present_node);
-			ostringstream os;
-			if(present_node->l_node!=nullptr){
-				os<<present_node->symbol<<" :";
-				Node *ptr=present_node->l_node;
-				while(ptr!=nullptr){
-					os<<" "<<ptr->symbol;
-					ptr=ptr->r_node;
-				}			
+
+	set<string> has_calculate_set;
+	unordered_map<string,Token*> result_map;
+	vector<P_NodeValue> stack;
+	stack.push_back(P_NodeValue(new NodeValue(node_tree,NodeValue::SYN)));
+
+	while(stack.size()>0){
+			auto top=stack.back();
+			P_SDT_genertor sdt_genertor=SDT_Factory::instance.factory[top->node->get_rule_str()];
+			if(sdt_genertor!=nullptr){
+				P_NodeValue p_nodeValue=sdt_genertor->handle(top,result_map,has_calculate_set);
+				if(p_nodeValue!=nullptr){
+					stack.push_back(p_nodeValue);
+				}else{
+					stack.pop_back();
+				}
 			}
-			if(SDT_Factory::instance.factory[os.str()]!=nullptr){
-				SDT_Factory::instance.factory[os.str()]->handle(env,*present_node);
-			}
-			
-			item_node_stack2.pop_back();
-			if(present_node->r_node!=nullptr){
-				item_node_stack2.push_back(present_node->r_node);
-			}
-		}
 	}
+
+		ostringstream os;
+		os<<node_tree<<"_"<<NodeValue::SYN;
+		string ele_begin_syn=os.str();
+		os.str("");
+
+	cout<<((Array*)result_map[ele_begin_syn])->size<<endl;
+	cout<<((Array*)((Array*)result_map[ele_begin_syn])->of)->size<<endl;
+
 }

@@ -1,0 +1,54 @@
+参考：
+https://www.jianshu.com/p/2a27a788e3ea?from=timeline
+
+
+tools→preferences→keyboard→Tools
+
+一、设置文件快速打开
+
+1、初始化文件目录
+C:
+cd C:\Users\Administrator\Desktop\editplus脚本
+vi initIndex.cpp //设置目录文件，项目位置
+g++ -c initIndex.cpp
+g++ -o initIndex initIndex.o
+initIndex.exe
+
+
+
+2、
+C:
+cd C:\Users\Administrator\Desktop\editplus脚本
+g++ -c openFile.cpp
+g++ -o openFile openFile.o
+
+
+
+
+
+Tools→Configure user tools...→User tools
+		
+openProjectFile
+C:\Users\Administrator\Desktop\editplus脚本\openFile.exe
+C:\Users\Administrator\Desktop\editplus脚本\index.txt $(Prompt)
+Capture output
+Save：none
+
+二、在项目里查找关键字
+C:
+cd C:\Users\Administrator\Desktop\editplus脚本
+g++ -c findStr.cpp
+g++ -o findStr findStr.o
+
+Tools→Configure user tools...→User tools
+
+findstr
+C:\Users\Administrator\Desktop\editplus脚本\findStr.exe
+C: C:\Users\Administrator\Desktop\微型编译器 $(Prompt) $(Prompt)
+C:\Users\Administrator\Desktop\editplus脚本
+Capture output
+
+
+
+三、设置快捷键
+

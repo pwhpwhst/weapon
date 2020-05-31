@@ -1,0 +1,6 @@
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\代码武器库（C++版）\编译方法相关\cmake用法\test_sqrt\pwh_test
+
+vi CMakeLists.txt
+cmake -G "MinGW Makefiles" .
+make

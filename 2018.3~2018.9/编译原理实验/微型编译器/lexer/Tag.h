@@ -1,9 +1,9 @@
 #pragma once
 
 class Tag{
-
-public: static int AND;
-public: static int NUM;
-public: static int INDEX;
+public: const static int BASIC;
+public: const static int AND;
+public: const static int NUM;
+public: const static int INDEX;
 
 };
