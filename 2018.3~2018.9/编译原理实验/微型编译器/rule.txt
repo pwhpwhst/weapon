@@ -2,4 +2,4 @@ ele_begin : T		{$$=$1;}
 T : B C			{$2.next=$1;$$=$2;}
 B : 'simple-type-specifier'	{Type* type=new Type($1,Tag::BASIC,4);$$=type;}
 C : 0	{$$=$$.next;}
-C : '[' 'number' ']' C	{$4.next=$$.next;$$=new Array(atoi($2.c_str()),(Type*)$4);}		
+C : '[' 'number' ']' C	{$4.next=$$.next;$$=new Array(atoi(($2).c_str()),(Type*)$4);}

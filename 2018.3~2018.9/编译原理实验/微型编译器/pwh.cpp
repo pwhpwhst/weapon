@@ -56,11 +56,11 @@ void gen_middle_code(Env &env,Node* &node_tree);
 int main(){
 //初始化
 string start_symbol="ele_begin";
-//string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
-//string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
+string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
 
-string rule_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
-string compile_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
+//string rule_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+//string compile_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
 
 
 //生成ruleListing

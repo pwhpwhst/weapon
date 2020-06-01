@@ -33,9 +33,9 @@ g++ -o pwh pwh.o Array.o Env.o Type.o lex.yy.o Lex_Word.o Rule.o Item.o Node.o S
 
 pwh.exe >a.txt
 
-
+g++ -std=c++11 -c SLR\Rule.cpp
 g++ -std=c++11 -c SDT_generator_generator.cpp
-g++ -std=c++11 -o SDT_generator_generator SDT_generator_generator.o
+g++ -std=c++11 -o SDT_generator_generator SDT_generator_generator.o Rule.o
 SDT_generator_generator.exe
 
 ==========================================
@@ -59,3 +59,22 @@ fs<<e<<endl;
 int startsWith(string s, string sub);
 int endsWith(string s,string sub);
 void lower_first_char(string &word)
+
+
+	if(has_calculate_set.count(c1_inh)==0){
+
+		if(has_calculate_set.count(c_inh)==0){
+			cout<<"lack"<<c_inh<<endl;
+			return P_NodeValue(new NodeValue(nodeValue->node,NodeValue::INH));
+		}
+		Token* type=result_map[c_inh];
+		result_map[c1_inh]=type;
+		result_map.erase(c_inh);
+		has_calculate_set.insert(c1_inh);
+	}
+
+
+string basic_type=nodeValue->node->child_node_list[0]->content;
+
+4567
+.nex
