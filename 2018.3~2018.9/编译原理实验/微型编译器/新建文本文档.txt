@@ -1,6 +1,9 @@
 D:
 cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器
 
+F:
+cd F:\codeWeaponStore\2018.3~2018.9\编译原理实验\微型编译器
+
 g++ -std=c++11 -c pwh.cpp
 
 g++ -std=c++11 -c symbols\Array.cpp
@@ -31,32 +34,28 @@ g++ -o pwh pwh.o Array.o Env.o Type.o lex.yy.o Lex_Word.o Rule.o Item.o Node.o S
 pwh.exe >a.txt
 
 
-
-
+g++ -std=c++11 -c SDT_generator_generator.cpp
+g++ -std=c++11 -o SDT_generator_generator SDT_generator_generator.o
+SDT_generator_generator.exe
 
 ==========================================
 
+SDT_genertor
 
-生成中间代码:
-carry out T_0_SDT_genertor
-lack0x39a4a0_0
-carry out B_0_SDT_genertor
-carry out T_0_SDT_genertor
-lack0x39a720_0
+//生成ruleListing
+	↓
+new Rule(rule_str)
 
 
-carry out C_1_SDT_genertor
-lack0x39a6e0_0
+ele_begin : T		{$$=$0;}
+T : B C			{$2.next=$0;$$=$2;}
+B : 'simple-type-specifier'	{Type* type=new Type($0,Tag::BASIC,4);$$=type;}
+C : 0	{$$=$$.next;}
+C : '[' 'number' ']' C	{$4.next=$$.next;$$=new Array(atoi($2.c_str()),(Type*)$4);}	
 
 
-carry out C_1_SDT_genertor
-lack0x39a3e0_0
-carry out C_0_SDT_genertor
-carry out C_1_SDT_genertor
-carry out C_1_SDT_genertor
-carry out T_0_SDT_genertor
-3
+fs<<e<<endl;
 
-
-
-
+int startsWith(string s, string sub);
+int endsWith(string s,string sub);
+void lower_first_char(string &word)

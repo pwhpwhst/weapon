@@ -56,8 +56,12 @@ void gen_middle_code(Env &env,Node* &node_tree);
 int main(){
 //初始化
 string start_symbol="ele_begin";
-string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
-string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
+//string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+//string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
+
+string rule_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+string compile_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
+
 
 //生成ruleListing
 vector<P_Rule> ruleList;
@@ -73,15 +77,18 @@ while(getline(input_file,rule_str))
 }
 unordered_map<string,string> temp_forecast_map;
 vector <string> string_list;
+//解决预测表冲突
 while(getline(input_file,rule_str))
 {
 	string_list.clear();
 	split(string_list,rule_str,is_any_of(":"));
 	temp_forecast_map[string_list[0]]=string_list[1];
 }
-
-
 input_file.close();
+
+
+
+
 unordered_map<P_Rule,int> rule_map;
 for(int i1=0;i1<ruleList.size();i1++){
 	rule_map[ruleList[i1]]=i1;

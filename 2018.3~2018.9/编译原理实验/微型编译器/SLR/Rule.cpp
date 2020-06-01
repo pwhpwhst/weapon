@@ -14,7 +14,16 @@ Rule::Rule(const string &rule_str){
 vector <string> string_list;
 split(string_list,rule_str,is_any_of(":"));
 rule_name= trim_right_copy(string_list[0]);
-string temp_string=trim_right_copy(trim_left_copy(string_list[1]));
+
+int begin=rule_str.find_first_of(':')+1;
+int end=rule_str.find_last_of('{');
+if(end==-1){
+	end=rule_str.size();
+}
+int length=end-begin;
+string temp_string=rule_str.substr(begin,length);
+temp_string=trim_right_copy(trim_left_copy(temp_string));
+cout<<"temp_string="<<temp_string<<endl;
 if(temp_string!=""){
 split(symbols,temp_string,is_any_of(" "));
 }
