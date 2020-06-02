@@ -14,8 +14,8 @@ using namespace std;
 using namespace boost;
 
 const string project_index="SDT\\SDT_generator.cpp";
-//const string rule_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
-const string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+const string rule_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+//const string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
 
 void get_symbol_para(const string& str,set<string> &result);
 int startsWith(string s, string sub);
@@ -156,11 +156,13 @@ int main(){
 				//声明左侧元素
 				symbol_set.clear();
 				get_symbol_para(string_list2[0],symbol_set);
-				string left_attribute_name;
+				string left_attribute_name="";
+				string left_para_name;
 					for(const auto &e1:symbol_set){
 						if(node_all_symbol_set.count(e1)==0){
 							string attribute_name=gen_attribute_name(e1,rule,map1,map2,map3);
 							left_attribute_name=attribute_name;
+							left_para_name=e1;
 							string attribute_fun=gen_attribute_fun(e1,rule);
 							fs<<"string "<<attribute_name<<"="<<attribute_fun<<endl;
 						}
@@ -174,6 +176,7 @@ int main(){
 				//声明右侧元素
 				symbol_set.clear();
 				get_symbol_para(string_list2[1],symbol_set);
+				unordered_map<string,string> map5;
 				for(const auto &e1:symbol_set){
 
 					if(node_all_symbol_set.count(e1)==0){
@@ -188,14 +191,19 @@ int main(){
 							}
 						}
 						map4[e1]=is_terminate;
-
+						
+						string attribute_name;
 						if(!is_terminate){
-							string attribute_name=gen_attribute_name(e1,rule,map1,map2,map3);
+							attribute_name=gen_attribute_name(e1,rule,map1,map2,map3);
 							string attribute_fun=gen_attribute_fun(e1,rule);
-							fs<<"string "<<attribute_name<<"="<<attribute_fun<<endl;						
+							fs<<"string "<<attribute_name<<"="<<attribute_fun<<endl;
+							map5[e1]="result_map["+attribute_name+"]";
 						}else{
-							fs<<"string basic_"<<to_string(atoi(string_list2[0].c_str())-1)<<"_content=nodeValue->node->child_node_list["<<to_string(atoi(string_list2[0].c_str())-1)<<"]->content;"<<endl;
+							attribute_name="basic_"+to_string(atoi(string_list2[0].c_str())-1)+"_content";
+							fs<<"string "<<attribute_name<<"=nodeValue->node->child_node_list["<<to_string(atoi(string_list2[0].c_str())-1)<<"]->content;"<<endl;
+							map5[e1]=attribute_name;
 						}
+						
 
 					}
 					node_all_symbol_set.insert(e1);							
@@ -208,19 +216,6 @@ int main(){
 				}
 				cout<<endl;
 
-/**
-	if(has_calculate_set.count(c1_inh)==0){
-
-		if(has_calculate_set.count(c_inh)==0){
-			cout<<"lack"<<c_inh<<endl;
-			return P_NodeValue(new NodeValue(nodeValue->node,NodeValue::INH));
-		}
-		Token* type=result_map[c_inh];
-		result_map[c1_inh]=type;
-		result_map.erase(c_inh);
-		has_calculate_set.insert(c1_inh);
-	}
-*/
 		if(left_attribute_name!=""){
 			fs<<"if(has_calculate_set.count("<<left_attribute_name<<")==0){"<<endl;
 		}
@@ -250,69 +245,45 @@ int main(){
 		}
 
 //具体内容
+
 		if(left_attribute_name!=""){
-			fs<<"result_map["<<left_attribute_name<<"]";
-		}else{
-			
+			string_list2[0]=string_list2[0].replace(string_list2[0].find(left_para_name),left_para_name.size(),"result_map["+left_attribute_name+"]");
+		}
+
+		for(const auto &e:map5){
+			if(endsWith(e.first,"next")==1){
+				while(string_list2[1].find(e.first)!=string::npos){
+					string_list2[1]=string_list2[1].replace(string_list2[1].find(e.first),e.first.size(),e.second);
+				}
+			}
+		}
+
+		for(const auto &e:map5){
+			if(endsWith(e.first,"next")==0){
+				while(string_list2[1].find(e.first)!=string::npos){
+					string_list2[1]=string_list2[1].replace(string_list2[1].find(e.first),e.first.size(),e.second);
+				}
+			}
+		}
+		fs<<string_list2[0]<<"="<<string_list2[1]<<";"<<endl;
+		
+		if(left_attribute_name!=""){
+			fs<<"has_calculate_set.insert("<<left_attribute_name<<");"<<endl;
 		}
 
 		if(left_attribute_name!=""){
 			fs<<"}"<<endl;
 		}
-		
+
+
 	}
 			}
 		
+		fs<<"return nullptr;"<<endl;
 		fs<<"}"<<endl;
 		fs<<"public: ~"<<e[1]<<"(){}"<<endl;
 		fs<<"};"<<endl;
 	}
-
-/**
-class T_0_SDT_genertor:public SDT_genertor{
-
-public: T_0_SDT_genertor(){}
-public: P_NodeValue handle(const P_NodeValue &nodeValue,
-	unordered_map<string,Token*> &result_map,set<string> &has_calculate_set){
-	cout<<"carry out T_0_SDT_genertor"<<endl;
-
-	string b_syn=child(nodeValue,0,NodeValue::SYN);
-	string c_inh=child(nodeValue,1,NodeValue::INH);
-	if(has_calculate_set.count(c_inh)==0){
-		if(has_calculate_set.count(b_syn)==0){
-			cout<<"lack:"<<b_syn<<endl;
-			return P_NodeValue(new NodeValue(nodeValue->node->child_node_list[0],NodeValue::SYN));
-		}
-		Token* type=result_map[b_syn]; //访问右侧
-		result_map[c_inh]=type;  // 赋值
-		result_map.erase(b_syn); //清空计算结果
-		has_calculate_set.insert(c_inh); //统计已经计算的符号
-	}
-
-
-	string c_syn=child(nodeValue,1,NodeValue::SYN);
-	string t_syn=own(nodeValue,NodeValue::SYN);
-	if(has_calculate_set.count(t_syn)==0){
-		if(has_calculate_set.count(c_syn)==0){
-			cout<<"lack:"<<c_syn<<endl;
-			return P_NodeValue(new NodeValue(nodeValue->node->child_node_list[1],NodeValue::SYN));
-		}
-		Token* type=result_map[c_syn];
-		result_map[t_syn]=type;
-		result_map.erase(c_syn);
-		has_calculate_set.insert(t_syn);
-	}
-		return nullptr;
-}
-
-public: ~T_0_SDT_genertor(){}
-
-};
-*/
-
-
-
-
 	//输出factory begin
 
 	fs<<"SDT_Factory SDT_Factory::instance;"<<endl;
