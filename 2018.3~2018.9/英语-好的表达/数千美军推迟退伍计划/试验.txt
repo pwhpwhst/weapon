@@ -50,7 +50,7 @@ guarantee
 semester 学期
 guaranteed wages
 guaranteed pay
-=================================================================================
+===================================================================================================================================================
 
 He told The Associated Press that the military provides work and guaranteed wages.
 
@@ -88,11 +88,6 @@ The Air Force said that shortfall could be filled by individuals who decide to e
 
 
 
-
-
-
-
-
 short-term 短期
 As of last week 截至上周
 already 已经
@@ -106,3 +101,35 @@ departure
 uncertainty on the outside 外界的不确定性
 fall short 空缺
 is already expecting 预估
+fall short of 达不到
+shortfall 缺口
+
+
+===================================================================================================================================================
+
+So far, the number of Air Force members who have asked to extend their service is 700 more than at this time last year.
+
+到目前为止，要求延长服役期的空军成员比去年此时增加了700人。
+
+Retention is also on the rise in the U.S. Marine Corps.
+
+美国海军陆战队的留任率也在上升。
+
+Currently, there are about 183,000 Marines. The goal for the end of the fiscal year is about 184,600. 
+The Marine Corps has nearly reached its retention goal of about 12,600 for the fiscal year.
+
+目前，约有18.3万名海军陆战队员，而本财政年度的目标是18.46万名人员。海军陆战队几乎达到了本财政年度保留约1.26万人的目标。
+
+I’m Jonathan Evans.
+
+乔纳森·埃文斯报道。
+
+
+
+
+
+
+So far 到目前为止
+Retention 留任率
+the U.S. Marine Corps 美国海军陆战队
+Corps 军团
