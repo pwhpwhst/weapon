@@ -141,3 +141,5 @@ aide  助手
 pro-Russian 亲俄罗斯
 stand trial 接受审判
 Senate 参议院
+separator
+separatists 分离主义分子

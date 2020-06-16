@@ -30,7 +30,7 @@ Some food delivery-only operations in New York and San Francisco have failed in 
 
 近年来，纽约和旧金山的一些只提供食品配送的业务经营不佳。
 
-===============================
+============================================================================================================================
 
 But in January, Travis Kalanick's CloudKitchens got a $400 million investment from Saudi Arabia's sovereign wealth fund, Reuters reported. Kalanick is a co-founder of ride service Uber. The Wall Street Journal first reported the investment earlier this month.
 
