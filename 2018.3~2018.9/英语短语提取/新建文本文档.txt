@@ -1,0 +1,89 @@
+-- 项目总编译
+cd C:\Users\Administrator\Desktop\英语短语提取
+mvn clean package
+cd target
+
+-- 运行
+java -jar httpsTest-1.0-SNAPSHOT.jar
+
+
+
+-- 单个文件编译（变量准备）
+set sss=.
+set sss=%sss%;F:\lib2\aopalliance-1.0.jar
+set sss=%sss%;F:\lib2\commons-codec-1.9.jar
+set sss=%sss%;F:\lib2\commons-dbcp-1.4.jar
+set sss=%sss%;F:\lib2\commons-logging-1.2.jar
+set sss=%sss%;F:\lib2\commons-pool-1.5.4.jar
+set sss=%sss%;F:\lib2\httpclient-4.5.2.jar
+set sss=%sss%;F:\lib2\httpcore-4.4.4.jar
+set sss=%sss%;F:\lib2\json-20200518.jar
+set sss=%sss%;F:\lib2\jsoup-1.9.2.jar
+set sss=%sss%;F:\lib2\mysql-connector-java-5.1.20.jar
+set sss=%sss%;F:\lib2\spring-aop-4.1.4.RELEASE.jar
+set sss=%sss%;F:\lib2\spring-beans-4.3.2.RELEASE.jar
+set sss=%sss%;F:\lib2\spring-context-4.1.4.RELEASE.jar
+set sss=%sss%;F:\lib2\spring-core-4.1.4.RELEASE.jar
+set sss=%sss%;F:\lib2\spring-data-commons-core-1.4.1.RELEASE.jar
+set sss=%sss%;F:\lib2\spring-expression-4.1.4.RELEASE.jar
+set sss=%sss%;F:\lib2\spring-jdbc-5.1.3.RELEASE.jar
+set sss=%sss%;F:\lib2\spring-tx-5.1.3.RELEASE.jar
+set sss=%sss%;C:\Users\Administrator\Desktop\英语短语提取\target\original-httpsTest-1.0-SNAPSHOT.jar
+set ss2=C:\Users\Administrator\Desktop\英语短语提取\target\classes
+
+ 
+-- 单个文件编译 -- 运行
+C:
+cd C:\Users\Administrator\Desktop\英语短语提取\src\main\java\com\pwhTest\httpsTest
+javac  -encoding UTF-8 -classpath %sss% Test.java -d %ss2%
+C:
+cd %ss2%
+java -cp %sss% com.pwhTest.httpsTest.Test
+
+
+
+C:
+cd C:\Users\Administrator\Desktop\英语短语提取\src\main\java\com\pwhTest\VOAUrl\dao\impl
+javac  -encoding UTF-8 -classpath %sss% VOAUrlDao.java -d %ss2%
+
+==========================================
+
+
+CREATE TABLE `voaurl` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`title` VARCHAR(100) NULL DEFAULT NULL,
+	`url` VARCHAR(150) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=210
+;
+
+
+
+CREATE TABLE `voaword` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`word` VARCHAR(100) NULL DEFAULT NULL,
+	`num` INT(11) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=17955
+;
+
+
+
+CREATE TABLE `voadictionary` (
+	`id` INT(11) NOT NULL AUTO_INCREMENT,
+	`wordId` INT(11) NOT NULL,
+	`property` VARCHAR(30) NULL DEFAULT NULL,
+	`chinese` VARCHAR(300) NULL DEFAULT NULL,
+	PRIMARY KEY (`id`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=15446
+;
+

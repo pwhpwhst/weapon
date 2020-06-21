@@ -1,0 +1,34 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:aop="http://www.springframework.org/schema/aop"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:schemaLocation="http://www.springframework.org/schema/beans classpath:spring-beans-4.2.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.2.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd 
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.2.xsd">
+
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/test2" />
+		<property name="username" value="root" />
+		<property name="password" value="059030849" />
+		<property name="initialSize" value="1" />
+		<property name="maxActive" value="300" />
+		<property name="maxIdle" value="2" />
+		<property name="minIdle" value="1" />
+	</bean>
+
+	<bean id="voaUrlDao" class="com.pwhTest.VOAUrl.dao.impl.VOAUrlDao">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="voaWordDao" class="com.pwhTest.VOAWord.dao.impl.VOAWordDao">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+	<bean id="voaDictionaryDao" class="com.pwhTest.VOADictionary.dao.impl.VOADictionaryDao">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+
+</beans>
