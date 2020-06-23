@@ -35,6 +35,7 @@ But Waymo is not the only company raising new financing.
 
 are now thinking about 考虑
 deliver goods 运送货物
+goods delivery
 owned by
 Earlier this month 本月初
 the Reuters news agency 路透社
@@ -121,6 +122,15 @@ the managing director 常务董事
 have drawn little recent investment 接到很少投资
 as to 就。。。而言
 
+a large amount of
+large amounts of 
+
+set up 成立组织
+build 建造建筑物用
+create 创造
+
+solve 解决难题
+resolve 解决矛盾
 =====================================================================================
 
 Still, autonomous startups are seeking to take advantage of virus-driven publicity for human-free delivery services.

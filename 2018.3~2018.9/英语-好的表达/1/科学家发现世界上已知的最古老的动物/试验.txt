@@ -76,5 +76,6 @@ specise 物种
 die out 灭绝
 that live now 如今生活的
 show up 出现
+is a member of 属于
 
 described their findings 发布
