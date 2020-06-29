@@ -26,7 +26,7 @@ public class Sample extends HttpServlet {
         PrintWriter out = resp.getWriter();
         out.println("<html>");
         out.println("<body>");
-        out.println("This is Servlet");
+        out.println("This is Servlet1");
         out.println("</body>");
         out.println("</html>");
     }

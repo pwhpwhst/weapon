@@ -1,17 +1,18 @@
-D:
-cd D:\apache-tomcat-7.0.39\webapps\
+F:
+cd F:\apache-tomcat-7.0.39\webapps\
 rd/s/q sample-servlet.war
 
-C:
-cd C:\Users\pwh\Desktop\newTech\simpleServlet\servletSample
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\simpleServlet\servletSample
 mvn clean install
 cd target
 ren sample-servlet-1.0-SNAPSHOT.war sample-servlet.war
-move C:\Users\pwh\Desktop\newTech\simpleServlet\servletSample\target\sample-servlet.war D:\apache-tomcat-7.0.39\webapps\
+move D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\simpleServlet\servletSample\target\sample-servlet.war F:\apache-tomcat-7.0.39\webapps\
 
-D:
-cd D:\apache-tomcat-7.0.39\bin
+F:
+cd F:\apache-tomcat-7.0.39\bin
 startup.bat
+shutdown.bat
 
 
 
@@ -77,12 +78,13 @@ mvn clean install
 
 
 打开 
+//server.xml 在host标签下
 	<Context path="/servletSample" docBase="C:\Users\pwh\Desktop\newTech\simpleServlet\servletSample\target\sample-servlet-1.0-SNAPSHOT" reloadable="true" />
 
 
 
-D:
-cd D:\apache-tomcat-7.0.39\bin
+F:
+cd F:\apache-tomcat-7.0.39\bin
 startup.bat
 
 
@@ -115,3 +117,9 @@ startup.bat
 
 
 http://localhost:8080/v1/data/pwhTest3
+
+=================================================
+
+Tomcat热部署和热加载的方法
+
+https://blog.csdn.net/tengxing007/article/details/83146803
