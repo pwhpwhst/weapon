@@ -1,0 +1,58 @@
+文件夹 PATH 列表
+卷序列号为 9019-A07B
+C:.
+│  a.txt
+│  pom.xml(O)
+│  新建文本文档.txt
+│  
+├─src
+│  └─main
+│      └─java
+│          │  SqlMapConfig.properties
+│          │  SqlMapConfig.xml
+│          │  sqlMap_clawer_url.xml
+│          │  
+│          └─com
+│              └─pwhTest
+│                  └─ibatisTest
+│                      └─dao
+│                          │  IClawerUrlDao.java
+│                          │  IPwhTest.java
+│                          │  
+│                          └─impl
+│                                  ClawerUrlDao.java
+│                                  PwhTest.java
+│                                  
+└─target
+    │  dependency-reduced-pom.xml
+    │  ibatisTest-1.0-SNAPSHOT.jar
+    │  original-ibatisTest-1.0-SNAPSHOT.jar
+    │  
+    ├─classes
+    │  │  SqlMapConfig.properties
+    │  │  SqlMapConfig.xml
+    │  │  sqlMap_clawer_url.xml
+    │  │  
+    │  └─com
+    │      └─pwhTest
+    │          └─ibatisTest
+    │              └─dao
+    │                  │  IClawerUrlDao.class
+    │                  │  IPwhTest.class
+    │                  │  
+    │                  └─impl
+    │                          ClawerUrlDao.class
+    │                          PwhTest.class
+    │                          
+    ├─generated-sources
+    │  └─annotations
+    ├─maven-archiver
+    │      pom.properties
+    │      
+    └─maven-status
+        └─maven-compiler-plugin
+            └─compile
+                └─default-compile
+                        createdFiles.lst
+                        inputFiles.lst
+                        

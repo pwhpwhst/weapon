@@ -1,0 +1,154 @@
+参考：https://blog.csdn.net/luanpeng825485697/article/details/79430862
+
+https://blog.csdn.net/m0_37324825/article/details/80185448
+
+
+https://blog.csdn.net/a327919006/article/details/78432515
+
+
+hadoop、hbase、hive、zookeeper版本对应关系：
+https://www.cnblogs.com/jingblogs/p/5500357.html
+
+
+
+
+
+
+一、hive方面的配置
+
+1、hive下载
+http://archive.apache.org/dist/hive/ (2.3.4)
+
+如果使用hive连接mysql，需要下载
+mysql-connector-java-5.1.45 
+https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.45.zip
+
+2、环境变量添加： 
+
+
+HIVE_HOME = F:\apache-hive-2.3.4-bin\apache-hive-2.3.4-bin
+path:....
+
+3、
+3.1
+在HIVE_HOME/conf文件夹下的
+hive-env.sh.template
+hive-exec-log4j2.properties.template
+hive-log4j2.properties.template 
+hive-default.xml.template
+分别复制一份，重命名为
+hive-env.sh
+hive-exec-log4j2.properties
+hive-log4j2.properties
+hive-site.xml
+
+3.2	配置hive-env.sh
+
+在空白处添加
+
+export HADOOP_HOME=F:\hadoop-2.8.3\hadoop-2.8.3
+export HIVE_CONF_DIR=F:\apache-hive-2.3.4-bin\apache-hive-2.3.4-bin\conf
+export HIVE_AUX_JARS_PATH=F:\apache-hive-2.3.4-bin\apache-hive-2.3.4-bin\lib
+
+3.3 配置hive-exec-log4j2.properties 与  hive-log4j2.properties
+
+修改以下两项即可
+
+property.hive.log.dir = E:\apache-hive-2.1.1-bin\hivelog
+property.hive.log.file = hive.log
+
+3.4	hive-site.xml
+<name>javax.jdo.option.ConnectionURL</name>
+修改其value
+<value>jdbc:mysql://127.0.0.1:3306/hive?characterEncoding=UTF8&amp;useSSL=false&amp;createDatabaseIfNotExist=true</value>
+
+同时，注意修改对应数据库的账号密码，否则会在执行hive时出错
+
+<property>
+	<name>javax.jdo.option.ConnectionUserName</name>
+<value>root</value>
+</property>
+<property>
+	<name>javax.jdo.option.ConnectionPassword</name>
+	<value>059030849</value>
+</property>
+
+
+<property>
+    <name>hive.exec.local.scratchdir</name>    
+    <value>D:/envpath/apache-hive-2.2.0-bin/hive/scratch_dir</value>
+    <description>Local scratch space for Hive jobs</description>
+  </property>
+
+  <property>
+    <name>hive.downloaded.resources.dir</name>    
+    <value>D:/envpath/apache-hive-2.2.0-bin/hive/resources_dir/${hive.session.id}_resources</value>    
+    <description>Temporary local directory for added resources in the remote file system.</description>
+  </property>
+
+   <property>
+    <name>hive.querylog.location</name>
+    <value>D:/envpath/apache-hive-2.2.0-bin/hive/querylog_dir</value>
+    <description>Location of Hive run time structured log file</description>
+  </property>
+
+   <property>
+    <name>hive.server2.logging.operation.log.location</name>
+    <value>D:/envpath/apache-hive-2.2.0-bin/hive/operation_dir</value>
+    <description>Top level directory where operation logs are stored if logging functionality is enabled</description>
+  </property>
+
+
+
+二、MySQL的配置
+
+create database hive default character set latin1;
+
+grant all on hive.* to root@'localhost'  identified by '059030849';
+flush privileges;
+
+三、HDFS上的配置：
+
+创建/user/hive/warehouse 
+
+hdfs dfs -mkdir /user
+hdfs dfs -mkdir /user/hive
+hdfs dfs -mkdir /user/hive/warehouse
+
+stop-dfs.cmd
+
+
+
+4、运行
+
+4.1 启动Hadoop
+
+F:
+cd %HADOOP_HOME%/sbin
+start-dfs.cmd
+start-yarn.cmd
+
+4.2启动metastore
+
+cd %HIVE_HOME%/bin
+
+hive --service metastore
+
+======================================================================
+
+https://blog.csdn.net/pdw2009/article/details/80557554
+
+
+安装cygwin
+
+参考：https://www.cnblogs.com/myidea/p/4858862.html
+
+下载：https://cygwin.com/install.html
+
+
+
+
+cd /cygdrive/f/apache-hive-2.3.4-bin/apache-hive-2.3.4-bin/bin
+
+
+

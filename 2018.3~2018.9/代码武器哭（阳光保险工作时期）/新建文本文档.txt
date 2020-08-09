@@ -1,0 +1,21 @@
+311 添加新磁盘分区的方法
+
+311.1 虚拟机→storage→attach Disk
+
+2、fdisk -l ,发现一个新磁盘 /dev/xvdb
+
+3、对/dev/xvdb 分区：fdisk /dev/xvdb
+
+n:添加新磁盘分区
+w:写入分区表
+
+4、对新分区做格式化
+
+mkfs -t ext3 -c /dev/xvdb
+
+去厕所拉个屎的时间，格式化就能完成
+
+5、fdisk -l ,发现新磁盘分区 /dev/xvdb1
+
+6、挂载 mount /dev/xvdb1 /oradata
+ 

@@ -1,1 +1,7 @@
 知乎- 信不信一篇文章让你背会所有16种英语时态。
+
+		一般					进行		完成			完成进行
+现在		do					be doing	have done		have been doing
+过去		did					were doing	had done		had been doing
+将来		will do/shall do/be going to do		will be doing	will have done		will have been doing
+过去将来	would do				would be doing	would have done		would have been doing

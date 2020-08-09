@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">  
+  
+<sqlMap namespace="tx_analyze2">  
+    <statement id="query_tx_analyze2_list" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	select id id,
+	 clawer_content_id clawerContentId,
+	 key_word keyWord
+	FROM tx_analyze2 
+	<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="id">  
+			id = #id#
+		</isNotNull> 
+	</dynamic>
+		<isNotNull prepend=" " property="recordIndex">  
+			limit #recordIndex#,1
+		</isNotNull> 
+    </statement>
+
+	<statement id="insert_tx_analyze2"  
+       parameterClass="java.util.HashMap">
+		insert into tx_analyze2(clawer_content_id,key_word)
+		values(#clawerContentId#,#keyWord#)
+    </statement>
+
+	<statement id="update_tx_analyze2"  
+        parameterClass="java.util.HashMap">
+		update tx_analyze2
+		set clawer_content_id=#clawerContentId#,
+		key_word=#keyWord#
+		WHERE id=#id#
+    </statement>
+
+	<statement id="query_tx_analyze2_num" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT count(1) count
+		FROM tx_analyze2 
+	<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="id">  
+			id = #id#
+		</isNotNull> 
+	</dynamic>
+    </statement>
+
+</sqlMap> 
+
+

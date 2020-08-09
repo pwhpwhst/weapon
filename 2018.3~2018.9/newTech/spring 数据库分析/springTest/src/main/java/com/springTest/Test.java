@@ -28,7 +28,7 @@ public class Test{
 	user.setId(3);
 	user.setName("pwhpwhst");
 	user.setPassword("123456");
-
+System.out.println("fsfas1");
 	userDao.save(user);
 
 		System.out.println("fsfas");

@@ -1,0 +1,181 @@
+Cortex-M4
+
+STM32F407ZGT6
+
+STM32F103C8T6
+
+DRVSETUP64.exe
+
+
+
+
+
+
+
+
+
+============================================================================
+
+
+D:\STM32-F4开发板视频教程
+
+
+
+1、下载keil5	（	https://www.keil.com	）
+www.keil.com/dd2/pack	搜STM32F4	并下载
+
+2、将下载的pack包放在   F:\Keil\ARM\PACK
+
+
+
+3、 打开F:\Keil\UV4\PackInstaller.exe
+
+file --> import ， 加载PACK 包
+
+
+=============================================================================
+安装 ch340Ser usb转串口驱动，
+烧录程序使用：
+D:\普中STM32-PZ6808L-F4开发板资料(180613)\5--开发工具\3. 程序烧入软件\普中自动下载软件1.86.exe
+
+=============================================================================
+
+开发的基本方法
+
+参考：https://www.cnblogs.com/liangjinjie/p/7596957.html
+
+1、创建一个项目	
+2、选择 AT89C51
+
+3、
+Source Group下创建
+	main.c
+
+
+#include <reg52.h>
+sbit led= P2^0;
+void main(){
+	led=0;
+}
+
+4、产生.hex文件
+
+仙女棒→Output→Create HEX File→确认
+
+双箭头向下
+
+================================================================================
+
+D:\普中STM32-PZ6808L-F4开发板资料(180613)\8--STM32相关资料\寄存器模板创建基础文件
+
+D:\普中STM32-PZ6808L-F4开发板资料(180613)\4--实验程序\扩展实验
+
+
+
+
+================================================================================
+
+STM32 中使用keil5 创建寄存器模板
+
+https://blog.csdn.net/nanshannanbeihaibei/article/details/79405519	(主要)
+参考 https://blog.csdn.net/zxy131072/article/details/89414450
+
+
+1、创建文件夹：
+G:\workspace\temp_test\template\Obj	于存放编译产生的c/汇编/链接的列表清单、调试信息、hex文件、预览信息、封装库等文件。
+G:\workspacet\emp_test\template\User	用于存放用户编写的main.c、STM32F1启动文件、stm32f10x.h头文件。
+
+
+
+2、将寄存器工程模板所需的基础文件main.c、STM32F1启动文件及stm32f10x.h头文件放入到User文件夹内：
+main.c
+startup_stm32f10x_hd.s
+stm32f10x.h
+
+
+3、使用keil5正式创建工程
+
+4、工程的Source Group1下添加文件：(双击Source Group1，添加主要3个文件)
+
+main.c
+startup_stm32f10x_hd.s
+stm32f10x.h
+
+5、右键Target1→Target→Use MicroLiB ，主要是为了后面printf重定向输出使用。
+6、右键Target1→Output→Select Folder for Objects...→G:\workspace\temp_test\template\Obj
+
+Create HEX File勾上
+7、右键Target1→Listing→Select Folder for Listings...→G:\workspace\temp_test\template\Obj
+
+8、（未复现）
+1）右键Target1→Debug→Use CMSIS-DAP Debugger,Load Application at Startup,Run to main()
+2）右键Target1→Debug→Use CMSIS-DAP Debugger→Setting→Debug→CMSIS-DAP-JTAG/SW Adapter
+选择 PZ CMSIS-DAP
+Reset SYSRESETREQ
+
+右键Target1→Debug→Use CMSIS-DAP Debugger→Setting→Flash Download
+勾上 Reset and Run
+
+
+
+构建 F7
+
+===============================================================================================
+
+硬件资源学习：
+
+D:\普中STM32-PZ6808L-F4开发板资料(180613)\8--STM32相关资料\STM32F4xx英文参考手册.pdf
+
+
+
+一、总线
+控制总线
+地址总线
+数据总线
+
+二、内存结构
+4 Gbyte address space
+Program memory,
+data memory,
+registers
+I/O ports
+
+存储器映射？
+
+
+
+
+外设寄存器和 SRAM 的地址计算
+这些操作仅适用于 Cortex™-M4F 访问( Cortex™-M4F 内核 I 总线、D 总线和 S 总线)
+bit_word_addr = bit_band_base + (byte_offset x 32) + (bit_number × 4)
+0x22006008 = 0x22000000 + (0x300*32) + (2*4)
+
+
+
+
+
+
+ the code area starts from address 0x0000 0000
+ the data area (SRAM) starts from address 0x2000 0000 
+
+
+===================================================================================
+
+STM32固件库
+http://blog.sina.com.cn/s/blog_14ecf1a5b0102x3co.html
+
+
+
+===================================================================================
+
+
+keil 采用 makefile 实现编译
+
+参考：https://blog.csdn.net/xhoufei2010/article/details/79161988
+
+
+
+G:\workspace\temp_test\template
+
+
+

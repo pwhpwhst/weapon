@@ -10,7 +10,8 @@ At the end of May, hotel stays in the U.S. were down 43 percent compared to May 
 
 据市场研究企业STR报道，截至5月底美国酒店入住率与去年同比下降了43%。
 
-As more people travel, hotels consider increased cleanliness measures in an effort to make visits more appealing to the public. The companies also see a chance to get back business from competitors, such as the home-sharing company Airbnb.
+As more people travel, hotels consider increased cleanliness measures in an effort to make visits more appealing to the public. 
+The companies also see a chance to get back business from competitors, such as the home-sharing company Airbnb.
 
 随着越来越多的人开始出行，酒店希望通过提升清洁力度来吸引公众入住。酒店也希望借机从竞争对手手中夺回业务——比如共享房屋租赁公司爱彼迎。
 
@@ -28,9 +29,12 @@ David Whitesock recently moved from Colorado to New York. He stayed in hotels in
 
 =============================================================================
 
-Albert Ko says visiting hotels is still risky even if they have established more protective measures. Ko is a professor of epidemiology and medicine at Yale University’s School of Public Health in New Haven, Connecticut. Hotels can bring together people from states and countries where disease rates are higher, for example, and many people may not show signs of infection.
+Albert Ko says visiting hotels is still risky even if they have established more protective measures.
+Ko is a professor of epidemiology and medicine at Yale University’s School of Public Health in New Haven, Connecticut. 
+Hotels can bring together people from states and countries where disease rates are higher, for example, and many people may not show signs of infection.
 
-阿尔伯特·科表示，即使酒店制定了很多的保护措施，但入住酒店仍然有风险。科是康涅狄格州纽黑文耶鲁大学公共卫生学院的一位流行病学和医学教授。比如，酒店会将来自高风险国家和地区的人聚在一起，而许多人可能没有感染的迹象。
+阿尔伯特·科表示，即使酒店制定了很多的保护措施，但入住酒店仍然有风险。科是康涅狄格州纽黑文耶鲁大学公共卫生学院的一位流行病学和医学教授。
+比如，酒店会将来自高风险国家和地区的人聚在一起，而许多人可能没有感染的迹象。
 
  “That’s the kind of thing that we’re worried about in terms of public health,” he said. “These settings can be the cause of outbreaks.”
 

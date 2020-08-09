@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">  
+  
+<sqlMap namespace="clawer_url">  
+    <statement id="query_clawer_url_list" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT id id,
+		url_id urlId,
+		content content,
+		create_time createTime,
+		creator creator,
+		creator_name creatorName,
+		update_time updateTime,
+		updator updator,
+		updator_name updatorName,
+		content2 content2
+		FROM clawer_url 
+	<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="id">  
+			id = #id#
+		</isNotNull> 
+	</dynamic>
+    </statement> 
+
+
+    <statement id="query_clawer_url_num" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT count(1)
+		FROM clawer_url 
+	<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="id">  
+			id = #id#
+		</isNotNull> 
+	</dynamic>
+    </statement> 
+
+</sqlMap> 
+
+

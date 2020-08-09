@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">  
+  
+<sqlMap namespace="tx_analyze">  
+    <statement id="insert_tx_analyze"  
+       parameterClass="java.util.HashMap">
+		insert into tx_analyze(key_word,num)
+		values(#keyWord#,#num#)
+    </statement>
+
+	<statement id="update_tx_analyze"  
+        parameterClass="java.util.HashMap">
+		update tx_analyze
+		set key_word=#keyWord#,
+		num=#num#
+		WHERE id=#id#
+    </statement>
+
+	<statement id="query_tx_analyze_list" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT id id,
+			key_word keyWord,
+			num num
+		FROM tx_analyze 
+	<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="id">  
+			id = #id#
+		</isNotNull> 
+		<isNotNull prepend="AND" property="keyList">
+			key_word in
+			<iterate open="(" close=")" conjunction="," property="keyList"> 
+				#keyList[]#
+			</iterate>
+		</isNotNull> 
+	</dynamic>
+    </statement> 
+</sqlMap> 
+
+

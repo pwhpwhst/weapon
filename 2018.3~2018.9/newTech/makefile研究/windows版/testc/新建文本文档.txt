@@ -1,0 +1,42 @@
+C:
+cd C:\Users\Administrator\Desktop\makefile研究\testc
+gcc -c knight.c
+gcc -c subKnight.c
+gcc -o knight knight.o subKnight.o
+knight.exe
+
+
+参考：https://www.cnblogs.com/zhuangshq/p/5080224.html0
+
+C:
+cd C:\Users\Administrator\Desktop\makefile研究\testc
+mingw32-make 
+knight.exe
+
+===========================================================================
+
+STM32的编译
+
+https://wenku.baidu.com/view/1f7cc83cdcccda38376baf1ffc4ffe473368fded.html
+
+
+
+https://blog.csdn.net/zhengyangliu123/article/details/54784038
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

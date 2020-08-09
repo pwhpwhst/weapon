@@ -1,0 +1,36 @@
+破解机下载
+http://www.downcc.com/soft/123241.html
+
+
+1、先安装软件，然后打开“File”的“License Management”拷贝CID编号。
+
+2、打开KEIL_Lic.exe，“target”选择arm，
+
+3、把keil uvision5的CID编号粘贴到下图CID里面，点击“Generate”。
+
+4、把上图红方框内生成的注册码，拷贝到“New License ID Code”内，点击“AddLIC”就大工告成了。
+
+5、如果截止日期太短的话，就继续用keil_Lic生成注册码注册就可以！！！！
+
+
+
+
+https://blog.csdn.net/Groot_Lee/article/details/77581426
+
+
+access violation at 0xFFFFFFF4 : no 'write' permission
+
+
+
+http://www.openedv.com/posts/list/9186.htm
+
+
+
+Flash Download failed Cortex-M4
+
+
+软件仿真：
+
+http://www.openedv.com/forum.php?mod=viewthread&tid=231082
+http://www.51hei.com/bbs/dpj-142602-1.html
+

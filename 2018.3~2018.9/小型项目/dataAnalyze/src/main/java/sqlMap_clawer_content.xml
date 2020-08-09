@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE sqlMap PUBLIC "-//iBATIS.com//DTD SQL Map 2.0//EN" "http://www.ibatis.com/dtd/sql-map-2.dtd">  
+  
+<sqlMap namespace="clawer_content">  
+    <statement id="query_clawer_content_list" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT id id,
+		url_id urlId,
+		content content,
+		create_time createTime,
+		creator creator,
+		creator_name creatorName,
+		update_time updateTime,
+		updator updator,
+		updator_name updatorName,
+		content2 content2
+		FROM clawer_content 
+	<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="id">  
+			id = #id#
+		</isNotNull> 
+	</dynamic>
+		<isNotNull prepend=" " property="recordIndex">  
+			limit #recordIndex#,1
+		</isNotNull> 
+    </statement> 
+
+    <statement id="query_clawer_content_num" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT count(1) count
+		FROM clawer_content 
+	<dynamic prepend="WHERE">
+		<isNotNull prepend="AND" property="id">  
+			id = #id#
+		</isNotNull> 
+	</dynamic>
+    </statement>
+
+
+	<statement id="query_clawer_content_cu_list" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT cc.id id,
+		cc.url_id urlId,
+		cc.content content,
+		cc.create_time createTime,
+		cc.creator creator,
+		cc.creator_name creatorName,
+		cc.update_time updateTime,
+		cc.updator updator,
+		cc.updator_name updatorName,
+		cc.content2 content2
+		FROM clawer_content cc,clawer_url cu
+		where cc.url_id=cu.id
+		<isNotNull prepend="AND" property="task">  
+			cu.task = #task#
+		</isNotNull> 
+		<isNotNull prepend=" " property="recordIndex">  
+			limit #recordIndex#,1
+		</isNotNull> 
+    </statement> 
+
+    <statement id="query_clawer_content_cu_num" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+	SELECT count(1) count
+		FROM clawer_content cc,clawer_url cu
+		where cc.url_id=cu.id
+		<isNotNull prepend="AND" property="task">  
+			cu.task = #task#
+		</isNotNull> 
+    </statement>
+
+</sqlMap> 
+
+

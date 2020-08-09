@@ -1,0 +1,31 @@
+包邮 原厂正品 树莓派3代B型 raspberrypi 板载蓝牙和WIFI E14中国版
+
+
+
+图12	USB用电源防护
+
+
+树莓派开发系列教程8——树莓派内核编译与固件升级
+https://blog.csdn.net/xdw1985829/article/details/39077611
+
+
+
+==============================================================================
+一、安装系统
+参考：https://blog.csdn.net/qq_35379989/article/details/79050932
+
+
+
+二、应用开发
+https://blog.csdn.net/solar_Lan/article/details/83576024
+
+
+
+职业经验
+https://www.cnblogs.com/shaobojiao/p/7885377.html
+
+
+
+
+适合树莓派初学者的10个项目
+http://m.elecfans.com/article/674253.html
