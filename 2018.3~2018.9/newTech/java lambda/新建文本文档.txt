@@ -1,0 +1,4 @@
+C:
+cd C:\Users\Administrator\Desktop\java lambda
+javac Java8Tester.java
+java Java8Tester
