@@ -2,7 +2,7 @@ D:
 cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器
 
 F:
-cd F:\codeWeaponStore\2018.3~2018.9\编译原理实验\微型编译器
+cd F:\codeWeaponStore\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器
 
 g++ -std=c++11 -c pwh.cpp
 
@@ -51,3 +51,16 @@ T : B C			{$2.next=$0;$$=$2;}
 B : 'simple-type-specifier'	{Type* type=new Type($0,Tag::BASIC,4);$$=type;}
 C : 0	{$$=$$.next;}
 C : '[' 'number' ']' C	{$4.next=$$.next;$$=new Array(atoi($2.c_str()),(Type*)$4);}	
+
+==========================================
+
+
+D:
+cd D:\DaiMaWuQiKu\阿里云
+git status -s 
+
+git add 阿里云/新建文本文档.txt
+git commit -m 版本提交
+git push
+git config --global credential.helper store
+git pull

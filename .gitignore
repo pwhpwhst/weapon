@@ -2,4 +2,6 @@
 *.jar
 *.lst
 *.o
+*.exe
+*.bak
 pom.properties
