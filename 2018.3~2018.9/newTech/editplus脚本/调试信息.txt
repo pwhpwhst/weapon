@@ -1,1 +1,4 @@
-pwh.cpp:57://≥ı ºªØ
+SDT\SDT_generator.h:20:typedef std::shared_ptr<NodeValue> P_NodeValue;
+SDT\SDT_generator.h:25:public: virtual P_NodeValue handle(const P_NodeValue &nodeValue,
+SDT\SDT_generator.h:28:protected: string child(const P_NodeValue &nodeValue,int index,int value_type);
+SDT\SDT_generator.h:29:protected: string own(const P_NodeValue &nodeValue,int value_type);

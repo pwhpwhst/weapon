@@ -6,7 +6,7 @@
 using namespace std;
 
 const string project_index="index.txt";
-const string project_path="C:\\Users\\Administrator\\Desktop\\微型编译器";
+const string project_path="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器";
 
 int main()
 {

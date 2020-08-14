@@ -35,12 +35,12 @@ int main(int argc,char *argv[]){
 	cmd+="\" ";
 	s=argv[4];
 	cmd+=s;
-	cmd+=" >C:\\Users\\Administrator\\Desktop\\editplus脚本\\调试信息.txt";
+	cmd+=" >F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\newTech\\editplus脚本\\调试信息.txt";
 	fs<<cmd<<endl;
 
-	cmd="C:\\Users\\Administrator\\Desktop\\editplus脚本\\调试信息.txt";
+	cmd="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\newTech\\editplus脚本\\调试信息.txt";
 	fs<<cmd<<endl;
 	fs.close();
-	system("C:\\Users\\Administrator\\Desktop\\editplus脚本\\pwh.bat");
+	system("F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\newTech\\editplus脚本\\pwh.bat");
 	return 0;
 }

@@ -993,6 +993,7 @@ void gen_middle_code(Env &env,Node* &node_tree){
 
 	while(stack.size()>0){
 			auto top=stack.back();
+			cout<<"top="<<top->node->symbol<<endl;
 			P_SDT_genertor sdt_genertor=SDT_Factory::instance.factory[top->node->get_rule_str()];
 			if(sdt_genertor!=nullptr){
 				P_NodeValue p_nodeValue=sdt_genertor->handle(top,result_map,has_calculate_set);

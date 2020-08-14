@@ -64,3 +64,9 @@ git commit -m °æ±¾Ìá½»
 git push
 git config --global credential.helper store
 git pull
+
+==========================================
+
+ git rm -r --cached .
+ git add .
+ git commit -m 'update .gitignore'

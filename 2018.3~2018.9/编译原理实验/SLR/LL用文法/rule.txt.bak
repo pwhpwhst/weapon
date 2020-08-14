@@ -1,8 +1,0 @@
-	"ele : term ele1",
-	"ele1 : '+' term ele1",
-	"ele1 : 0",
-	"term : factor term1",
-	"term1 : '*' factor term1",
-	"term1 : 0",
-	"factor : '(' ele ')'",
-	"factor : 'id'"
