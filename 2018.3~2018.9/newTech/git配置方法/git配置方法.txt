@@ -3,6 +3,31 @@
 git config --global user.name "xuesong.pwh"
 git config --global user.email xuesong.pwh@dtyunxi.com
 
+D:
+cd D:\DaiMaWuQiKu\阿里云
+git status -s 
+git add 阿里云/新建文本文档.txt
+git commit -m 版本提交
+git push
+git config --global credential.helper store
+git pull
 
 
 
+参考：https://www.cnblogs.com/zndxall/archive/2018/09/04/9586088.html
+
+F:
+cd F:\codeWeaponStore
+
+git stash save "save message" 
+git pull
+git stash apply stash@{0} 
+git stash drop stash@{0}
+
+//git stash list
+
+
+git checkout master
+git branch
+git rebase
+git reset --merge  
