@@ -42,6 +42,8 @@ void calculate_forecast_list(vector<unordered_map<string,string>> &forecast_list
 
 void printStack(Node* &node_tree);
 
+void printStack2(Node* &node_tree);
+
 void printGraph(vector<vector<P_Item>> items_list,
 unordered_map<int,unordered_map<string,int>> convert_map);
 
@@ -56,10 +58,10 @@ void gen_middle_code(Env &env,Node* &node_tree);
 int main(){
 //初始化
 string start_symbol="ele_begin";
-//string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
-//string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
-string rule_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
-string compile_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
+string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
+//string rule_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+//string compile_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
 
 
 //生成ruleListing
@@ -168,7 +170,8 @@ for(const auto &e:total_lex_word_list){
 		#ifdef __PRINT_NODE_TREE
 		
 		if(node_tree!=nullptr){
-			printStack(node_tree);
+//			printStack(node_tree);
+			printStack2(node_tree);
 		}
 		
 		
@@ -532,6 +535,146 @@ void printStack(Node* &node_tree){
 
 		}
 	}
+}
+
+
+void printStack2(Node* &node_tree){
+	cout<<"深度优先遍历:"<<endl;
+	deque<Node*> item_node_stack2;
+	item_node_stack2.push_back(node_tree);
+	set<Node*> node_set;
+	unordered_map<string,unordered_map<string,int>> plan_map;
+	unordered_map<string,Node*> plan2_map;
+
+	ostringstream os;
+	const int padding_left=2;
+	const int branch_length=4;
+
+//先用深度优先遍历计算要打印的块的长和高
+	while(item_node_stack2.size()>0){
+		Node *present_node=item_node_stack2.back();
+
+		if(present_node->child_node_list.size()>0&&node_set.count(present_node->child_node_list[0])==0){
+			item_node_stack2.push_back(present_node->child_node_list[0]);
+		}else{
+			node_set.insert(present_node);
+			os.str("");
+			os<<present_node;
+			string present_str=os.str();
+			plan_map[present_str]=unordered_map<string,int>();
+
+			int size1=present_node->symbol.size()+padding_left;
+			int size2=0;
+			if(present_node->child_node_list.size()>0){
+				for(const auto &e:present_node->child_node_list){
+					os.str("");
+					os<<e;
+					size2+=plan_map[os.str()]["size_row"];
+				}
+			}
+			plan_map[present_str]["size_row"]=size1>size2?size1:size2;
+			plan2_map[present_str]=present_node;
+			item_node_stack2.pop_back();
+
+			size1=1;
+			size2=0;
+			if(present_node->child_node_list.size()>0){
+				for(const auto &e:present_node->child_node_list){
+					os.str("");
+					os<<e;
+					size2=plan_map[os.str()]["size_col"]>size2?plan_map[os.str()]["size_col"]:size2;
+				}
+				size2+=branch_length;
+			}
+			plan_map[present_str]["size_col"]=size2>size1?size2:size1;
+
+			if(present_node->parent!=nullptr){
+				if((present_node->offset+1)<present_node->parent->child_node_list.size()){
+					item_node_stack2.push_back(present_node->parent->child_node_list[present_node->offset+1]);
+				}
+			}
+
+		}
+	}
+
+	item_node_stack2.push_front(node_tree);
+	os.str("");
+	os<<node_tree;
+	plan_map[os.str()]["pos_x"]=0;
+	plan_map[os.str()]["pos_y"]=0;
+	while(item_node_stack2.size()>0){
+		Node *present_node=item_node_stack2.back();
+		os.str("");
+		os<<present_node;
+		string present_str=os.str();
+		if(present_node->child_node_list.size()>0){
+			int brother_x_offset=0;
+			for(const auto &e:present_node->child_node_list){
+				os.str("");
+				os<<e;
+				plan_map[os.str()]["pos_x"]=plan_map[present_str]["pos_x"]+brother_x_offset;
+				brother_x_offset+=plan_map[os.str()]["size_row"];
+				plan_map[os.str()]["pos_y"]=plan_map[present_str]["pos_y"]+branch_length;
+				item_node_stack2.push_front(e);
+			}
+			
+		}
+		item_node_stack2.pop_back();
+	}
+
+
+	vector<vector<char>> output;
+	os.str("");
+	os<<node_tree;
+	for(int i1=0;i1<plan_map[os.str()]["size_col"];i1++){
+		 output.push_back(vector<char>());
+		for(int i2=0;i2<plan_map[os.str()]["size_row"];i2++){
+			output.back().push_back(' ');
+		}	
+	}
+
+	for(auto &e:plan_map){
+		for(int i1=0;i1<plan2_map[e.first]->symbol.size();i1++){
+			output[e.second["pos_y"]][e.second["pos_x"]+i1]=plan2_map[e.first]->symbol[i1];
+		}
+		
+		if(plan2_map[e.first]->child_node_list.size()>0){
+			output[e.second["pos_y"]+1][e.second["pos_x"]]='|';
+			
+				os.str("");
+				os<<plan2_map[e.first]->child_node_list[0];
+				int beg_pos=plan_map[os.str()]["pos_x"];
+				os.str("");
+				os<<plan2_map[e.first]->child_node_list.back();
+				int end_pos=plan_map[os.str()]["pos_x"];
+				for(int i1=beg_pos;i1<=end_pos;i1++){
+					output[e.second["pos_y"]+2][i1]='-';
+				}
+				
+				for(int i1=0;i1<plan2_map[e.first]->child_node_list.size();i1++){
+					os.str("");
+					os<<plan2_map[e.first]->child_node_list[i1];
+					output[e.second["pos_y"]+3][plan_map[os.str()]["pos_x"]]='|';
+				}
+				
+
+		}
+		
+	}
+
+
+
+	for(const auto &e:output){
+		for(const auto &e1:e){
+			cout<<e1;
+		}
+		cout<<endl;
+	}
+
+
+
+
+
 }
 
 

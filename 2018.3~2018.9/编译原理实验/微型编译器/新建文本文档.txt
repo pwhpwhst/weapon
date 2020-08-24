@@ -34,7 +34,7 @@ g++ -std=c++11 -c inter\Id.cpp
 g++ -o pwh pwh.o Array.o Env.o Type.o lex.yy.o Lex_Word.o Rule.o Item.o Node.o Symbol.o SDT_generator.o Token.o Integer.o Tag.o Word.o Id.o
 
 
-
+pwh.exe
 
 
 ==========================================
@@ -70,3 +70,7 @@ git pull
  git rm -r --cached .
  git add .
  git commit -m 'update .gitignore'
+
+
+===========================================
+
