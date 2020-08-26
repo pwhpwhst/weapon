@@ -1102,6 +1102,8 @@ void Slr::gen_middle_code(Env &env,Node* &node_tree){
 				}else{
 					stack.pop_back();
 				}
+			}else{
+				return;
 			}
 	}
 
