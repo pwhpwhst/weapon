@@ -38,6 +38,8 @@ g++ -o pwh pwh.o slr.o Array.o Env.o Type.o lex.yy.o Lex_Word.o Rule.o Item.o No
 pwh.exe
 
 
+切换编译体系（默认词法分析器用同一套）：
+vi pwh.cpp
 g++ -std=c++11 -c pwh.cpp
 g++ -o pwh pwh.o slr.o Array.o Env.o Type.o lex.yy.o Lex_Word.o Rule.o Item.o Node.o Symbol.o SDT_generator.o Token.o Integer.o Tag.o Word.o Id.o
 pwh.exe
