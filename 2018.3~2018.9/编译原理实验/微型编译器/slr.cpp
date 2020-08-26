@@ -57,7 +57,7 @@ bool detect_ambigulous( vector<unordered_map<string,string>> &forecast_list,
 
 void gen_middle_code(Env &env,Node* &node_tree);
 
-int slr(string rule_file,string compile_file);
+int slr(string rule_file,string compile_file,Env env);
 
 
 int main(){

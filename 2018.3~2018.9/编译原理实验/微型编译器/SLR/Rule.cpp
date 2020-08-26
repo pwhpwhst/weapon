@@ -23,7 +23,6 @@ if(end==-1){
 int length=end-begin;
 string temp_string=rule_str.substr(begin,length);
 temp_string=trim_right_copy(trim_left_copy(temp_string));
-cout<<"temp_string="<<temp_string<<endl;
 if(temp_string!=""){
 split(symbols,temp_string,is_any_of(" "));
 }

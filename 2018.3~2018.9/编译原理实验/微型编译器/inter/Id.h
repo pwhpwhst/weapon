@@ -5,6 +5,16 @@ using namespace std;
 
 class Id{
 
+public: int pos;
+
+public: int size;
+
+//Ä¬ÈÏ¹¹ÔìÆ÷
+public: Id();
+
+public: Id(int pos,int size);
+
+public: virtual ~Id();
 
 
 };

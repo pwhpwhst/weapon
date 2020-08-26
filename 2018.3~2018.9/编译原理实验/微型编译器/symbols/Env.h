@@ -5,6 +5,8 @@
 using namespace std;
 
 class Env{
+public: static int POS;
+
 private: unordered_map<P_Token,P_Id> table;
 protected: Env *prev;
 

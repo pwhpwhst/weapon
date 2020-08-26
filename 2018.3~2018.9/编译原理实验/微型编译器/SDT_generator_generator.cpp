@@ -74,7 +74,7 @@ int main(){
 	fs<<"return nullptr;"<<endl;
 	fs<<"}"<<endl;
 	fs<<"public: ~Default_SDT_genertor(){}"<<endl;
-	fs<<"};"<<endl;
+	fs<<"};"<<endl<<endl;
 
 //读取 rule.txt begin
 	vector<vector<string>> symbol_list;
@@ -134,10 +134,9 @@ int main(){
 		map3.clear();
 		map4.clear();
 		fs<<"class "<<e[1]<<":public SDT_genertor{"<<endl;
-		fs<<"public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set){"<<endl;
-		fs<<"cout<<\"carry out "<<e[1]<<"\"<<endl;"<<endl;
-		//最难的内容
-//		fs<<e[2]<<endl;
+		fs<<"\tpublic: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set){"<<endl;
+		fs<<"\t\tcout<<\"carry out "<<e[1]<<"\"<<endl;"<<endl;
+
 		string cmd_strs=e[2];
 		cmd_strs=cmd_strs.replace(cmd_strs.find("{"),1,"");
 		cmd_strs=cmd_strs.replace(cmd_strs.find("}"),1,"");
@@ -164,7 +163,7 @@ int main(){
 							left_attribute_name=attribute_name;
 							left_para_name=e1;
 							string attribute_fun=gen_attribute_fun(e1,rule);
-							fs<<"string "<<attribute_name<<"="<<attribute_fun<<endl;
+							fs<<"\t\tstring "<<attribute_name<<"="<<attribute_fun<<endl; //string c_inh=child(nodeValue,1,NodeValue::INH);
 						}
 						node_all_symbol_set.insert(e1);
 					}
@@ -196,11 +195,11 @@ int main(){
 						if(!is_terminate){
 							attribute_name=gen_attribute_name(e1,rule,map1,map2,map3);
 							string attribute_fun=gen_attribute_fun(e1,rule);
-							fs<<"string "<<attribute_name<<"="<<attribute_fun<<endl;
+							fs<<"\t\tstring "<<attribute_name<<"="<<attribute_fun<<endl;
 							map5[e1]="result_map["+attribute_name+"]";
 						}else{
 							attribute_name="basic_"+to_string(atoi(string_list2[0].c_str())-1)+"_content";
-							fs<<"string "<<attribute_name<<"=nodeValue->node->child_node_list["<<to_string(atoi(string_list2[0].c_str())-1)<<"]->content;"<<endl;
+							fs<<"\t\tstring "<<attribute_name<<"=nodeValue->node->child_node_list["<<to_string(atoi(string_list2[0].c_str())-1)<<"]->content;"<<endl;
 							map5[e1]=attribute_name;
 						}
 						
@@ -217,7 +216,7 @@ int main(){
 				cout<<endl;
 
 		if(left_attribute_name!=""){
-			fs<<"if(has_calculate_set.count("<<left_attribute_name<<")==0){"<<endl;
+			fs<<"\t\tif(has_calculate_set.count("<<left_attribute_name<<")==0){"<<endl;
 		}
 		
 		for(const auto &e1:symbol_set){
@@ -225,9 +224,9 @@ int main(){
 				continue;
 			}
 			string attribute_name=gen_attribute_name(e1,rule,map1,map2,map3);
-			fs<<"if(has_calculate_set.count("<<attribute_name<<")==0){"<<endl;
-			fs<<"cout<<\"lack\"<<"<<attribute_name<<"<<endl;"<<endl;
-			fs<<"return P_NodeValue(new NodeValue(";
+			fs<<"\t\t\tif(has_calculate_set.count("<<attribute_name<<")==0){"<<endl;
+			fs<<"\t\t\t\tcout<<\"lack\"<<"<<attribute_name<<"<<endl;"<<endl;
+			fs<<"\t\t\t\treturn P_NodeValue(new NodeValue(";
 			if(startsWith(e1,"$$")==1){
 				fs<<"nodeValue->node,";
 			}else{
@@ -241,7 +240,7 @@ int main(){
 			}else{
 				fs<<"NodeValue::SYN));"<<endl;
 			}
-			fs<<"}"<<endl;
+			fs<<"\t\t\t}"<<endl;
 		}
 
 //具体内容
@@ -265,24 +264,24 @@ int main(){
 				}
 			}
 		}
-		fs<<string_list2[0]<<"="<<string_list2[1]<<";"<<endl;
+		fs<<"\t\t\t"<<string_list2[0]<<"="<<string_list2[1]<<";"<<endl;
 		
 		if(left_attribute_name!=""){
-			fs<<"has_calculate_set.insert("<<left_attribute_name<<");"<<endl;
+			fs<<"\t\t\thas_calculate_set.insert("<<left_attribute_name<<");"<<endl;
 		}
 
 		if(left_attribute_name!=""){
-			fs<<"}"<<endl;
+			fs<<"\t\t}"<<endl;
 		}
 
 
 	}
 			}
 		
-		fs<<"return nullptr;"<<endl;
-		fs<<"}"<<endl;
-		fs<<"public: ~"<<e[1]<<"(){}"<<endl;
-		fs<<"};"<<endl;
+		fs<<"\t\treturn nullptr;"<<endl;
+		fs<<"\t}"<<endl;
+		fs<<"\tpublic: ~"<<e[1]<<"(){}"<<endl;
+		fs<<"};"<<endl<<endl;
 	}
 	//输出factory begin
 

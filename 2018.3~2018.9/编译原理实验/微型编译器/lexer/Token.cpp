@@ -12,3 +12,4 @@ Token::Token(int tag){
 
 Token::~Token(){
 }
+

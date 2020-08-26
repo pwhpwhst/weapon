@@ -28,3 +28,5 @@ P_Id Env::get(const P_Token &w){
 Env::~Env(){
 	prev=nullptr;
 }
+
+int Env::POS=0;
