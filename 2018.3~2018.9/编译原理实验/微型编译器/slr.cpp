@@ -6,73 +6,19 @@
 //#define __PRINT_LEX_WORD_LIST
 #define __PRINT_NODE_TREE
 
-#include <iostream>
-#include <set>
-#include <vector>
-#include <deque>
-#include <string>
-#include <unordered_map>
-#include <boost/algorithm/string.hpp>
-#include <fstream>
-#include <sstream>
+#include "Slr.h"
+using namespace std;
 
-#include"SLR\Item.h"
-#include"SLR\Rule.h"
-#include"SLR\Node.h"
-#include"SLR\Lex_Word.h"
-#include"symbols\Env.h"
-#include"symbols\Array.h"
-#include"inter\Id.h"
-#include"SDT\SDT_generator.h"
-#include"lexer\Tag.h"
 using namespace std;
 using namespace boost;
 
-void parse_all_symbol(set<string> &terminator,set<string> &non_terminator,set<string> &zero_terminator,const vector<P_Rule> &ruleList);
-
-void get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered_map<int,unordered_map<string,int>> &convert_map,
-	const set<string> &non_terminator,unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,const string start_symbol);
-
-void calculate_f_first(unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,const set<string> &terminator,const set<string> &non_terminator);
-
-void calculate_f_follow(unordered_map<string,set<string>> &f_follow, unordered_map<string,set<string>> &f_first,
-	const vector<P_Rule> &ruleList,const set<string> &non_terminator,const set<string> &terminator,string start_symbol);
-
-void calculate_forecast_list(vector<unordered_map<string,string>> &forecast_list,
-	const vector<vector<P_Item>> &items_list,const set<string> &terminator, unordered_map<P_Rule,int> &rule_map,
-	 unordered_map<int,unordered_map<string,int>> &convert_map, unordered_map<string,set<string>> &f_follow);
-
-void printStack(Node* &node_tree);
-
-void printStackTree(Node* &node_tree);
-
-void printGraph(vector<vector<P_Item>> items_list,
-unordered_map<int,unordered_map<string,int>> convert_map);
-
-Node* syntax_analyze(const vector<P_Rule> &ruleList,set<string> zero_terminator, vector<unordered_map<string,string>> &forecast_list,
-	unordered_map<int,unordered_map<string,int>> &convert_map,vector<P_Lex_Word> &input);
-
-bool detect_ambigulous( vector<unordered_map<string,string>> &forecast_list,
- const vector<P_Rule> &ruleList,const vector<vector<P_Item>> items_list);
-
-void gen_middle_code(Env &env,Node* &node_tree);
-
-int slr(string rule_file,string compile_file,Env env);
 
 
-int main(){
-
-string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
-string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
-//string rule_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
-//string compile_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
-Env env;
-slr( rule_file, compile_file,env);
-
-}
 
 
-int slr(string rule_file,string compile_file,Env env){
+
+
+int Slr::slr(string rule_file,string compile_file,Env env){
 //初始化
 string start_symbol="ele_begin";
 
@@ -200,7 +146,7 @@ for(const auto &e:total_lex_word_list){
 }
 
 
-void calculate_f_first(unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,
+void Slr::calculate_f_first(unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,
 	const set<string> &terminator,const set<string> &non_terminator){
 // 计算first函数
 
@@ -308,7 +254,7 @@ for(const auto &e:non_terminator){
 }
 
 
-bool detect_ambigulous( vector<unordered_map<string,string>> &forecast_list,
+bool Slr::detect_ambigulous( vector<unordered_map<string,string>> &forecast_list,
 	 const vector<P_Rule> &ruleList,const vector<vector<P_Item>> items_list){
 bool flag=false;
 set<int> item_set;
@@ -365,7 +311,7 @@ set<int> rule_set;
 	return flag;
 }
 
-void calculate_f_follow(unordered_map<string,set<string>> &f_follow, unordered_map<string,set<string>> &f_first,
+void Slr::calculate_f_follow(unordered_map<string,set<string>> &f_follow, unordered_map<string,set<string>> &f_first,
 	const vector<P_Rule> &ruleList,const set<string> &non_terminator,const set<string> &terminator,string start_symbol){
 
 for(const auto &e:non_terminator){
@@ -489,7 +435,7 @@ for(const auto result:f_follow){
 }
 
 
-void printGraph(vector<vector<P_Item>> items_list,
+void Slr::printGraph(vector<vector<P_Item>> items_list,
 unordered_map<int,unordered_map<string,int>> convert_map){
 	cout<<"打印转移状态图的点"<<endl;
 
@@ -518,7 +464,7 @@ unordered_map<int,unordered_map<string,int>> convert_map){
 }
 
 
-void printStack(Node* &node_tree){
+void Slr::printStack(Node* &node_tree){
 	cout<<"深度优先遍历:"<<endl;
 	vector<Node*> item_node_stack2;
 	item_node_stack2.push_back(node_tree);
@@ -549,7 +495,7 @@ void printStack(Node* &node_tree){
 }
 
 
-void printStackTree(Node* &node_tree){
+void Slr::printStackTree(Node* &node_tree){
 	cout<<"打印语法树:"<<endl;
 	deque<Node*> item_node_stack2;
 	item_node_stack2.push_back(node_tree);
@@ -689,7 +635,7 @@ void printStackTree(Node* &node_tree){
 }
 
 
-void parse_all_symbol(set<string> &terminator,set<string> &non_terminator,set<string> &zero_terminator,const vector<P_Rule> &ruleList){
+void Slr::parse_all_symbol(set<string> &terminator,set<string> &non_terminator,set<string> &zero_terminator,const vector<P_Rule> &ruleList){
 	for(auto rule:ruleList){
 		for(auto s:rule->symbols){
 			if(s[0]=='\''){
@@ -723,7 +669,7 @@ cout<<endl;
 }
 
 
-void get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered_map<int,unordered_map<string,int>> &convert_map,
+void Slr::get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered_map<int,unordered_map<string,int>> &convert_map,
 	const set<string> &non_terminator,unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,const string start_symbol){
 	
 	class P_Item_Cmp
@@ -964,7 +910,7 @@ printGraph(items_list,convert_map);
 
 
 
-void calculate_forecast_list(vector<unordered_map<string,string>> &forecast_list,
+void Slr::calculate_forecast_list(vector<unordered_map<string,string>> &forecast_list,
 	const vector<vector<P_Item>> &items_list,const set<string> &terminator, unordered_map<P_Rule,int> &rule_map,
 	 unordered_map<int,unordered_map<string,int>> &convert_map, unordered_map<string,set<string>> &f_follow){
 for(int i1=0;i1<items_list.size();i1++){
@@ -1029,7 +975,7 @@ for(int i1=0;i1<forecast_list.size();i1++){
 #endif
 }
 
-Node* syntax_analyze(const vector<P_Rule> &ruleList,set<string> zero_terminator,vector<unordered_map<string,string>> &forecast_list,
+Node* Slr::syntax_analyze(const vector<P_Rule> &ruleList,set<string> zero_terminator,vector<unordered_map<string,string>> &forecast_list,
 	unordered_map<int,unordered_map<string,int>> &convert_map,vector<P_Lex_Word> &input){
 
 struct ItemNode{
@@ -1136,7 +1082,7 @@ while(!finished_flag){
 	return resultTree;
 }
 
-void gen_middle_code(Env &env,Node* &node_tree){
+void Slr::gen_middle_code(Env &env,Node* &node_tree){
 
 	cout<<"生成中间代码:"<<endl;
 
@@ -1176,6 +1122,16 @@ void gen_middle_code(Env &env,Node* &node_tree){
 //	cout<<((Array*)((Array*)result_map[ele_begin_syn])->of)->size<<endl;
 
 }
+
+
+Slr::Slr(){
+
+}
+
+
+Slr::~Slr(){
+}
+
 /**
 
 深度优先遍历:
