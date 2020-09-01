@@ -6,9 +6,7 @@
 //#define __PRINT_LEX_WORD_LIST
 #define __PRINT_NODE_TREE
 
-#include "Slr.h"
-using namespace std;
-
+#include "slr.h"
 using namespace std;
 using namespace boost;
 
@@ -1093,10 +1091,9 @@ void Slr::gen_middle_code(Env &env,Node* &node_tree){
 
 	while(stack.size()>0){
 			auto top=stack.back();
-			cout<<"top="<<top->node->symbol<<endl;
 			P_SDT_genertor sdt_genertor=SDT_Factory::instance.factory[top->node->get_rule_str()];
 			if(sdt_genertor!=nullptr){
-				P_NodeValue p_nodeValue=sdt_genertor->handle(top,result_map,has_calculate_set);
+				P_NodeValue p_nodeValue=sdt_genertor->handle(top,result_map,has_calculate_set,env);
 				if(p_nodeValue!=nullptr){
 					stack.push_back(p_nodeValue);
 				}else{
@@ -1106,23 +1103,6 @@ void Slr::gen_middle_code(Env &env,Node* &node_tree){
 				return;
 			}
 	}
-
-		ostringstream os;
-		os<<node_tree<<"_"<<NodeValue::SYN;
-		string ele_begin_syn=os.str();
-		os.str("");
-
-	P_Id id=nullptr;
-	if(((Token*)result_map[ele_begin_syn])->tag!=Tag::INDEX){
-		id=P_Id(new Id(Env::POS,1));
-		Env::POS++;
-	}
-	env.put(P_Token(result_map[ele_begin_syn]),id);
-
-
-//	cout<<((Array*)result_map[ele_begin_syn])->size<<endl;
-//	cout<<((Array*)((Array*)result_map[ele_begin_syn])->of)->size<<endl;
-
 }
 
 

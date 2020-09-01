@@ -5,7 +5,7 @@
 #include"../symbols/Env.h"
 #include"../SLR/Node.h"
 #include"../lexer/Token.h"
-
+#include"../lexer/Word.h"
 
 class NodeValue{
 	public: static const int SYN=0;
@@ -23,7 +23,7 @@ typedef std::shared_ptr<NodeValue> P_NodeValue;
 class SDT_genertor{
 public: SDT_genertor();
 public: virtual P_NodeValue handle(const P_NodeValue &nodeValue,
-	unordered_map<string,Token*> &result_map,set<string> &has_calculate_set)=0;
+	unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env)=0;
 public: virtual ~SDT_genertor();
 protected: string child(const P_NodeValue &nodeValue,int index,int value_type);
 protected: string own(const P_NodeValue &nodeValue,int value_type);

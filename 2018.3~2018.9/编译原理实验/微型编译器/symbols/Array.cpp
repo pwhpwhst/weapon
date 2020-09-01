@@ -9,6 +9,7 @@ Array::Array(int sz,Type *p):Type("[]",Tag::INDEX,width){
 }
 
 Array::~Array(){
+	delete of;
 }
 
 

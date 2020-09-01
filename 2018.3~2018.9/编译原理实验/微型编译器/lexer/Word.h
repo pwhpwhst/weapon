@@ -10,6 +10,10 @@ public : Word();
 
 public : Word(const string &s,int tag);
 
+public : Word(const Word& word);
+
 public: virtual ~Word();
 
 };
+
+typedef std::shared_ptr<Word> P_Word;

@@ -15,6 +15,8 @@ public: Integer(int value);
 
 public: virtual ~Integer();
 
+public: bool operator==(const Integer & lp) const;  
+
 };
 
 typedef std::shared_ptr<Integer> P_Integer;

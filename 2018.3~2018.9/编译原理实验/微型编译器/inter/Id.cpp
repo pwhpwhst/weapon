@@ -5,11 +5,18 @@ using namespace std;
 Id::Id(){
 }
 
-Id::Id(int pos,int size){
+Id::Id(Word *id,Type *p,int pos){
+	this->id=id;
+	this->p=p;
 	this->pos=pos;
-	this->size=size;
 }
 
 
 Id::~Id(){
+	delete id;
+	id=nullptr;
+	delete p;
+	p=nullptr;
 }
+
+int Id::POS = 0;

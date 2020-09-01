@@ -14,6 +14,7 @@ public: Token(int tag);
 
 public: virtual ~Token();
 
+public: bool operator==(const Token & lp) const;  
 };
 
 typedef std::shared_ptr<Token> P_Token;

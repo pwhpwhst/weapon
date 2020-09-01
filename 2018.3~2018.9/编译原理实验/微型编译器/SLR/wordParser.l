@@ -29,7 +29,27 @@ write_word(p_lex_word,yytext,"'number'");
 }
 
 {identifier} {
-if(strcmp(yytext,"int")==0){
+if(strcmp(yytext,"char")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"wchar_t")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"bool")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"short")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"int")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"long")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"signed")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"unsigned")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"float")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"double")==0){
+	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+}else if(strcmp(yytext,"void")==0){
 	write_word(p_lex_word,yytext,"'simple-type-specifier'");
 }else{
 	write_word(p_lex_word,yytext,"'identifier'");

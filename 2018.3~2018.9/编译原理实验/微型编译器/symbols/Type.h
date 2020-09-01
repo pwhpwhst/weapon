@@ -8,3 +8,4 @@ public: Type(const string &s,int tag,int w);
 public: virtual ~Type();
 };
 
+typedef std::shared_ptr<Word> P_Type;
