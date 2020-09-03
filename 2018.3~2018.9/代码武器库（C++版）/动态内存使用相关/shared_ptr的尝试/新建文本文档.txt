@@ -1,0 +1,6 @@
+C:
+cd C:\Users\Administrator\Desktop\shared_ptrµÄ³¢ÊÔ
+
+g++ -c PwhTest.cpp
+g++ -o PwhTest PwhTest.cpp
+PwhTest.exe
