@@ -8,3 +8,5 @@ Type::Type(const string &s,int tag,int w):Word(s,tag){
 
 Type::~Type(){
 }
+
+const string Type::INT="int";

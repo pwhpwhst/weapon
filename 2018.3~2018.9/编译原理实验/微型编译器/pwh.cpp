@@ -40,6 +40,16 @@ string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\20
 //string rule_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
 //string compile_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
 Env env;
-Slr slr;
-slr.slr( rule_file, compile_file,env);
+
+
+//预先设定类型
+Word w(Type::INT,Tag::TYPE);
+Id *id=new Id();
+id->id=(Word*)new Word(Type::INT,Tag::TYPE);
+id->p=new Type(Type::INT,Tag::BASIC,4);
+id->pos=0;
+env.put(w,id);
+cout<<env.get(w)->id->lexme;
+//Slr slr;
+//slr.slr( rule_file, compile_file,env);
 }

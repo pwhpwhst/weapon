@@ -1,6 +1,7 @@
 #include "Token.h"
 #include "Tag.h"
 #include "Integer.h"
+#include "Word.h"
 #include <iostream>
 using namespace std;
 
@@ -21,19 +22,9 @@ Token::~Token(){
 }
 
 
-
-
-
-bool Token::operator==(const Token & o1)  const
-{
-	if(o1.tag==Tag::NUM){
-		return ((Integer*)this)->operator==((const Integer &)o1);
-	}
-	return false;
+bool Token::operator==(Token const& rh) const{
+	return this->tag== rh.tag;
 }
 
 
-bool operator==(const P_Token & lh1,const P_Token & lh2)  
-{
-	return lh1->operator==(*lh2);
-}
+

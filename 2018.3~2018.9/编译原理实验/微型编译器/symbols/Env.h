@@ -1,15 +1,14 @@
 #pragma once
-#include "..\lexer\Token.h"
+#include "..\lexer\Word.h"
 #include "..\inter\Id.h"
 #include "..\lexer\Tag.h"
 #include "..\lexer\Integer.h"
 #include <unordered_map>
 using namespace std;
 
-struct hash_name_token{
-	size_t operator()(const P_Token & p) const{
-
-		return p->tag;
+struct hash_name_word{
+	size_t operator()(const Word & p) const{
+		return p.tag;
 	}
 };
 
@@ -22,7 +21,7 @@ public: static int POS;
 
 
 
-private: unordered_map<P_Token,P_Id> table;
+private: unordered_map<Word,P_Id,hash_name_word> table;
 protected: Env *prev;
 
 public: Env();
@@ -30,9 +29,9 @@ public: Env();
 //ÈÝÆ÷
 public: Env(Env *env);
 
-public: void put(Token* w,Id* i);
+public: void put(const Word& w,Id* i);
 
-public: P_Id get(Token *w);
+public: P_Id get(const Word& w);
 
 public: virtual ~Env();
 };

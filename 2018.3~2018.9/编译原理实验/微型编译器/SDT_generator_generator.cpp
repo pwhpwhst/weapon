@@ -79,53 +79,74 @@ int main(){
 //∂¡»° rule.txt begin
 	vector<vector<string>> symbol_list;
 	string rule_str;
+	ostringstream sb;
 	unordered_map<string,int> symbol_static_map;
 	while(getline(input_file,rule_str)){
-		vector <string> string_list;
-		split(string_list,rule_str,is_any_of(":"));
-		string rule_name= trim_right_copy(string_list[0]);
-		if(rule_name[0]>='a'&&rule_name[0]<='z'){
-			rule_name[0]=rule_name[0]-32;
+
+		if(rule_str[0]=='='){
+			break;
 		}
-		for(int i1=0;i1<rule_name.length();i1++){
-			if(rule_name[i1]=='-'){
-				rule_name[i1]='_';
+		rule_str= trim_right_copy(rule_str);
+		rule_str= trim_left_copy(rule_str);
+
+		if(startsWith(rule_str,"//")==1||startsWith(rule_str,"/*")==1){
+			continue;
+		}
+
+		sb<<rule_str;
+		if(rule_str[rule_str.length()-1]!=';'){
+			rule_str=sb.str();
+			sb.str("");
+			vector <string> string_list;
+			split(string_list,rule_str,is_any_of(":"));
+			string rule_name= trim_right_copy(string_list[0]);
+			if(rule_name[0]>='a'&&rule_name[0]<='z'){
+				rule_name[0]=rule_name[0]-32;
 			}
-		}
-		if(symbol_static_map.find(rule_name)==symbol_static_map.end()){
-			symbol_static_map[rule_name]=0;
-		}
-		string class_name=rule_name+"_"+to_string(symbol_static_map[rule_name])+"_SDT_genertor";
-		symbol_static_map[rule_name]=symbol_static_map[rule_name]+1;
-
-		int begin=0;
-		int end=rule_str.find_last_of('{');
-		if(end==-1){
-			end=rule_str.size();
-		}
-		int length=end-begin;
-		string rule_string=rule_str.substr(begin,length);
-		rule_string=trim_right_copy(trim_left_copy(rule_string));
-		string rule_string2=rule_string;
-		for(int i1=0;i1<rule_string.length();i1++){
-			if(rule_string[i1]=='-'){
-				rule_string[i1]='_';
+			for(int i1=0;i1<rule_name.length();i1++){
+				if(rule_name[i1]=='-'){
+					rule_name[i1]='_';
+				}
 			}
+			if(symbol_static_map.find(rule_name)==symbol_static_map.end()){
+				symbol_static_map[rule_name]=0;
+			}
+			string class_name=rule_name+"_"+to_string(symbol_static_map[rule_name])+"_SDT_genertor";
+			symbol_static_map[rule_name]=symbol_static_map[rule_name]+1;
+
+			int begin=0;
+			int end=rule_str.find_last_of('{');
+			if(end==-1){
+				end=rule_str.size();
+			}
+			int length=end-begin;
+			string rule_string=rule_str.substr(begin,length);
+			rule_string=trim_right_copy(trim_left_copy(rule_string));
+			string rule_string2=rule_string;
+			for(int i1=0;i1<rule_string.length();i1++){
+				if(rule_string[i1]=='-'){
+					rule_string[i1]='_';
+				}
+			}
+
+
+			begin=rule_str.find_last_of('{');
+			end=rule_str.find_last_of('}');
+			length=end-begin+1;
+			string action_string=rule_str.substr(begin,length);
+
+
+			vector<string> temp;
+			temp.push_back(rule_string);
+			temp.push_back(class_name);
+			temp.push_back(action_string);
+			temp.push_back(rule_string2);
+			symbol_list.push_back(temp);
 		}
 
 
-		begin=rule_str.find_last_of('{');
-		end=rule_str.find_last_of('}');
-		length=end-begin+1;
-		string action_string=rule_str.substr(begin,length);
 
 
-		vector<string> temp;
-		temp.push_back(rule_string);
-		temp.push_back(class_name);
-		temp.push_back(action_string);
-		temp.push_back(rule_string2);
-		symbol_list.push_back(temp);
 	}
 	input_file.close();
 

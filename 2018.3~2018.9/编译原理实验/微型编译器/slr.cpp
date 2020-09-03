@@ -25,12 +25,25 @@ vector<P_Rule> ruleList;
 ifstream input_file;
 input_file.open(rule_file.data());
 string rule_str;
+ostringstream sb;
 while(getline(input_file,rule_str))
 {
 	if(rule_str[0]=='='){
 		break;
 	}
-	ruleList.push_back(P_Rule(new Rule(rule_str)));
+	rule_str= trim_right_copy(rule_str);
+	rule_str= trim_left_copy(rule_str);
+	if(startsWith(rule_str,"//")==1||startsWith(rule_str,"/*")==1){
+		continue;
+	}
+
+	sb<<rule_str;
+	if(rule_str[rule_str.length()-1]!=';'){
+		cout<<sb.str()<<endl;
+		ruleList.push_back(P_Rule(new Rule(sb.str())));
+		sb.str("");
+	}
+	
 }
 unordered_map<string,string> temp_forecast_map;
 vector <string> string_list;
@@ -626,10 +639,6 @@ void Slr::printStackTree(Node* &node_tree){
 		cout<<endl;
 	}
 
-
-
-
-
 }
 
 
@@ -1103,6 +1112,10 @@ void Slr::gen_middle_code(Env &env,Node* &node_tree){
 				return;
 			}
 	}
+}
+
+int Slr::startsWith(string s, string sub){
+        return s.find(sub)==0?1:0;
 }
 
 

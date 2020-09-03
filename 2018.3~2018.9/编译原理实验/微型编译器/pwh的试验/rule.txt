@@ -1,7 +1,16 @@
 ele_begin : condition	{$$=$1;}
 assignment-expression : 'number'	{Integer* num=new Integer(atoi(($1).c_str()));$$=num;}
 declarator : 'identifier'	{Word* w=new Word($1,Tag::ID);$$=w;}
-condition : type-specifier-seq declarator '=' assignment-expression	{Token* tp1=$1;Token* tp2=$2;Word* tpp2=new Word((const Word&)(*tp2)); Id *id=new Id(tpp2,(Type*)tp1,Id::POS); Id::POS+=4; env.put(tp2,id);}
+condition : type-specifier-seq declarator '=' assignment-expression	{Token* tp1=$1;
+									Token* tp2=$2;
+									//构建Id begin
+									Id *id=new Id();
+									id->id=(Word*)tp2;
+									id->p=(Type*)tp1;
+									id->pos=Id::POS;
+									//构建Id end
+									Id::POS+=4;
+									env.put(*(Word*)tp2,id);}
 type-specifier-seq : type-specifier	{$$=$1;}
 type-specifier-seq : type-specifier type-specifier-seq	{$2.next=$1;$$=$2;}
 type-specifier : 'simple-type-specifier'	{Type* type=new Type($1,Tag::BASIC,4);$$=type;}

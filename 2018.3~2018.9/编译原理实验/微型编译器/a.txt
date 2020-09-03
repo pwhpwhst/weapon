@@ -1,0 +1,35 @@
+ele_begin : condition	{$$=$1;}
+assignment-expression : 'number'	{Integer* num=new Integer(atoi(($1).c_str()));$$=num;}
+declarator : 'identifier'	{Word* w=new Word($1,Tag::ID);$$=w;}
+condition : type-specifier-seq declarator '=' assignment-expression	{Token* tp1=$1;Token* tp2=$2;Word* tpp2=new Word((const Word&)(*tp2));Id *id=new Id(tpp2,(Type*)tp1,Id::POS);Id::POS+=4;env.put(tp2,id);}
+type-specifier-seq : type-specifier	{$$=$1;}
+type-specifier-seq : type-specifier type-specifier-seq	{$2.next=$1;$$=$2;}
+type-specifier : 'simple-type-specifier'	{Type* type=new Type($1,Tag::BASIC,4);$$=type;}
+打印语法树:
+condition                                                                  
+|                                                                          
+---------------------------------------------------                        
+|                          |               |      |                        
+type-specifier-seq         declarator      '='    assignment-expression    
+|                          |                      |                        
+-                          -                      -                        
+|                          |                      |                        
+type-specifier             'identifier'           'number'                 
+|                                                                          
+-                                                                          
+|                                                                          
+'simple-type-specifier'                                                    
+生成中间代码:
+carry out Condition_0_SDT_genertor
+carry out Type_specifier_seq_0_SDT_genertor
+carry out Type_specifier_0_SDT_genertor
+创建Token0x4c8b10
+carry out Type_specifier_seq_0_SDT_genertor
+carry out Condition_0_SDT_genertor
+carry out Declarator_0_SDT_genertor
+创建Token0x5bfe18
+carry out Condition_0_SDT_genertor
+创建Token0x5bfe40
+销毁Token0x5bfe40
+销毁Token0x4c8b10
+销毁Token0x5bfe18

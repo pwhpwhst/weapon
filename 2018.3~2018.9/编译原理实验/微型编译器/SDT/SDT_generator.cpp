@@ -101,10 +101,12 @@ class Condition_0_SDT_genertor:public SDT_genertor{
 				return P_NodeValue(new NodeValue(nodeValue->node->child_node_list[1],NodeValue::SYN));
 			}
 			Token* tp2=result_map[declarator_syn];
-			Word* tpp2=new Word((const Word&)(*tp2));
-			Id *id=new Id(tpp2,(Type*)tp1,Id::POS);
+			Id *id=new Id();
+			id->id=(Word*)tp2;
+			id->p=(Type*)tp1;
+			id->pos=Id::POS;
 			Id::POS+=4;
-			env.put(tp2,id);
+			env.put(*(Word*)tp2,id);
 		return nullptr;
 	}
 	public: ~Condition_0_SDT_genertor(){}

@@ -7,4 +7,5 @@ public: const static int NUM;
 public: const static int INDEX;
 public: const static int ID;
 public: const static int INT_SIZE;
+public: const static int TYPE;
 };

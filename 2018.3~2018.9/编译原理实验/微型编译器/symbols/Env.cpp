@@ -12,16 +12,18 @@ Env::Env(){
 	prev=nullptr;
 }
 
-void Env::put(Token *w,Id *i){
-	table[P_Token(w)]=P_Id(i);
+void Env::put(const Word& w,Id *i){
+	table[w]=P_Id(i);
 }
 
-P_Id Env::get(Token *w){
+P_Id Env::get(const Word& w){
 	Env* ptr=this;
+
 	while(ptr!=nullptr){
-		P_Token p=P_Token(w);
-		if(ptr->table.find(p)!=ptr->table.end()){
-			return ptr->table[p];
+		if(ptr->table.find(w)!=ptr->table.end()){
+			return ptr->table[w];
+		}else{
+			ptr=prev;
 		}
 	}
 	return nullptr;

@@ -17,3 +17,13 @@ Word::Word(const Word& word):Token(word.tag){
 
 Word::~Word(){
 }
+
+bool operator==(const Word& lh,const Word& rh){
+	if(lh.tag!=rh.tag){
+		return false;
+	}
+	if(lh.lexme!=rh.lexme){
+		return false;
+	}
+	return true;
+}

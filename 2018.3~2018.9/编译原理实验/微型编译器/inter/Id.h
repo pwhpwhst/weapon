@@ -18,8 +18,6 @@ public: int pos;
 //Ä¬ÈÏ¹¹ÔìÆ÷
 public: Id();
 
-public: Id(Word* id,Type* p,int pos);
-
 public: virtual ~Id();
 
 };

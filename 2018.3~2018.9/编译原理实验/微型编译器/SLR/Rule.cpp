@@ -16,7 +16,7 @@ split(string_list,rule_str,is_any_of(":"));
 rule_name= trim_right_copy(string_list[0]);
 
 int begin=rule_str.find_first_of(':')+1;
-int end=rule_str.find_last_of('{');
+int end=rule_str.find_first_of('{');
 if(end==-1){
 	end=rule_str.size();
 }
