@@ -16,7 +16,7 @@ using namespace boost;
 
 
 
-int Slr::slr(string rule_file,string compile_file,Env env){
+int Slr::slr(string rule_file,string compile_file,Env& env){
 //≥ı ºªØ
 string start_symbol="ele_begin";
 
@@ -153,7 +153,6 @@ for(const auto &e:total_lex_word_list){
 		lex_word_list.clear();
 	}
 }
-
 }
 
 

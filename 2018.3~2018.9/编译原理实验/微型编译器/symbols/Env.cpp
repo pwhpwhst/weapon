@@ -1,4 +1,5 @@
 #include "Env.h"
+#include<iostream>
 using namespace std;
 
 
@@ -13,10 +14,10 @@ Env::Env(){
 }
 
 void Env::put(const Word& w,Id *i){
-	table[w]=P_Id(i);
+	table[w]=i;
 }
 
-P_Id Env::get(const Word& w){
+Id* Env::get(const Word& w){
 	Env* ptr=this;
 
 	while(ptr!=nullptr){
@@ -32,6 +33,10 @@ P_Id Env::get(const Word& w){
 
 
 Env::~Env(){
+
+	for(auto &entity:table){
+		delete entity.second;
+	}
 	prev=nullptr;
 }
 

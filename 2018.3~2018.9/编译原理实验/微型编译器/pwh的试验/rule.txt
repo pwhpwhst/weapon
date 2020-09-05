@@ -1,6 +1,6 @@
 ele_begin : condition	{$$=$1;}
 assignment-expression : 'number'	{Integer* num=new Integer(atoi(($1).c_str()));$$=num;}
-declarator : 'identifier'	{Word* w=new Word($1,Tag::ID);$$=w;}
+declarator : 'identifier'	{Word* w=new Word($1,Tag::TYPE);$$=w;}
 condition : type-specifier-seq declarator '=' assignment-expression	{Token* tp1=$1;
 									Token* tp2=$2;
 									//¹¹½¨Id begin

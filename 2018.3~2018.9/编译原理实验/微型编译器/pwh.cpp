@@ -43,13 +43,22 @@ Env env;
 
 
 //预先设定类型
+/**
 Word w(Type::INT,Tag::TYPE);
 Id *id=new Id();
 id->id=(Word*)new Word(Type::INT,Tag::TYPE);
 id->p=new Type(Type::INT,Tag::BASIC,4);
 id->pos=0;
 env.put(w,id);
-cout<<env.get(w)->id->lexme;
-//Slr slr;
-//slr.slr( rule_file, compile_file,env);
+Word w2(Type::INT,Tag::TYPE);
+
+cout<<env.get(w2)->id->lexme;
+*/
+
+Slr slr;
+slr.slr( rule_file, compile_file,env);
+Word w(Type::INT,Tag::TYPE);
+cout<<env.get(w)<<endl;
+cout<<env.get(w)->id->lexme<<endl;
+cout<<"dsad"<<endl;
 }

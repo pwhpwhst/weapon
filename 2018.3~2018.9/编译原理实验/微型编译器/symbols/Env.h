@@ -21,7 +21,7 @@ public: static int POS;
 
 
 
-private: unordered_map<Word,P_Id,hash_name_word> table;
+private: unordered_map<Word,Id*,hash_name_word> table;
 protected: Env *prev;
 
 public: Env();
@@ -31,7 +31,7 @@ public: Env(Env *env);
 
 public: void put(const Word& w,Id* i);
 
-public: P_Id get(const Word& w);
+public: Id* get(const Word& w);
 
 public: virtual ~Env();
 };

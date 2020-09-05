@@ -55,7 +55,7 @@ private: bool detect_ambigulous( vector<unordered_map<string,string>> &forecast_
 
 private: void gen_middle_code(Env &env,Node* &node_tree);
 
-public: int slr(string rule_file,string compile_file,Env env);
+public: int slr(string rule_file,string compile_file,Env &env);
 
 private: int startsWith(string s, string sub);
 

@@ -48,3 +48,5 @@ int main(){
 	cout<<"fsdfsa"<<endl;
 	cout<<map[pwh1].value<<endl;
 }
+
+

@@ -77,7 +77,7 @@ class Declarator_0_SDT_genertor:public SDT_genertor{
 	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){
 		cout<<"carry out Declarator_0_SDT_genertor"<<endl;
 		string basic_0_content=nodeValue->node->child_node_list[0]->content;
-			Word* w=new Word(basic_0_content,Tag::ID);
+			Word* w=new Word(basic_0_content,Tag::TYPE);
 		string declarator_syn=own(nodeValue,NodeValue::SYN);
 		if(has_calculate_set.count(declarator_syn)==0){
 			result_map[declarator_syn]=w;
