@@ -1,0 +1,18 @@
+九月 09, 2020 3:15:37 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on THIS IS A PARSE ERROR,2015-11-19 09:53:53.444, 2
+九月 09, 2020 3:15:36 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on THIS IS A PARSE ERROR,2015-11-19 09:53:53.444, 2
+九月 09, 2020 3:15:36 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on user6_AliceBlueDingo,AliceBlueDingo,4,xxxxxxx,2015-11-19 09:53:53.444, For input string: "xxxxxxx"
+九月 09, 2020 3:15:35 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on THIS IS A PARSE ERROR,2015-11-19 09:53:53.444, 2
+九月 09, 2020 3:15:37 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on user6_AliceBlueDingo,AliceBlueDingo,4,xxxxxxx,2015-11-19 09:53:53.444, For input string: "xxxxxxx"
+九月 09, 2020 3:15:36 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on user6_AliceBlueDingo,AliceBlueDingo,4,xxxxxxx,2015-11-19 09:53:53.444, For input string: "xxxxxxx"
+九月 09, 2020 3:15:36 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on user6_AliceBlueDingo,AliceBlueDingo,4,xxxxxxx,2015-11-19 09:53:53.444, For input string: "xxxxxxx"
+九月 09, 2020 3:15:36 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on THIS IS A PARSE ERROR,2015-11-19 09:53:53.444, 2
+九月 09, 2020 3:15:38 上午 org.apache.beam.examples.complete.game.UserScore$ParseEventFn processElement
+信息: Parse error on user13_BisqueBilby,BisqueBilby,xxx,1447955630000,2015-11-19 09:53:53.444, For input string: "xxx"

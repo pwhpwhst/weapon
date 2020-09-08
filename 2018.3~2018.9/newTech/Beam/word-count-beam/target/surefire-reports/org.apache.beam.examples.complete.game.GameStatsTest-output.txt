@@ -1,0 +1,4 @@
+九月 09, 2020 3:15:38 上午 org.apache.beam.examples.complete.game.GameStats$CalculateSpammyUsers$1 processElement
+信息: user Robot-2 spammer score 66 with mean 24.923076923076923
+九月 09, 2020 3:15:38 上午 org.apache.beam.examples.complete.game.GameStats$CalculateSpammyUsers$1 processElement
+信息: user Robot-1 spammer score 116 with mean 24.923076923076923
