@@ -1,0 +1,12 @@
+C:
+cd C:\Users\Administrator\Desktop\mvn
+mvn clean package
+
+
+
+
+cd C:\Users\Administrator\Desktop\mvn\target
+java -jar beamTest-1.0-SNAPSHOT.jar
+
+
+Exception in thread "main" java.lang.SecurityException: Invalid signature file digest for Manifest main attributes
