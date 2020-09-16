@@ -5,6 +5,8 @@ import org.apache.beam.sdk.io.TextIO;
 import org.apache.beam.sdk.options.PipelineOptions;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.values.PCollection;
+import java.io.IOException;
+
 
 import org.apache.beam.sdk.testing.TestPipeline;
 import org.apache.beam.sdk.extensions.gcp.options.GcsOptions;
@@ -15,59 +17,32 @@ import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
 import org.apache.beam.vendor.guava.v26_0_jre.com.google.common.collect.ImmutableList;
-import java.io.IOException;
 
-import org.apache.beam.sdk.options.PipelineOptionsFactory;
 
 
 
 class BeamTest{
+
 	public static void main(String args[]) throws IOException {
-		BeamTest beamTest=new BeamTest();
-		beamTest.test();
-	}
 
-	public void test() throws IOException {
-//To create a pipeline, declare a Pipeline object, and pass it some configuration options.
+		
+		//Creating Your Pipeline Object
+		PipelineOptions options = PipelineOptionsFactory.create();
+		Pipeline p = Pipeline.create(options);
 
+		 p.apply(
+		  "ReadMyFile", TextIO.read().from("C:\\Users\\Administrator\\Desktop\\Beam2\\input.txt"))
+			.apply("WriteMyFile", TextIO.write().to("C:\\Users\\Administrator\\Desktop\\Beam2\\output.txt"));
 
-    PipelineOptions options = PipelineOptionsFactory.create();
-    Pipeline p = Pipeline.create(options);
-    PCollection<String> lines = p.apply(
-      "ReadMyFile", TextIO.read().from("gs://apache-beam-samples/shakespeare/*"));
-
-
-/**
-TestPipeline p = TestPipeline.create().enableAbandonedNodeEnforcement(false);
-p.getOptions().as(GcsOptions.class).setGcsUtil(buildMockGcsUtil());
-
-
-    PCollection<String> lines = p.apply(
-      "ReadMyFile", TextIO.read().from("gs://apache-beam-samples/shakespeare/*"));
-*/
-
+			p.run().waitUntilFinish();
 
 		System.out.println("afsadfg");	
 	}
 
 
-	  private  GcsUtil buildMockGcsUtil() throws IOException {
-    GcsUtil mockGcsUtil = Mockito.mock(GcsUtil.class);
-
-    // Any request to open gets a new bogus channel
-    Mockito.when(mockGcsUtil.open(Mockito.any(GcsPath.class)))
-        .then(
-            invocation ->
-                FileChannel.open(
-                    Files.createTempFile("channel-", ".tmp"),
-                    StandardOpenOption.CREATE,
-                    StandardOpenOption.DELETE_ON_CLOSE));
-
-    // Any request for expansion returns a list containing the original GcsPath
-    // This is required to pass validation that occurs in TextIO during apply()
-    Mockito.when(mockGcsUtil.expand(Mockito.any(GcsPath.class)))
-        .then(invocation -> ImmutableList.of((GcsPath) invocation.getArguments()[0]));
-
-    return mockGcsUtil;
-  }
 }
+
+
+16000*16/10000=26
+
+67500
