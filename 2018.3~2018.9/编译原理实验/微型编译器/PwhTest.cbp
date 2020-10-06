@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="PwhTest" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Script file="lib_finder.script" />
+			<Target title="Debug">
+				<Option output="bin/Debug/pwh" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<LinkerExe value="CppCompiler" />
+				</Linker>
+			</Target>
+			<Target title="Release">
+				<Option output="bin/Release/PwhTest" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="-std=c++11" />
+		</Compiler>
+		<Unit filename="SDT/SDT_generator.cpp" />
+		<Unit filename="SDT/SDT_generator.h" />
+		<Unit filename="SLR/Item.cpp" />
+		<Unit filename="SLR/Item.h" />
+		<Unit filename="SLR/Lex_Word.cpp" />
+		<Unit filename="SLR/Lex_Word.h" />
+		<Unit filename="SLR/Node.cpp" />
+		<Unit filename="SLR/Node.h" />
+		<Unit filename="SLR/Rule.cpp" />
+		<Unit filename="SLR/Rule.h" />
+		<Unit filename="SLR/lex.yy.h" />
+		<Unit filename="pwh.cpp" />
+		<Unit filename="pwh的试验/rule.txt" />
+		<Unit filename="pwh的试验/test.txt" />
+		<Unit filename="rule.txt" />
+		<Unit filename="slr.cpp" />
+		<Unit filename="slr.h" />
+		<Unit filename="symbols/Env.cpp" />
+		<Unit filename="symbols/Env.h" />
+		<Unit filename="symbols/SmbolInfo.cpp" />
+		<Unit filename="symbols/SmbolInfo.h" />
+		<Unit filename="symbols/Tag.cpp" />
+		<Unit filename="symbols/Tag.h" />
+		<Unit filename="symbols/Token.cpp" />
+		<Unit filename="symbols/Token.h" />
+		<Unit filename="test.txt" />
+		<Unit filename="新建文本文档.txt" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

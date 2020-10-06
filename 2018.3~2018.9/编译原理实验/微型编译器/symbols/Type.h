@@ -1,14 +1,18 @@
 #pragma once
-#include "../lexer/Word.h"
-class Type:public Word{
+#include <memory>
+#include "Token.h"
+using namespace std;
 
-public: const static string INT;
 
-public: int width=0;
+class Type:public Token{
 
-public: Type(const string &s,int tag,int w);
+//Ä¬ÈÏ¹¹ÔìÆ÷
+public: Type();
+
+public: Type(string type);
 
 public: virtual ~Type();
+
+public: virtual Token* clone();
 };
 
-typedef std::shared_ptr<Word> P_Type;

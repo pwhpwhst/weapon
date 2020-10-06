@@ -43,3 +43,6 @@ void word_parser(const string& path,vector<P_Lex_Word> &lex_word_list){
 	free(beg);
 	free(end);
 }
+
+
+//void c_word_parser(char *c_path, struct C_Lex_Word **beg, struct C_Lex_Word **end){}

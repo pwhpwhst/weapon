@@ -3,9 +3,8 @@
 #include<set>
 #include<sstream>
 #include"../symbols/Env.h"
+#include"../symbols/Token.h"
 #include"../SLR/Node.h"
-#include"../lexer/Token.h"
-#include"../lexer/Word.h"
 
 class NodeValue{
 	public: static const int SYN=0;
@@ -28,6 +27,7 @@ public: virtual ~SDT_genertor();
 protected: string child(const P_NodeValue &nodeValue,int index,int value_type);
 protected: string own(const P_NodeValue &nodeValue,int value_type);
 protected: ostringstream os;
+
 };
 
 typedef std::shared_ptr<SDT_genertor> P_SDT_genertor;

@@ -1,0 +1,11 @@
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\代码武器库（C++版）\正则表达式
+g++ -std=c++11 -c regex.cpp
+g++ -o regex regex.o
+
+
+regex.exe
+
+
+
+

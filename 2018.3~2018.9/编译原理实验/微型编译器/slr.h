@@ -16,10 +16,7 @@
 #include"SLR\Node.h"
 #include"SLR\Lex_Word.h"
 #include"symbols\Env.h"
-#include"symbols\Array.h"
-#include"inter\Id.h"
 #include"SDT\SDT_generator.h"
-#include"lexer\Tag.h"
 
 
 
@@ -59,11 +56,15 @@ public: int slr(string rule_file,string compile_file,Env &env);
 
 private: int startsWith(string s, string sub);
 
+private: int endsWith(string s, string sub);
+
 public: Slr();
 
+private: void paresOrders(const string& rule_file,vector<string>& orders,unordered_map<string,string> &temp_forecast_map);
 
 public: virtual ~Slr();
 
+private: void log(const string& s);
 
 };
 

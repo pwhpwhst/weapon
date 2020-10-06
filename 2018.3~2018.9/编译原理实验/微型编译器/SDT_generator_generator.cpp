@@ -8,7 +8,7 @@
 #include <unordered_map>
 #include<boost/algorithm/string.hpp>
 #include<regex>
-#include"SLR\Rule.h"
+//#include"SLR\Rule.h"
 
 using namespace std;
 using namespace boost;
@@ -17,17 +17,208 @@ const string project_index="SDT\\SDT_generator.cpp";
 //const string rule_file="F:\\codeWeaponStore\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
 const string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\pwh的试验\\rule.txt";
 
-void get_symbol_para(const string& str,set<string> &result);
-int startsWith(string s, string sub);
-int endsWith(string s,string sub);
-void lower_first_char(string &word);
-string gen_attribute_name(const string &e1,const Rule &rule,unordered_map<string,set<string>> &map1,unordered_map<string,int> &map2,unordered_map<string,int> &map3);
-string gen_attribute_fun(const string &e1,const Rule &rule);
+
+int startsWith(string s, string sub){
+	if(sub.length()>s.length()){
+		return 0;
+	}
+        return s.find(sub)==0?1:0;
+}
+
+int endsWith(string s,string sub){
+	if(sub.length()>s.length()){
+		return 0;
+	}
+        return s.rfind(sub)==(s.length()-sub.length())?1:0;
+}
+
+string replaceAll(string str,string sub,string replacement){
+    int pos;
+    pos = str.find(sub);
+    while(pos != -1){
+        // str.length()求字符的长度，注意str必须是string类型
+        str.replace(pos,string(sub).length(),replacement);
+        pos = str.find(sub);
+    }
+
+    return str;
+}
+
+string upperFirst(string str){
+	str[0]=str[0]-32;
+	return str;
+}
+
 int main(){
+/*
+1-匹配ruleStr中
+2-匹配ruleStr结束，匹配代码段中
+3-匹配代码段
+4-注释中
+5-异常
+6-完成匹配，准备下一次匹配
+*/
+
+/*
+==
+//
+/*
+*/
+
+/* 
+无 翻译体
+0-9a-zA-Z;
+....{
+}
+*/
+
+
 
 	ifstream input_file;
 	input_file.open(rule_file.data());
-	
+	string rule_str;
+	ostringstream os;
+//	os.str("");
+	int status=6;
+	int bracketsCount=0;
+// 构造ordered_map begin
+	vector <string> string_list;
+
+
+	string left;
+	string right;
+	vector<string> orders;
+	unordered_map<string,string> order_map;
+	while(getline(input_file,rule_str)){
+		if(rule_str[0]=='='){
+			break;
+		}
+		rule_str=trim_left_copy(trim_right_copy(rule_str));
+
+
+		if(status==6){
+			if(startsWith(rule_str,"//")==1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")==1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")!=1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")!=1&&endsWith(rule_str,"*/")==1){
+				status=5;break;
+			}
+
+			string_list.clear();
+			split(string_list,rule_str,is_any_of("{"));
+
+			int _status=0;
+			string rule_str1="";
+			string rule_str2="";
+			for(int i1=0;i1<string_list.size();i1++){
+				string e=string_list[i1];
+				if(_status==0){
+					if(endsWith(e," ")!=1&&endsWith(e,"\t")!=1){
+						rule_str1+=e;
+						if(i1!=(string_list.size()-1)){
+							rule_str1+="{";
+						}
+					}else{
+						rule_str1+=e;
+						rule_str1= trim_right_copy(rule_str1);
+						_status=1;
+					}
+				}else if(_status==1){
+					rule_str2+="{";
+					rule_str2+=trim_left_copy(trim_right_copy(e));
+				}
+			}
+			left=rule_str1;
+			orders.push_back(left);
+			//cout<<"left="<<rule_str1<<endl;
+			rule_str2= trim_right_copy(rule_str2);
+			rule_str2= trim_left_copy(rule_str2);
+
+
+
+			if(rule_str2!=""){
+				os.str("");
+				for(int i1=0;i1<rule_str2.length();i1++){
+					os<<rule_str2[i1];
+					if(rule_str2[i1]=='{'){
+						bracketsCount++;
+					}else if(rule_str2[i1]=='}'){
+						bracketsCount--;
+					}
+				}
+				if(bracketsCount==0){
+					status=6;
+					right=os.str();
+					order_map[left]=right;
+					left="";
+					right="";
+					//cout<<"right="<<os.str()<<endl;
+					os.str("");
+				}else{
+					status=3;
+				}
+			}else{
+				status=6;
+				left="";
+				right="";
+			}
+
+
+
+		}else if(status==3){
+			if(startsWith(rule_str,"//")==1){
+				continue;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")==1){
+				continue;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")!=1){
+				status=4;continue;
+			}else if(startsWith(rule_str,"/*")!=1&&endsWith(rule_str,"*/")==1){
+				status=5;break;
+			}
+			
+
+			if(rule_str!=""){
+				for(int i1=0;i1<rule_str.length();i1++){
+					os<<rule_str[i1];
+					if(rule_str[i1]=='{'){
+						bracketsCount++;
+					}else if(rule_str[i1]=='}'){
+						bracketsCount--;
+					}
+				}
+				if(bracketsCount==0){
+					status=6;
+					right=os.str();
+					order_map[left]=right;
+					left="";
+					right="";
+					//cout<<"right="<<os.str()<<endl;
+					os.str("");
+				}else{
+					status=3;
+				}
+			}
+
+		}else if(status==4){
+			if(startsWith(rule_str,"//")==1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")==1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")!=1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")!=1&&endsWith(rule_str,"*/")==1){
+				status=3;continue;
+			}
+		}
+	}
+
+// 构造ordered_map end
+
+//构建文件头开始
+
 	ofstream fs;
 	fs.open(project_index.c_str());
 	if (!fs){
@@ -36,10 +227,9 @@ int main(){
 	fs<<"#include<iostream>"<<endl;
 	fs<<"#include<sstream>"<<endl;
 	fs<<"#include\"SDT_generator.h\""<<endl;
-	fs<<"#include\"..\\symbols\\Type.h\""<<endl;
-	fs<<"#include\"..\\symbols\\Array.h\""<<endl;
 	fs<<"#include\"..\\symbols\\Env.h\""<<endl;
-	fs<<"#include\"..\\lexer\\Tag.h\""<<endl;
+	fs<<"#include\"..\\symbols\\Tag.h\""<<endl;
+	fs<<"#include\"..\\symbols\\Token.h\""<<endl;
 	fs<<"using namespace std;"<<endl;
 	fs<<"NodeValue::NodeValue(){}"<<endl;
 	fs<<"NodeValue::NodeValue(Node *node,int value_type){"<<endl;
@@ -75,516 +265,271 @@ int main(){
 	fs<<"}"<<endl;
 	fs<<"public: ~Default_SDT_genertor(){}"<<endl;
 	fs<<"};"<<endl<<endl;
-
-//读取 rule.txt begin
-	vector<vector<string>> symbol_list;
-	string rule_str;
-	ostringstream sb;
-	unordered_map<string,int> symbol_static_map;
-	while(getline(input_file,rule_str)){
-
-		if(rule_str[0]=='='){
-			break;
-		}
-		rule_str= trim_right_copy(rule_str);
-		rule_str= trim_left_copy(rule_str);
-
-		if(startsWith(rule_str,"//")==1||startsWith(rule_str,"/*")==1){
-			continue;
-		}
-
-		sb<<rule_str;
-		if(rule_str[rule_str.length()-1]!=';'){
-			rule_str=sb.str();
-			sb.str("");
-			vector <string> string_list;
-			split(string_list,rule_str,is_any_of(":"));
-			string rule_name= trim_right_copy(string_list[0]);
-			if(rule_name[0]>='a'&&rule_name[0]<='z'){
-				rule_name[0]=rule_name[0]-32;
-			}
-			for(int i1=0;i1<rule_name.length();i1++){
-				if(rule_name[i1]=='-'){
-					rule_name[i1]='_';
-				}
-			}
-			if(symbol_static_map.find(rule_name)==symbol_static_map.end()){
-				symbol_static_map[rule_name]=0;
-			}
-			string class_name=rule_name+"_"+to_string(symbol_static_map[rule_name])+"_SDT_genertor";
-			symbol_static_map[rule_name]=symbol_static_map[rule_name]+1;
-
-			int begin=0;
-			int end=rule_str.find_last_of('{');
-			if(end==-1){
-				end=rule_str.size();
-			}
-			int length=end-begin;
-			string rule_string=rule_str.substr(begin,length);
-			rule_string=trim_right_copy(trim_left_copy(rule_string));
-			string rule_string2=rule_string;
-			for(int i1=0;i1<rule_string.length();i1++){
-				if(rule_string[i1]=='-'){
-					rule_string[i1]='_';
-				}
-			}
+//构建文件头结束
 
 
-			begin=rule_str.find_last_of('{');
-			end=rule_str.find_last_of('}');
-			length=end-begin+1;
-			string action_string=rule_str.substr(begin,length);
+unordered_map<string,int> class_count_map;
+unordered_map<string,string> rule_class_map;
+regex partten("(\\$(\\$|\\d+)(?!\\.next))|(\\$(\\$|\\d+)\\.next)");
+regex numPartten("\\d+");
+regex declarePartten("Declare\\s+\\$\\d+\\s*;");
+for(const auto &e:order_map){
+
+	//获取rule的首项 的 className 和 sclassName
+	string_list.clear();
+	split(string_list,e.first,is_any_of(":"));
+	string str=trim_right_copy(trim_left_copy(string_list[0]));
+	string className=upperFirst(replaceAll(str,"-","_"));
+	string sclassName=replaceAll(str,"-","_");
 
 
-			vector<string> temp;
-			temp.push_back(rule_string);
-			temp.push_back(class_name);
-			temp.push_back(action_string);
-			temp.push_back(rule_string2);
-			symbol_list.push_back(temp);
-		}
-
-
-
-
+	if(class_count_map.find(className)==class_count_map.end()){
+		class_count_map[className]=0;
 	}
-	input_file.close();
+	int count=class_count_map[className];
+	class_count_map[className]=class_count_map[className]+1;
+	rule_class_map[e.first]=className+"_"+to_string(count);
+
+	vector<string> childNameList;
+	str=trim_right_copy(trim_left_copy(string_list[1]));
+	string_list.clear();
+	split(string_list,str,is_any_of(" "));
+	for(const auto& e1:string_list){
+		childNameList.push_back(e1);
+	}
 
 
-//读取 rule.txt end
 
 
-	vector<string> string_list;
-	vector<string> string_list2;
+	//拆解命令
+	vector<string> orders;
+	os.str("");
+	for(const auto &e1:e.second){
+		if(e1!=';'&&e1!='}'&&e1!='{'){
+			os<<e1;
+		}else{
+			os<<e1;
+			orders.push_back(os.str());
+			os.str("");
+		}
+	}
+
+
+	//析出参数
 	set<string> symbol_set;
-	set<string> node_all_symbol_set;
-	unordered_map<string,set<string>> map1;
-	unordered_map<string,int> map2;
-	unordered_map<string,int> map3;
-	unordered_map<string,bool> map4;
-	for(const auto &e:symbol_list){
-		Rule rule(e[0]);
-		node_all_symbol_set.clear();
-		map1.clear();
-		map2.clear();
-		map3.clear();
-		map4.clear();
-		fs<<"class "<<e[1]<<":public SDT_genertor{"<<endl;
-		fs<<"\tpublic: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){"<<endl;
-		fs<<"\t\tcout<<\"carry out "<<e[1]<<"\"<<endl;"<<endl;	//打印执行过程
 
-		string cmd_strs=e[2];
-		cmd_strs=cmd_strs.replace(cmd_strs.find("{"),1,"");
-		cmd_strs=cmd_strs.replace(cmd_strs.find("}"),1,"");
-		string_list.clear();
-		split(string_list,cmd_strs,is_any_of(";"));//string_list 此时保存着指令
-		
-		
+	for(const auto& e1:orders){
 
-		for(const auto &e2:string_list){
-			string e21=trim_right_copy(trim_left_copy(e2));
-
-			if(e21!=""){
-				cout<<e2<<":"<<endl;
-				string_list2.clear();
-				split(string_list2,e21,is_any_of("="));
-				symbol_set.clear();
-			string left_attribute_name="";
-			string left_para_name="";
-			unordered_map<string,string> map5;
-			if(e21.find("=")!=string::npos){
-					//声明左侧元素
-					get_symbol_para(string_list2[0],symbol_set);
-					
-						for(const auto &e1:symbol_set){
-							if(node_all_symbol_set.count(e1)==0){
-								string attribute_name=gen_attribute_name(e1,rule,map1,map2,map3);
-								left_attribute_name=attribute_name;
-								left_para_name=e1;
-								string attribute_fun=gen_attribute_fun(e1,rule);
-								fs<<"\t\tstring "<<attribute_name<<"="<<attribute_fun<<endl; //string c_inh=child(nodeValue,1,NodeValue::INH);
-							}
-							node_all_symbol_set.insert(e1);
-						}
-						cout<<"left:"<<endl;
-						for(const auto &e:symbol_set){
-							cout<<e<<",";
-						}
-						cout<<endl;
-					//声明右侧元素
-					symbol_set.clear();
-					get_symbol_para(string_list2[1],symbol_set);
-					
-					for(const auto &e1:symbol_set){
-
-						if(node_all_symbol_set.count(e1)==0){
-							bool is_terminate=false;
-							vector <string> string_list2;
-							if(startsWith(e1,"$$")==0){
-								string temp_s=e1.substr(1);
-								split(string_list2,temp_s,is_any_of("."));
-								string symbol=rule.symbols[atoi(string_list2[0].c_str())-1];
-								if(symbol[0]=='\''||symbol=="0"){
-									is_terminate=true;
-								}
-							}
-							map4[e1]=is_terminate;
-							
-							string attribute_name;
-							if(!is_terminate){
-								attribute_name=gen_attribute_name(e1,rule,map1,map2,map3);
-								string attribute_fun=gen_attribute_fun(e1,rule);
-								fs<<"\t\tstring "<<attribute_name<<"="<<attribute_fun<<endl;
-								map5[e1]="result_map["+attribute_name+"]";
-							}else{
-								attribute_name="basic_"+to_string(atoi(string_list2[0].c_str())-1)+"_content";
-								fs<<"\t\tstring "<<attribute_name<<"=nodeValue->node->child_node_list["<<to_string(atoi(string_list2[0].c_str())-1)<<"]->content;"<<endl;
-								map5[e1]=attribute_name;
-							}
-							
-
-						}
-						node_all_symbol_set.insert(e1);							
-						
-
-					}
-					cout<<"right:"<<endl;
-					for(const auto &e1:symbol_set){
-						cout<<e1<<",";
-					}
-					cout<<endl;
-
-			if(left_attribute_name!=""){
-				fs<<"\t\tif(has_calculate_set.count("<<left_attribute_name<<")==0){"<<endl;
-			}
+		std::regex_iterator<std::string::const_iterator> begin(e1.cbegin(), e1.cend(), partten);
+		for (auto iter = begin; iter != std::sregex_iterator(); iter++)
+		{
+			symbol_set.insert(iter->str());
 		}
-		
-		for(const auto &e1:symbol_set){
-			if(map4[e1]){
-				continue;
+	}
+
+
+	unordered_map<string,int> _classNameCountMap;
+	unordered_map<string,int> _indexCountMap;
+
+
+	fs<<"class "<<className<<"_"<<count<<"_SDT_genertor:public SDT_genertor{"<<endl;
+	fs<<"	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){"<<endl;
+	fs<<"		cout<<\"carry out "<<className<<"_"<<count<<"_SDT_genertor\"<<endl;"<<endl;
+
+
+	//参数定义部分
+	unordered_map<string,string> parameterMap;
+	for(const auto& e1:symbol_set){
+
+		fs<<"\t";
+		if(startsWith(e1,"$$")==1){
+
+			if(_classNameCountMap.find(sclassName)==_classNameCountMap.end()){
+				_classNameCountMap[sclassName]=0;
 			}
-			string attribute_name=gen_attribute_name(e1,rule,map1,map2,map3);
-			fs<<"\t\t\tif(has_calculate_set.count("<<attribute_name<<")==0){"<<endl;
-//			fs<<"\t\t\t\tcout<<\"lack\"<<"<<attribute_name<<"<<endl;"<<endl;	//打印
-			fs<<"\t\t\t\treturn P_NodeValue(new NodeValue(";
-			if(startsWith(e1,"$$")==1){
-				fs<<"nodeValue->node,";
-			}else{
-					vector <string> string_list2;
-					string temp_s=e1.substr(1);
-					split(string_list2,temp_s,is_any_of("."));
-					fs<<"nodeValue->node->child_node_list["<<to_string(atoi(string_list2[0].c_str())-1)<<"],";
+
+			if(_indexCountMap.find("$")==_indexCountMap.end()){
+				int num=_classNameCountMap[sclassName];
+				_indexCountMap["$"]=num;
+				_classNameCountMap[sclassName]=_classNameCountMap[sclassName]+1;
 			}
+
+			string symbol="";
+
 			if(endsWith(e1,"next")==1){
-				fs<<"NodeValue::INH));"<<endl;
+				symbol=sclassName;
+				if(_indexCountMap["$"]!=0){
+					symbol+="_"+to_string(_indexCountMap["$"]);
+				}
+				symbol+="_inh";
+				fs<<"string "<<symbol<<"=own(nodeValue,NodeValue::INH);"<<endl;
 			}else{
-				fs<<"NodeValue::SYN));"<<endl;
-			}
-			fs<<"\t\t\t}"<<endl;
-		}
-
-//具体内容
-
-		if(left_attribute_name!=""){
-			string_list2[0]=string_list2[0].replace(string_list2[0].find(left_para_name),left_para_name.size(),"result_map["+left_attribute_name+"]");
-		}
-
-		for(const auto &e:map5){
-			if(endsWith(e.first,"next")==1){
-				while(string_list2[1].find(e.first)!=string::npos){
-					string_list2[1]=string_list2[1].replace(string_list2[1].find(e.first),e.first.size(),e.second);
+				symbol=sclassName;
+				if(_indexCountMap["$"]!=0){
+					symbol+="_"+to_string(_indexCountMap["$"]);
 				}
+				symbol+="_syn";
+				fs<<"string "<<symbol<<"=own(nodeValue,NodeValue::SYN);"<<endl;
 			}
-		}
 
-		for(const auto &e:map5){
-			if(endsWith(e.first,"next")==0){
-				while(string_list2[1].find(e.first)!=string::npos){
-					string_list2[1]=string_list2[1].replace(string_list2[1].find(e.first),e.first.size(),e.second);
-				}
-			}
-		}
-		if(string_list2.size()==2){
-			fs<<"\t\t\t"<<string_list2[0]<<"="<<string_list2[1]<<";"<<endl;
+			parameterMap[e1]=symbol;
+			
 		}else{
-			fs<<"\t\t\t"<<string_list2[0]<<";"<<endl;
-		}
-		
-		
-		if(left_attribute_name!=""){
-			fs<<"\t\t\thas_calculate_set.insert("<<left_attribute_name<<");"<<endl;
-		}
 
-		if(left_attribute_name!=""){
-			fs<<"\t\t}"<<endl;
-		}
-
-
-	}
-			}
-		
-		fs<<"\t\treturn nullptr;"<<endl;
-		fs<<"\t}"<<endl;
-		fs<<"\tpublic: ~"<<e[1]<<"(){}"<<endl;
-		fs<<"};"<<endl<<endl;
-	}
-	//输出factory begin
-
-	fs<<"SDT_Factory SDT_Factory::instance;"<<endl;
-	fs<<"SDT_Factory::SDT_Factory(){"<<endl;
-	for(const auto &e:symbol_list){
-		fs<<"factory[\""<<e[3]<<"\"]=P_SDT_genertor(new "<<e[1]<<"());"<<endl;
-	}
-	fs<<"}"<<endl;
-	fs<<"SDT_Factory::~SDT_Factory(){}"<<endl;
-	//输出factory end
-
-	fs.close();
-
-	return 0;
-}
-
-
-void get_symbol_para(const string& str,set<string> &result){
-	ostringstream os;
-	int stat=0; //初始状态
-
-	for(const auto &e:str){
-		if(e=='$'){
-			if(stat==0){
-				stat=1;//$
-				os<<e;
-			}else if(stat==1){
-				stat=2;//$$
-				os<<e;
-			}else if(stat==2){
-
-			}else if(stat==3){
-				stat=1;//$
-				result.insert(os.str());
-				os.str("$");
-			}else if(stat==4||stat==5||stat==6||stat==7){
-				stat=0;
-				os.str("");
-			}
-		}else if(e>='0'&&e<='9'){
-
-			if(stat==0){
-
-			}else if(stat==1){
-				stat=3;//$1
-				os<<e;
-			}else if(stat==2){
-				stat=0;
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==3){
-				stat=3;
-				os<<e;
-			}else if(stat==4||stat==5||stat==6||stat==7){
-				stat=0;
-				os.str("");
-			}
-
-		}else if(e=='.'){
-
-			if(stat==0){
-
-			}else if(stat==1||stat==4||stat==5||stat==6||stat==7){
-				stat=0;
-				os.str("");
-			}else if(stat==2){
-				stat=4; //$$.
-				os<<e;
-			}else if(stat==3){
-				stat=4; //$1.
-				os<<e;
-			}
-
-		}else if(e=='n'){
-			if(stat==0){
-
-			}else if(stat==1||stat==5||stat==6||stat==7){
-				stat=0;
-				os.str("");
-			}else if(stat==2){
-				stat=0; //$$.
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==3){
-				stat=0; //$$.
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==4){
-				stat=5; //$1.n
-				os<<e;
-			}
-
-		}
-		else if(e=='e'){
-			if(stat==0){
-
-			}else if(stat==1||stat==6||stat==7){
-				stat=0;
-				os.str("");
-			}else if(stat==2){
-				stat=0; 
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==3){
-				stat=0;
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==5){
-				stat=6; //$1.ne
-				os<<e;
-			}
-		}
-		else if(e=='x'){
-			if(stat==0){
-
-			}else if(stat==1||stat==4||stat==5||stat==7){
-				stat=0;
-				os.str("");
-			}else if(stat==2){
-				stat=0; 
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==3){
-				stat=0;
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==6){
-				stat=7;
-				os<<e;
-			}
-		}
-		else if(e=='t'){
-			if(stat==0){
-
-			}else if(stat==1||stat==4||stat==5||stat==6){
-				stat=0;
-				os.str("");
-			}else if(stat==2){
-				stat=0; 
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==3){
-				stat=0;
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==7){
-				stat=0;
-				os<<e;
-				result.insert(os.str());
-				os.str("");
-			}
-		}else{
-			if(stat==0){
-
-			}else if(stat==1||stat==4||stat==5||stat==6||stat==7){
-				stat=0;
-				os.str("");
-			}else if(stat==2){
-				stat=0; 
-				result.insert(os.str());
-				os.str("");
-			}else if(stat==3){
-				stat=0;
-				result.insert(os.str());
-				os.str("");
-			}		
-		}
-	}
-	if(stat==2||stat==3){
-		result.insert(os.str());
-	}
-}
-
-
-int startsWith(string s, string sub){
-        return s.find(sub)==0?1:0;
-}
-
-int endsWith(string s,string sub){
-        return s.rfind(sub)==(s.length()-sub.length())?1:0;
-}
-
-void lower_first_char(string &word){
-	if(word.size()>0&&word[0]>='A'&&word[0]<='Z'){
-		word[0]+=32;
-	}
-}
-
-
-string gen_attribute_name(const string &e1,const Rule &rule,unordered_map<string,set<string>> &map1,unordered_map<string,int> &map2,unordered_map<string,int> &map3){
-		string attribute_name="";
-		string param_name;
-		if(startsWith(e1,"$$")==1){
-			attribute_name=rule.rule_name;
-			lower_first_char(attribute_name);
-			param_name="$$";
-		}else{
-			vector <string> string_list;
-			string temp_s=e1.substr(1);
-			split(string_list,temp_s,is_any_of("."));
-			param_name="$"+string_list[0];
-			attribute_name=rule.symbols[atoi(string_list[0].c_str())-1];
-			lower_first_char(attribute_name);
-		}
-
-		if(map3.find(param_name)!=map3.end()){
-			if(map3[param_name]==0){
-				attribute_name+="_";
+			std::regex_iterator<std::string::const_iterator> numBegin(e1.cbegin(), e1.cend(), numPartten);
+			string symbol="";
+			if(childNameList[atoi(numBegin->str().c_str())-1][0]=='\''){
+				symbol="basic_"+to_string(atoi(numBegin->str().c_str())-1)+"_content";
+				fs<<"string "<<symbol<<"=nodeValue->node->child_node_list["<<to_string(atoi(numBegin->str().c_str())-1)<<"]->content;"<<endl;
 			}else{
-				attribute_name+="_";
-				attribute_name+=to_string(map3[param_name]);
-				attribute_name+="_";
-			}
-		}else{
-			if(map1.find(attribute_name)==map1.end()||map1.find(attribute_name)!=map1.end()&&map1[attribute_name].count(param_name)==0){
-				if(map2.find(attribute_name)==map2.end()){
-					map2[attribute_name]=0;
-				}
-				int num=map2[attribute_name];
-				map3[param_name]=num;
-				map2[attribute_name]=map2[attribute_name]+1;
-				map1[attribute_name].insert(param_name);
+				string _className=replaceAll(childNameList[atoi(numBegin->str().c_str())-1],"-","_");
 
-				if(num==0){
-					attribute_name+="_";
+				if(_classNameCountMap.find(_className)==_classNameCountMap.end()){
+					_classNameCountMap[_className]=0;
+				}
+
+				if(_indexCountMap.find(numBegin->str())==_indexCountMap.end()){
+					int num=_classNameCountMap[_className];
+					_indexCountMap[numBegin->str()]=num;
+					cout<<_className<<":"<<num<<":"<<numBegin->str()<<endl;
+					_classNameCountMap[_className]=_classNameCountMap[_className]+1;
+				}
+
+
+				if(endsWith(e1,"next")==1){
+
+					symbol=_className;
+					cout<<"dasd:"<<_indexCountMap[numBegin->str()]<<endl;
+					if(_indexCountMap[numBegin->str()]!=0){
+						symbol+="_"+to_string(_indexCountMap[numBegin->str()]);
+					}
+					symbol+="_inh";
+					fs<<"string "<<symbol<<"=child(nodeValue,"<<atoi(numBegin->str().c_str())-1<<",NodeValue::INH);"<<endl;
+
 				}else{
-					attribute_name+="_";
-					attribute_name+=to_string(num);
-					attribute_name+="_";
+					symbol=_className;
+
+					
+					if(_indexCountMap[numBegin->str()]!=0){
+						symbol+="_"+to_string(_indexCountMap[numBegin->str()]);
+					}
+					symbol+="_syn";
+					fs<<"string "<<symbol<<"=child(nodeValue,"<<atoi(numBegin->str().c_str())-1<<",NodeValue::SYN);"<<endl;
+
+				}			
+			}
+			parameterMap[e1]=symbol;
+		}
+	}
+
+
+//一般命令构造
+	for(const auto& e1:orders){
+
+		int tabNum=1;
+		
+		if(regex_match(e1,declarePartten)){
+			std::regex_iterator<std::string::const_iterator> parameterIt(e1.cbegin(), e1.cend(), partten);
+			std::regex_iterator<std::string::const_iterator> numIt(parameterIt->str().cbegin(), parameterIt->str().cend(), numPartten);
+			
+			string symbol=parameterMap[parameterIt->str()];
+			string nodeValueType="NodeValue::SYN";
+			if(endsWith(e1,"next")==1){
+				nodeValueType="NodeValue::INH";
+			}
+
+			for(int i1=0;i1<tabNum;i1++){fs<<"\t";}
+			fs<<"if(has_calculate_set.count("<<symbol<<")==0){"<<endl;
+			for(int i1=0;i1<tabNum;i1++){fs<<"\t";}
+			fs<<"\treturn P_NodeValue(new NodeValue(nodeValue->node->child_node_list["<<(atoi(numIt->str().c_str())-1)<<"],"<<nodeValueType<<"));"<<endl;
+			for(int i1=0;i1<tabNum;i1++){fs<<"\t";}
+			fs<<"}"<<endl;
+		}else if(startsWith(e1,"$")){
+			string_list.clear();
+			split(string_list,e1,is_any_of("="));
+			string str=trim_right_copy(trim_left_copy(string_list[0]));
+			string lSymbol=parameterMap[str];
+			for(int i1=0;i1<tabNum;i1++){fs<<"\t";}
+			fs<<"if(has_calculate_set.count("<<lSymbol<<")==0){"<<endl;
+			str=e1;
+			while(str.find("$")!=string::npos){
+				for(const auto& e2:parameterMap){
+					if(e2.first.find("next")!=string::npos){
+						while(str.find(e2.first)!=string::npos){
+							string _replacement=e2.second.find("basic")!=string::npos?e2.second:"result_map["+e2.second+"]";
+							str=str.replace(str.find(e2.first),e2.first.size(),_replacement);
+						}
+					}
+				}
+				for(const auto& e2:parameterMap){
+					while(str.find(e2.first)!=string::npos){
+							string _replacement=e2.second.find("basic")!=string::npos?e2.second:"result_map["+e2.second+"]";
+							str=str.replace(str.find(e2.first),e2.first.size(),_replacement);
+					}
 				}
 			}
-		}
-
-
-		if(endsWith(e1,"next")==1){
-			attribute_name+="inh";
+			for(int i1=0;i1<tabNum+1;i1++){fs<<"\t";}
+			fs<<str<<endl;
+			for(int i1=0;i1<tabNum+1;i1++){fs<<"\t";}
+			fs<<"has_calculate_set.insert("<<lSymbol<<");"<<endl;
+			for(int i1=0;i1<tabNum;i1++){fs<<"\t";}
+			fs<<"}"<<endl;
 		}else{
-			attribute_name+="syn";
+		
+			string str=e1;
+			while(str.find("$")!=string::npos){
+				for(const auto& e2:parameterMap){
+					if(e2.first.find("next")!=string::npos){
+						while(str.find(e2.first)!=string::npos){
+							string _replacement=e2.second.find("basic")!=string::npos?e2.second:"result_map["+e2.second+"]";
+							str=str.replace(str.find(e2.first),e2.first.size(),_replacement);
+						}
+					}
+				}
+				for(const auto& e2:parameterMap){
+					while(str.find(e2.first)!=string::npos){
+							string _replacement=e2.second.find("basic")!=string::npos?e2.second:"result_map["+e2.second+"]";
+							str=str.replace(str.find(e2.first),e2.first.size(),_replacement);
+					}
+				}
+			}
+			for(int i1=0;i1<tabNum;i1++){fs<<"\t";}
+			fs<<str<<endl;
+
 		}
-		return attribute_name;
+		
+	}
+
+
+	for(auto& e1:parameterMap){
+		if(startsWith(e1.first,"$$")!=1&&startsWith(e1.second,"basic")!=1){
+			fs<<"\tdelete result_map["+e1.second+"];"<<endl;
+			fs<<"\tresult_map["+e1.second+"]=nullptr;"<<endl;
+		}
+	}
+
+
+	fs<<"\treturn nullptr;"<<endl;
+
+
+	fs<<"	}"<<endl;
+	fs<<"	public: ~"<<className<<"_"<<count<<"_SDT_genertor(){}"<<endl;
+	fs<<"};"<<endl;
+	fs<<endl;
+	fs<<endl;
+
 }
 
-string gen_attribute_fun(const string &e1,const Rule &rule){
-		string attribute_fun="";
-		if(startsWith(e1,"$$")==1){
-			attribute_fun="own(nodeValue,";
 
-		}else{
-			attribute_fun="child(nodeValue,";
-			attribute_fun+=to_string(atoi(e1.substr(1).c_str())-1)+",";
-		}
-		if(endsWith(e1,"next")==1){
-			attribute_fun+="NodeValue::INH);";
-		}else{
-			attribute_fun+="NodeValue::SYN);";
-		}
-		return attribute_fun;
+//构造文件尾
+fs<<"SDT_Factory SDT_Factory::instance;"<<endl;
+fs<<"SDT_Factory::SDT_Factory(){"<<endl;
+for(const auto &e:rule_class_map){
+	fs<<"factory[\""<<e.first<<"\"]=P_SDT_genertor(new "<<e.second<<"_SDT_genertor());"<<endl;
+}
+fs<<"}"<<endl;
+fs<<"SDT_Factory::~SDT_Factory(){}"<<endl;
 }
 
-	
+
+

@@ -45,8 +45,23 @@ int main(){
 	Pwh pwh2;
 	pwh2.value=11;
 	map[pwh1]=pwh2;
+	const Pwh& pwh3=map[pwh1];
 	cout<<"fsdfsa"<<endl;
 	cout<<map[pwh1].value<<endl;
 }
 
-
+/*
+创建Pwh0x28ff0c
+创建Pwh0x28ff04
+拷贝Pwh20xa87a3c
+值=1
+创建Pwh0xa87a44
+赋值Pwh20xa87a44
+值=11
+fsdfsa
+11
+销毁Pwh0x28ff04
+销毁Pwh0x28ff0c
+销毁Pwh0xa87a44
+销毁Pwh0xa87a3c
+*/

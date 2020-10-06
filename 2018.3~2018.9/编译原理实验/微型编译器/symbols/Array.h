@@ -1,9 +1,20 @@
 #pragma once
 #include "Type.h"
+using namespace std;
+
+
 class Array:public Type{
-public: Type *of;
-public: int size=1;
-public: Array(int sz,Type *p);
-public: virtual ~Array();
+
+public: int num;
+
+public: Type *type;
+
+public: Array(int num,Type* type);
+
+public: virtual Token* clone();
+
+public: ~Array();
 };
+
+
 

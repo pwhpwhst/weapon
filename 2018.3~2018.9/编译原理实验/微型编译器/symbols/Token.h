@@ -7,12 +7,16 @@ class Token{
 
 public: int tag;
 
+public: string content;
+
 //Ä¬ÈÏ¹¹ÔìÆ÷
 public: Token();
 
-public: Token(int tag);
+public: Token(int tag,string content);
 
 public: virtual ~Token();
+
+public: virtual Token* clone();
 
 public: bool operator==(Token const& rh) const;
 };

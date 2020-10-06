@@ -1,1 +1,1 @@
-int a=90;
+double adsadas  =90;

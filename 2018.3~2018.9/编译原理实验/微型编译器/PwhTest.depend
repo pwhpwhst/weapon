@@ -1,0 +1,168 @@
+# depslib dependency file v1.0
+1599154406 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\inter\id.cpp
+	"Id.h"
+
+1599324423 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\inter\id.h
+	<memory>
+	"..\symbols\Type.h"
+	"..\lexer\Word.h"
+
+1601961870 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\type.h
+	<memory>
+	"Token.h"
+
+1599104295 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\lexer\word.h
+	<string>
+	"Token.h"
+
+1599154012 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\lexer\token.h
+	<memory>
+
+1598896166 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\lexer\integer.cpp
+	"Integer.h"
+	"Tag.h"
+
+1598896229 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\lexer\integer.h
+	<memory>
+	"Token.h"
+
+1599106683 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\lexer\tag.h
+
+1599106692 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\lexer\tag.cpp
+	"Tag.h"
+
+1599153954 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\lexer\token.cpp
+	"Token.h"
+	"Tag.h"
+	"Integer.h"
+	"Word.h"
+	<iostream>
+
+1599152896 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\lexer\word.cpp
+	"Word.h"
+	<iostream>
+
+1601965656 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\pwh.cpp
+	"symbols\Env.h"
+	"slr.h"
+
+1601964464 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\env.h
+	"SmbolInfo.h"
+	<unordered_map>
+
+1601968298 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr.h
+	<iostream>
+	<set>
+	<vector>
+	<deque>
+	<string>
+	<unordered_map>
+	<boost/algorithm/string.hpp>
+	<fstream>
+	<sstream>
+	"SLR\Item.h"
+	"SLR\Rule.h"
+	"SLR\Node.h"
+	"SLR\Lex_Word.h"
+	"symbols\Env.h"
+	"SDT\SDT_generator.h"
+
+1588905874 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\item.h
+	"Rule.h"
+	<memory>
+
+1598888808 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\rule.h
+	<vector>
+	<string>
+	<memory>
+
+1590420916 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\node.h
+	<string>
+	<vector>
+
+1589123099 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\lex_word.h
+	<memory>
+
+1601961876 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\array.h
+	"Type.h"
+
+1601962919 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\sdt\sdt_generator.h
+	<unordered_map>
+	<set>
+	<sstream>
+	"../symbols/Env.h"
+	"../symbols/Token.h"
+	"../SLR/Node.h"
+
+1601970172 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\sdt\sdt_generator.cpp
+	<iostream>
+	<sstream>
+	"SDT_generator.h"
+	"..\symbols\Env.h"
+	"..\symbols\Tag.h"
+	"..\symbols\Token.h"
+
+1601968349 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr.cpp
+	"slr.h"
+
+1588918472 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\item.cpp
+	"Item.h"
+	"Rule.h"
+
+1601694728 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\lex_word.cpp
+	<vector>
+	"Lex_Word.h"
+	"lex.yy.h"
+
+1589120737 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\lex.yy.h
+
+1590504446 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\node.cpp
+	<vector>
+	<sstream>
+	"Node.h"
+
+1601802414 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\rule.cpp
+	<iostream>
+	<vector>
+	<boost/algorithm/string.hpp>
+	"Rule.h"
+
+1589781819 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\symbol.cpp
+	"Symbol.h"
+
+1589775730 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\slr\symbol.h
+	<string>
+	<memory>
+
+1601964230 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\array.cpp
+	"Array.h"
+
+1601968451 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\env.cpp
+	"Env.h"
+	<iostream>
+
+1601962128 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\type.cpp
+	"Type.h"
+	"Tag.h"
+
+1601734952 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\smbolinfo.cpp
+	"SmbolInfo.h"
+	"Tag.h"
+	<iostream>
+
+1601969924 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\smbolinfo.h
+	"Token.h"
+
+1601963618 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\token.h
+	<memory>
+
+1601732806 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\tag.cpp
+	"Tag.h"
+	<iostream>
+
+1601734559 d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\tag.h
+
+1601963608 source:d:\users\administrator\desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\symbols\token.cpp
+	"Token.h"
+	<iostream>
+

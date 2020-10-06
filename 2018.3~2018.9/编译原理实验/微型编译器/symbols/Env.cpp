@@ -13,34 +13,54 @@ Env::Env(){
 	prev=nullptr;
 }
 
-void Env::put(const Word& w,Id *i){
-	table[w]=i;
+
+
+bool Env::put(const string& id,const SmbolInfo &info){
+    table[id]=info;
+    if(table.find(id)==table.end()){
+         table[id]=info;
+        return true;
+    }else{
+        return false;
+    }
 }
 
-Id* Env::get(const Word& w){
+ SmbolInfo & Env::get(const string& id){
 	Env* ptr=this;
 
 	while(ptr!=nullptr){
-		if(ptr->table.find(w)!=ptr->table.end()){
-			return ptr->table[w];
+		if(ptr->table.find(id)!=ptr->table.end()){
+			return ptr->table[id];
 		}else{
 			ptr=prev;
 		}
 	}
-	return nullptr;
+	return SmbolInfo::DEFAULT_SMBOLINFO;
+}
+
+
+void Env::traversal(){
+	Env* ptr=this;
+
+	while(ptr!=nullptr){
+            for(const auto& e:ptr->table){
+                cout<<"e.first="<<e.first<<endl;
+                cout<<"e.second="<<e.second.tag<<endl;
+            }
+            ptr=prev;
+	}
 }
 
 
 
 Env::~Env(){
-
-	for(auto &entity:table){
-		delete entity.second;
+	if(prev!=nullptr){
+        delete prev;
+        prev=nullptr;
 	}
-	prev=nullptr;
 }
 
-int Env::POS=0;
+
 
 
 

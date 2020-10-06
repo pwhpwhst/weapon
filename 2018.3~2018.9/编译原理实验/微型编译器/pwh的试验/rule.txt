@@ -1,16 +1,16 @@
-ele_begin : condition	{$$=$1;}
-assignment-expression : 'number'	{Integer* num=new Integer(atoi(($1).c_str()));$$=num;}
-declarator : 'identifier'	{Word* w=new Word($1,Tag::TYPE);$$=w;}
-condition : type-specifier-seq declarator '=' assignment-expression	{Token* tp1=$1;
-									Token* tp2=$2;
-									//构建Id begin
-									Id *id=new Id();
-									id->id=(Word*)tp2;
-									id->p=(Type*)tp1;
-									id->pos=Id::POS;
-									//构建Id end
-									Id::POS+=4;
-									env.put(*(Word*)tp2,id);}
-type-specifier-seq : type-specifier	{$$=$1;}
-type-specifier-seq : type-specifier type-specifier-seq	{$2.next=$1;$$=$2;}
-type-specifier : 'simple-type-specifier'	{Type* type=new Type($1,Tag::BASIC,4);$$=type;}
+ele_begin : condition	  {Declare $1;$$=$1->clone();}
+assignment-expression : 'number'	{$$=new Token(Tag::INT,$1);}
+declarator : 'identifier'	{$$=new Token(Tag::ID,$1);}
+condition : type-specifier-seq declarator '=' assignment-expression  {
+                                                                                                                Declare $1;
+                                                                                                                Declare $2;
+                                                                                                                SmbolInfo& info=env.get($2->content);
+                                                                                                                if(info.tag==Tag::DEFAULT){
+                                                                                                                    SmbolInfo newInfo;
+                                                                                                                    newInfo.tag=Tag::ID;
+                                                                                                                    newInfo.type=$1->clone();
+                                                                                                                    env.put($2->content,newInfo);
+                                                                                                                }
+                                                                                                            }
+type-specifier-seq : type-specifier	{Declare $1;$$=$1->clone();}
+type-specifier : 'simple-type-specifier'	{$$=new Token(Tag::TYPE,$1);}

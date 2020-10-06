@@ -1,12 +1,20 @@
 #include "Type.h"
-using namespace std;
+#include "Tag.h"
 
-
-Type::Type(const string &s,int tag,int w):Word(s,tag){
-	width=w;
+Type::Type(){
+    this->content=Tag::TYPE;
 }
 
-Type::~Type(){
+Type::Type(string type){
+    this->tag=Tag::TYPE;
+    this->content=type;
 }
 
-const string Type::INT="int";
+Type::~Type(){}
+
+Token * Type::clone(){
+    Type* p= new Type();
+	p->tag=this->tag;
+	p->content=this->content;
+	return p;
+}

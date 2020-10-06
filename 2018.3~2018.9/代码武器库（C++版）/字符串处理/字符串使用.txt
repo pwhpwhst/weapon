@@ -113,3 +113,87 @@ int endsWith(string s,string sub){
      {
          printf("position is : %d\n" ,position);
      }
+
+
+5、字符替换（用x替换字符串中所有的a.cpp）
+
+void replaceAWithX(string str){
+    int pos;
+    pos = str.find("a");
+    while(pos != -1){
+        // str.length()求字符的长度，注意str必须是string类型
+        str.replace(pos,string("a").length(),"x");
+        pos = str.find("a");
+    }
+
+    cout << str << endl;
+}
+
+string replaceAll(string str,string sub,string replacement){
+    int pos;
+    pos = str.find(sub);
+    while(pos != -1){
+        // str.length()求字符的长度，注意str必须是string类型
+        str.replace(pos,string(sub).length(),replacement);
+        pos = str.find(sub);
+    }
+
+    return str;
+}
+
+
+
+
+
+
+#include <iostream>
+#include <string>
+#include <sstream>
+int ReplaceAll(const std::string& input,const std::string& substr,const std::string& repstr, std::string& output)                                        
+{
+        int replaceCount = 0;
+        std::stringstream ss;
+        size_t i = 0;                                                               
+       
+        while(i < input.length())
+        {                                                                           
+        std::cout << "i:" << i << std::endl;
+        size_t left_len = input.length() - i - 1;
+        std::cout << "left_len:" << left_len << std::endl;
+                if (left_len < substr.length())                                     
+                {
+                        ss << input.substr(i);                                      
+                        break;
+                }                                                                   
+       
+                if (input.substr(i,substr.length()) == substr)                      
+                {
+                        i += substr.length();                                       
+                        ss << repstr;
+                        ++replaceCount;
+                }
+                else                                                                
+                {
+                        ss << input[i];                                             
+                        ++i;                                                        
+                }                                                                   
+        }
+                                                                                    
+        output = ss.str();                                                          
+        return replaceCount;
+}
+
+int main()
+{
+    std::string a("wel--com--e");
+    std::cout << a.substr(0,2) << std::endl;
+    std::string sub("--");
+    std::string rep("$");
+    std::string output;
+    if (ReplaceAll(a,sub,rep,output))
+    {
+        std::cout << output << std::endl;
+    }
+
+    return 1;
+}

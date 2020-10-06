@@ -12,20 +12,38 @@ using namespace boost;
 
 
 
+int Slr::startsWith(string s, string sub){
+	if(sub.length()>s.length()){
+		return 0;
+	}
+        return s.find(sub)==0?1:0;
+}
 
+int Slr::endsWith(string s,string sub){
+	if(sub.length()>s.length()){
+		return 0;
+	}
+        return s.rfind(sub)==(s.length()-sub.length())?1:0;
+}
+
+void Slr::log(const string& s){
+    cout<<s<<endl;
+}
 
 
 
 int Slr::slr(string rule_file,string compile_file,Env& env){
-//³õÊ¼»¯
+//åˆå§‹åŒ–
 string start_symbol="ele_begin";
 
-//Éú³ÉruleListing
+//
+log("ç”ŸæˆruleListing");
 vector<P_Rule> ruleList;
 ifstream input_file;
 input_file.open(rule_file.data());
 string rule_str;
 ostringstream sb;
+/*
 while(getline(input_file,rule_str))
 {
 	if(rule_str[0]=='='){
@@ -43,18 +61,19 @@ while(getline(input_file,rule_str))
 		ruleList.push_back(P_Rule(new Rule(sb.str())));
 		sb.str("");
 	}
-	
 }
+*/
+vector<string> orders;
 unordered_map<string,string> temp_forecast_map;
+paresOrders(rule_file,orders,temp_forecast_map);
+	for( const auto &e:orders){
+		cout<<e<<endl;
+		ruleList.push_back(P_Rule(new Rule(e)));
+	}
+
+
 vector <string> string_list;
-//½â¾öÔ¤²â±í³åÍ»
-while(getline(input_file,rule_str))
-{
-	string_list.clear();
-	split(string_list,rule_str,is_any_of(":"));
-	temp_forecast_map[string_list[0]]=string_list[1];
-}
-input_file.close();
+
 
 
 
@@ -65,31 +84,36 @@ for(int i1=0;i1<ruleList.size();i1++){
 }
 
 
-//»®³öËùÓĞµÄÖÕ½á·ûºÅºÍ·ÇÖÕ½á·ûºÅ
+//åˆ’å‡ºæ‰€æœ‰çš„ç»ˆç»“ç¬¦å·å’Œéç»ˆç»“ç¬¦å·
+log("åˆ’å‡ºæ‰€æœ‰çš„ç»ˆç»“ç¬¦å·å’Œéç»ˆç»“ç¬¦å·");
 set<string> terminator;
 set<string> non_terminator;
 set<string> zero_terminator;
 parse_all_symbol(terminator,non_terminator,zero_terminator,ruleList);
 
 
-//¼ÆËãfirstº¯Êı
+//è®¡ç®—firstå‡½æ•°
+log("è®¡ç®—firstå‡½æ•°");
 unordered_map<string,set<string>> f_first;
 calculate_f_first(f_first,ruleList,terminator,non_terminator);
 
 
-//¼ÆËãfollowº¯Êı
+//è®¡ç®—followå‡½æ•°
+log("è®¡ç®—followå‡½æ•°");
 unordered_map<string,set<string>> f_follow;
 calculate_f_follow(f_follow, f_first,ruleList,non_terminator,terminator, start_symbol);
 
 
 
-//¹¹½¨ LR£¨0£©Ëã·¨µÄ×´Ì¬»ú
+//æ„å»º LRï¼ˆ0ï¼‰ç®—æ³•çš„çŠ¶æ€æœº
+log("æ„å»º LRï¼ˆ0ï¼‰ç®—æ³•çš„çŠ¶æ€æœº");
 vector<vector<P_Item>> items_list;
 unordered_map<int,unordered_map<string,int>> convert_map;
 get_items_list_and_convert_map(items_list,convert_map,non_terminator,f_first,ruleList,start_symbol);
 
 
-//¹¹½¨Ô¤²â±í
+//æ„å»ºé¢„æµ‹è¡¨
+log("æ„å»ºé¢„æµ‹è¡¨");
 vector<unordered_map<string,string>> forecast_list;
 calculate_forecast_list(forecast_list,items_list,terminator,rule_map,convert_map,f_follow);
 
@@ -107,10 +131,12 @@ if(detect_ambigulous(forecast_list,ruleList,items_list)){
 
 
 
-//¶¨ÒåÉÏÏÂÎÄ
+//å®šä¹‰ä¸Šä¸‹æ–‡
+log("å®šä¹‰ä¸Šä¸‹æ–‡");
 int context_id=0;
 
-//Éú³ÉÊäÈë
+//ç”Ÿæˆè¾“å…¥
+log("ç”Ÿæˆè¾“å…¥");
 vector<P_Lex_Word>  total_lex_word_list;
 total_lex_word_list.clear();
 word_parser(compile_file,total_lex_word_list);
@@ -124,7 +150,8 @@ for(const auto &e:total_lex_word_list){
 #endif
 
 
-//·ûºÅ±í
+//ç¬¦å·è¡¨
+log("ç¬¦å·è¡¨");
 int context_offset=0;
 //unordered_map<string,P_Symbol> symbol_context;
 vector<P_Lex_Word>  lex_word_list;
@@ -132,23 +159,23 @@ vector<P_Lex_Word>  lex_word_list;
 for(const auto &e:total_lex_word_list){
 	lex_word_list.push_back(e);
 	if(e->type=="';'"){
-		//¹¹ÔìÓï·¨Ê÷
+		//æ„é€ è¯­æ³•æ ‘
 		lex_word_list.pop_back();
 		Node *node_tree=syntax_analyze(ruleList,zero_terminator,forecast_list,convert_map,lex_word_list);
 		#ifdef __PRINT_NODE_TREE
-		
+
 		if(node_tree!=nullptr){
 //			printStack(node_tree);
 			printStackTree(node_tree);
 		}
-		
-		
-		
+
+
+
 		if(node_tree!=nullptr){
 			gen_middle_code(env,node_tree);
 		}
-		
-				
+
+
 		#endif
 		lex_word_list.clear();
 	}
@@ -158,7 +185,7 @@ for(const auto &e:total_lex_word_list){
 
 void Slr::calculate_f_first(unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,
 	const set<string> &terminator,const set<string> &non_terminator){
-// ¼ÆËãfirstº¯Êı
+// è®¡ç®—firstå‡½æ•°
 
 set<P_Rule> has_calculate_first_set;
 vector<P_Rule> rule_stack;
@@ -257,7 +284,7 @@ for(const auto result:f_first){
 }
 for(const auto &e:non_terminator){
 	if(f_first.find(e)==f_first.end()){
-		cout<<"²»´æÔÚ:"<<e<<endl;
+		cout<<"ä¸å­˜åœ¨:"<<e<<endl;
 	}
 }
 #endif
@@ -274,7 +301,7 @@ set<int> rule_set;
 		for(const auto &e2:e1){
 			if(e2.second.find(",")!=string::npos){
 				flag=true;
-				cout<<"´æÔÚ¶şÒåĞÔ:"<<i1<<","<<e2.first<<":"<<e2.second<<endl;
+				cout<<"å­˜åœ¨äºŒä¹‰æ€§:"<<i1<<","<<e2.first<<":"<<e2.second<<endl;
 				item_set.insert(i1);
 				vector <string> string_list;
 				split(string_list,e2.second,is_any_of(","));
@@ -285,13 +312,13 @@ set<int> rule_set;
 						rule_set.insert(atoi(e.substr(1).c_str()));
 					}
 				}
-				
+
 			}
 		}
 	}
 
 	if(flag){
-		cout<<"´òÓ¡×ªÒÆ×´Ì¬Í¼µÄµã"<<endl;
+		cout<<"æ‰“å°è½¬ç§»çŠ¶æ€å›¾çš„ç‚¹"<<endl;
 		for(const int &i1:item_set){
 			cout<<i1<<":"<<endl;
 			for(auto e:items_list[i1]){
@@ -304,7 +331,7 @@ set<int> rule_set;
 			}
 		}
 
-		cout<<"´òÓ¡ÎÄ·¨:"<<endl;
+		cout<<"æ‰“å°æ–‡æ³•:"<<endl;
 		for(const int &i1:rule_set){
 			auto &rule=ruleList[i1];
 			cout<<i1<<":"<<endl;
@@ -391,7 +418,7 @@ for(const auto &e:ruleList){
 					rule_stack.pop_back();
 					in_stack_rules.erase(rule);
 				}else{
-					
+
 					bool has_calculate=true;
 					P_Rule un_calculate_rule=nullptr;
 					symbol_temp_set.clear();
@@ -447,7 +474,7 @@ for(const auto result:f_follow){
 
 void Slr::printGraph(vector<vector<P_Item>> items_list,
 unordered_map<int,unordered_map<string,int>> convert_map){
-	cout<<"´òÓ¡×ªÒÆ×´Ì¬Í¼µÄµã"<<endl;
+	cout<<"æ‰“å°è½¬ç§»çŠ¶æ€å›¾çš„ç‚¹"<<endl;
 
 	for(int i1=0;i1<items_list.size();i1++){
 		cout<<i1<<":"<<endl;
@@ -461,7 +488,7 @@ unordered_map<int,unordered_map<string,int>> convert_map){
 		}
 	}
 
-	cout<<"´òÓ¡×ªÒÆ×´Ì¬Í¼µÄ»¡"<<endl;
+	cout<<"æ‰“å°è½¬ç§»çŠ¶æ€å›¾çš„å¼§"<<endl;
 
 
 	for(const auto result:convert_map){
@@ -475,7 +502,7 @@ unordered_map<int,unordered_map<string,int>> convert_map){
 
 
 void Slr::printStack(Node* &node_tree){
-	cout<<"Éî¶ÈÓÅÏÈ±éÀú:"<<endl;
+	cout<<"æ·±åº¦ä¼˜å…ˆéå†:"<<endl;
 	vector<Node*> item_node_stack2;
 	item_node_stack2.push_back(node_tree);
 	set<Node*> node_set;
@@ -506,7 +533,7 @@ void Slr::printStack(Node* &node_tree){
 
 
 void Slr::printStackTree(Node* &node_tree){
-	cout<<"´òÓ¡Óï·¨Ê÷:"<<endl;
+	cout<<"æ‰“å°è¯­æ³•æ ‘:"<<endl;
 	deque<Node*> item_node_stack2;
 	item_node_stack2.push_back(node_tree);
 	set<Node*> node_set;
@@ -517,7 +544,7 @@ void Slr::printStackTree(Node* &node_tree){
 	const int padding_left=4;
 	const int branch_length=4;
 
-//ÏÈÓÃÉî¶ÈÓÅÏÈ±éÀú¼ÆËãÒª´òÓ¡µÄ¿éµÄ³¤ºÍ¸ß
+//å…ˆç”¨æ·±åº¦ä¼˜å…ˆéå†è®¡ç®—è¦æ‰“å°çš„å—çš„é•¿å’Œé«˜
 	while(item_node_stack2.size()>0){
 		Node *present_node=item_node_stack2.back();
 
@@ -584,7 +611,7 @@ void Slr::printStackTree(Node* &node_tree){
 				plan_map[os.str()]["pos_y"]=plan_map[present_str]["pos_y"]+branch_length;
 				item_node_stack2.push_front(e);
 			}
-			
+
 		}
 		item_node_stack2.pop_back();
 	}
@@ -597,17 +624,17 @@ void Slr::printStackTree(Node* &node_tree){
 		 output.push_back(vector<char>());
 		for(int i2=0;i2<plan_map[os.str()]["size_row"];i2++){
 			output.back().push_back(' ');
-		}	
+		}
 	}
 
 	for(auto &e:plan_map){
 		for(int i1=0;i1<plan2_map[e.first]->symbol.size();i1++){
 			output[e.second["pos_y"]][e.second["pos_x"]+i1]=plan2_map[e.first]->symbol[i1];
 		}
-		
+
 		if(plan2_map[e.first]->child_node_list.size()>0){
 			output[e.second["pos_y"]+1][e.second["pos_x"]]='|';
-			
+
 				os.str("");
 				os<<plan2_map[e.first]->child_node_list[0];
 				int beg_pos=plan_map[os.str()]["pos_x"];
@@ -617,16 +644,16 @@ void Slr::printStackTree(Node* &node_tree){
 				for(int i1=beg_pos;i1<=end_pos;i1++){
 					output[e.second["pos_y"]+2][i1]='-';
 				}
-				
+
 				for(int i1=0;i1<plan2_map[e.first]->child_node_list.size();i1++){
 					os.str("");
 					os<<plan2_map[e.first]->child_node_list[i1];
 					output[e.second["pos_y"]+3][plan_map[os.str()]["pos_x"]]='|';
 				}
-				
+
 
 		}
-		
+
 	}
 
 
@@ -660,13 +687,13 @@ void Slr::parse_all_symbol(set<string> &terminator,set<string> &non_terminator,s
 
 
 #ifdef __PRINT_SYMBOL
-cout<<"ÖÕ¶Ë·ûºÅ£º"<<endl;
+cout<<"ç»ˆç«¯ç¬¦å·ï¼š"<<endl;
 for(const auto &e:terminator){
 	cout<<e<<endl;
 }
 cout<<endl;
 
-cout<<"·ÇÖÕ¶Ë·ûºÅ£º"<<endl;
+cout<<"éç»ˆç«¯ç¬¦å·ï¼š"<<endl;
 for(const auto &e:non_terminator){
 	cout<<e<<endl;
 }
@@ -677,7 +704,7 @@ cout<<endl;
 
 void Slr::get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unordered_map<int,unordered_map<string,int>> &convert_map,
 	const set<string> &non_terminator,unordered_map<string,set<string>> &f_first,const vector<P_Rule> &ruleList,const string start_symbol){
-	
+
 	class P_Item_Cmp
 	{
 			public : bool operator ()(const P_Item &c1,const P_Item &c2) const{
@@ -699,7 +726,7 @@ void Slr::get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unor
 	vector<P_Item> items0;
 	items_list.push_back(items0);
 
-	//¹¹Ôìitem0
+	//æ„é€ item0
 	deque<string> rule_name_deq;
 	set<string> rule_name_set;
 	set<P_Item,P_Item_Cmp> _items_set;
@@ -732,7 +759,7 @@ void Slr::get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unor
 		rule_name_deq.pop_back();
 	}
 
-	
+
 	for(auto e:ruleList){
 		if(rule_name_set.count(e->rule_name)>0){
 
@@ -764,10 +791,10 @@ void Slr::get_items_list_and_convert_map(vector<vector<P_Item>> &items_list,unor
 
 	set<string> move_symbol_set;
 
-//¹¹Ôì×´Ì¬×ªÒÆÍ¼
+//æ„é€ çŠ¶æ€è½¬ç§»å›¾
 while(status_que.size()>0){
 	int status_number=status_que.back();
-	//ÊÕ¼¯ËùÓĞÒÆ¶¯·ûºÅ
+	//æ”¶é›†æ‰€æœ‰ç§»åŠ¨ç¬¦å·
 	for(P_Item e:items_list[status_number]){
 		if(e->rule->symbols.size()>e->status){
 			move_symbol_set.insert(e->rule->symbols[e->status]);
@@ -858,7 +885,7 @@ while(status_que.size()>0){
 			items_list.push_back(_items);
 			status_que.push_front(items_list.size()-1);
 			items_list_index=items_list.size()-1;
-			
+
 			if(is_final_item){
 				if(convert_map.find(items_list_index)==convert_map.end()){
 					convert_map[items_list_index]=unordered_map<string,int>();
@@ -892,7 +919,7 @@ for(const auto &e:ruleList){
 }
 
 if(_items_set.size()>0){
-	cout<<"´æÔÚ×ÔÓÉrule:"<<endl;
+	cout<<"å­˜åœ¨è‡ªç”±rule:"<<endl;
 	int i1=0;
 	for(const auto &e:_items_set){
 		cout<<i1<<":"<<endl;
@@ -927,7 +954,7 @@ for(int i1=0;i1<items_list.size();i1++){
 		if(convert_map[i1].find(e1)!=convert_map[i1].end()){
 			s="s"+to_string(convert_map[i1][e1]);
 		}
-		
+
 		for(const auto &e2:items_list[i1]){
 			if(e2->status==e2->rule->symbols.size()&&f_follow[e2->rule->rule_name].count(e1)>0){
 				if(r==""){
@@ -950,7 +977,7 @@ for(int i1=0;i1<items_list.size();i1++){
 			_map[e1]=s;
 		}
 	}
-//×¨ÃÅÕë¶Ô 0 begin
+//ä¸“é—¨é’ˆå¯¹ 0 begin
 string r="";
 for(const auto &e2:items_list[i1]){
 	if(e2->status==e2->rule->symbols.size()){
@@ -966,7 +993,7 @@ if(r!=""){
 }
 
 
-//×¨ÃÅÕë¶Ô 0 end
+//ä¸“é—¨é’ˆå¯¹ 0 end
 	forecast_list.push_back(_map);
 }
 
@@ -1068,7 +1095,7 @@ while(!finished_flag){
 
 		for(int i1=best_rule->symbols.size()-1;i1>=0;i1--){
 			if(best_rule->symbols[i1]=="0"||zero_terminator.count(best_rule->symbols[i1])>0){
-				
+
 			}else{
 				item_node_stack1.pop_back();
 			}
@@ -1079,7 +1106,7 @@ while(!finished_flag){
 		item_node_stack1.back()->node=parent_node;
 		item_node_stack1.back()->item_status=convert_map[top_item->item_status][parent_node->symbol];
 	}else{
-		cout<<"Óöµ½ÒâÍâÊäÈë:"<<"item_status:"<<top_item->item_status<<",input_type:"<<input_type<<endl;
+		cout<<"é‡åˆ°æ„å¤–è¾“å…¥:"<<"item_status:"<<top_item->item_status<<",input_type:"<<input_type<<endl;
 		break;
 	}
 
@@ -1090,10 +1117,10 @@ while(!finished_flag){
 
 void Slr::gen_middle_code(Env &env,Node* &node_tree){
 
-	cout<<"Éú³ÉÖĞ¼ä´úÂë:"<<endl;
+	cout<<"ç”Ÿæˆä¸­é—´ä»£ç :"<<endl;
 
 	set<string> has_calculate_set;
-	unordered_map<string,Token*> result_map; //Õâ¸öÆğµ½ÀàËÆÉÏÏÂÎÄµÄ×÷ÓÃ
+	unordered_map<string,Token*> result_map; //è¿™ä¸ªèµ·åˆ°ç±»ä¼¼ä¸Šä¸‹æ–‡çš„ä½œç”¨
 	vector<P_NodeValue> stack;
 	stack.push_back(P_NodeValue(new NodeValue(node_tree,NodeValue::SYN)));
 
@@ -1111,11 +1138,168 @@ void Slr::gen_middle_code(Env &env,Node* &node_tree){
 				return;
 			}
 	}
+	for(auto &e:result_map){
+		if(e.second!=nullptr){
+			delete e.second;
+		}
+	}
 }
 
-int Slr::startsWith(string s, string sub){
-        return s.find(sub)==0?1:0;
+
+
+void Slr::paresOrders(const string& rule_file,vector<string>& orders,unordered_map<string,string> &temp_forecast_map){
+	ifstream input_file;
+	input_file.open(rule_file.data());
+	string rule_str;
+    ostringstream os;
+    int status=6;
+	int bracketsCount=0;
+	vector <string> string_list;
+    string left;
+	string right;
+    unordered_map<string,string> order_map;
+
+ while(getline(input_file,rule_str)){
+		if(rule_str[0]=='='){
+			break;
+		}
+		rule_str=trim_left_copy(trim_right_copy(rule_str));
+
+
+		if(status==6){
+			if(startsWith(rule_str,"//")==1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")==1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")!=1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")!=1&&endsWith(rule_str,"*/")==1){
+				status=5;break;
+			}
+
+			string_list.clear();
+			split(string_list,rule_str,is_any_of("{"));
+
+			int _status=0;
+			string rule_str1="";
+			string rule_str2="";
+			for(int i1=0;i1<string_list.size();i1++){
+				string e=string_list[i1];
+				if(_status==0){
+					if(endsWith(e," ")!=1&&endsWith(e,"\t")!=1){
+						rule_str1+=e;
+						if(i1!=(string_list.size()-1)){
+							rule_str1+="{";
+						}
+					}else{
+						rule_str1+=e;
+						rule_str1= trim_right_copy(rule_str1);
+						_status=1;
+					}
+				}else if(_status==1){
+					rule_str2+="{";
+					rule_str2+=trim_left_copy(trim_right_copy(e));
+				}
+			}
+			left=rule_str1;
+			orders.push_back(left);
+			//cout<<"left="<<rule_str1<<endl;
+			rule_str2= trim_right_copy(rule_str2);
+			rule_str2= trim_left_copy(rule_str2);
+
+
+
+			if(rule_str2!=""){
+				os.str("");
+				for(int i1=0;i1<rule_str2.length();i1++){
+					os<<rule_str2[i1];
+					if(rule_str2[i1]=='{'){
+						bracketsCount++;
+					}else if(rule_str2[i1]=='}'){
+						bracketsCount--;
+					}
+				}
+				if(bracketsCount==0){
+					status=6;
+					right=os.str();
+					order_map[left]=right;
+					left="";
+					right="";
+					//cout<<"right="<<os.str()<<endl;
+					os.str("");
+				}else{
+					status=3;
+				}
+			}else{
+				status=6;
+				left="";
+				right="";
+			}
+
+
+
+		}else if(status==3){
+			if(startsWith(rule_str,"//")==1){
+				continue;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")==1){
+				continue;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")!=1){
+				status=4;continue;
+			}else if(startsWith(rule_str,"/*")!=1&&endsWith(rule_str,"*/")==1){
+				status=5;break;
+			}
+
+
+			if(rule_str!=""){
+				for(int i1=0;i1<rule_str.length();i1++){
+					os<<rule_str[i1];
+					if(rule_str[i1]=='{'){
+						bracketsCount++;
+					}else if(rule_str[i1]=='}'){
+						bracketsCount--;
+					}
+				}
+				if(bracketsCount==0){
+					status=6;
+					right=os.str();
+					order_map[left]=right;
+					left="";
+					right="";
+					//cout<<"right="<<os.str()<<endl;
+					os.str("");
+				}else{
+					status=3;
+				}
+			}
+
+		}else if(status==4){
+			if(startsWith(rule_str,"//")==1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")==1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")==1&&endsWith(rule_str,"*/")!=1){
+				status=5;break;
+			}else if(startsWith(rule_str,"/*")!=1&&endsWith(rule_str,"*/")==1){
+				status=3;continue;
+			}
+		}
+	}
+
+
+
+log("è§£å†³é¢„æµ‹è¡¨å†²çª");
+while(getline(input_file,rule_str))
+{
+	string_list.clear();
+	split(string_list,rule_str,is_any_of(":"));
+	temp_forecast_map[string_list[0]]=string_list[1];
 }
+input_file.close();
+}
+
+
+
+
 
 
 Slr::Slr(){
@@ -1128,25 +1312,25 @@ Slr::~Slr(){
 
 /**
 
-Éî¶ÈÓÅÏÈ±éÀú:
-T                                                                                   
-|                                                                                   
-----------------------------                                                        
-|                          |                                                        
-B                          C                                                        
-|                          |                                                        
--                          ---------------------------                              
-|                          |      |           |      |                              
-'simple-type-specifier'    '['    'number'    ']'    C                              
-                                                     |                              
-                                                     ---------------------------    
-                                                     |      |           |      |    
-                                                     '['    'number'    ']'    C    
-                                                                               |    
-                                                                               -    
-                                                                               |    
-                                                                               0 
-																			   
+æ·±åº¦ä¼˜å…ˆéå†:
+T
+|
+----------------------------
+|                          |
+B                          C
+|                          |
+-                          ---------------------------
+|                          |      |           |      |
+'simple-type-specifier'    '['    'number'    ']'    C
+                                                     |
+                                                     ---------------------------
+                                                     |      |           |      |
+                                                     '['    'number'    ']'    C
+                                                                               |
+                                                                               -
+                                                                               |
+                                                                               0
+
 ele_begin : T		{$$=$1;}
 T : B C			{$2.next=$1;$$=$2;}
 B : 'simple-type-specifier'	{Type* type=new Type($1,Tag::BASIC,4);$$=type;}

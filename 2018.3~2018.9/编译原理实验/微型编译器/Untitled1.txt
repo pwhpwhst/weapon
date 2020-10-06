@@ -1,0 +1,3 @@
+g++ -std=c++11 -c symbols\Array.cpp
+g++ -std=c++11 -c symbols\Env.cpp
+g++ -std=c++11 -c symbols\Type.cpp

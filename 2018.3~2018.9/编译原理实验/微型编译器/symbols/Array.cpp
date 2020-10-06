@@ -1,15 +1,19 @@
 #include "Array.h"
-#include "../lexer/Tag.h"
-using namespace std;
 
-
-Array::Array(int sz,Type *p):Type("[]",Tag::INDEX,width){
-	size=sz;
-	of=p;
+Array::Array(int num,Type* type):Type("array"){
+    this->num=num;
+    this->type=type;
 }
 
 Array::~Array(){
-	delete of;
+    if(type!=nullptr){
+        delete type;
+        type=nullptr;
+    }
 }
 
 
+Token* Array::clone(){
+  Type* type= (Type* )this->type->clone();
+   return new Array(this->num,type);
+}

@@ -1,6 +1,6 @@
 #include"symbols\Env.h"
 #include"slr.h"
-
+#include"symbols\Type.h"
 
 void test1();
 void test2();
@@ -40,25 +40,12 @@ string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\20
 //string rule_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
 //string compile_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
 Env env;
-
-
-//预先设定类型
-/**
-Word w(Type::INT,Tag::TYPE);
-Id *id=new Id();
-id->id=(Word*)new Word(Type::INT,Tag::TYPE);
-id->p=new Type(Type::INT,Tag::BASIC,4);
-id->pos=0;
-env.put(w,id);
-Word w2(Type::INT,Tag::TYPE);
-
-cout<<env.get(w2)->id->lexme;
-*/
-
+cout<<"dasd1"<<endl;
 Slr slr;
 slr.slr( rule_file, compile_file,env);
-Word w(Type::INT,Tag::TYPE);
-cout<<env.get(w)<<endl;
-cout<<env.get(w)->id->lexme<<endl;
-cout<<"dsad"<<endl;
+cout<<"dasd"<<endl;
+env.traversal();
+Token* t=env.get("adsadas").type;
+Type* t1=(Type*) t;
+cout<<t1->content<<endl;
 }
