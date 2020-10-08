@@ -114,31 +114,6 @@ carry out Condition_0_SDT_genertor
 
 
 =====================================
-1、rule.txt 允许换行输入,允许注释
-2、已依赖注入的方式构建对象
-2、语法制导的无用空间回收机制
-3、修正rule.txt的bug
 
 
 
-
-
-
-	unordered_map<string,int> symbol_static_map;
-	while(getline(input_file,rule_str)){
-
-
-
-while(getline(input_file,rule_str))
-{
-	if(rule_str[0]=='='){
-		break;
-	}
-	rule_str= trim_right_copy(rule_str);
-	rule_str= trim_left_copy(rule_str);
-	sb<<rule_str;
-	if(rule_str[rule_str.length()-1]!=';'){
-		rule_str=sb.str();
-		sb.str("");
-
-	}

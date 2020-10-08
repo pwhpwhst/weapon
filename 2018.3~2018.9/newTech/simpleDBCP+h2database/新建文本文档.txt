@@ -1,0 +1,15 @@
+
+
+²Î¿¼ https://www.cnblogs.com/sunseine/p/5947448.html
+
+
+
+
+
+
+cd C:\Users\Administrator\Desktop\simpleDBCP
+mvn clean package
+
+
+cd C:\Users\Administrator\Desktop\simpleDBCP\target
+java -jar dbcpTest-1.0-SNAPSHOT.jar
