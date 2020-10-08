@@ -7,9 +7,15 @@
 
 
 
-cd C:\Users\Administrator\Desktop\simpleDBCP
+cd C:\Users\Administrator\Desktop\simpleDBCP+h2database
 mvn clean package
 
 
-cd C:\Users\Administrator\Desktop\simpleDBCP\target
+cd C:\Users\Administrator\Desktop\simpleDBCP+h2database\target
 java -jar dbcpTest-1.0-SNAPSHOT.jar
+
+//弹出调试界面
+cd C:\Users\Administrator\Desktop\simpleDBCP+h2database\target\lib
+java -jar h2-1.4.197.jar
+
+
