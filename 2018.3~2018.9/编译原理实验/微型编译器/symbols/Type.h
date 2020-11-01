@@ -6,7 +6,7 @@ using namespace std;
 
 class Type:public Token{
 
-//Ä¬ÈÏ¹¹ÔìÆ÷
+//é»˜è®¤æ„é€ å™¨
 public: Type();
 
 public: Type(string type);

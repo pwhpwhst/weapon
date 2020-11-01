@@ -44,6 +44,9 @@ f8c1ef08bf7db18641b4f79f8d626d561f8cd1d4bb2688a87656b8356cd53b5a
 https://gitee.com/oauth/authorize?client_id=194635a2349299d3165c297312d730c8f52408ae6c37493c5e2b4254cc34d11f
 &redirect_uri=http%3A%2F%2F40a8b87%2Enat123%2Ecc%2Fhello&response_type=code
 
+(HTML URL ±àÂë https://www.w3school.com.cn/tags/html_ref_urlencode.html)
+
+
 
 »ñµÃaccess_token£º
 

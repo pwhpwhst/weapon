@@ -6,13 +6,13 @@ class Lex_Word{
 public:	string type;
 public:	string content;
 
-//默认构造器
+//榛樿鏋勯�犲櫒
 public: Lex_Word();
 
-//自定义构造器
+//鑷畾涔夋瀯閫犲櫒
 public: Lex_Word(const string &type,const string &content);
 
-//容器
+//瀹瑰櫒
 public: Lex_Word(const Lex_Word &lex_word);
 
 public: virtual ~Lex_Word();

@@ -9,7 +9,7 @@ public: int tag;
 
 public: string content;
 
-//Ä¬ÈÏ¹¹ÔìÆ÷
+//é»˜è®¤æ„é€ å™¨
 public: Token();
 
 public: Token(int tag,string content);

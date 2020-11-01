@@ -13,13 +13,13 @@ public: vector<string> first;
 
 
 
-//默认构造器
+//榛樿鏋勯�犲櫒
 public: Rule();
 
-//自定义构造器
+//鑷畾涔夋瀯閫犲櫒
 public: Rule(const string &rule_str);
 
-//容器
+//瀹瑰櫒
 public: Rule(const Rule &rule);
 
 public: virtual ~Rule();

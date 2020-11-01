@@ -4,7 +4,7 @@
 //#define __PRINT_FORECAST
 //#define __PRINT_GRAPH
 //#define __PRINT_LEX_WORD_LIST
-#define __PRINT_NODE_TREE
+//#define __PRINT_NODE_TREE
 
 #include "slr.h"
 using namespace std;
@@ -27,7 +27,7 @@ int Slr::endsWith(string s,string sub){
 }
 
 void Slr::log(const string& s){
-    cout<<s<<endl;
+  //  cout<<s<<endl;
 }
 
 
@@ -168,7 +168,7 @@ for(const auto &e:total_lex_word_list){
 //			printStack(node_tree);
 			printStackTree(node_tree);
 		}
-
+        #endif
 
 
 		if(node_tree!=nullptr){
@@ -176,7 +176,7 @@ for(const auto &e:total_lex_word_list){
 		}
 
 
-		#endif
+
 		lex_word_list.clear();
 	}
 }

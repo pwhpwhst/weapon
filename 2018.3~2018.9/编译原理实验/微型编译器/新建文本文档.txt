@@ -1,71 +1,4 @@
-D:
-cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器
 
-F:
-cd F:\codeWeaponStore\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器
-
-g++ -std=c++11 -c pwh.cpp
-g++ -std=c++11 -c slr.cpp
-g++ -std=c++11 -c symbols\Array.cpp
-g++ -std=c++11 -c symbols\Env.cpp
-g++ -std=c++11 -c symbols\Type.cpp
-g++ -std=c++11 -c SLR\Lex_Word.cpp
-g++ -std=c++11 -c SLR\Rule.cpp
-g++ -std=c++11 -c SLR\Item.cpp
-g++ -std=c++11 -c SLR\Node.cpp
-g++ -std=c++11 -c SLR\Symbol.cpp
-g++ -std=c++11 -c SDT\SDT_generator.cpp
-g++ -std=c++11 -c lexer\Token.cpp
-g++ -std=c++11 -c lexer\Integer.cpp
-g++ -std=c++11 -c lexer\Tag.cpp
-g++ -std=c++11 -c lexer\Word.cpp
-g++ -std=c++11 -c inter\Id.cpp
-
-flex.exe  SLR\wordParser.l
-gcc -c lex.yy.c
-
-g++ -std=c++11 -c SDT_generator_generator.cpp
-g++ -std=c++11 -o SDT_generator_generator SDT_generator_generator.o obj\Debug\SLR\Rule.o
-
-SDT_generator_generator.exe
-
-
-
-g++ -std=c++11 -c SDT_generator_generator.cpp
-g++ -std=c++11 -o SDT_generator_generator SDT_generator_generator.o
-SDT_generator_generator.exe
-
-g++ -o pwh pwh.o slr.o Array.o Env.o Type.o lex.yy.o Lex_Word.o Rule.o Item.o Node.o Symbol.o SDT_generator.o Token.o Integer.o Tag.o Word.o Id.o
-
-
-pwh.exe
-
-
-
-
-
-切换编译体系（默认词法分析器用同一套）：
-vi pwh.cpp
-g++ -std=c++11 -c pwh.cpp
-g++ -o pwh pwh.o slr.o Array.o Env.o Type.o lex.yy.o Lex_Word.o Rule.o Item.o Node.o Symbol.o SDT_generator.o Token.o Integer.o Tag.o Word.o Id.o
-pwh.exe
-
-==========================================
-
-SDT_genertor
-
-//生成ruleListing
-	↓
-new Rule(rule_str)
-
-
-ele_begin : T		{$$=$0;}
-T : B C			{$2.next=$0;$$=$2;}
-B : 'simple-type-specifier'	{Type* type=new Type($0,Tag::BASIC,4);$$=type;}
-C : 0	{$$=$$.next;}
-C : '[' 'number' ']' C	{$4.next=$$.next;$$=new Array(atoi($2.c_str()),(Type*)$4);}
-
-==========================================
 
 
 D:
@@ -114,6 +47,48 @@ carry out Condition_0_SDT_genertor
 
 
 =====================================
+中文乱码的解决方法
+https://www.cnblogs.com/didiaodidiao/p/9189463.html
+
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器
+
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c pwh.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c slr.cpp
 
 
+flex.exe  SLR\wordParser.l
+gcc -c lex.yy.c
+
+g++ -std=c++11  -c SDT_generator_generator.cpp
+g++ -std=c++11 -o SDT_generator_generator SDT_generator_generator.o
+SDT_generator_generator.exe
+g++ -std=c++11   -c SDT\SDT_generator.cpp
+
+
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Array.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Env.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\SmbolInfo.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Tag.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Token.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Type.cpp
+
+
+
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c SLR\Item.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c SLR\Lex_Word.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c SLR\Node.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c SLR\Rule.cpp
+
+
+
+
+g++  -g -finput-charset=UTF-8 -fexec-charset=GBK  -o pwh pwh.o slr.o lex.yy.o SDT_generator.o Array.o Env.o SmbolInfo.o Tag.o Token.o Type.o Item.o Lex_Word.o Node.o Rule.o
+
+
+pwh.exe
+
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c slr.cpp
+g++  -g -finput-charset=UTF-8 -fexec-charset=GBK  -o pwh pwh.o slr.o lex.yy.o SDT_generator.o Array.o Env.o SmbolInfo.o Tag.o Token.o Type.o Item.o Lex_Word.o Node.o Rule.o
+pwh.exe
 
