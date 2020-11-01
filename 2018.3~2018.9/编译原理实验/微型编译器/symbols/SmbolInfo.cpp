@@ -5,6 +5,8 @@ using namespace std;
 
 SmbolInfo SmbolInfo::DEFAULT_SMBOLINFO=SmbolInfo(Tag::DEFAULT);
 
+int SmbolInfo::REGIST_SEQ=0;
+
 SmbolInfo::SmbolInfo(){
 
 }

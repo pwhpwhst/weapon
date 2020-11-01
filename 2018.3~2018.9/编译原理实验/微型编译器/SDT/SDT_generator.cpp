@@ -107,6 +107,7 @@ class Condition_0_SDT_genertor:public SDT_genertor{
 		cout<<"carry out Condition_0_SDT_genertor"<<endl;
 	string type_specifier_seq_syn=child(nodeValue,0,NodeValue::SYN);
 	string declarator_syn=child(nodeValue,1,NodeValue::SYN);
+	string assignment_expression_syn=child(nodeValue,3,NodeValue::SYN);
 	{
 	if(has_calculate_set.count(type_specifier_seq_syn)==0){
 		return P_NodeValue(new NodeValue(nodeValue->node->child_node_list[0],NodeValue::SYN));
@@ -114,17 +115,27 @@ class Condition_0_SDT_genertor:public SDT_genertor{
 	if(has_calculate_set.count(declarator_syn)==0){
 		return P_NodeValue(new NodeValue(nodeValue->node->child_node_list[1],NodeValue::SYN));
 	}
+	if(has_calculate_set.count(assignment_expression_syn)==0){
+		return P_NodeValue(new NodeValue(nodeValue->node->child_node_list[3],NodeValue::SYN));
+	}
 	SmbolInfo& info=env.get(result_map[declarator_syn]->content);
 	if(info.tag==Tag::DEFAULT){
 	SmbolInfo newInfo;
 	newInfo.tag=Tag::ID;
 	newInfo.type=result_map[type_specifier_seq_syn]->clone();
+	SmbolInfo::REGIST_SEQ++;
+	newInfo.registNum= SmbolInfo::REGIST_SEQ;
 	env.put(result_map[declarator_syn]->content,newInfo);
+	os.str("");
+	os<<compileInfo.interCode<<"p"<<env.get(result_map[declarator_syn]->content).registNum<<"="<<result_map[assignment_expression_syn]->content<<endl;
+	compileInfo.interCode=os.str();
 	}
 	else{
 	compileInfo.errInfo=result_map[declarator_syn]->content+" is dumplicate!";
 	}
 	}
+	delete result_map[assignment_expression_syn];
+	result_map[assignment_expression_syn]=nullptr;
 	delete result_map[declarator_syn];
 	result_map[declarator_syn]=nullptr;
 	delete result_map[type_specifier_seq_syn];

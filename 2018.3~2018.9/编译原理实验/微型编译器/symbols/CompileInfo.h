@@ -8,6 +8,8 @@ class CompileInfo{
 
 public: string errInfo;
 
+public: string interCode;
+
 public: CompileInfo();
 
 

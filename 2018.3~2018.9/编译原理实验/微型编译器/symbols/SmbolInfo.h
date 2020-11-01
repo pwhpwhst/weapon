@@ -8,9 +8,13 @@ class SmbolInfo{
 
 public: static SmbolInfo DEFAULT_SMBOLINFO;
 
+public: static int REGIST_SEQ;
+
 public: int tag;
 
 public: Token* type;
+
+public: int registNum;
 
 public: SmbolInfo();
 

@@ -4,15 +4,24 @@ declarator : 'identifier'	{$$=new Token(Tag::ID,$1);}
 condition : type-specifier-seq declarator '=' assignment-expression  {
                                                                                                                 Declare $1;
                                                                                                                 Declare $2;
+                                                                                                                 Declare $4;
                                                                                                                 SmbolInfo& info=env.get($2->content);
                                                                                                                 if(info.tag==Tag::DEFAULT){
                                                                                                                     SmbolInfo newInfo;
                                                                                                                     newInfo.tag=Tag::ID;
                                                                                                                     newInfo.type=$1->clone();
+                                                                                                                    SmbolInfo::REGIST_SEQ++;
+                                                                                                                    newInfo.registNum= SmbolInfo::REGIST_SEQ;
                                                                                                                     env.put($2->content,newInfo);
+
+                                                                                                                    os.str("");
+                                                                                                                    os<<compileInfo.interCode<<"p"<<env.get($2->content).registNum<<"="<<$4->content<<endl;
+                                                                                                                    compileInfo.interCode=os.str();
                                                                                                                 }else{
                                                                                                                     compileInfo.errInfo=$2->content+" is dumplicate!";
                                                                                                                 }
+
+
                                                                                                             }
 type-specifier-seq : type-specifier	{Declare $1;$$=$1->clone();}
 type-specifier : 'simple-type-specifier'	{$$=new Token(Tag::TYPE,$1);}

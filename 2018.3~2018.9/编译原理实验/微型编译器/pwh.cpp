@@ -28,13 +28,15 @@ if(compileInfo.errInfo!=""){
     cout<<compileInfo.errInfo<<endl;
 }else{
 cout<<"dasd"<<endl;
-Token* t=env.get("adsadas").type;
+Token* t=env.get("abcd").type;
 Type* t1=(Type*) t;
 cout<<t1->content<<endl;
 
 t=env.get("abc").type;
 t1=(Type*) t;
 cout<<t1->content<<endl;
+
+ cout<<compileInfo.interCode<<endl;
 }
 
 

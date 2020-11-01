@@ -1127,10 +1127,10 @@ void Slr::gen_middle_code(Env &env,Node* &node_tree,CompileInfo &compileInfo){
 
 	while(stack.size()>0){
 			auto top=stack.back();
-			cout<<"a1"<<endl;
+
 			cout<<top->node->get_rule_str()<<endl;
 			P_SDT_genertor sdt_genertor=SDT_Factory::instance.factory[top->node->get_rule_str()];
-			cout<<"a2"<<endl;
+
 			if(sdt_genertor!=nullptr){
 
 				P_NodeValue p_nodeValue=sdt_genertor->handle(top,result_map,has_calculate_set,env,compileInfo);
