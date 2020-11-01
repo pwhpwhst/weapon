@@ -2,6 +2,7 @@
 #include<sstream>
 #include"SDT_generator.h"
 #include"..\symbols\Env.h"
+#include"..\symbols\CompileInfo.h"
 #include"..\symbols\Tag.h"
 #include"..\symbols\Token.h"
 using namespace std;
@@ -27,7 +28,7 @@ SDT_genertor::~SDT_genertor(){}
 class Default_SDT_genertor:public SDT_genertor{
 public: Default_SDT_genertor(){}
 public: P_NodeValue handle(const P_NodeValue &nodeValue,
-unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){
+unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){
 cout<<nodeValue->node<<":"<<endl;
 cout<<"symbol="<<nodeValue->node->symbol<<endl;
 cout<<"content="<<nodeValue->node->content<<endl;
@@ -41,7 +42,7 @@ public: ~Default_SDT_genertor(){}
 };
 
 class Type_specifier_seq_0_SDT_genertor:public SDT_genertor{
-	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){
+	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){
 		cout<<"carry out Type_specifier_seq_0_SDT_genertor"<<endl;
 	string type_specifier_seq_syn=own(nodeValue,NodeValue::SYN);
 	string type_specifier_syn=child(nodeValue,0,NodeValue::SYN);
@@ -63,7 +64,7 @@ class Type_specifier_seq_0_SDT_genertor:public SDT_genertor{
 
 
 class Type_specifier_0_SDT_genertor:public SDT_genertor{
-	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){
+	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){
 		cout<<"carry out Type_specifier_0_SDT_genertor"<<endl;
 	string type_specifier_syn=own(nodeValue,NodeValue::SYN);
 	string basic_0_content=nodeValue->node->child_node_list[0]->content;
@@ -80,7 +81,7 @@ class Type_specifier_0_SDT_genertor:public SDT_genertor{
 
 
 class Ele_begin_0_SDT_genertor:public SDT_genertor{
-	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){
+	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){
 		cout<<"carry out Ele_begin_0_SDT_genertor"<<endl;
 	string ele_begin_syn=own(nodeValue,NodeValue::SYN);
 	string condition_syn=child(nodeValue,0,NodeValue::SYN);
@@ -102,7 +103,7 @@ class Ele_begin_0_SDT_genertor:public SDT_genertor{
 
 
 class Condition_0_SDT_genertor:public SDT_genertor{
-	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){
+	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){
 		cout<<"carry out Condition_0_SDT_genertor"<<endl;
 	string type_specifier_seq_syn=child(nodeValue,0,NodeValue::SYN);
 	string declarator_syn=child(nodeValue,1,NodeValue::SYN);
@@ -120,6 +121,9 @@ class Condition_0_SDT_genertor:public SDT_genertor{
 	newInfo.type=result_map[type_specifier_seq_syn]->clone();
 	env.put(result_map[declarator_syn]->content,newInfo);
 	}
+	else{
+	compileInfo.errInfo=result_map[declarator_syn]->content+" is dumplicate!";
+	}
 	}
 	delete result_map[declarator_syn];
 	result_map[declarator_syn]=nullptr;
@@ -132,7 +136,7 @@ class Condition_0_SDT_genertor:public SDT_genertor{
 
 
 class Assignment_expression_0_SDT_genertor:public SDT_genertor{
-	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){
+	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){
 		cout<<"carry out Assignment_expression_0_SDT_genertor"<<endl;
 	string assignment_expression_syn=own(nodeValue,NodeValue::SYN);
 	string basic_0_content=nodeValue->node->child_node_list[0]->content;
@@ -149,7 +153,7 @@ class Assignment_expression_0_SDT_genertor:public SDT_genertor{
 
 
 class Declarator_0_SDT_genertor:public SDT_genertor{
-	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){
+	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){
 		cout<<"carry out Declarator_0_SDT_genertor"<<endl;
 	string declarator_syn=own(nodeValue,NodeValue::SYN);
 	string basic_0_content=nodeValue->node->child_node_list[0]->content;

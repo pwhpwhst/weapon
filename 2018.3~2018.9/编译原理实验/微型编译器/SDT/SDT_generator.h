@@ -3,6 +3,7 @@
 #include<set>
 #include<sstream>
 #include"../symbols/Env.h"
+#include"../symbols/CompileInfo.h"
 #include"../symbols/Token.h"
 #include"../SLR/Node.h"
 
@@ -22,7 +23,7 @@ typedef std::shared_ptr<NodeValue> P_NodeValue;
 class SDT_genertor{
 public: SDT_genertor();
 public: virtual P_NodeValue handle(const P_NodeValue &nodeValue,
-	unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env)=0;
+	unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo)=0;
 public: virtual ~SDT_genertor();
 protected: string child(const P_NodeValue &nodeValue,int index,int value_type);
 protected: string own(const P_NodeValue &nodeValue,int value_type);

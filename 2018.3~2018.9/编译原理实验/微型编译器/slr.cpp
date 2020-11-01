@@ -32,7 +32,7 @@ void Slr::log(const string& s){
 
 
 
-int Slr::slr(string rule_file,string compile_file,Env& env){
+int Slr::slr(string rule_file,string compile_file,Env& env,CompileInfo &compileInfo){
 //初始化
 string start_symbol="ele_begin";
 
@@ -172,7 +172,7 @@ for(const auto &e:total_lex_word_list){
 
 
 		if(node_tree!=nullptr){
-			gen_middle_code(env,node_tree);
+			gen_middle_code(env,node_tree,compileInfo);
 		}
 
 
@@ -1111,11 +1111,12 @@ while(!finished_flag){
 	}
 
 }
-
 	return resultTree;
 }
 
-void Slr::gen_middle_code(Env &env,Node* &node_tree){
+
+
+void Slr::gen_middle_code(Env &env,Node* &node_tree,CompileInfo &compileInfo){
 
 	cout<<"生成中间代码:"<<endl;
 
@@ -1126,16 +1127,23 @@ void Slr::gen_middle_code(Env &env,Node* &node_tree){
 
 	while(stack.size()>0){
 			auto top=stack.back();
+			cout<<"a1"<<endl;
+			cout<<top->node->get_rule_str()<<endl;
 			P_SDT_genertor sdt_genertor=SDT_Factory::instance.factory[top->node->get_rule_str()];
+			cout<<"a2"<<endl;
 			if(sdt_genertor!=nullptr){
-				P_NodeValue p_nodeValue=sdt_genertor->handle(top,result_map,has_calculate_set,env);
+
+				P_NodeValue p_nodeValue=sdt_genertor->handle(top,result_map,has_calculate_set,env,compileInfo);
+				if(compileInfo.errInfo!=""){
+                    break;
+				}
 				if(p_nodeValue!=nullptr){
 					stack.push_back(p_nodeValue);
 				}else{
 					stack.pop_back();
 				}
 			}else{
-				return;
+				break;
 			}
 	}
 	for(auto &e:result_map){

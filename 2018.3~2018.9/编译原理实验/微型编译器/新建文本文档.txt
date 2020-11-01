@@ -69,9 +69,12 @@ g++ -std=c++11   -c SDT\SDT_generator.cpp
 g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Array.cpp
 g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Env.cpp
 g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\SmbolInfo.cpp
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\CompileInfo.cpp
+
 g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Tag.cpp
 g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Token.cpp
 g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c symbols\Type.cpp
+
 
 
 
@@ -83,12 +86,16 @@ g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c SLR\Rule.cpp
 
 
 
-g++  -g -finput-charset=UTF-8 -fexec-charset=GBK  -o pwh pwh.o slr.o lex.yy.o SDT_generator.o Array.o Env.o SmbolInfo.o Tag.o Token.o Type.o Item.o Lex_Word.o Node.o Rule.o
+g++  -g -finput-charset=UTF-8 -fexec-charset=GBK  -o pwh pwh.o slr.o lex.yy.o SDT_generator.o Array.o Env.o CompileInfo.o SmbolInfo.o Tag.o Token.o Type.o Item.o Lex_Word.o Node.o Rule.o
 
 
 pwh.exe
+======================================
+
+g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c pwh.cpp
+
 
 g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c slr.cpp
-g++  -g -finput-charset=UTF-8 -fexec-charset=GBK  -o pwh pwh.o slr.o lex.yy.o SDT_generator.o Array.o Env.o SmbolInfo.o Tag.o Token.o Type.o Item.o Lex_Word.o Node.o Rule.o
+g++  -g -finput-charset=UTF-8 -fexec-charset=GBK  -o pwh pwh.o slr.o lex.yy.o SDT_generator.o Array.o Env.o CompileInfo.o SmbolInfo.o Tag.o Token.o Type.o Item.o Lex_Word.o Node.o Rule.o
 pwh.exe
 

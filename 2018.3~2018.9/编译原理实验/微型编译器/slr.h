@@ -16,6 +16,7 @@
 #include"SLR\Node.h"
 #include"SLR\Lex_Word.h"
 #include"symbols\Env.h"
+#include"symbols\CompileInfo.h"
 #include"SDT\SDT_generator.h"
 
 
@@ -50,9 +51,9 @@ private: Node* syntax_analyze(const vector<P_Rule> &ruleList,set<string> zero_te
 private: bool detect_ambigulous( vector<unordered_map<string,string>> &forecast_list,
  const vector<P_Rule> &ruleList,const vector<vector<P_Item>> items_list);
 
-private: void gen_middle_code(Env &env,Node* &node_tree);
+private: void gen_middle_code(Env &env,Node* &node_tree,CompileInfo &compileInfo);
 
-public: int slr(string rule_file,string compile_file,Env &env);
+public: int slr(string rule_file,string compile_file,Env &env,CompileInfo &compileInfo);
 
 private: int startsWith(string s, string sub);
 

@@ -65,7 +65,7 @@ int main(){
 /*
 */
 
-/* 
+/*
 Œﬁ ∑≠“ÎÃÂ
 0-9a-zA-Z;
 ....{
@@ -178,7 +178,7 @@ int main(){
 			}else if(startsWith(rule_str,"/*")!=1&&endsWith(rule_str,"*/")==1){
 				status=5;break;
 			}
-			
+
 
 			if(rule_str!=""){
 				for(int i1=0;i1<rule_str.length();i1++){
@@ -228,6 +228,7 @@ int main(){
 	fs<<"#include<sstream>"<<endl;
 	fs<<"#include\"SDT_generator.h\""<<endl;
 	fs<<"#include\"..\\symbols\\Env.h\""<<endl;
+	fs<<"#include\"..\\symbols\\CompileInfo.h\""<<endl;
 	fs<<"#include\"..\\symbols\\Tag.h\""<<endl;
 	fs<<"#include\"..\\symbols\\Token.h\""<<endl;
 	fs<<"using namespace std;"<<endl;
@@ -253,7 +254,7 @@ int main(){
 	fs<<"class Default_SDT_genertor:public SDT_genertor{"<<endl;
 	fs<<"public: Default_SDT_genertor(){}"<<endl;
 	fs<<"public: P_NodeValue handle(const P_NodeValue &nodeValue,"<<endl;
-	fs<<"unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){"<<endl;
+	fs<<"unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){"<<endl;
 	fs<<"cout<<nodeValue->node<<\":\"<<endl;"<<endl;
 	fs<<"cout<<\"symbol=\"<<nodeValue->node->symbol<<endl;"<<endl;
 	fs<<"cout<<\"content=\"<<nodeValue->node->content<<endl;"<<endl;
@@ -333,7 +334,7 @@ for(const auto &e:order_map){
 
 
 	fs<<"class "<<className<<"_"<<count<<"_SDT_genertor:public SDT_genertor{"<<endl;
-	fs<<"	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env){"<<endl;
+	fs<<"	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){"<<endl;
 	fs<<"		cout<<\"carry out "<<className<<"_"<<count<<"_SDT_genertor\"<<endl;"<<endl;
 
 
@@ -373,7 +374,7 @@ for(const auto &e:order_map){
 			}
 
 			parameterMap[e1]=symbol;
-			
+
 		}else{
 
 			std::regex_iterator<std::string::const_iterator> numBegin(e1.cbegin(), e1.cend(), numPartten);
@@ -409,14 +410,14 @@ for(const auto &e:order_map){
 				}else{
 					symbol=_className;
 
-					
+
 					if(_indexCountMap[numBegin->str()]!=0){
 						symbol+="_"+to_string(_indexCountMap[numBegin->str()]);
 					}
 					symbol+="_syn";
 					fs<<"string "<<symbol<<"=child(nodeValue,"<<atoi(numBegin->str().c_str())-1<<",NodeValue::SYN);"<<endl;
 
-				}			
+				}
 			}
 			parameterMap[e1]=symbol;
 		}
@@ -427,11 +428,11 @@ for(const auto &e:order_map){
 	for(const auto& e1:orders){
 
 		int tabNum=1;
-		
+
 		if(regex_match(e1,declarePartten)){
 			std::regex_iterator<std::string::const_iterator> parameterIt(e1.cbegin(), e1.cend(), partten);
 			std::regex_iterator<std::string::const_iterator> numIt(parameterIt->str().cbegin(), parameterIt->str().cend(), numPartten);
-			
+
 			string symbol=parameterMap[parameterIt->str()];
 			string nodeValueType="NodeValue::SYN";
 			if(endsWith(e1,"next")==1){
@@ -475,7 +476,7 @@ for(const auto &e:order_map){
 			for(int i1=0;i1<tabNum;i1++){fs<<"\t";}
 			fs<<"}"<<endl;
 		}else{
-		
+
 			string str=e1;
 			while(str.find("$")!=string::npos){
 				for(const auto& e2:parameterMap){
@@ -497,7 +498,7 @@ for(const auto &e:order_map){
 			fs<<str<<endl;
 
 		}
-		
+
 	}
 
 

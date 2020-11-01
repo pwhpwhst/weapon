@@ -1,4 +1,5 @@
 #include"symbols\Env.h"
+#include"symbols\CompileInfo.h"
 #include"slr.h"
 #include"symbols\Type.h"
 
@@ -19,11 +20,25 @@ string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\20
 Env env;
 cout<<"尝试将Cpp转成符号表！"<<endl;
 Slr slr;
-slr.slr( rule_file, compile_file,env);
+CompileInfo compileInfo;
+slr.slr( rule_file, compile_file,env,compileInfo);
+cout<<"检测开始！"<<endl;
+
+if(compileInfo.errInfo!=""){
+    cout<<compileInfo.errInfo<<endl;
+}else{
 cout<<"dasd"<<endl;
-env.traversal();
 Token* t=env.get("adsadas").type;
 Type* t1=(Type*) t;
 cout<<t1->content<<endl;
-cout<<"dasd2"<<endl;
+
+t=env.get("abc").type;
+t1=(Type*) t;
+cout<<t1->content<<endl;
+}
+
+
+
+cout<<"检测完成！"<<endl;
+
 }

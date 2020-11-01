@@ -10,6 +10,8 @@ condition : type-specifier-seq declarator '=' assignment-expression  {
                                                                                                                     newInfo.tag=Tag::ID;
                                                                                                                     newInfo.type=$1->clone();
                                                                                                                     env.put($2->content,newInfo);
+                                                                                                                }else{
+                                                                                                                    compileInfo.errInfo=$2->content+" is dumplicate!";
                                                                                                                 }
                                                                                                             }
 type-specifier-seq : type-specifier	{Declare $1;$$=$1->clone();}
