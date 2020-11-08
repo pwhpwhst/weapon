@@ -1,5 +1,5 @@
 ele_begin : condition	  {Declare $1;$$=$1->clone();}
-assignment-expression : 'number'	{$$=new Token(Tag::INT,$1);}
+assignment-expression : 'integer-literal'	{$$=new Token(Tag::INT,$1);}
 declarator : 'identifier'	{$$=new Token(Tag::ID,$1);}
 condition : type-specifier-seq declarator '=' assignment-expression  {
                                                                                                                 Declare $1;

@@ -335,7 +335,7 @@ for(const auto &e:order_map){
 
 	fs<<"class "<<className<<"_"<<count<<"_SDT_genertor:public SDT_genertor{"<<endl;
 	fs<<"	public: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set,Env &env,CompileInfo &compileInfo){"<<endl;
-	fs<<"		cout<<\"carry out "<<className<<"_"<<count<<"_SDT_genertor\"<<endl;"<<endl;
+//	fs<<"		cout<<\"carry out "<<className<<"_"<<count<<"_SDT_genertor\"<<endl;"<<endl;
 
 
 	//参数定义部分

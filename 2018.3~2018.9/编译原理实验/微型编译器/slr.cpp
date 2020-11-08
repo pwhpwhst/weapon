@@ -4,7 +4,7 @@
 //#define __PRINT_FORECAST
 //#define __PRINT_GRAPH
 //#define __PRINT_LEX_WORD_LIST
-//#define __PRINT_NODE_TREE
+#define __PRINT_NODE_TREE
 
 #include "slr.h"
 using namespace std;
@@ -67,7 +67,7 @@ vector<string> orders;
 unordered_map<string,string> temp_forecast_map;
 paresOrders(rule_file,orders,temp_forecast_map);
 	for( const auto &e:orders){
-		cout<<e<<endl;
+//		cout<<e<<endl;
 		ruleList.push_back(P_Rule(new Rule(e)));
 	}
 
@@ -1128,7 +1128,7 @@ void Slr::gen_middle_code(Env &env,Node* &node_tree,CompileInfo &compileInfo){
 	while(stack.size()>0){
 			auto top=stack.back();
 
-			cout<<top->node->get_rule_str()<<endl;
+			//cout<<top->node->get_rule_str()<<endl;
 			P_SDT_genertor sdt_genertor=SDT_Factory::instance.factory[top->node->get_rule_str()];
 
 			if(sdt_genertor!=nullptr){

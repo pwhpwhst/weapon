@@ -26,7 +26,6 @@ cout<<"检测开始！"<<endl;
 if(compileInfo.errInfo!=""){
     cout<<compileInfo.errInfo<<endl;
 }else{
-cout<<"dasd"<<endl;
 Token* t=env.get("abcd").type;
 Type* t1=(Type*) t;
 cout<<t1->content<<endl;
@@ -46,13 +45,26 @@ cout<<"检测完成！"<<endl;
 
 
 
-
 void test2(){
 
+string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\pwh的试验\\test.txt";
+
+vector<P_Lex_Word>  total_lex_word_list;
+total_lex_word_list.clear();
+word_parser(compile_file,total_lex_word_list);
+
+for(const auto &e:total_lex_word_list){
+	cout<<"type="<<e->type<<endl;
+}
+
+
+}
+
+
+
+void test3(){
+
 string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\pwh的试验\\testForLexical.txt";
-
-
-
 
 vector<P_Lex_Word>  total_lex_word_list;
 total_lex_word_list.clear();
@@ -69,6 +81,6 @@ for(const auto &e:total_lex_word_list){
 
 
 int main(){
-//test1();
-test2();
+test1();
+//test2();
 }
