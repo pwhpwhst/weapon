@@ -46,12 +46,17 @@
 		<Unit filename="SLR/Rule.cpp" />
 		<Unit filename="SLR/Rule.h" />
 		<Unit filename="SLR/lex.yy.h" />
+		<Unit filename="SLR/wordParser.l">
+			<Option compile="1" />
+		</Unit>
 		<Unit filename="pwh.cpp" />
 		<Unit filename="pwh的试验/rule.txt" />
 		<Unit filename="pwh的试验/test.txt" />
 		<Unit filename="rule.txt" />
 		<Unit filename="slr.cpp" />
 		<Unit filename="slr.h" />
+		<Unit filename="symbols/CompileInfo.cpp" />
+		<Unit filename="symbols/CompileInfo.h" />
 		<Unit filename="symbols/Env.cpp" />
 		<Unit filename="symbols/Env.h" />
 		<Unit filename="symbols/SmbolInfo.cpp" />

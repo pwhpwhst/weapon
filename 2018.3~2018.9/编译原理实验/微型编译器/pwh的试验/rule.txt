@@ -13,7 +13,6 @@ condition : type-specifier-seq declarator '=' assignment-expression  {
                                                                                                                     SmbolInfo::REGIST_SEQ++;
                                                                                                                     newInfo.registNum= SmbolInfo::REGIST_SEQ;
                                                                                                                     env.put($2->content,newInfo);
-
                                                                                                                     os.str("");
                                                                                                                     os<<compileInfo.interCode<<"p"<<env.get($2->content).registNum<<"="<<$4->content<<endl;
                                                                                                                     compileInfo.interCode=os.str();
@@ -22,6 +21,6 @@ condition : type-specifier-seq declarator '=' assignment-expression  {
                                                                                                                 }
 
 
-                                                                                                            }
+                                                                      }
 type-specifier-seq : type-specifier	{Declare $1;$$=$1->clone();}
 type-specifier : 'simple-type-specifier'	{$$=new Token(Tag::TYPE,$1);}

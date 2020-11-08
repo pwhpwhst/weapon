@@ -92,12 +92,16 @@ g++  -g -finput-charset=UTF-8 -fexec-charset=GBK  -o pwh pwh.o slr.o lex.yy.o SD
 pwh.exe
 ======================================
 
-g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c pwh.cpp
 
+flex.exe  SLR\wordParser.l
+gcc -c lex.yy.c
 
-g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c slr.cpp
 g++  -g -finput-charset=UTF-8 -fexec-charset=GBK  -o pwh pwh.o slr.o lex.yy.o SDT_generator.o Array.o Env.o CompileInfo.o SmbolInfo.o Tag.o Token.o Type.o Item.o Lex_Word.o Node.o Rule.o
 pwh.exe
 
 ======================================
-三址代码一般形式	 233
+
+type-name:
+class-name
+enum-name
+typedef-name
