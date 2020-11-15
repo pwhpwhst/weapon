@@ -1,0 +1,11 @@
+ele_begin : S
+S : type-name
+S : literal
+type-name : class-name
+type-name : enum-name
+type-name : typedef-name
+literal : string-literal
+literal : character-literal
+literal : boolean-literal
+literal : floating-literal
+literal : integer-literal
