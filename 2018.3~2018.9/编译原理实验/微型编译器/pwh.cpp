@@ -2,10 +2,10 @@
 #include"symbols\CompileInfo.h"
 #include"slr.h"
 #include"symbols\Type.h"
+#include"symbols\Tag.h"
 #include"SLR\Lex_Word.h"
 
 #include <vector>
-
 
 
 
@@ -45,13 +45,17 @@ cout<<"检测完成！"<<endl;
 
 
 
+
+
+
+
 void test2(){
 
 string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\pwh的试验\\test.txt";
-
+Env env;
 vector<P_Lex_Word>  total_lex_word_list;
 total_lex_word_list.clear();
-word_parser(compile_file,total_lex_word_list);
+word_parser(compile_file,total_lex_word_list,env);
 
 for(const auto &e:total_lex_word_list){
 	cout<<"type="<<e->type<<endl;
@@ -61,14 +65,56 @@ for(const auto &e:total_lex_word_list){
 }
 
 
+void testForSynax(){
+string rule_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\pwh的试验\\ruleForLexical.txt";
+string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\pwh的试验\\testForLexical.txt";
+//string rule_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\rule.txt";
+//string compile_file="F:\\codeWeaponStore\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\test.txt";
+Env env;
+//
 
-void test3(){
+//    enum-name : 'identifier-enum-name'
+//typedef-name : 'identifier-typedef-name'
+
+    shared_ptr<SmbolInfo> newInfo=shared_ptr<SmbolInfo>(new SmbolInfo());
+    newInfo->tag=Tag::ID;
+    newInfo->identifier_name="'identifier-enum-name'";
+    env.put("identifier_enum_name",*newInfo);
+    cout<<env.get("identifier_enum_name").identifier_name<<endl;
+
+     newInfo=shared_ptr<SmbolInfo>(new SmbolInfo());
+    newInfo->tag=Tag::ID;
+    newInfo->identifier_name="'identifier-typedef-name'";
+    env.put("identifier_typedef_name",*newInfo);
+    cout<<env.get("identifier_typedef_name").identifier_name<<endl;
+
+cout<<"尝试将Cpp转成符号表！"<<endl;
+Slr slr;
+CompileInfo compileInfo;
+slr.slr( rule_file, compile_file,env,compileInfo);
+cout<<"检测开始！"<<endl;
+
+if(compileInfo.errInfo!=""){
+    cout<<compileInfo.errInfo<<endl;
+}else{
+
+}
+
+
+
+cout<<"检测完成！"<<endl;
+
+}
+
+
+
+void testForLexer(){
 
 string compile_file="D:\\Users\\Administrator\\Desktop\\project2018.3_2018.9\\2018.3~2018.9\\编译原理实验\\微型编译器\\pwh的试验\\testForLexical.txt";
-
+Env env;
 vector<P_Lex_Word>  total_lex_word_list;
 total_lex_word_list.clear();
-word_parser(compile_file,total_lex_word_list);
+word_parser(compile_file,total_lex_word_list,env);
 
 for(const auto &e:total_lex_word_list){
 	cout<<"type="<<e->type<<endl;
@@ -81,6 +127,5 @@ for(const auto &e:total_lex_word_list){
 
 
 int main(){
-test1();
-//test2();
+testForSynax();
 }

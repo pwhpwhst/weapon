@@ -1,5 +1,7 @@
+//  SLR/Lex_Word
 #pragma once
 #include <memory>
+#include "../symbols/Env.h"
 using namespace std;
 
 class Lex_Word{
@@ -21,4 +23,4 @@ public: virtual ~Lex_Word();
 
 typedef std::shared_ptr<Lex_Word> P_Lex_Word;
 
-void word_parser(const string& path,vector<P_Lex_Word> &lex_word_list);
+void word_parser(const string& path,vector<P_Lex_Word> &lex_word_list,Env& env);

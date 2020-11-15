@@ -139,7 +139,7 @@ int context_id=0;
 log("生成输入");
 vector<P_Lex_Word>  total_lex_word_list;
 total_lex_word_list.clear();
-word_parser(compile_file,total_lex_word_list);
+word_parser(compile_file,total_lex_word_list,env);
 
 #ifdef __PRINT_LEX_WORD_LIST
 for(const auto &e:total_lex_word_list){

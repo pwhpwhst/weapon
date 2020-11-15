@@ -90,11 +90,15 @@ if(strcmp(yytext,"char")==0){
 	write_word(p_lex_word,yytext,"'simple-type-specifier'");
 }else if(strcmp(yytext,"true")==0||strcmp(yytext,"false")==0){
 	write_word(p_lex_word,yytext,"'boolean-literal'");
+}else if(strcmp(yytext,"enum")==0){
+	write_word(p_lex_word,yytext,"'enum'");
 }else{
 	write_word(p_lex_word,yytext,"'identifier'");
 }
   p_lex_word++;
 }
+
+
 
 
 {string-literal} {
@@ -133,11 +137,21 @@ if(strcmp(yytext,"char")==0){
   p_lex_word++;
 }
 
+"{" {
+  write_word(p_lex_word,yytext,"'LEFT_BRACKET'");
+  p_lex_word++;
+}
+
+"}" {
+  write_word(p_lex_word,yytext,"'RIGHT_BRACKET'");
+  p_lex_word++;
+}
 
 
-
-
-
+"," {
+  write_word(p_lex_word,yytext,"','");
+  p_lex_word++;
+}
 
 
 %%
