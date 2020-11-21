@@ -1,3 +1,2 @@
-enum abc { hah , dasd } ;
-enum hdsf {} ;
-identifier_enum_name;
+enum abc { hah , dasd }
+enum hdsf {}

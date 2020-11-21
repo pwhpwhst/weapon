@@ -3,6 +3,8 @@ ele_begin_a : type-name
 ele_begin_a : literal
 ele_begin_a : cv-qualifier-seq
 ele_begin_a : enum-specifier
+ele_begin_a : namespace-name
+ele_begin_a : using-directive
 type-name : class-name
 type-name : enum-name
 type-name : typedef-name
@@ -24,3 +26,11 @@ enumerator-list : enumerator-definition
 enumerator-list : enumerator-list ',' enumerator-definition
 enum-name : 'identifier-enum-name'
 typedef-name : 'identifier-typedef-name'
+namespace-name : original-namespace-name
+namespace-name : namespace-alias
+original-namespace-name : 'identifier-original-namespace-name'
+namespace-alias : 'identifier-namespace-alias'
+using-directive : 'using' 'namespace' namespace-name
+using-directive : 'using' 'namespace' '::' namespace-name
+using-directive : 'using' 'namespace' nested-name-specifier namespace-name
+using-directive : 'using' 'namespace' '::' nested-name-specifier namespace-name

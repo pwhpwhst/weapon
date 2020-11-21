@@ -75,7 +75,6 @@ Env env;
 
 //    enum-name : 'identifier-enum-name'
 //typedef-name : 'identifier-typedef-name'
-
     shared_ptr<SmbolInfo> newInfo=shared_ptr<SmbolInfo>(new SmbolInfo());
     newInfo->tag=Tag::ID;
     newInfo->identifier_name="'identifier-enum-name'";

@@ -158,7 +158,7 @@ vector<P_Lex_Word>  lex_word_list;
 
 for(const auto &e:total_lex_word_list){
 	lex_word_list.push_back(e);
-	if(e->type=="';'"){
+	if(e->type=="'\n'"){
 		//构造语法树
 		lex_word_list.pop_back();
 		Node *node_tree=syntax_analyze(ruleList,zero_terminator,forecast_list,convert_map,lex_word_list);

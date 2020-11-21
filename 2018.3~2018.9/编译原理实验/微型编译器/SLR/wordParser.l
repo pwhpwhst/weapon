@@ -3,7 +3,7 @@
    #include "stdlib.h"
    #include<string.h>
    #include "SLR\lex.yy.h"
-   
+
     struct C_Lex_Word lex_word[500];
     struct C_Lex_Word *p_lex_word=lex_word;
 
@@ -47,7 +47,7 @@ c-char [^\'\\\n]|{escape-sequence}|{universal-character-name}
 h-char [^\"\n]
 q-char [^\>\n]
 s-char-sequence {s-char}+
-c-char-sequence {c-char}+ 
+c-char-sequence {c-char}+
 h-char-sequence {h-char}+
 q-char-sequence {q-char}+
 string-literal L?\"{s-char-sequence}?\"
@@ -134,6 +134,11 @@ if(strcmp(yytext,"char")==0){
 
 ";" {
   write_word(p_lex_word,yytext,"';'");
+  p_lex_word++;
+}
+
+"\n" {
+  write_word(p_lex_word,yytext,"'\n'");
   p_lex_word++;
 }
 

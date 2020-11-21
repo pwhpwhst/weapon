@@ -46,9 +46,7 @@
 		<Unit filename="SLR/Rule.cpp" />
 		<Unit filename="SLR/Rule.h" />
 		<Unit filename="SLR/lex.yy.h" />
-		<Unit filename="SLR/wordParser.l">
-			<Option compile="1" />
-		</Unit>
+
 		<Unit filename="pwh.cpp" />
 		<Unit filename="pwh的试验/rule.txt" />
 		<Unit filename="pwh的试验/test.txt" />
@@ -65,6 +63,10 @@
 		<Unit filename="symbols/Tag.h" />
 		<Unit filename="symbols/Token.cpp" />
 		<Unit filename="symbols/Token.h" />
+		<Unit filename="symbols/Type.cpp" />
+		<Unit filename="symbols/Type.h" />
+		<Unit filename="symbols/Array.cpp" />
+		<Unit filename="symbols/Array.h" />
 		<Unit filename="test.txt" />
 		<Unit filename="新建文本文档.txt" />
 		<Extensions>

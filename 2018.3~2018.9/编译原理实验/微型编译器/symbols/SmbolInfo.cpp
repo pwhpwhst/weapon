@@ -9,11 +9,13 @@ int SmbolInfo::REGIST_SEQ=0;
 
 SmbolInfo::SmbolInfo(){
     identifier_name="";
+    type=nullptr;
 }
 
 SmbolInfo::SmbolInfo(int tag){
      identifier_name="";
     this->tag=tag;
+    type=nullptr;
 }
 
  SmbolInfo& SmbolInfo:: operator = (const SmbolInfo& smbolInfo){
@@ -26,6 +28,7 @@ SmbolInfo::SmbolInfo(int tag){
    }
 
     this->registNum=smbolInfo.registNum;
+    cout<<"dasfdasf1"<<endl;
     return *this;
 }
 
