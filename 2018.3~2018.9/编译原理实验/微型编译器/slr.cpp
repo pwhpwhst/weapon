@@ -350,7 +350,11 @@ set<int> rule_set;
 	for(int i1=0;i1<forecast_list.size();i1++){
 		const auto e1=forecast_list[i1];
 		for(const auto &e2:e1){
+		    if(e2.first=="0"){
+                continue;
+		    }
 			if(e2.second.find(",")!=string::npos){
+
 				flag=true;
 				cout<<"存在二义性:"<<i1<<","<<e2.first<<":"<<e2.second<<endl;
 				item_set.insert(i1);
