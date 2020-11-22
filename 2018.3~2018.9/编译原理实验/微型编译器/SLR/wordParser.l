@@ -67,29 +67,39 @@ identifier {nondigit}({nondigit}|{digit})*
 
 {identifier} {
 if(strcmp(yytext,"char")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'char'");
 }else if(strcmp(yytext,"wchar_t")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'wchar_t'");
 }else if(strcmp(yytext,"bool")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'bool'");
 }else if(strcmp(yytext,"short")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'short'");
 }else if(strcmp(yytext,"int")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'int'");
 }else if(strcmp(yytext,"long")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'long'");
 }else if(strcmp(yytext,"signed")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'signed'");
 }else if(strcmp(yytext,"unsigned")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'unsigned'");
 }else if(strcmp(yytext,"float")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'float'");
 }else if(strcmp(yytext,"double")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'double'");
 }else if(strcmp(yytext,"void")==0){
-	write_word(p_lex_word,yytext,"'simple-type-specifier'");
+	write_word(p_lex_word,yytext,"'void'");
 }else if(strcmp(yytext,"true")==0||strcmp(yytext,"false")==0){
 	write_word(p_lex_word,yytext,"'boolean-literal'");
+}else if(strcmp(yytext,"auto")==0||strcmp(yytext,"register")==0||strcmp(yytext,"static")==0||strcmp(yytext,"mutable")==0){
+	write_word(p_lex_word,yytext,"'storage-class-specifier'");
+}else if(strcmp(yytext,"inline")==0||strcmp(yytext,"virtual")==0||strcmp(yytext,"explicit")==0){
+	write_word(p_lex_word,yytext,"'function-specifier'");
+}else if(strcmp(yytext,"class")==0||strcmp(yytext,"struct")==0||strcmp(yytext,"union")==0){
+	write_word(p_lex_word,yytext,"'class-key'");
+}else if(strcmp(yytext,"friend")==0){
+	write_word(p_lex_word,yytext,"'friend'");
+}else if(strcmp(yytext,"typedef")==0){
+	write_word(p_lex_word,yytext,"'typedef'");
 }else if(strcmp(yytext,"enum")==0){
 	write_word(p_lex_word,yytext,"'enum'");
 }else{
@@ -97,6 +107,7 @@ if(strcmp(yytext,"char")==0){
 }
   p_lex_word++;
 }
+
 
 
 

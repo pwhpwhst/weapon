@@ -111,7 +111,7 @@ log("构建 LR（0）算法的状态机");
 unordered_map<int,unordered_map<string,int>> convert_map;
 get_items_list_and_convert_map(items_list,convert_map,non_terminator,f_first,ruleList,start_symbol);
 
-unordered_map<string,int> r_rule_item_map;
+unordered_map<string,set<int>> r_rule_item_map;
 	ostringstream os;
 for(int i1=0;i1<items_list.size();i1++){
     const auto &e1=items_list[i1];
@@ -125,7 +125,10 @@ for(int i1=0;i1<items_list.size();i1++){
                     os<<" ";
                 }
             }
-            r_rule_item_map[os.str()]=i1;
+            if(r_rule_item_map.find(os.str())==r_rule_item_map.end()){
+                r_rule_item_map[os.str()]=set<int>();
+            }
+            r_rule_item_map[os.str()].insert(i1);
         }
     }
 }
@@ -137,44 +140,47 @@ calculate_forecast_list(forecast_list,items_list,terminator,rule_map,convert_map
 
 //解决移入-规约冲突
 log("解决移入-规约冲突");
+
 for(const auto &e:temp_forecast_map){
 	string_list.clear();
 	split(string_list,e.first,is_any_of("|"));
-
-	string method=forecast_list[r_rule_item_map[string_list[0]]][string_list[1]];
     string rule_str=string_list[0];
     string move=string_list[1];
-	if(method.find(",")!=string::npos){
-	    string_list.clear();
-        split(string_list,method,is_any_of(","));
-        string s,r;
+	for(const auto &e1:r_rule_item_map[string_list[0]]){
+        string method=forecast_list[e1][string_list[1]];
+        if(method.find(",")!=string::npos){
+            string_list.clear();
+            split(string_list,method,is_any_of(","));
+            string s,r;
 
-        for(const auto &e:string_list){
-            if(startsWith(e,"s")){
-                s=e;
-            }else if(startsWith(e,"r")){
-            P_Rule rule=ruleList[atoi(e.substr(1).c_str())];
-            os.str("");
-            os<<rule->rule_name<<" : ";
-            for(int i2=0;i2<rule->symbols.size();i2++){
-                os<<rule->symbols[i2];
-                if(i2!=(rule->symbols.size()-1)){
-                    os<<" ";
+            for(const auto &e2:string_list){
+                if(startsWith(e2,"s")){
+                    s=e2;
+                }else if(startsWith(e2,"r")){
+                P_Rule rule=ruleList[atoi(e2.substr(1).c_str())];
+                os.str("");
+                os<<rule->rule_name<<" : ";
+                for(int i2=0;i2<rule->symbols.size();i2++){
+                    os<<rule->symbols[i2];
+                    if(i2!=(rule->symbols.size()-1)){
+                        os<<" ";
+                    }
+                }
+                if(rule_str==os.str()){
+                    r=e2;
+                }
                 }
             }
-            if(rule_str==os.str()){
-                r=e;
-            }
+            if(e.second=="s"){
+                forecast_list[e1][move]=s;
+            }else if(e.second=="r"){
+                forecast_list[e1][move]=r;
             }
         }
-        if(e.second=="s"){
-            forecast_list[r_rule_item_map[rule_str]][move]=s;
-        }else if(e.second=="r"){
-            forecast_list[r_rule_item_map[rule_str]][move]=r;
-        }
-
 	}
+
 }
+
 
 if(detect_ambigulous(forecast_list,ruleList,items_list)){
 	return -1;

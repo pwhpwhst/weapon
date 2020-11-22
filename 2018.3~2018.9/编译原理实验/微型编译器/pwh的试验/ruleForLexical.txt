@@ -4,9 +4,7 @@ ele_begin_a : ptr-operator
 ele_begin_a : declaration-seq
 ele_begin_a : declaration
 ele_begin_a : decl-specifier-seq
-ele_begin_a : block-declaration
-ele_begin_a : namespace-definition
-ele_begin_a : simple-type-specifier
+type-name : class-name
 type-name : enum-name
 type-name : typedef-name
 literal : 'string-literal'
@@ -50,7 +48,13 @@ storage-class-specifier : 'extern'
 linkage-specification : 'extern' string-literal declaration
 linkage-specification : 'extern' string-literal 'LEFT_BRACKET' declaration-seq 'RIGHT_BRACKET'
 linkage-specification : 'extern' string-literal 'LEFT_BRACKET' 'RIGHT_BRACKET'
+declaration : block-declaration
+declaration : function-definition
+declaration : template-declaration
+declaration : explicit-instantiation
+declaration : explicit-specialization
 declaration : linkage-specification
+declaration : namespace-definition
 decl-specifier-seq : decl-specifier
 decl-specifier-seq : decl-specifier-seq decl-specifier
 decl-specifier : storage-class-specifier
@@ -60,6 +64,9 @@ decl-specifier : 'friend'
 decl-specifier : 'typedef'
 type-specifier : enum-specifier
 type-specifier : 'cv-qualifier'
+type-specifier : simple-type-specifier
+type-specifier : class-specifier
+type-specifier : elaborated-type-specifier
 qualified-namespace-specifier : namespace-name
 qualified-namespace-specifier : '::' namespace-name
 qualified-namespace-specifier : nested-name-specifier namespace-name
@@ -107,5 +114,28 @@ simple-type-specifier : 'unsigned'
 simple-type-specifier : 'float'
 simple-type-specifier : 'double'
 simple-type-specifier : 'void'
+elaborated-type-specifier : 'class-key' identifier
+elaborated-type-specifier : 'class-key' '::' identifier
+elaborated-type-specifier : 'class-key' nested-name-specifier identifier
+elaborated-type-specifier : 'class-key' '::' nested-name-specifier identifier
+elaborated-type-specifier : 'class-key' template-id
+elaborated-type-specifier : 'class-key' '::' template-id
+elaborated-type-specifier : 'class-key' nested-name-specifier template-id
+elaborated-type-specifier : 'class-key' '::' nested-name-specifier template-id
+elaborated-type-specifier : 'class-key' 'template' template-id
+elaborated-type-specifier : 'class-key' '::' 'template' template-id
+elaborated-type-specifier : 'class-key' nested-name-specifier 'template' template-id
+elaborated-type-specifier : 'class-key' '::' nested-name-specifier 'template' template-id
+elaborated-type-specifier : 'enum' identifier
+elaborated-type-specifier : 'enum' '::' identifier
+elaborated-type-specifier : 'enum' nested-name-specifier identifier
+elaborated-type-specifier : 'enum' '::' nested-name-specifier identifier
+elaborated-type-specifier : 'typename' nested-name-specifier identifier
+elaborated-type-specifier : 'typename' '::' nested-name-specifier identifier
+elaborated-type-specifier : 'typename' nested-name-specifier template-id
+elaborated-type-specifier : 'typename' '::' nested-name-specifier template-id
+elaborated-type-specifier : 'typename' nested-name-specifier 'template' template-id
+elaborated-type-specifier : 'typename' '::' nested-name-specifier 'template' template-id
 ====================================
 nested-name-specifier : class-or-namespace-name '::'|'template'|r
+type-name : class-name|'::'|r
