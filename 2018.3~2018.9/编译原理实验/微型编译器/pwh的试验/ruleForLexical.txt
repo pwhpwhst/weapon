@@ -1,11 +1,12 @@
 ele_begin : ele_begin_a
-ele_begin_a : type-name
 ele_begin_a : literal
-ele_begin_a : cv-qualifier-seq
-ele_begin_a : enum-specifier
-ele_begin_a : namespace-name
-ele_begin_a : using-directive
-type-name : class-name
+ele_begin_a : ptr-operator
+ele_begin_a : declaration-seq
+ele_begin_a : declaration
+ele_begin_a : decl-specifier-seq
+ele_begin_a : block-declaration
+ele_begin_a : namespace-definition
+ele_begin_a : simple-type-specifier
 type-name : enum-name
 type-name : typedef-name
 literal : 'string-literal'
@@ -30,7 +31,81 @@ namespace-name : original-namespace-name
 namespace-name : namespace-alias
 original-namespace-name : 'identifier-original-namespace-name'
 namespace-alias : 'identifier-namespace-alias'
-using-directive : 'using' 'namespace' namespace-name
-using-directive : 'using' 'namespace' '::' namespace-name
-using-directive : 'using' 'namespace' nested-name-specifier namespace-name
-using-directive : 'using' 'namespace' '::' nested-name-specifier namespace-name
+using-directive : 'using' 'namespace' namespace-name ';'
+using-directive : 'using' 'namespace' '::' namespace-name ';'
+using-directive : 'using' 'namespace' nested-name-specifier namespace-name ';'
+using-directive : 'using' 'namespace' '::' nested-name-specifier namespace-name ';'
+nested-name-specifier : class-or-namespace-name '::'
+nested-name-specifier : class-or-namespace-name '::' nested-name-specifier
+nested-name-specifier : class-or-namespace-name '::' 'template' nested-name-specifier
+class-or-namespace-name : class-name
+ptr-operator : '*'
+ptr-operator : '*' cv-qualifier-seq
+ptr-operator : '&'
+ptr-operator : nested-name-specifier '*'
+ptr-operator : '::' nested-name-specifier '*'
+ptr-operator : nested-name-specifier '*' cv-qualifier-seq
+ptr-operator : '::' nested-name-specifier '*' cv-qualifier-seq
+storage-class-specifier : 'extern'
+linkage-specification : 'extern' string-literal declaration
+linkage-specification : 'extern' string-literal 'LEFT_BRACKET' declaration-seq 'RIGHT_BRACKET'
+linkage-specification : 'extern' string-literal 'LEFT_BRACKET' 'RIGHT_BRACKET'
+declaration : linkage-specification
+decl-specifier-seq : decl-specifier
+decl-specifier-seq : decl-specifier-seq decl-specifier
+decl-specifier : storage-class-specifier
+decl-specifier : type-specifier
+decl-specifier : 'function-specifier'
+decl-specifier : 'friend'
+decl-specifier : 'typedef'
+type-specifier : enum-specifier
+type-specifier : 'cv-qualifier'
+qualified-namespace-specifier : namespace-name
+qualified-namespace-specifier : '::' namespace-name
+qualified-namespace-specifier : nested-name-specifier namespace-name
+qualified-namespace-specifier : '::' nested-name-specifier namespace-name
+namespace-alias-definition : 'namespace' 'identifier' '=' qualified-namespace-specifier ';'
+asm-definition : 'asm' '(' string-literal ')' ';'
+init-declarator-list : init-declarator
+init-declarator-list : init-declarator-list ',' init-declarator
+simple-declaration : decl-specifier-seq ';'
+simple-declaration : init-declarator-list ';'
+simple-declaration : decl-specifier-seq init-declarator-list ';'
+using-declaration : 'using' nested-name-specifier unqualified-id ';'
+using-declaration : 'using' 'typename' nested-name-specifier unqualified-id ';'
+using-declaration : 'using' '::' nested-name-specifier unqualified-id ';'
+using-declaration : 'using' 'typename' '::' nested-name-specifier unqualified-id ';'
+using-declaration : 'using' '::' unqualified-id ';'
+block-declaration : simple-declaration
+block-declaration : asm-definition
+block-declaration : namespace-alias-definition
+block-declaration : using-declaration
+block-declaration : using-directive
+namespace-body : declaration-seq
+namespace-body : 0
+extension-namespace-definition : 'namespace' original-namespace-name 'LEFT_BRACKET' namespace-body 'RIGHT_BRACKET'
+original-namespace-definition : 'namespace' 'identifier' 'LEFT_BRACKET' namespace-body 'RIGHT_BRACKET'
+named-namespace-definition : original-namespace-definition
+named-namespace-definition : extension-namespace-definition
+unnamed-namespace-definition : 'namespace' 'LEFT_BRACKET' namespace-body 'RIGHT_BRACKET'
+namespace-definition : named-namespace-definition
+namespace-definition : unnamed-namespace-definition
+simple-type-specifier : type-name
+simple-type-specifier : '::' type-name
+simple-type-specifier : nested-name-specifier type-name
+simple-type-specifier : '::' nested-name-specifier type-name
+simple-type-specifier : nested-name-specifier 'template' template-id
+simple-type-specifier : '::' nested-name-specifier 'template' template-id
+simple-type-specifier : 'char'
+simple-type-specifier : 'wchar_t'
+simple-type-specifier : 'bool'
+simple-type-specifier : 'short'
+simple-type-specifier : 'int'
+simple-type-specifier : 'long'
+simple-type-specifier : 'signed'
+simple-type-specifier : 'unsigned'
+simple-type-specifier : 'float'
+simple-type-specifier : 'double'
+simple-type-specifier : 'void'
+====================================
+nested-name-specifier : class-or-namespace-name '::'|'template'|r

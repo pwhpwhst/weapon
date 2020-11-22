@@ -106,24 +106,75 @@ calculate_f_follow(f_follow, f_first,ruleList,non_terminator,terminator, start_s
 
 
 //构建 LR（0）算法的状态机
-log("构建 LR（0）算法的状态机");
 vector<vector<P_Item>> items_list;
+log("构建 LR（0）算法的状态机");
 unordered_map<int,unordered_map<string,int>> convert_map;
 get_items_list_and_convert_map(items_list,convert_map,non_terminator,f_first,ruleList,start_symbol);
 
+unordered_map<string,int> r_rule_item_map;
+	ostringstream os;
+for(int i1=0;i1<items_list.size();i1++){
+    const auto &e1=items_list[i1];
+    for(const auto &e2:e1){
+        if(e2->rule->symbols.size()==e2->status){
+            os.str("");
+            os<<e2->rule->rule_name<<" : ";
+            for(int i2=0;i2<e2->rule->symbols.size();i2++){
+                os<<e2->rule->symbols[i2];
+                if(i2!=(e2->rule->symbols.size()-1)){
+                    os<<" ";
+                }
+            }
+            r_rule_item_map[os.str()]=i1;
+        }
+    }
+}
 
 //构建预测表
 log("构建预测表");
 vector<unordered_map<string,string>> forecast_list;
 calculate_forecast_list(forecast_list,items_list,terminator,rule_map,convert_map,f_follow);
 
-
+//解决移入-规约冲突
+log("解决移入-规约冲突");
 for(const auto &e:temp_forecast_map){
 	string_list.clear();
-	split(string_list,e.first,is_any_of(","));
-	forecast_list[atoi(string_list[0].c_str())][string_list[1]]=e.second;
-}
+	split(string_list,e.first,is_any_of("|"));
 
+	string method=forecast_list[r_rule_item_map[string_list[0]]][string_list[1]];
+    string rule_str=string_list[0];
+    string move=string_list[1];
+	if(method.find(",")!=string::npos){
+	    string_list.clear();
+        split(string_list,method,is_any_of(","));
+        string s,r;
+
+        for(const auto &e:string_list){
+            if(startsWith(e,"s")){
+                s=e;
+            }else if(startsWith(e,"r")){
+            P_Rule rule=ruleList[atoi(e.substr(1).c_str())];
+            os.str("");
+            os<<rule->rule_name<<" : ";
+            for(int i2=0;i2<rule->symbols.size();i2++){
+                os<<rule->symbols[i2];
+                if(i2!=(rule->symbols.size()-1)){
+                    os<<" ";
+                }
+            }
+            if(rule_str==os.str()){
+                r=e;
+            }
+            }
+        }
+        if(e.second=="s"){
+            forecast_list[r_rule_item_map[rule_str]][move]=s;
+        }else if(e.second=="r"){
+            forecast_list[r_rule_item_map[rule_str]][move]=r;
+        }
+
+	}
+}
 
 if(detect_ambigulous(forecast_list,ruleList,items_list)){
 	return -1;
@@ -1299,8 +1350,8 @@ log("解决预测表冲突");
 while(getline(input_file,rule_str))
 {
 	string_list.clear();
-	split(string_list,rule_str,is_any_of(":"));
-	temp_forecast_map[string_list[0]]=string_list[1];
+	split(string_list,rule_str,is_any_of("|"));
+	temp_forecast_map[string_list[0]+"|"+string_list[1]]=string_list[2];
 }
 input_file.close();
 }

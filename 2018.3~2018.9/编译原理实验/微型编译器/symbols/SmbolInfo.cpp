@@ -28,7 +28,6 @@ SmbolInfo::SmbolInfo(int tag){
    }
 
     this->registNum=smbolInfo.registNum;
-    cout<<"dasfdasf1"<<endl;
     return *this;
 }
 
