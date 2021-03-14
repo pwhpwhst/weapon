@@ -1,0 +1,114 @@
+https://www.cnblogs.com/qiumingcheng/p/7253917.html
+
+
+http://localhost:9000/projects
+
+http://localhost:9000
+
+
+sonar.jdbc.url=jdbc:mysql://localhost:3306/mfdata?useUnicode=true&amp;characterEncoding=UTF-8
+sonar.jdbc.username=root
+sonar.jdbc.password=059030849
+sonar.sorceEncoding=UTF-8
+sonar.login=admin
+sonar.password=059030849
+
+
+
+
+
+123
+e69282e3560ed82914bfc61c515cb1f9460a4b81
+
+================================================================================
+
+
+http://localhost:9000
+
+mvn sonar:sonar -Dsonar.host.url=http://localhost:9000 -Dsonar.login=pwhpwhst
+
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.8.0.2131</version>
+				</plugin>
+
+
+mvn org.codehaus.mojo:sonar-maven-plugin:3.8.0.2131:sonar
+
+mvn -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/report.xml sonar:sonar
+
+
+=======================================
+参考：https://www.cnblogs.com/qiumingcheng/p/7253917.html
+https://www.mdeditor.tw/pl/pUd8/zh-tw
+
+1、下载和安装sonarqube
+http://www.sonarqube.org/downloads/
+
+2、在maven的setting.xml中配置：
+<profile>
+  <id>sonar</id>
+  <activation>
+    <activeByDefault>true</activeByDefault>
+  </activation>
+  <properties>
+    <!-- Optional URL to server. Default value is http://localhost:9000 -->
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
+	<sonar.login>pwhpwhst</sonar.login>
+	<sonar.password>XXXX</sonar.password>
+  </properties>
+</profile>
+
+3、pom.xml中配置：
+
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>LATEST</version>
+		</dependency>
+
+
+<plugin>
+  <groupId>org.jacoco</groupId>
+  <artifactId>jacoco-maven-plugin</artifactId>
+  <version>0.8.6</version>
+  <configuration>
+    <skip>false</skip>
+    <destFile>target/coverage-reports/jacoco-unit.exec</destFile>
+    <dataFile>target/coverage-reports/jacoco-unit.exec</dataFile>
+    <output>file</output>
+    <append>true</append>
+    <excludes>
+      <exclude>com/pkslow/basic/containsperformance/**</exclude>
+      <exclude>com/pkslow/basic/ReadPropertiesFile</exclude>
+    </excludes>
+
+  </configuration>
+  <executions>
+    <execution>
+      <id>jacoco-initialize</id>
+      <goals>
+        <goal>prepare-agent</goal>
+      </goals>
+      <phase>test-compile</phase>
+    </execution>
+
+    <execution>
+      <id>jacoco-site</id>
+      <phase>verify</phase>
+      <goals>
+        <goal>report</goal>
+      </goals>
+    </execution>
+  </executions>
+</plugin>
+
+
+4、
+執行 mvn clean test ，則會生成報告 target/coverage-reports/jacoco-unit.exec ，但這是人不可讀的， Sonar 可讀的。 Intellij Idea 也可以閱讀，按照 Run--Show Code Coverage Data 開啟即可。
+
+執行 mvn clean verify ，就會生成報告 target/site/jacoco/ ，有多種格式，用瀏覽器開啟 index.html 檔案可以方便檢視。如下圖所示：
+
+
+mvn clean verify sonar:sonar

@@ -1,0 +1,7 @@
+cd C:\Users\Administrator\Desktop\Maven
+mvn clean package
+cd target
+java -jar hadoopTest-1.0-SNAPSHOT.jar
+
+
+

@@ -1,0 +1,13 @@
+Cygwin64 Terminal	（可以当成linux用）
+
+Cygwin64 安装软件的方法
+https://blog.csdn.net/itworld123/article/details/94626744
+
+F:\setup-x86_64.exe
+
+======================================================================
+
+根目录对应：
+F:\cygwin64
+
+

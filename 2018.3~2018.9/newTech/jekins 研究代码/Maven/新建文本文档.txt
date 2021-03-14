@@ -1,0 +1,90 @@
+GroupID是项目组织唯一的标识符，实际对应JAVA的包的结构，是main目录里java的目录结构。
+ArtifactID就是项目的唯一的标识符，实际对应项目的名称，就是项目根目录的名称。
+
+
+
+cd C:\Users\pwh\Desktop\新技术使用\Maven
+mvn clean compile
+mvn clean test
+mvn clean package
+mvn clean install
+
+运行：
+cd C:\Users\pwh\Desktop\新技术使用\Maven\target
+java -jar hello-world-1.0-SNAPSHOT.jar
+
+
+//中央仓库：http://repo1.maven.org/maven2/
+
+
+生命周期：
+
+clean
+validate
+compile - 编译项目的源代码
+test - 使用合适的单元测试框架测试编译的源代码。这些测试不应该要求代码被打包或部署
+package - 采用编译的代码，并以其可分配格式（如JAR）进行打包。
+verify - 对集成测试的结果执行任何检查，以确保满足质量标准
+install - 将软件包安装到本地存储库中，用作本地其他项目的依赖项
+site - 处理你的项目站点文档的创建
+deploy - 在构建环境中完成，将最终的包复制到远程存储库以与其他开发人员和项目共享。
+
+==========================================================================================
+mvnw的使用：
+参考：
+https://www.cnblogs.com/bchen/p/7492929.html
+
+
+1、在pom文件里添加：
+
+<plugin>
+    <groupId>com.rimerosolutions.maven.plugins</groupId>
+    <artifactId>wrapper-maven-plugin</artifactId>
+    <version>0.0.4</version>
+</plugin>
+
+2、mvn wrapper:wrapper
+
+这样当我们执行mvn wrapper:wrapper 时，会帮我们生成mvnw.bat, mvnw, maven/maven-wrapper.jar, maven/maven-wrapper.properties这些文件。
+然后我们就可以使用mvnw代替mvn命令执行所有的maven命令，比如mvnw clean package
+
+
+
+==================================================================================================
+
+
+=================================================================
+
+关于单元测试
+
+参考：
+https://blog.csdn.net/yonggang7/article/details/79780487
+https://www.cnblogs.com/qiyexue/p/6822791.html
+
+maven-surefire-plugin 使用 test 参数指定测试用例, 为测试用例的类名 
+mvn test -Dtest=RandomTest 
+只执行 RandomTest 这个测试类. 
+mvn test -Dtest=RandomTest#myTest 
+上面命令，只运行 RandomTest 类的 myTest 方法
+
+可以指定多个类，逗号分隔 
+mvn test -Dtest=RandomTest,Random2Test 
+也可以用 * 匹配多个 
+mvn test -Dtest=Random*Test 
+*和 逗号可以结合使用。
+
+如果不指定或者找不到测试类则构建失败 
+mvn test -Dtest 
+failIfNoTests 参数控制没有测试用例不报错 
+mvn test -Dtest -DfailIfNoTests=false
+
+
+
+
+
+
+
+
+
+
+
