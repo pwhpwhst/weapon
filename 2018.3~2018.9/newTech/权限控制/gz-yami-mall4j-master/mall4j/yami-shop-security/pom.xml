@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>yami-shop</artifactId>
+		<groupId>com.yami.shop</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>yami-shop-security</artifactId>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.yami.shop</groupId>
+			<artifactId>yami-shop-common</artifactId>
+			<version>${yami.shop.version}</version>
+		</dependency>
+		<!--security、oauth2-->
+		<dependency>
+			<groupId>org.springframework.security.oauth.boot</groupId>
+			<artifactId>spring-security-oauth2-autoconfigure</artifactId>
+		</dependency>
+	</dependencies>
+	
+	
+	
+		<build>
+		<plugins>
+
+
+<!-- 导出jar包到特定文件夹	-->
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+		</plugins>
+		<resources>
+			<resource>
+			<!-- 会把该目录下的文件放到classes下 -->
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+	</build>  
+</project>

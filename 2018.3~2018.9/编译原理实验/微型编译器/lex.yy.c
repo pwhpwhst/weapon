@@ -764,6 +764,14 @@ if(strcmp(yytext,"char")==0){
 	write_word(p_lex_word,yytext,"'simple-type-specifier'");
 }else if(strcmp(yytext,"true")==0||strcmp(yytext,"false")==0){
 	write_word(p_lex_word,yytext,"'boolean-literal'");
+}else if(strcmp(yytext,"auto")==0||strcmp(yytext,"register")==0||strcmp(yytext,"static")==0||strcmp(yytext,"mutable")==0){
+	write_word(p_lex_word,yytext,"'storage-class-specifier'");
+}else if(strcmp(yytext,"inline")==0||strcmp(yytext,"virtual")==0||strcmp(yytext,"explicit")==0){
+	write_word(p_lex_word,yytext,"'function-specifier'");
+}else if(strcmp(yytext,"friend")==0){
+	write_word(p_lex_word,yytext,"'friend'");
+}else if(strcmp(yytext,"typedef")==0){
+	write_word(p_lex_word,yytext,"'typedef'");
 }else if(strcmp(yytext,"enum")==0){
 	write_word(p_lex_word,yytext,"'enum'");
 }else{
@@ -774,7 +782,7 @@ if(strcmp(yytext,"char")==0){
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 104 "SLR\\wordParser.l"
+#line 115 "SLR\\wordParser.l"
 {
  write_word(p_lex_word,yytext,"'string-literal'");
   p_lex_word++;
@@ -782,7 +790,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 110 "SLR\\wordParser.l"
+#line 121 "SLR\\wordParser.l"
 {
  write_word(p_lex_word,yytext,"'character-literal'");
   p_lex_word++;
@@ -790,7 +798,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 117 "SLR\\wordParser.l"
+#line 128 "SLR\\wordParser.l"
 {
  write_word(p_lex_word,yytext,"'floating-literal'");
   p_lex_word++;
@@ -798,7 +806,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 122 "SLR\\wordParser.l"
+#line 133 "SLR\\wordParser.l"
 {
  write_word(p_lex_word,yytext,"'integer-literal'");
   p_lex_word++;
@@ -806,7 +814,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 129 "SLR\\wordParser.l"
+#line 140 "SLR\\wordParser.l"
 {
   write_word(p_lex_word,yytext,"'='");
   p_lex_word++;
@@ -814,7 +822,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 135 "SLR\\wordParser.l"
+#line 146 "SLR\\wordParser.l"
 {
   write_word(p_lex_word,yytext,"';'");
   p_lex_word++;
@@ -822,7 +830,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 140 "SLR\\wordParser.l"
+#line 151 "SLR\\wordParser.l"
 {
   write_word(p_lex_word,yytext,"'\n'");
   p_lex_word++;
@@ -830,7 +838,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 145 "SLR\\wordParser.l"
+#line 156 "SLR\\wordParser.l"
 {
   write_word(p_lex_word,yytext,"'LEFT_BRACKET'");
   p_lex_word++;
@@ -838,7 +846,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 150 "SLR\\wordParser.l"
+#line 161 "SLR\\wordParser.l"
 {
   write_word(p_lex_word,yytext,"'RIGHT_BRACKET'");
   p_lex_word++;
@@ -846,7 +854,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 156 "SLR\\wordParser.l"
+#line 167 "SLR\\wordParser.l"
 {
   write_word(p_lex_word,yytext,"','");
   p_lex_word++;
@@ -854,10 +862,10 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 162 "SLR\\wordParser.l"
+#line 173 "SLR\\wordParser.l"
 ECHO;
 	YY_BREAK
-#line 861 "lex.yy.c"
+#line 869 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1743,7 +1751,7 @@ int main()
 	return 0;
 	}
 #endif
-#line 162 "SLR\\wordParser.l"
+#line 173 "SLR\\wordParser.l"
 
 
 void c_word_parser(char* file_path,struct C_Lex_Word **beg,struct C_Lex_Word **end){

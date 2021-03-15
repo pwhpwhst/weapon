@@ -1,9 +1,11 @@
+--------declaration--------------
 ele_begin : ele_begin_a
 ele_begin_a : literal
-ele_begin_a : ptr-operator
 ele_begin_a : declaration-seq
 ele_begin_a : declaration
 ele_begin_a : decl-specifier-seq
+ele_begin_a : parameter-declaration-clause
+ele_begin_a : type-id
 type-name : class-name
 type-name : enum-name
 type-name : typedef-name
@@ -136,6 +138,77 @@ elaborated-type-specifier : 'typename' nested-name-specifier template-id
 elaborated-type-specifier : 'typename' '::' nested-name-specifier template-id
 elaborated-type-specifier : 'typename' nested-name-specifier 'template' template-id
 elaborated-type-specifier : 'typename' '::' nested-name-specifier 'template' template-id
+--------declarators--------------
+parameter-declaration-list : parameter-declaration
+parameter-declaration-list : parameter-declaration-list ',' parameter-declaration
+parameter-declaration-clause : 0
+parameter-declaration-clause : parameter-declaration-list
+parameter-declaration-clause : '...'
+parameter-declaration-clause : parameter-declaration-list '...'
+parameter-declaration-clause : parameter-declaration-list ',' '...'
+type-specifier-seq : type-specifier
+type-specifier-seq : type-specifier type-specifier-seq
+initializer-list : initializer-clause
+initializer-list : initializer-list ',' initializer-clause
+initializer-clause : assignment-expression
+initializer-clause : 'LEFT_BRACKET' initializer-list 'RIGHT_BRACKET'
+initializer-clause : 'LEFT_BRACKET' initializer-list ',' 'RIGHT_BRACKET'
+initializer-clause : 'LEFT_BRACKET' 'RIGHT_BRACKET'
+init-declarator : declarator
+init-declarator : declarator initializer
+declarator : direct-declarator
+declarator : ptr-operator declarator
+direct-declarator : declarator-id
+direct-declarator : direct-declarator '(' parameter-declaration-clause ')'
+direct-declarator : direct-declarator '(' parameter-declaration-clause ')' cv-qualifier-seq
+direct-declarator : direct-declarator '(' parameter-declaration-clause ')' exception-specification
+direct-declarator : direct-declarator '(' parameter-declaration-clause ')' cv-qualifier-seq exception-specification
+direct-declarator : direct-declarator '[' ']'
+direct-declarator : direct-declarator '[' constant-expression ']'
+direct-declarator : '(' declarator ')'
+initializer : '=' initializer-clause
+initializer : '(' expression-list ')'
+abstract-declarator : ptr-operator
+abstract-declarator : ptr-operator abstract-declarator
+abstract-declarator : direct-abstract-declarator
+declarator-id : id-expression
+declarator-id : type-name
+declarator-id : '::' type-name
+declarator-id : nested-name-specifier type-name
+declarator-id : '::' nested-name-specifier type-name
+type-id : type-specifier-seq
+type-id : type-specifier-seq abstract-declarator
 ====================================
 nested-name-specifier : class-or-namespace-name '::'|'template'|r
 type-name : class-name|'::'|r
+ele_begin_a : parameter-declaration-clause|'$'|r
+decl-specifier : type-specifier|'wchar_t'|s
+decl-specifier : type-specifier|'wchar_t'|s
+decl-specifier : type-specifier|'void'|s
+decl-specifier : type-specifier|'enum'|s
+decl-specifier : type-specifier|'cv-qualifier'|s
+decl-specifier : type-specifier|'class-key'|s
+decl-specifier : type-specifier|'::'|s
+decl-specifier : type-specifier|'typename'|s
+decl-specifier : type-specifier|'char'|s
+decl-specifier : type-specifier|'float'|s
+decl-specifier : type-specifier|'identifier-enum-name'|s
+decl-specifier : type-specifier|'signed'|s
+decl-specifier : type-specifier|'bool'|s
+decl-specifier : type-specifier|'identifier-typedef-name'|s
+decl-specifier : type-specifier|'int'|s
+decl-specifier : type-specifier|'double'|s
+decl-specifier : type-specifier|'long'|s
+decl-specifier : type-specifier|'short'|s
+decl-specifier : type-specifier|'unsigned'|s
+decl-specifier : type-specifier|'$'|r
+declarator : direct-declarator|'('|s
+declarator-id : type-name|';'|r
+declarator-id : '::' type-name|';'|r
+simple-type-specifier : type-name|'('|r
+simple-type-specifier : '::' type-name|'('|r
+simple-type-specifier : nested-name-specifier type-name|'('|r
+simple-type-specifier : '::' nested-name-specifier type-name|'('|r
+declarator-id : nested-name-specifier type-name|';'|r
+declarator-id : '::' nested-name-specifier type-name|';'|r
+type-specifier-seq : type-specifier|'::'|s

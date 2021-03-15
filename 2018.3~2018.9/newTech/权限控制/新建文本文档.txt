@@ -1,0 +1,37 @@
+
+
+
+cd C:\Users\Administrator\Desktop\È¨ÏÞ¿ØÖÆ\gz-yami-mall4j-master\mall4j
+mvn clean package
+
+
+
+
+
+
+
+
+SysLogAspect.class	Constant.class									
+	MenuType.class									
+	UpdatePasswordDto.class									
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+										
+SysConfigController.class	SysConfigService.class			SysConfigServiceImpl.class				SysConfig.class	SysConfigMapper.class
+SysLogController.class		SysLogService.class			SysLogServiceImpl.class				SysLog.class	SysLogMapper.class
+SysMenuController.class		SysMenuService.class			SysMenuServiceImpl.class				SysMenu.class	SysMenuMapper.class
+SysRoleController.class		SysRoleService.class			SysRoleServiceImpl.class				SysRole.class	SysRoleMapper.class
+									SysRoleMenu.class	SysRoleMenuMapper.class
+SysUserController.class		SysUserService.class			SysUserServiceImpl.class				SysUser.class	SysUserMapper.class
+									SysUserRole.class	SysUserRoleMapper.class

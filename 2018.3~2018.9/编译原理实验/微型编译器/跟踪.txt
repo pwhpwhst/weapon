@@ -1,60 +1,45 @@
-P_SDT_genertor sdt_genertor=SDT_Factory::instance.factory[top->node->get_rule_str()];
-if(sdt_genertor!=nullptr){
-	P_NodeValue p_nodeValue=sdt_genertor->handle(top,result_map,has_calculate_set);
-	if(p_nodeValue!=nullptr){
-		stack.push_back(p_nodeValue);
-	}else{
-		stack.pop_back();
-	}
-}
-	↓
-handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set)
+type-id
 
-
-===========================================
-
-
-get_symbol_para
-gen_attribute_name
-gen_attribute_fun
-
-
-fs<<"\tpublic: P_NodeValue handle(const P_NodeValue &nodeValue,unordered_map<string,Token*> &result_map,set<string> &has_calculate_set){"<<endl;
-	↓
-split(string_list,cmd_strs,is_any_of(";"));//string_list 此时保存着指令
-	↓
-split(string_list2,e21,is_any_of("="));
-	↓
-symbol_set.clear();
-get_symbol_para(string_list2[0],symbol_set);	//模拟正则表达式的功能 $$.next S1 $$
+type-id:
+type-specifier-seq abstract-declaratoropt
 
 
 
-=================================================================================================================================
+type-specifier-seq : type-specifier
+type-specifier-seq : type-specifier type-specifier-seq
 
 
 
-for(const auto &e:total_lex_word_list){
-	lex_word_list.push_back(e);
-	if(e->type=="';'"){
-		//构造语法树
-		lex_word_list.pop_back();
-		Node *node_tree=syntax_analyze(ruleList,zero_terminator,forecast_list,convert_map,lex_word_list);
-		#ifdef __PRINT_NODE_TREE
-		
-		if(node_tree!=nullptr){
-//			printStack(node_tree);
-			printStack2(node_tree);
-		}
-		
-		
-		
-		if(node_tree!=nullptr){
-			gen_middle_code(env,node_tree);
-		}
-		
-				
-		#endif
-		lex_word_list.clear();
-	}
-}
+abstract-declarator:
+ptr-operator abstract-declaratoropt
+direct-abstract-declarator
+
+
+
+direct-abstract-declarator:
+direct-abstract-declaratoropt ( parameter-declaration-clause ) cv-qualifier-seqopt exception-specificationopt
+direct-abstract-declaratoropt [ constant-expressionopt ]
+( abstract-declarator )
+
+
+
+parameter-declaration-clause:
+parameter-declaration-listopt ...opt
+parameter-declaration-list , ...
+
+
+
+parameter-declaration-list:
+parameter-declaration
+parameter-declaration-list , parameter-declaration
+
+
+
+parameter-declaration:
+decl-specifier-seq declarator
+decl-specifier-seq declarator = assignment-expression
+decl-specifier-seq abstract-declaratoropt
+decl-specifier-seq abstract-declaratoropt = assignment-expression
+
+
+init-declarator

@@ -1232,6 +1232,9 @@ void Slr::paresOrders(const string& rule_file,vector<string>& orders,unordered_m
 		if(rule_str[0]=='='){
 			break;
 		}
+		if(rule_str[0]=='-'){
+			continue;
+		}
 		rule_str=trim_left_copy(trim_right_copy(rule_str));
 
 
