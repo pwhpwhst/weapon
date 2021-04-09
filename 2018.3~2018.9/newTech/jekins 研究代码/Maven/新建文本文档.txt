@@ -78,10 +78,53 @@ mvn test -Dtest
 failIfNoTests 参数控制没有测试用例不报错 
 mvn test -Dtest -DfailIfNoTests=false
 
+==============================================================
+
+jenkins
+参考：https://www.jianshu.com/p/5f671aca2b5a
+
+https://www.cnblogs.com/xiao987334176/p/11433636.html
+https://www.cnblogs.com/jingmu/articles/11062852.html
+
+
+
+1、下载
+https://www.jenkins.io/download/thank-you-downloading-windows-installer-stable/
+
+F:
+cd F:\Program Files\Jenkins
+java -jar jenkins.war --httpPort=1235
 
 
 
 
+Jenkins initial setup is required. An admin user has been created and a password generated.
+Please use the following password to proceed to installation:
+
+47760bd251ac4c74a5d8fd16e34a48dc
+
+This may also be found at: C:\Users\Administrator\.jenkins\secrets\initialAdminPassword
+
+2、登录 http://localhost:1235/
+admin/47760bd251ac4c74a5d8fd16e34a48dc
+
+
+3、配置jdk和maven
+3.1 Manage Jenkins --> Global Tool Configuration
+
+
+3.2 登录jenkins后台，点击 Manage Jenkins  --> Manage Plugins
+
+搜索关键字maven，找到插件Maven Integration，并勾选一下
+
+
+3.3配置邮件通知，Manage Jenkins→configure Systems→Jenkins Location
+
+3.4
+Manage Jenkins  --> Manage Plugins	搜索并安装gitlab
+
+
+Manage Jenkins→configure Systems→Gitlab
 
 
 
