@@ -126,8 +126,17 @@ Manage Jenkins  --> Manage Plugins	搜索并安装gitlab
 
 Manage Jenkins→configure Systems→Gitlab
 
+3.4.1	配置对gitee的访问权限
+参考：
+https://gitee.com/help/articles/4193#article-header0
+
+gitee 的令牌
+fecf31cebe6cbfd5da54b8914b40f36f
 
 
-
+3.5 新建项目
+DashBoard →New Item
+新建Test for jira
+在“configure”中配置 git地址和部署命令
 
 
