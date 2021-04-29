@@ -108,6 +108,8 @@ This may also be found at: C:\Users\Administrator\.jenkins\secrets\initialAdminP
 2、登录 http://localhost:1235/
 admin/47760bd251ac4c74a5d8fd16e34a48dc
 
+http://localhost:1235/pipeline-syntax/
+
 
 3、配置jdk和maven
 3.1 Manage Jenkins --> Global Tool Configuration
@@ -140,3 +142,27 @@ DashBoard →New Item
 在“configure”中配置 git地址和部署命令
 
 
+hudson.tasks.LogRotator
+
+
+
+=====================================================
+
+相关语法：
+hudson.scm.SubversionSCM.checkout
+
+http://localhost:1235/pipeline-syntax/html
+
+
+hudson.model.AbstractProject.checkout
+
+hudson.plugins.git.GitSCM.checkout
+
+
+https://www.jenkins.io/doc/pipeline/steps/workflow-basic-steps/#tool-use-a-tool-from-a-predefined-tool-installation
+
+https://javadoc.jenkins.io/plugin/nested-view/hudson/plugins/nested_view/package-use.html
+
+https://blog.csdn.net/littlebrain4solving/article/details/78124643
+
+https://blog.csdn.net/u010781856/article/details/52655084
