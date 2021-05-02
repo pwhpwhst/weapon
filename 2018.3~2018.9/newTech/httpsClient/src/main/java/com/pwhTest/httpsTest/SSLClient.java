@@ -44,3 +44,53 @@ public class SSLClient extends DefaultHttpClient {
         sr.register(new Scheme("https", 443, ssf));
     }
 }
+
+
+
+
+/*
+    public static CloseableHttpClient getSSLClient(String user,String password) {
+        SSLContext ctx=null;
+		try {
+			ctx = SSLContext.getInstance("TLS");
+		} catch (NoSuchAlgorithmException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+        X509TrustManager tm = new X509TrustManager() {
+
+                public void checkClientTrusted(X509Certificate[] chain,
+                        String authType) throws CertificateException {
+                }
+
+                public void checkServerTrusted(X509Certificate[] chain,
+                        String authType) throws CertificateException {
+                }
+
+                public X509Certificate[] getAcceptedIssuers() {
+                    return null;
+                }
+        };
+        try {
+			ctx.init(null, new TrustManager[]{tm}, null);
+		} catch (KeyManagementException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+        CredentialsProvider provider = new BasicCredentialsProvider();
+        provider.setCredentials(
+                AuthScope.ANY,
+                new UsernamePasswordCredentials(user, password)
+        );
+
+        
+        
+        SSLSocketFactory ssf = new SSLSocketFactory(ctx,SSLSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
+        CloseableHttpClient httpclient= HttpClientBuilder.create().setDefaultCredentialsProvider(provider).build();
+        ClientConnectionManager ccm2 = httpclient.getConnectionManager();
+        SchemeRegistry sr2 = ccm2.getSchemeRegistry();
+        sr2.register(new Scheme("https", 443, ssf));
+        return httpclient;
+    }
+*/

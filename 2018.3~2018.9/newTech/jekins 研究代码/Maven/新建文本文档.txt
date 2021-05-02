@@ -166,3 +166,30 @@ https://javadoc.jenkins.io/plugin/nested-view/hudson/plugins/nested_view/package
 https://blog.csdn.net/littlebrain4solving/article/details/78124643
 
 https://blog.csdn.net/u010781856/article/details/52655084
+================================================================================================================================================================================================
+
+
+jenkins API
+https://blog.csdn.net/nklinsirui/article/details/80832005
+
+https://blog.csdn.net/weixin_33895657/article/details/91904768
+http://localhost:1235/job/pwhTest/config.xml
+
+No valid crumb was included in the request
+https://blog.csdn.net/nklinsirui/article/details/80832005
+
+请求附带CRUMB信息即可
+https://blog.csdn.net/tiandaochouqin99/article/details/79893107?utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control
+
+CRUMB=$(curl -s 'http://USER:API_TOKEN@Jenkins_IP:8080/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)')
+
+
+
+
+https://blog.csdn.net/weixin_33320453/article/details/85713503?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-3.control
+
+
+
+
+
+http://localhost:1235/job/pwhTest/config.xml
