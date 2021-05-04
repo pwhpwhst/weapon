@@ -171,6 +171,10 @@ https://blog.csdn.net/u010781856/article/details/52655084
 
 jenkins API
 https://blog.csdn.net/nklinsirui/article/details/80832005
+https://blog.csdn.net/qq_32641153/article/details/94230465?utm_medium=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control
+
+https://blog.csdn.net/dbaebo3503/article/details/101461695?utm_medium=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2~default~BlogCommendFromMachineLearnPai2~default-1.control
+
 
 https://blog.csdn.net/weixin_33895657/article/details/91904768
 http://localhost:1235/job/pwhTest/config.xml
@@ -193,3 +197,68 @@ https://blog.csdn.net/weixin_33320453/article/details/85713503?utm_medium=distri
 
 
 http://localhost:1235/job/pwhTest/config.xml
+
+
+https://blog.csdn.net/dnc8371/article/details/106813624
+
+http://localhost:1235/job/pwhTest/configure
+
+
+curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc 'http://localhost:1235/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)'
+
+curl -X GET http://admin:47760bd251ac4c74a5d8fd16e34a48dc@localhost:1235/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)
+
+curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc http://localhost:1235/job/pwhTest/config.xml -o config.xml
+
+curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc -X POST http://localhost:1235/job/pwhTest/config.xml --data-binary "@config.xml"
+
+
+
+
+curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc http://localhost:1235/job/pwhTest/config.xml -o config.xml
+
+curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc  GET http://localhost:1235/jenkins/job/pwhTest/config.xml -o config.xml
+
+
+curl -X POST http://anthony:anthony@localhost:8080/jenkins/job/pof/config.xml --data-binary "@config.xml"
+
+
+
+curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc http://localhost:1235/job/pwhTest/config.xml --data-binary @config.xml
+
+
+
+
+
+
+
+
+http://www.voidcn.com/article/p-ntbttlix-bqr.html
+
+===================================================
+
+curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc http://localhost:1235/job/pineline2/config.xml -o config.xml
+
+
+
+curl -X POST http://admin:47760bd251ac4c74a5d8fd16e34a48dc@localhost:1235/job/pineline2/config.xml --data-binary "@config.xml"
+
+
+
+
+curl -X GET http://admin:47760bd251ac4c74a5d8fd16e34a48dc@localhost:1235/job/pineline2/config.xml -o mylocalconfig.xml
+
+http://192.168.6.224:8080/createItem?name=testjob
+
+curl -X POST http://admin:47760bd251ac4c74a5d8fd16e34a48dc@localhost:1235/createItem?name=testjob --data-binary "@mylocalconfig.xml"
+
+
+
+
+curl -X POST -F 'json={"displayName":"name","description":"a short description"}' \
+  http://localhost/job/playground/30/configSubmit
+
+
+http://localhost:1235/job/pineline2/config.xml
+
+https://www.jianshu.com/p/987b5b68b616
