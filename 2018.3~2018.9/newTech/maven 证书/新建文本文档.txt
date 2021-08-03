@@ -1,0 +1,11 @@
+参考：
+https://blog.csdn.net/frankcheng5143/article/details/52164939
+https://blog.csdn.net/debugbugbg/article/details/102567937
+
+
+1.  将https://repo.maven.apache.org/maven2/和https://maven.aliyun.com/nexus/content/groups/public/ 证书加入$JAVA_HOME\jre\lib\security\cacerts中 (部分有效)
+
+
+keytool -import -alias maven.aliyun.com -keystore "E:\Program Files\Java\jdk1.8.0_171\jre\lib\security\cacerts" -file "D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\maven 证书\code.cer" -trustcacerts -storepass changeit 
+ 
+keytool -import -alias repo.maven.com -keystore "E:\Program Files\Java\jdk1.8.0_171\jre\lib\security\cacerts" -file "D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\maven 证书\repo.cer" -trustcacerts -storepass changeit
