@@ -1,0 +1,12 @@
+D:
+cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\newTech\…»±¥µ•¥ Ã·»°\ShanBayExt3
+mvn clean package
+
+cd target
+java -jar hadoopTest-1.0-SNAPSHOT.jar ../export.csv
+
+
+
+
+
+

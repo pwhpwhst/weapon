@@ -15,7 +15,9 @@ mkdir -p %MYSQL_HOME%/data
 F:
 cd F:\mysql-5.7.22-winx64\mysql-5.7.22-winx64\bin
 
-mysqld.exe --install MySql --defaults-file="F:/mysql-5.7.22-winx64/mysql-5.7.22-winx64/my.ini"
+-- mysqld.exe --remove
+
+mysqld.exe --install MySql --defaults-file="E:/mysql-5.7.22-winx64/mysql-5.7.22-winx64/my.ini"
 
 mysqld --initialize
 

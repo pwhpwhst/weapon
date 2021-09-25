@@ -8,6 +8,8 @@ https://blog.csdn.net/tina_ttl/article/details/51372604
 https://blog.csdn.net/JoeChao1003/article/details/77367694
 
 
+https://blog.csdn.net/xzys430/article/details/108723202
+
 http://www.jb51.net/article/115505.htm
 
 http://www.runoob.com/docker/docker-command-manual.html
@@ -15,6 +17,14 @@ http://www.runoob.com/docker/docker-command-manual.html
 
 http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html
 //来龙去脉
+
+系统准备：
+
+控制面板→启动或关闭Windows功能
+Hyper-V
+Hyper-V 管理工具（全选）
+Hyper-V 平台 Hyper-V 服务
+
 
 
 启动：

@@ -50,6 +50,8 @@ carry out Condition_0_SDT_genertor
 中文乱码的解决方法
 https://www.cnblogs.com/didiaodidiao/p/9189463.html
 
+
+
 D:
 cd D:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器
 
@@ -59,6 +61,8 @@ g++ -std=c++11  -g -finput-charset=UTF-8 -fexec-charset=GBK  -c slr.cpp
 
 flex.exe  SLR\wordParser.l
 gcc -c lex.yy.c
+
+
 
 g++ -std=c++11  -c SDT_generator_generator.cpp
 g++ -std=c++11 -o SDT_generator_generator SDT_generator_generator.o
@@ -99,15 +103,31 @@ SLR 的弱点
 https://blog.csdn.net/weixin_45106809/article/details/94384365
 
 
+============================================================
+
+2021/06/16
+目前的进度：
+E:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\pwh的试验\ruleForLexical.txt
+
+填充C++的文法，分析能否生成正确的语法树
+
+
+E:\Users\Administrator\Desktop\project2018.3_2018.9\2018.3~2018.9\编译原理实验\微型编译器\pwh的试验\rule.txt
+
+生成正确的语法树的基础上，实现语法翻译制导
 
 
 
+=============================================================
+VS上的编译：
+
+flex.exe  SLR\wordParser.l
 
 
+g++ -std=c++11  -c SDT_generator_generator.cpp
+g++ -std=c++11 -o SDT_generator_generator SDT_generator_generator.o
+SDT_generator_generator.exe
 
-
-
-
-
+=============================================================
 
 

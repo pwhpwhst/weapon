@@ -8,10 +8,13 @@ https://natapp.cn/login
 
 2¡¢Æô¶¯natapp
 
-D:
-cd D:\natapp_windows_amd64_2_3_9
+E:
+cd E:\natapp_windows_amd64_2_3_9
 natapp.exe
 
 
 http://8mbtxu.natappfree.cc/swagger-ui.html#/
+
+
+
 

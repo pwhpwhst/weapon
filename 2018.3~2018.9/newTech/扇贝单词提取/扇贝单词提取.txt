@@ -1,0 +1,115 @@
+//获取单词列表			https://web.shanbay.com/wordsweb/#/words-table
+
+
+
+function format_json(objArray){
+	return objArray;
+}
+
+function Json2CSV(objArray){
+  var 
+    getKeys = function(obj){
+      var keys = [];
+      for(var key in obj){
+        keys.push(key);
+      }
+      return keys.join();
+    }, objArray = format_json(objArray)
+    , array = typeof objArray != 'object' ? JSON.parse(objArray) : objArray
+    , str = ''
+  ;
+ 
+ 
+  for (var i = 0; i < array.length; i++) {
+    var line = '';
+    for (var index in array[i]) {
+      if(line != '') line += ','
+   
+      line += array[i][index];
+    }
+ 
+ 
+    str += line + '\r\n';
+  }
+ 
+ 
+  str = getKeys(objArray[0]) + '\r\n' + str;
+ 
+ 
+  var a = document.createElement('a');
+  var blob = new Blob([str], {'type':'application\/octet-stream'});
+  a.href = window.URL.createObjectURL(blob);
+  a.download = 'export.csv';
+  a.click();
+  return true;
+}
+
+
+
+function getNextPageLi(){
+   var lis=$("[class^='index_pageContainer'] li");
+   for(var i1=0;i1<lis.length;i1++){
+   	if(lis[i1].innerHTML=="下一页"&&!lis[i1].getAttribute("class").startsWith("index_nomore__")){
+		return lis[i1];
+	}
+   }
+   return null;
+}
+
+function graspWord(arr){
+	var wordLength=$("[class^='index_word__']").length
+	for(var i1=0;i1<wordLength;i1++){
+		var obj={}
+		var enName=$("[class^='index_word__']:eq("+i1+") [class^='index_wordName']")[0].innerText
+		obj["enName"]=enName
+		var chName=$("[class^='index_word__']:eq("+i1+") [class^='index_bottom'] span")[0].innerText
+		chName+=$("[class^='index_word__']:eq("+i1+") [class^='index_bottom'] span")[1].innerText
+		obj["chName"]=chName
+		arr.push(obj)
+	}
+}
+
+
+  function sleep2(NumMillis) {
+        var nowTime = new Date();
+        var exitTime = nowTime .getTime() + NumMillis;
+        while (true) {
+            now = new Date();
+	   // console.log(now.getTime())
+            if (now.getTime() > exitTime){
+		return;
+	    }
+                
+        }
+    }
+
+
+function sleep(time){
+ return new Promise((resolve) => setTimeout(resolve, time));
+}
+
+
+var arr=[]
+var nextPageLi=null
+
+
+
+do{
+await sleep(2000)
+graspWord(arr)
+console.log(arr.length)
+  var nextPageLi=getNextPageLi()
+  if(nextPageLi!=null){
+	nextPageLi.click()
+  }
+}while(nextPageLi!=null)
+
+
+Json2CSV(arr)
+
+
+
+
+
+
+

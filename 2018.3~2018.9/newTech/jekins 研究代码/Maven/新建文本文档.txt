@@ -206,7 +206,7 @@ http://localhost:1235/job/pwhTest/configure
 
 curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc 'http://localhost:1235/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)'
 
-curl -X GET http://admin:47760bd251ac4c74a5d8fd16e34a48dc@localhost:1235/crumbIssuer/api/xml?xpath=concat(//crumbRequestField,":",//crumb)
+
 
 curl -u admin:47760bd251ac4c74a5d8fd16e34a48dc http://localhost:1235/job/pwhTest/config.xml -o config.xml
 
@@ -262,3 +262,6 @@ curl -X POST -F 'json={"displayName":"name","description":"a short description"}
 http://localhost:1235/job/pineline2/config.xml
 
 https://www.jianshu.com/p/987b5b68b616
+
+
+curl -X GET http://localhost:1235/job/pineline2/config.xml -o mylocalconfig.xml
