@@ -10,3 +10,25 @@ libmysql.dll	//来自于mysql的目录
 3、
 gcc -c test.cpp
 gcc -o test test.o libmysql.dll
+
+=================================================================
+2、visual studio
+
+项目→属性→VC++目录→可执行文件目录
+E:\mysql-5.7.22-winx64\mysql-5.7.22-winx64\bin
+项目→属性→VC++目录→包含目录
+E:\mysql-5.7.22-winx64\mysql-5.7.22-winx64\include
+项目→属性→VC++目录→库目录
+E:\mysql-5.7.22-winx64\mysql-5.7.22-winx64\lib
+
+C++文件中加入：
+#pragma comment(lib,"libmysql.lib")
+
+
+
+
+
+
+
+
+

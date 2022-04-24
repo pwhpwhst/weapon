@@ -37,3 +37,23 @@ git reset --merge
 
 git 更新本地代码
 https://www.cnblogs.com/delav/p/11118555.html
+
+
+=======================
+
+
+gir 打tag的方法：
+https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE
+
+git tag -l "v1.8.5*"
+
+git tag -a v1.0 -m "SLR 教科书"
+git push origin v1.0
+
+
+
+git tag -a v1.6 -m "LR(1)转LALR，然而是内存消耗高的版本"
+
+git push origin v1.6
+
+

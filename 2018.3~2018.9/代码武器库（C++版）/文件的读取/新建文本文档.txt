@@ -1,0 +1,11 @@
+	
+	ifstream input_file;
+	input_file.open(rule_file.data());	//rule_file string
+	
+	while (getline(input_file, rule_str))
+	{
+		string_list.clear();
+		split(string_list, rule_str, is_any_of("|"));
+		temp_forecast_map[string_list[0] + "|" + string_list[1]] = string_list[2];
+	}
+	input_file.close();

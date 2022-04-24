@@ -1,0 +1,16 @@
+1、安装jdk15
+2、安装ant
+ANT_HOME E:\apache-ant-1.9.14-bin\apache-ant-1.9.14
+path
+
+
+3、下载tomcat代码 https://gitee.com/apache/tomcat
+
+4、配置 build.properties C:\Users\Administrator\Desktop\javaSpecification\tomcat8
+
+base.path=C:\\Users\\Administrator\\Desktop\\javaSpecification\\tomcat8\\tomcat-build-libs
+
+
+5、
+cd C:\Users\Administrator\Desktop\javaSpecification\tomcat8
+ant
