@@ -1,0 +1,9 @@
+https://blog.csdn.net/qq_33849593/article/details/123332069
+
+https://www.jianshu.com/p/bff9d8afa7d0
+
+cd C:\Users\Administrator\Desktop\ESAPI\Maven
+mvn clean package
+
+cd C:\Users\Administrator\Desktop\ESAPI\Maven\target
+java -jar hadoopTest-1.0-SNAPSHOT.jar
