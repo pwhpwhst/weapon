@@ -1,0 +1,17 @@
+https://blog.csdn.net/Passer_hua/article/details/126626967
+
+
+
+
+
+
+cd C:\Users\Administrator\Desktop\Maven2
+
+mvn clean package
+
+
+
+
+
+
+
